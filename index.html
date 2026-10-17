@@ -1,0 +1,2245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Veritass</title>
+<meta name="description" content="Field manual for Veritass, a level 325 Royal Paladin on Refugia: gear, imbuement costs, spells, Wheel, hunting guides and progress.">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700;800&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>/* Layout: a field manual. Character sheet first, then six chapters (Now, Gear, Combat, Hunting, Progress, Reference) in one reading column, indexed by a sticky sidebar with page search on wide screens and a chip bar on phones. */
+:root {
+  --bg: #eceee8;
+  --surface: #f8f9f5;
+  --sunk: #e1e5de;
+  --ink: #1b2220;
+  --muted: #56615d;
+  --line: #c9d0c8;
+  --gold: #8a6510;
+  --gold-soft: #f0e5c4;
+  --steel: #3c5c77;
+  --good: #2f6b3a;
+  --good-soft: #dcebdc;
+  --warn: #9a5b0c;
+  --warn-soft: #f6e6cf;
+  --bad: #a33b2a;
+  --bad-soft: #f6dcd6;
+  --fire: #b0402a; --ice: #22728f; --energy: #7449a8; --earth: #4a7429; --death: #5a5366;
+  --tl: #3d8637; --tr: #b3432d; --bl: #1c7b82; --br: #7648a8; --on-dom: #ffffff;
+  --font-display: "Alegreya SC", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121716; --surface: #19201f; --sunk: #0f1312; --ink: #e5e9e3; --muted: #9ba6a1; --line: #2d3634;
+    --gold: #e0b64c; --gold-soft: #332b17; --steel: #92b5d3;
+    --good: #86c894; --good-soft: #17301d; --warn: #e8a857; --warn-soft: #3a2a14; --bad: #f08a78; --bad-soft: #3a1d18;
+    --fire: #ef8a6f; --ice: #6cc4e3; --energy: #b89bef; --earth: #9bcb72; --death: #b7aec6;
+    --tl: #6cc463; --tr: #ef7e63; --bl: #4fc3c9; --br: #b58ef0; --on-dom: #0c100f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121716; --surface: #19201f; --sunk: #0f1312; --ink: #e5e9e3; --muted: #9ba6a1; --line: #2d3634;
+  --gold: #e0b64c; --gold-soft: #332b17; --steel: #92b5d3;
+  --good: #86c894; --good-soft: #17301d; --warn: #e8a857; --warn-soft: #3a2a14; --bad: #f08a78; --bad-soft: #3a1d18;
+  --fire: #ef8a6f; --ice: #6cc4e3; --energy: #b89bef; --earth: #9bcb72; --death: #b7aec6;
+  --tl: #6cc463; --tr: #ef7e63; --bl: #4fc3c9; --br: #b58ef0; --on-dom: #0c100f;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.55; padding-inline: 16px; padding-block: 0 56px; }
+.wrap { max-width: 1060px; margin: 0 auto; display: grid; gap: 48px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(3rem, 9vw, 5.2rem); letter-spacing: 0.01em; font-weight: 800; line-height: 1; }
+h2 { font-size: clamp(1.6rem, 3.6vw, 2rem); }
+h3 { font-size: 1.18rem; }
+p { margin: 0; max-width: 70ch; }
+a { color: var(--steel); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, .slice:focus-visible, summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+.eyebrow { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 700; }
+.muted { color: var(--muted); }
+.small { font-size: 0.92rem; }
+.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mono { font-family: var(--font-mono); font-size: 0.86em; }
+
+/* Character sheet */
+.sheet { margin-top: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: clamp(20px, 4vw, 36px); display: grid; gap: 22px; }
+.sheet-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: end; }
+@media (max-width: 640px) { .sheet-top { grid-template-columns: 1fr; } }
+.sheet-head { display: grid; gap: 10px; min-width: 0; }
+.voc { font-family: var(--font-display); font-size: 1.25rem; color: var(--gold); }
+.lvl-badge { display: grid; justify-items: center; border: 2px solid var(--gold); border-radius: 10px; padding: 8px 18px; background: var(--gold-soft); }
+.lvl-badge b { font-family: var(--font-display); font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.lvl-badge span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 700; }
+.status { display: flex; flex-wrap: wrap; gap: 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.stat { padding: 10px 12px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 2px; align-content: start; }
+.stat b { font-family: var(--font-display); font-size: 1.45rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat span { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.stat i { font-style: normal; font-size: 0.78rem; color: var(--muted); }
+.alarm { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; background: var(--bad-soft); border-radius: 8px; padding: 12px 16px; }
+.alarm .mark { font-family: var(--font-display); font-weight: 800; color: var(--bad); font-size: 1.3rem; line-height: 1.2; }
+.next { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: n; }
+.next li { counter-increment: n; display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+.next li::before { content: counter(n); font-family: var(--font-display); font-weight: 700; color: var(--gold); font-size: 1.25rem; line-height: 1.3; text-align: center; border-right: 1px solid var(--line); }
+
+/* Nav */
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); margin-inline: -16px; padding: 10px 16px; overflow-x: auto; display: flex; gap: 8px; scrollbar-width: none; }
+nav.toc::-webkit-scrollbar { display: none; }
+nav.toc a { flex: 0 0 auto; text-decoration: none; color: var(--ink); font-weight: 500; font-size: 0.93rem; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+nav.toc a:hover { border-color: var(--gold); }
+nav.toc a.hot { border-color: var(--bad); color: var(--bad); }
+
+section { display: grid; gap: 18px; scroll-margin-top: 64px; }
+.sec-head { display: grid; gap: 6px; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+.lede { font-size: 1.05rem; }
+
+/* Tables */
+.scroll { overflow-x: auto; min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.96rem; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; background: var(--sunk); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n, th.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.neg { color: var(--bad); }
+.name { font-weight: 700; }
+tr.band td { background: var(--sunk); font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; }
+tr.cur td { background: var(--sunk); }
+.t-wide { min-width: 820px; }
+.t-mid { min-width: 620px; }
+td.slot { white-space: nowrap; color: var(--muted); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+
+/* Chips, pills */
+.el { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0 7px; border-radius: 4px; border: 1px solid currentColor; line-height: 1.5; white-space: nowrap; margin: 1px 2px 1px 0; }
+.el.fire { color: var(--fire); } .el.ice { color: var(--ice); } .el.energy { color: var(--energy); }
+.el.earth { color: var(--earth); } .el.death { color: var(--death); } .el.holy { color: var(--gold); } .el.phys { color: var(--steel); }
+.pill { display: inline-block; font-size: 0.76rem; font-weight: 700; padding: 1px 9px; border-radius: 999px; background: var(--sunk); color: var(--muted); white-space: nowrap; }
+.pill.good { background: var(--good-soft); color: var(--good); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.gold { background: var(--gold-soft); color: var(--gold); }
+.up { color: var(--good); font-weight: 700; } .down { color: var(--warn); font-weight: 700; }
+
+/* Incantations */
+button.inc { font-family: var(--font-mono); font-size: 0.84rem; color: var(--ink); background: var(--gold-soft); border: 1px solid transparent; border-radius: 5px; padding: 2px 8px; cursor: pointer; white-space: nowrap; }
+button.inc:hover { border-color: var(--gold); }
+button.inc.ok { background: var(--gold); color: var(--surface); }
+
+/* Cards */
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card h3 { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.tag { font-family: var(--font-body); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+.card ol, .card ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.note { border-left: 3px solid var(--gold); padding: 9px 14px; background: var(--surface); border-radius: 0 6px 6px 0; max-width: 80ch; }
+.note.warn { border-left-color: var(--warn); }
+.note.bad { border-left-color: var(--bad); }
+
+/* Controls */
+.controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--surface); }
+.seg button { font: 700 0.9rem var(--font-body); color: var(--ink); background: transparent; border: 0; padding: 6px 13px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--gold-soft); box-shadow: inset 0 -2px 0 var(--gold); }
+.ctl-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; margin-right: 6px; }
+input[type="search"], input[type="number"] { font: inherit; font-size: 15px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+input[type="number"] { width: 100px; }
+input[type="checkbox"] { width: 19px; height: 19px; accent-color: var(--gold); cursor: pointer; flex: 0 0 auto; }
+.btn { font: 700 0.88rem var(--font-body); border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 6px; padding: 4px 11px; cursor: pointer; }
+.btn:hover { border-color: var(--gold); }
+.btn.ok { background: var(--gold); color: var(--surface); border-color: var(--gold); }
+.count { font-size: 0.9rem; color: var(--muted); }
+
+/* Checklist */
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.checks ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.checks label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.checks label.done span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.progress { height: 6px; border-radius: 3px; background: var(--sunk); overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--gold); width: 0; }
+@media (prefers-reduced-motion: no-preference) { .progress i { transition: width .2s; } }
+
+/* Buying plan */
+ol.plan { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: step; }
+ol.plan > li { counter-increment: step; display: grid; grid-template-columns: auto 1fr auto; gap: 6px 16px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+ol.plan > li::before { content: counter(step); font-family: var(--font-display); font-size: 1.6rem; line-height: 1; color: var(--gold); min-width: 1.2em; }
+ol.plan > li.done { opacity: 0.6; }
+ol.plan > li.done h3 { text-decoration: line-through; text-decoration-color: var(--muted); }
+.step-body { display: grid; gap: 4px; min-width: 0; }
+.step-side { display: grid; gap: 6px; justify-items: end; text-align: right; }
+.price { font-family: var(--font-mono); font-size: 0.98rem; white-space: nowrap; }
+.bid { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+label.done-toggle { display: inline-flex; gap: 6px; align-items: center; font-size: 0.85rem; color: var(--muted); cursor: pointer; }
+@media (max-width: 560px) { ol.plan > li { grid-template-columns: auto 1fr; } .step-side { grid-column: 2; justify-items: start; text-align: left; } }
+
+/* Spells table */
+.spells td:first-child { min-width: 170px; }
+.spells td.use { min-width: 260px; font-size: 0.93rem; }
+
+/* Wheel */
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tab { font: 700 1rem var(--font-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.tab .dot { width: 10px; height: 10px; border-radius: 50%; }
+.tab[aria-selected="true"] { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); background: var(--gold-soft); }
+.tab .rec { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--good); }
+.wheel-main { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 820px) { .wheel-main { grid-template-columns: 1fr; } }
+.wheel-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 10px; min-width: 0; }
+svg.wheel { width: 100%; height: auto; max-width: 540px; margin: 0 auto; display: block; touch-action: manipulation; }
+.slice { cursor: pointer; stroke: var(--surface); stroke-width: 2; }
+.slice:hover, .slice.active { stroke: var(--gold); stroke-width: 3; }
+.lbl { font: 700 13px var(--font-body); fill: var(--muted); pointer-events: none; text-anchor: middle; dominant-baseline: central; }
+.lbl.pick { fill: var(--on-dom); font-size: 16px; }
+.corner { font: 700 14px var(--font-display); text-anchor: middle; }
+.corner-sub { font: 500 11px var(--font-body); fill: var(--muted); text-anchor: middle; }
+.hub { fill: var(--sunk); stroke: var(--line); }
+.hubtxt { font: 700 15px var(--font-display); fill: var(--gold); text-anchor: middle; dominant-baseline: central; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.84rem; color: var(--muted); }
+.legend b { color: var(--ink); font-family: var(--font-mono); font-size: 0.78rem; }
+.detail { border-top: 1px solid var(--line); padding-top: 10px; min-height: 92px; display: grid; gap: 4px; }
+.detail .k { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+.wsteps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.wsteps ol > li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.dnum { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 700 1rem var(--font-display); color: var(--on-dom); }
+.pts { font-family: var(--font-mono); font-size: 0.82rem; background: var(--gold-soft); border-radius: 4px; padding: 0 6px; white-space: nowrap; }
+.totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-top: 12px; }
+.totals div { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px 10px; display: grid; }
+.totals b { font-family: var(--font-display); font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.totals span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.code-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+code.c { font-family: var(--font-mono); font-size: 0.82rem; background: var(--sunk); padding: 2px 8px; border-radius: 4px; word-break: break-all; }
+
+/* Hunts table */
+.bar { display: block; height: 4px; border-radius: 2px; margin-top: 4px; background: currentColor; opacity: .5; }
+td.exp { color: var(--steel); font-weight: 700; }
+td.loot { color: var(--good); font-weight: 700; }
+td.loot.neg { color: var(--bad); }
+td.acc { min-width: 240px; font-size: 0.92rem; }
+.qn a { color: var(--ink); font-weight: 700; text-decoration-color: var(--line); }
+.how { display: block; font-size: 0.84rem; color: var(--muted); margin-top: 2px; }
+.how.unv { font-style: italic; }
+.who { display: block; font-size: 0.8rem; margin-top: 4px; font-weight: 700; }
+.ok { color: var(--good); } .no { color: var(--bad); }
+.setup { font-size: 0.86rem; color: var(--muted); white-space: nowrap; }
+
+/* Quest table */
+.qtable td.box, .qtable th.box { text-align: center; }
+.qtable .pre { display: block; font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+
+/* Timeline */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-left: 2px solid var(--line); margin-left: 6px; }
+.timeline li { position: relative; padding: 0 0 14px 20px; display: grid; gap: 2px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--gold); }
+.timeline li.death::before { border-color: var(--bad); background: var(--bad); }
+.timeline .when { font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+pre.code { margin: 0; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.5; background: var(--sunk); border-radius: 8px; padding: 12px 14px; overflow-x: auto; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+details > summary { cursor: pointer; font-weight: 700; }
+details[open] > summary { margin-bottom: 10px; }
+.sources { columns: 2 280px; column-gap: 28px; margin: 0; padding-left: 1.1em; }
+.sources li { break-inside: avoid; margin-bottom: 6px; }
+footer { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) { button.inc, nav.toc a, .btn { transition: background-color .15s, border-color .15s, color .15s; } }
+
+/* ---------- v2 layout: sidebar index on wide screens, sticky search + chapter bar on phones ---------- */
+body { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.layout { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); }
+.main { display: grid; gap: 52px; min-width: 0; max-width: 1040px; }
+.side { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); margin-inline: -16px; padding: 10px 16px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.side .brand, .side .sub, .side .side-foot { display: none; }
+.idx { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.idx::-webkit-scrollbar { display: none; }
+.idx > li > a.ch { flex: 0 0 auto; display: inline-block; text-decoration: none; color: var(--ink); font-weight: 700; font-size: 0.93rem; padding: 5px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); white-space: nowrap; }
+.idx > li > a.ch.on { border-color: var(--gold); background: var(--gold-soft); }
+@media (min-width: 1100px) {
+  .layout { grid-template-columns: 236px minmax(0, 1fr); gap: 44px; }
+  .side { margin: 0; padding: 26px 0 24px; border: 0; height: 100vh; height: 100dvh; overflow-y: auto; align-content: start; gap: 18px; scrollbar-width: thin; }
+  .side .brand, .side .side-foot { display: grid; }
+  .idx { display: grid; gap: 14px; overflow: visible; }
+  .idx > li > a.ch { border: 0; background: none; padding: 0; font-family: var(--font-display); font-size: 1.08rem; border-radius: 0; }
+  .idx > li > a.ch.on { background: none; color: var(--gold); }
+  .side .sub { display: grid; list-style: none; margin: 6px 0 0; padding: 0 0 0 10px; border-left: 1px solid var(--line); gap: 2px; }
+  .sub a { display: block; text-decoration: none; color: var(--muted); font-size: 0.9rem; padding: 2px 8px; border-radius: 4px; }
+  .sub a:hover { color: var(--ink); }
+  .sub a.on { color: var(--ink); background: var(--sunk); font-weight: 700; }
+}
+.brand { gap: 2px; }
+.brand b { font-family: var(--font-display); font-size: 1.5rem; line-height: 1; }
+.brand span { font-size: 0.82rem; color: var(--muted); }
+.side-foot { font-size: 0.78rem; color: var(--muted); gap: 4px; }
+
+/* search */
+.search { position: relative; }
+.search input { width: 100%; font: inherit; font-size: 15px; padding: 7px 10px 7px 32px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.search svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; stroke: var(--muted); fill: none; stroke-width: 2; pointer-events: none; }
+.qres { list-style: none; margin: 6px 0 0; padding: 4px; display: grid; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; max-height: 60vh; overflow-y: auto; }
+.qres button { all: unset; box-sizing: border-box; display: grid; gap: 1px; width: 100%; padding: 6px 8px; border-radius: 6px; cursor: pointer; }
+.qres button:hover, .qres button:focus-visible { background: var(--sunk); outline: none; }
+.qres b { font-size: 0.86rem; }
+.qres span { font-size: 0.8rem; color: var(--muted); line-height: 1.35; }
+.qres mark { background: var(--gold-soft); color: var(--ink); border-radius: 2px; padding: 0 1px; }
+.qres .none { padding: 6px 8px; font-size: 0.85rem; color: var(--muted); }
+section.flash { animation: flash 1.4s ease-out; }
+@keyframes flash { from { box-shadow: 0 0 0 3px var(--gold); border-radius: 10px; } to { box-shadow: 0 0 0 3px transparent; } }
+@media (prefers-reduced-motion: reduce) { section.flash { animation: none; outline: 2px solid var(--gold); outline-offset: 6px; } }
+
+/* chapters */
+.chapter { display: grid; gap: 6px; padding-top: 8px; scroll-margin-top: 112px; }
+.chapter .ch-k { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold); font-weight: 700; }
+.chapter .ch-t { font-size: clamp(2.1rem, 5vw, 2.9rem); font-weight: 800; letter-spacing: 0.01em; }
+.chapter p { color: var(--muted); }
+.chapter::after { content: ""; height: 3px; background: linear-gradient(90deg, var(--gold) 0 64px, var(--line) 64px); margin-top: 8px; }
+section, header.sheet { scroll-margin-top: 112px; }
+@media (min-width: 1100px) { section, .chapter { scroll-margin-top: 24px; } }
+
+/* header refinements */
+.sheet { margin-top: 22px; }
+.stat.warn b { color: var(--warn); }
+.stat.bad b { color: var(--bad); }
+.stat.good b { color: var(--good); }
+
+/* event strip */
+.events { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.ev { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.ev.live { border-color: var(--good); box-shadow: inset 0 3px 0 var(--good); }
+.ev.soon { box-shadow: inset 0 3px 0 var(--warn); }
+.ev .when { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--muted); }
+.ev h3 { font-size: 1.08rem; }
+
+/* priorities list */
+ol.todo { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: t; }
+ol.todo > li { counter-increment: t; display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+ol.todo > li::before { content: counter(t); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 700 1rem var(--font-display); background: var(--gold-soft); color: var(--gold); }
+ol.todo > li.urgent::before { background: var(--bad-soft); color: var(--bad); }
+ol.todo p { max-width: none; }
+
+/* calculators */
+.calc { display: grid; gap: 12px; }
+.calc .row { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
+.calc label { display: grid; gap: 4px; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+.calc input[type="number"] { width: 150px; }
+.out { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.out div { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px 10px; display: grid; gap: 2px; }
+.out b { font-family: var(--font-display); font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.out span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+/* level chart */
+.chart-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 8px; display: grid; gap: 8px; position: relative; min-width: 0; }
+svg.lchart { width: 100%; height: auto; display: block; overflow: visible; }
+.lchart .grid line { stroke: var(--line); stroke-width: 1; }
+.lchart .axis text { fill: var(--muted); font: 500 11px var(--font-body); }
+.lchart .area { fill: var(--gold); opacity: 0.12; }
+.lchart .line { fill: none; stroke: var(--gold); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.lchart .pt { fill: var(--surface); stroke: var(--gold); stroke-width: 2; }
+.lchart .pt.end { fill: var(--gold); }
+.lchart .death { fill: var(--bad); stroke: var(--surface); stroke-width: 2; }
+.lchart .lbl { fill: var(--ink); font: 700 12px var(--font-body); }
+.lchart .hit { fill: transparent; cursor: pointer; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 0.82rem; padding: 6px 9px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px)); }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.84rem; color: var(--muted); }
+.chart-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+
+/* misc */
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: 0.94rem; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; }
+.fresh { font-size: 0.78rem; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+td.c { text-align: center; }
+.ok-ico::before { content: "✓ "; } .no-ico::before { content: "✗ "; }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<aside class="side" aria-label="Page index">
+  <div class="brand"><b>Veritass</b><span>Royal Paladin 325 · Refugia</span></div>
+  <div class="search" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+    <input type="search" id="q" placeholder="Search: vampirism, asura, blessing…" aria-label="Search this page" autocomplete="off">
+    <ul class="qres" id="qres" hidden></ul>
+  </div>
+  <ul class="idx" id="idx">
+    <li><a class="ch" href="#ch-now">Now</a>
+      <ul class="sub"><li><a href="#top">Character</a></li><li><a href="#events">This week in Tibia</a></li><li><a href="#next">Do next</a></li><li><a href="#prehunt">Before a hunt</a></li></ul></li>
+    <li><a class="ch" href="#ch-gear">Gear</a>
+      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#upgrades">Upgrades</a></li><li><a href="#market">Market &amp; selling</a></li></ul></li>
+    <li><a class="ch" href="#ch-combat">Combat</a>
+      <ul class="sub"><li><a href="#spells">Spells</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li></ul></li>
+    <li><a class="ch" href="#ch-hunt">Hunting</a>
+      <ul class="sub"><li><a href="#hunts">Where to hunt</a></li><li><a href="#asura">Asura Palace</a></li><li><a href="#burster">Burster Spectres</a></li><li><a href="#roshamuul">Roshamuul</a></li><li><a href="#duo">Duo with Xee Ru</a></li></ul></li>
+    <li><a class="ch" href="#ch-progress">Progress</a>
+      <ul class="sub"><li><a href="#levels">Levels</a></li><li><a href="#log">Hunt log</a></li><li><a href="#bestiary">Bestiary</a></li><li><a href="#quests">Quests</a></li><li><a href="#timeline">Timeline</a></li></ul></li>
+    <li><a class="ch" href="#ch-ref">Reference</a>
+      <ul class="sub"><li><a href="#account">Account</a></li><li><a href="#training">Training</a></li><li><a href="#changes">2026 changes</a></li><li><a href="#fresh">Keeping it fresh</a></li><li><a href="#sources">Sources</a></li></ul></li>
+  </ul>
+  <div class="side-foot"><span>Data as of Oct 17, 2026</span><span>Write "update Veritass" in chat to refresh</span></div>
+</aside>
+
+<main class="main">
+
+<!-- ============ CHARACTER SHEET ============ -->
+<header class="sheet" id="top">
+  <div class="sheet-top">
+    <div class="sheet-head">
+      <div class="eyebrow">Refugia · Optional PvP · Premium · checked Oct 17, 2026</div>
+      <h1>Veritass</h1>
+      <div class="voc">Royal Paladin · Holy build</div>
+      <p>Bought on the Char Bazaar at level 303 on Sep 28. Main set now includes the Unerring Dragon Scale Armor and Falcon Greaves bought on Oct 17. Everything about him is on this page: gear, imbuement costs, spells, Wheel, where to hunt, the duo with Xee Ru, progress and history.</p>
+    </div>
+    <div class="lvl-badge" aria-label="Level 325, 27 percent to 326"><span>Level</span><b>325</b><span>27% · Oct 17</span></div>
+  </div>
+  <div class="status">
+    <span class="pill">Logged in Oct 17, 10:54 CEST</span>
+    <span class="pill good">No deaths since Oct 9</span>
+    <span class="pill good">Shares exp with Xee Ru (250)</span>
+    <span class="pill gold">Wheel: Holy – Gift of Life</span>
+    <span class="pill gold">Bank 22,338,839 gp</span>
+    <span class="pill">XP Boost on · stamina 41:25</span>
+    <span class="pill">"(traded)" until about Oct 28</span>
+  </div>
+  <div class="stats" aria-label="Character stats">
+    <div class="stat"><b>3,895</b><span>Hit points</span><i>base 3,355 + Wheel 320 + gem 220</i></div>
+    <div class="stat"><b>5,070</b><span>Mana</span><i>base 4,845 + Wheel 225</i></div>
+    <div class="stat"><b>~127</b><span>Distance</span><i>out of combat, main set with the new armor and legs</i></div>
+    <div class="stat"><b>31</b><span>Magic level</span><i>+2 with the Falcon Coif's Epiphany</i></div>
+    <div class="stat"><b>102</b><span>Shielding</span></div>
+    <div class="stat warn"><b>25% / 16%</b><span>Life / mana leech</span><i>50% once the Unerring has Vampirism</i></div>
+    <div class="stat"><b>10% · +50%</b><span>Crit chance · dmg</span><i>onslaught 0.5%</i></div>
+    <div class="stat"><b>285</b><span>Wheel points</span><i>last Holy slice 60/100</i></div>
+    <div class="stat"><b>3,748 oz</b><span>Free capacity</span><i>Oct 17</i></div>
+  </div>
+  <div class="alarm" role="note">
+    <span class="mark">!</span>
+    <p><b>Imbue the Unerring Dragon Scale Armor before you hunt in it.</b> Both slots are empty, so with it on, life leech drops from 50% to 25%. Powerful Vampirism costs about 639k with materials at Refugia prices (or ~660k as a scroll). The Ghost Chestplate's Vampirism (8:55 h left) can't be moved. Food was 00:00 again on Oct 17.</p>
+  </div>
+</header>
+
+<!-- ============ CHAPTER: NOW ============ -->
+<div class="chapter" id="ch-now">
+  <span class="ch-k">Chapter 1</span>
+  <h2 class="ch-t">Now</h2>
+  <p>What's happening in Tibia this week, what to do next, and the checklist for every hunt.</p>
+</div>
+
+<section id="events">
+  <div class="sec-head">
+    <div class="eyebrow">From tibia.com news and TibiaData · checked Oct 17</div>
+    <h2>This week in Tibia</h2>
+  </div>
+  <div class="events">
+    <div class="ev live">
+      <span class="when">Running · until Oct 19 server save</span>
+      <h3>+50% exp on Demon-class creatures</h3>
+      <p class="small">The weekend after Orcsoberfest. TibiaWiki lists asuras under the Demon class, so <a href="#asura">Asura Palace</a> (open to you) gets the bonus. Best use of this weekend.</p>
+    </div>
+    <div class="ev live">
+      <span class="when">Running · Oct 17–24</span>
+      <h3>Annual Autumn Vintage</h3>
+      <p class="small">Monsters drop winterberries. Bring them to the Combined Magical Winterberry Society. If Refugia processes enough, all health and mana potions get +33% effect for 7 days, which cuts your biggest supply cost.</p>
+    </div>
+    <div class="ev soon">
+      <span class="when">Coming · late October</span>
+      <h3>Halloween</h3>
+      <p class="small">TibiaWiki lists it every October (Halloween Hare, Mutated Pumpkin, pumpkin carving). No dates in the news yet. November brings Lightbearer.</p>
+    </div>
+    <div class="ev">
+      <span class="when">Since Oct 6</span>
+      <h3>Market fee 2.5%, exercise weapons +25%</h3>
+      <p class="small">Creating a market offer now costs 2.5% (max 2.5kk). Exercise weapons cost 434,028 / 1,562,500 / 12,500,000 gold (regular / durable / lasting).</p>
+    </div>
+    <div class="ev">
+      <span class="when">From Oct 22</span>
+      <h3>World merges: Refugia not affected</h3>
+      <p class="small">The September announcement merges 17 worlds into 7 new ones. Refugia isn't on the list. Refugia had 262 players online when checked.</p>
+    </div>
+    <div class="ev">
+      <span class="when">Oct 17 only</span>
+      <h3>Boosted today</h3>
+      <p class="small">Creature: Stabilizing Dread Intruder. Boss: Murcion. Both change every day at server save.</p>
+    </div>
+  </div>
+</section>
+
+<section id="next">
+  <div class="sec-head">
+    <div class="eyebrow">In this order</div>
+    <h2>Do next</h2>
+  </div>
+  <ol class="todo">
+    <li class="urgent"><div><p><b>Imbue the Unerring and switch to it with the Falcon Greaves.</b> Powerful Vampirism first (~639k), then a protection in slot 2 for your spawn (Quara Scale ~491k for ice, Snake Skin ~832k for earth). See <a href="#imbue">imbuement costs</a>.</p></div></li>
+    <li><div><p><b>Hunt Asura Palace before Oct 19 server save.</b> +50% exp for Demon-class creatures. Use the physical setup there: Diamond Arrows and Ethereal Barrage. Holy only does 70% to Midnight and Frost Flower asuras, and Dawnfire asuras are fire-immune. See the <a href="#asura">Asura guide</a>.</p></div></li>
+    <li><div><p><b>Eat, and keep 7/7 blessings.</b> At 325 that's 269,875 gp: five regular blessings at 35,375 and Blood and Heart of the Mountain at 46,500. Henricus sells the five regular ones in one go (you have The Inquisition) for about 194,563.</p></div></li>
+    <li><div><p><b>Sell the old pieces:</b> Ghost Chestplate, Fabulous Legs and Bow of Destruction, about 7–10kk together. Selling to an existing buy offer costs no fee; creating your own offer costs 2.5%.</p></div></li>
+    <li><div><p><b>Fill the cheap slots:</b> Intricate Vibrancy on the Winged Boots (~74k), Intricate Featherweight on the Ghost Backpack (~107k). Put Epiphany on the Casque, or keep wearing the Falcon Coif while it has it.</p></div></li>
+    <li><div><p><b>Do Dangerous Depths with Xee Ru.</b> It's started in your quest log and opens Warzones 4–6. Book World IV (4.2kk) is already open to you.</p></div></li>
+    <li><div><p><b>Know your real cost per hour.</b> Your main set's imbuements wear down at about 144k per hour of hunting. A spot needs to beat that on the Hunt Analyser balance just to break even.</p></div></li>
+  </ol>
+</section>
+
+<section id="prehunt">
+  <div class="sec-head">
+    <div class="eyebrow">Run it every session · ticks are saved in this browser</div>
+    <h2>Before every hunt</h2>
+  </div>
+  <div class="controls">
+    <span class="count" id="phCount">0 of 0 done</span>
+    <button type="button" class="btn" id="phReset">Clear ticks</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="phBar"></i></div>
+  <div class="checks" id="prehuntList">
+    <div class="card">
+      <h3>In the depot</h3>
+      <ul>
+        <li><label><input type="checkbox" id="ph-food" data-ph="food"><span><b>Eat.</b> Food showed 00:00 in most of your screenshots, Oct 17 included, so you often had no regeneration.</span></label></li>
+        <li><label><input type="checkbox" id="ph-bless" data-ph="bless"><span><b>7/7 blessings.</b> At 325: 35,375 each regular, 46,500 each for Blood and Heart of the Mountain. See <a href="#systems">blessings</a>.</span></label></li>
+        <li><label><input type="checkbox" id="ph-imbue" data-ph="imbue"><span><b>Imbuement timers</b> have hours left (20 h each).</span></label></li>
+        <li><label><input type="checkbox" id="ph-wheel" data-ph="wheel"><span><b>Wheel preset</b> fits the spawn: Holy or Physical. Temple only.</span></label></li>
+        <li><label><input type="checkbox" id="ph-ammo" data-ph="ammo"><span><b>Arrows</b> for the spawn (Diamond, or the right storm arrow) and about 1 h of potions.</span></label></li>
+        <li><label><input type="checkbox" id="ph-swap" data-ph="swap"><span><b>Amulet, ring and extra slot</b> swapped for the spawn. See <a href="#swaps">swap items</a>.</span></label></li>
+        <li><label><input type="checkbox" id="ph-cap" data-ph="cap"><span><b>Free capacity for loot.</b> It ranged from 169 to 5,875 oz in your screenshots (3,748 on Oct 17); leave heavy backpacks in the depot.</span></label></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>At the spawn</h3>
+      <ul>
+        <li><label><input type="checkbox" id="ph-fam" data-ph="fam"><span><b>Paladin Familiar</b> <button class="inc" type="button" data-w="utevo gran res sac">utevo gran res sac</button></span></label></li>
+        <li><label><input type="checkbox" id="ph-rec" data-ph="rec"><span><b>Intense Recovery</b> <button class="inc" type="button" data-w="utura gran">utura gran</button> and <b>Haste</b> <button class="inc" type="button" data-w="utani hur">utani hur</button></span></label></li>
+        <li><label><input type="checkbox" id="ph-stance" data-ph="stance"><span><b>Stance:</b> <button class="inc" type="button" data-w="utori con">utori con</button> or <button class="inc" type="button" data-w="utori hur">utori hur</button></span></label></li>
+        <li><label><input type="checkbox" id="ph-prey" data-ph="prey"><span><b>Prey</b> on the creature you farm most (asuras this weekend, Silencer in Roshamuul).</span></label></li>
+        <li><label><input type="checkbox" id="ph-anal" data-ph="anal"><span><b>Reset</b> the Hunt, XP and Loot Analysers right before the first kill.</span></label></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>After</h3>
+      <ul>
+        <li><label><input type="checkbox" id="ph-shot" data-ph="shot"><span><b>Screenshot the Hunt Analyser</b> (time, raw and total exp, loot, supplies, balance, kills) and send it to me to compare with TibiaPal.</span></label></li>
+        <li><label><input type="checkbox" id="ph-sell" data-ph="sell"><span><b>Sell loot</b> on the market when it beats the NPC price.</span></label></li>
+      </ul>
+      <p class="small muted">While hunting: lure a group, step back so they line up, then barrage. Keep moving so melee monsters can't surround you. Heal early with Divine Healing; Salvation and Ultimate Spirit Potions are the emergency layer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER: GEAR ============ -->
+<div class="chapter" id="ch-gear">
+  <span class="ch-k">Chapter 2</span>
+  <h2 class="ch-t">Gear</h2>
+  <p>What you own, what each imbuement costs to keep running, what to buy next, and how to sell.</p>
+</div>
+
+<section id="gear">
+  <div class="sec-head">
+    <div class="eyebrow">From your Oct 17 Looks · stats from TibiaWiki</div>
+    <h2>Equipment</h2>
+  </div>
+  <p class="lede">Your main set is the Bow of Cataclysm, Stoic Iks Casque (or Falcon Coif), the new Unerring Dragon Scale Armor and Falcon Greaves, and Winged Boots. Three old pieces are ready to sell.</p>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Slot</th><th>Item</th><th>Stats</th><th>Imbuements (Oct 17)</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr class="band"><td colspan="5">Main set</td></tr>
+        <tr><td class="slot">Weapon</td><td class="name">Bow of Cataclysm, tier 1</td><td>Atk +6, Hit +4%, distance +1, <span class="el death">death +4%</span>, Onslaught 0.5%. Proficiency 5: +1 distance, +1 holy ML, holy crits, +3% vs bosses</td><td>Powerful Strike, Void, Vampirism (12:12 h)</td><td><span class="pill good">Main for Holy</span></td></tr>
+        <tr><td class="slot">Helmet</td><td class="name">Stoic Iks Casque</td><td>Arm 8, distance +2, <span class="el phys">physical +3%</span> <span class="el energy">energy +6%</span>. Divine Missile +13% base damage</td><td>Powerful Void (12:10 h), <b>2nd slot empty</b></td><td><span class="pill good">Keep</span> <span class="pill warn">Add Epiphany</span></td></tr>
+        <tr><td class="slot">Armor</td><td class="name">Unerring Dragon Scale Armor <span class="muted small">new</span></td><td>Arm 17, distance +3, holy ML +1, <span class="el energy">energy +10%</span> <span class="el earth">earth −5%</span>. Strong Ethereal Spear +4% life leech. 135 oz</td><td><b>both slots empty</b></td><td><span class="pill good">Main</span> <span class="pill bad">Imbue Vampirism</span></td></tr>
+        <tr><td class="slot">Legs</td><td class="name">Falcon Greaves <span class="muted small">new</span></td><td>Arm 10, distance +3, sword, club, axe +3, <span class="el phys">physical +7%</span> <span class="el ice">ice +7%</span>. 36 oz</td><td>no slots</td><td><span class="pill good">Main</span></td></tr>
+        <tr><td class="slot">Boots</td><td class="name">Winged Boots</td><td>Arm 2, speed +15, distance +1, <span class="el earth">earth +7%</span></td><td><b>empty slot</b></td><td><span class="pill good">Keep</span> <span class="pill warn">Add Vibrancy</span></td></tr>
+        <tr><td class="slot">Quiver</td><td class="name">Red Quiver</td><td>6 slots</td><td>—</td><td><span class="pill good">Keep</span></td></tr>
+        <tr><td class="slot">Amulet</td><td class="name">Probably Foxtail Amulet</td><td>Arm 2, <span class="el phys">physical +5%</span>, level 100. Confirm with a Look</td><td>—</td><td><span class="pill">Plasma when hunting</span></td></tr>
+        <tr><td class="slot">Ring</td><td class="name">Butterfly Ring</td><td><span class="el death">death +3%</span></td><td>—</td><td><span class="pill">Plasma when hunting</span></td></tr>
+        <tr><td class="slot">Extra</td><td class="name">Not identified</td><td>A blue orb; adds about <span class="el death">death +5%</span> going by your totals. The Bone Fiddle (life drain +5%) is in the Zaoan chest</td><td>—</td><td><span class="pill warn">Look at it</span></td></tr>
+        <tr><td class="slot">Backpack</td><td class="name">Ghost Backpack</td><td>Vol 26; weighed 2,948 oz with its contents</td><td>empty slot</td><td><span class="pill">Optional: Featherweight</span></td></tr>
+        <tr class="band"><td colspan="5">Swaps</td></tr>
+        <tr><td class="slot">Weapon</td><td class="name">Falcon Bow</td><td>Atk +6, Hit +5%, distance +2, <span class="el fire">fire +5%</span>, level 300, 35 oz. Proficiency starts at 0; perks favour auto-attacks and Divine Missile, +1 healing ML at level 4</td><td>Powerful Void, Strike, Vampirism (14:56 h)</td><td><span class="pill">Swap bow</span></td></tr>
+        <tr><td class="slot">Helmet</td><td class="name">Falcon Coif</td><td>Arm 10, distance +2, shielding +2, <span class="el phys">physical +3%</span> <span class="el fire">fire +10%</span>, level 300</td><td>Powerful Void, Intricate Epiphany (15:54 h)</td><td><span class="pill good">Wear while the Casque lacks Epiphany</span></td></tr>
+        <tr class="band"><td colspan="5">Sell</td></tr>
+        <tr><td class="slot">Armor</td><td class="name">Ghost Chestplate</td><td>Arm 17, distance +2, <span class="el phys">physical +3%</span>, 123 oz</td><td>Powerful Vampirism (8:55 h), empty</td><td><span class="pill warn">Sell</span> <span class="small muted">bid 2.3kk · ask 3.4kk</span></td></tr>
+        <tr><td class="slot">Legs</td><td class="name">Fabulous Legs</td><td>Arm 9, distance +2, melee +2, <span class="el phys">physical +4%</span> <span class="el fire">fire +2%</span></td><td>no slots</td><td><span class="pill warn">Sell</span> <span class="small muted">bid 2.7kk · ask 3.5kk</span></td></tr>
+        <tr><td class="slot">Weapon</td><td class="name">Bow of Destruction</td><td>Atk +5, Hit +5%, level 200, 55 oz</td><td>3 empty slots</td><td><span class="pill warn">Sell</span> <span class="small muted">bid 2.2kk · ask 3.1kk</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Main set totals <span class="tag">computed from item stats</span></h3>
+      <div class="totals" style="margin-top:0">
+        <div><b>~127</b><span>Distance, out of combat</span></div>
+        <div><b>+1</b><span>Holy magic level</span></div>
+        <div><b>14.3%</b><span>Physical</span></div>
+        <div><b>15.4%</b><span>Energy (Casque)</span></div>
+        <div><b>11.5%</b><span>Death</span></div>
+        <div><b>7%</b><span>Ice</span></div>
+        <div><b>2.4%</b><span>Earth</span></div>
+      </div>
+      <p class="small muted">Physical: helmet 3%, legs 7%, amulet 5%. Energy: Casque 6% and Unerring 10% (10% with the Coif, which adds fire +10% instead). Death: bow 4%, ring 3% and about 5% from the extra slot. Your character sheet will confirm the exact numbers once you wear the new pieces.</p>
+    </div>
+    <div class="card">
+      <h3>Which bow and helmet</h3>
+      <ul class="small">
+        <li><b>Bow of Cataclysm</b> stays the main bow for Holy. Its proficiency perks (+1 distance, +1 holy ML, holy crits) beat the Falcon Bow's +1 distance and +1% hit.</li>
+        <li><b>Falcon Bow</b> for fire-heavy spawns, or to level its own proficiency.</li>
+        <li><b>Falcon Coif</b> while it carries Epiphany and the Casque doesn't: magic level +2 beats Divine Missile +13%. Once the Casque has Epiphany, the Casque wins again.</li>
+        <li>Imbuement timers only run while an item is equipped, and pause in protection zones (backpacks excepted), so swapping wastes nothing.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" id="swaps">
+    <h3>Swap items by spawn</h3>
+    <ul class="small">
+      <li><b>Normal hunting:</b> Collar and Ring of Blue Plasma. Distance +7 and magic level +3 for about 33,500 gp per hour (collar 8,878 + ring 7,898 per 30 min).</li>
+      <li><b>Life drain spawns</b> (Frazzlemaws, Burster Spectres): Greater Garlic Necklace (+50%) and Bone Fiddle (+5%).</li>
+      <li><b>Heavy physical:</b> Prismatic Ring (<span class="el phys">physical +10%</span> <span class="el energy">energy +8%</span>), Foxtail Amulet (<span class="el phys">physical +5%</span>).</li>
+      <li><b>Earth:</b> Enchanted Sleep Shawl (distance +3, <span class="el phys">physical +7%</span> <span class="el earth">earth +24%</span>). <b>Fire:</b> Falcon Coif (<span class="el fire">fire +10%</span>) and Falcon Bow (+5%).</li>
+      <li><b>During a Bounty Task:</b> Bounty Talisman in the extra slot (+3% damage, life leech and loot against task creatures).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="imbue">
+  <div class="sec-head">
+    <div class="eyebrow">Each lasts 20 h of equipped time · Refugia market tracker prices (data from Sep 14)</div>
+    <h2>Imbuements</h2>
+  </div>
+  <p class="lede">Your imbued main set costs about <b>144k per hour</b> of hunting to keep running. The Hunt Analyser counts potions and ammo, so add this on top when you judge a spot.</p>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Item</th><th>Now (Oct 17)</th><th>Do</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="slot">Bow</td><td>Powerful Strike, Void, Vampirism (12:12 h)</td><td><span class="pill good">Done</span></td><td>Crits, mana leech 8%, life leech 25%. Renew when they run out</td></tr>
+        <tr><td class="slot">Armor (Unerring)</td><td><b>both empty</b></td><td class="name">Powerful Vampirism + a protection <span class="pill bad">Now</span></td><td>Life leech back to 50%. Slot 2: Quara Scale for ice spawns (Burster Spectres, Frost Flower asuras), Snake Skin for earth. The Unerring already has energy +10%, so Cloud Fabric isn't allowed on it</td></tr>
+        <tr><td class="slot">Helmet (Casque)</td><td>Powerful Void (12:10 h), empty</td><td class="name">Epiphany</td><td>Magic level +2 (Intricate) or +4 (Powerful). Or keep the Falcon Coif on, which has it</td></tr>
+        <tr><td class="slot">Boots</td><td>empty</td><td class="name">Intricate Vibrancy</td><td>25% chance to remove paralysis for ~74k. Winged Boots already have speed, so Swiftness isn't possible</td></tr>
+        <tr><td class="slot">Backpack</td><td>empty</td><td class="name">Featherweight</td><td>Capacity +8% (Intricate, ~107k) or +15% (Powerful, needs Dangerous Depths or a scroll)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>What each one costs <span class="tag">materials at the lowest Refugia ask + 250k fee for a 100% Powerful imbue</span></h3>
+  <div class="controls">
+    <div><span class="ctl-label">Level</span>
+      <span class="seg" id="imLevel">
+        <button type="button" data-v="p" aria-pressed="true">Powerful</button>
+        <button type="button" data-v="i" aria-pressed="false">Intricate</button>
+      </span>
+    </div>
+    <span class="count" id="imNote"></span>
+  </div>
+  <div class="scroll">
+    <table class="t-wide" id="imTable">
+      <thead><tr><th>Imbuement</th><th>Goes on</th><th>Effect</th><th class="n">Materials</th><th class="n">Total with fee</th><th class="n">Per hour</th><th class="n">Scroll ask</th><th>Materials needed</th></tr></thead>
+      <tbody id="imRows"></tbody>
+    </table>
+  </div>
+  <p class="small muted">Powerful imbuing costs 200,000 gold at a 50% success chance; another 50,000 raises it to 100%. Intricate costs 30,000 + 30,000, Basic 5,000 + 10,000. Scrolls need no unlock. Prices are the tracker's cheapest sell offers on Refugia from Sep 14, so check the market first: <b>check your stash too</b>, which held 15,569 items on Oct 8.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>What unlocks Powerful</h3>
+      <ul class="small">
+        <li><b>Strike, Epiphany:</b> The Last Lore Keeper or Heart of Destruction.</li>
+        <li><b>Lich Shroud:</b> Lady Tenebris. <b>Cloud Fabric</b> and <b>Swiftness:</b> Lloyd. Your Bosstiary has kills of both.</li>
+        <li><b>Dragon Hide:</b> Soul of Dragonking Zyrtarch (also in your Bosstiary). <b>Quara Scale:</b> Melting Frozen Horror. <b>Snake Skin:</b> The Enraged Thorn Knight. <b>Demon Presence, Precision:</b> The Time Guardian.</li>
+        <li><b>Featherweight:</b> Dangerous Depths. <b>Vibrancy:</b> The Dream Courts.</li>
+        <li>Intricate works for any Premium character after part 1 of Forgotten Knowledge.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Upkeep of your main set <span class="tag">per hour equipped</span></h3>
+      <div class="scroll">
+        <table>
+          <tbody>
+            <tr><td>Bow: Strike + Void + Vampirism</td><td class="n">~86k</td></tr>
+            <tr><td>Armor: Vampirism</td><td class="n">~32k</td></tr>
+            <tr><td>Helmet: Void</td><td class="n">~25k</td></tr>
+            <tr><td class="name">Total</td><td class="n name">~144k</td></tr>
+            <tr><td>Plus Coif's Intricate Epiphany</td><td class="n">+22k</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Material route at Refugia prices, divided by 20 h. Timers stop in protection zones, so the cost is per hour you actually spend outside them.</p>
+    </div>
+  </div>
+</section>
+
+<section id="upgrades">
+  <div class="sec-head">
+    <div class="eyebrow">Level 325 · 22.3kk banked · Holy build · market tracker data from Sep 14</div>
+    <h2>Upgrades</h2>
+  </div>
+  <p class="lede">The two big buys are done. Below level 350 nothing else is worth the money for a Holy paladin, so spend on imbuements and blessings, sell the old pieces, and save for level 400.</p>
+
+  <h3 id="plan-h">Buying plan <span class="tag">tick what you've done · saved in this browser</span></h3>
+  <div class="controls">
+    <div><span class="ctl-label">Prices in</span>
+      <span class="seg" id="unitSeg">
+        <button type="button" data-unit="gp" aria-pressed="true">Gold</button>
+        <button type="button" data-unit="tc" aria-pressed="false">Tibia Coins</button>
+      </span>
+    </div>
+    <span class="count">Still to buy: <b class="mono" id="left">–</b></span>
+  </div>
+  <ol class="plan" id="plan">
+    <li data-id="unerring" data-price="31000000">
+      <div class="step-body">
+        <h3>Unerring Dragon Scale Armor <span class="muted small">lvl 300</span></h3>
+        <p class="small">Distance +3, holy magic level +1, <span class="el energy">energy +10%</span> <span class="el earth">earth −5%</span>, Strong Ethereal Spear +4% life leech, two imbuement slots. Bought Oct 17.</p>
+      </div>
+      <div class="step-side"><span class="price" data-gp="31000000">31,000,000 gp</span><span class="bid">tracker ask</span><label class="done-toggle"><input type="checkbox" id="done-unerring"> Done</label></div>
+    </li>
+    <li data-id="falcon" data-price="74999976">
+      <div class="step-body">
+        <h3>Falcon Greaves <span class="muted small">lvl 300</span></h3>
+        <p class="small">Distance +3, <span class="el phys">physical +7%</span> <span class="el ice">ice +7%</span>. Bought Oct 17; the bank fell from 85.8kk to 22.3kk for both.</p>
+      </div>
+      <div class="step-side"><span class="price" data-gp="74999976">74,999,976 gp</span><span class="bid">tracker ask</span><label class="done-toggle"><input type="checkbox" id="done-falcon"> Done</label></div>
+    </li>
+    <li data-id="imbue2" data-price="1300000">
+      <div class="step-body">
+        <h3>Imbue the new armor and fill the cheap slots</h3>
+        <p class="small">Powerful Vampirism and a protection on the Unerring (~1.1–1.5kk), Intricate Vibrancy on the boots (~74k), Intricate Featherweight on the backpack (~107k). See <a href="#imbue">Imbuements</a>.</p>
+      </div>
+      <div class="step-side"><span class="price" data-gp="1300000">1,300,000 gp</span><span class="bid">about, materials route</span><label class="done-toggle"><input type="checkbox" id="done-imbue2"> Done</label></div>
+    </li>
+    <li data-id="alicorn" data-price="41000000">
+      <div class="step-body">
+        <h3>Alicorn Ring <span class="muted small">lvl 400</span></h3>
+        <p class="small">The first buy at 400: protection against fire, earth, ice, energy, death and holy. At your current pace you reach 400 around mid-December.</p>
+      </div>
+      <div class="step-side"><span class="price" data-gp="41000000">41,000,000 gp</span><span class="bid">top bid 36.0kk</span><label class="done-toggle"><input type="checkbox" id="done-alicorn"> Done</label></div>
+    </li>
+  </ol>
+  <p class="small muted">1 TC ≈ 44,194 gp on Refugia (Oct 8). Prices are the tracker's cheapest sell offers; a buy offer between that and the top bid often fills cheaper.</p>
+
+  <h3>Other options checked <span class="tag">TibiaWiki stats · Refugia tracker</span></h3>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Slot</th><th>Option</th><th>What changes vs. yours</th><th class="n">Ask</th><th class="n">Top bid · 30-day avg</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="slot">Weapon</td><td class="name">Inferniarch Bow <span class="muted small">300</span></td><td>Atk +7, hit +5%, distance +2, <span class="el earth">earth +5%</span>. Starts at proficiency 0, so you'd lose the Cataclysm's holy perks</td><td class="n" data-gp="9498000">9,498,000</td><td class="n">5,000,000 · 9,999,999</td><td><span class="pill">Only if you go Physical</span></td></tr>
+        <tr><td class="slot">Helmet</td><td class="name">Hellstalker Visor <span class="muted small">300</span></td><td>Distance +2, <span class="el phys">physical +3%</span> <span class="el death">death +6%</span>, Strong Ethereal Spear +3% mana leech. Loses Divine Missile +13%</td><td class="n" data-gp="15800000">15,800,000</td><td class="n">5,100,750 · <span class="muted">no sales</span></td><td><span class="pill">Skip</span></td></tr>
+        <tr><td class="slot">Boots</td><td class="name">Stoic Iks Boots <span class="muted small">250</span></td><td><span class="el fire">Fire +5%</span> instead of earth 7%, Divine Missile +5% crit damage. Same distance and speed</td><td class="n" data-gp="17986000">17,986,000</td><td class="n">11,000,000 · <span class="muted">no sales</span></td><td><span class="pill">Skip</span></td></tr>
+        <tr><td class="slot">Armor</td><td class="name">Gnome Armor <span class="muted small">200</span></td><td>Distance +3, <span class="el phys">physical +4%</span> <span class="el energy">energy +8%</span>, no holy ML</td><td class="n" data-gp="58000000">58,000,000</td><td class="n">25,002,000 · 55,099,799</td><td><span class="pill">Skip</span></td></tr>
+        <tr><td class="slot">Legs</td><td class="name">Eldritch Breeches <span class="muted small">250</span></td><td>Distance +2, <span class="el phys">physical 2%</span> <span class="el holy">holy 7%</span>. Worse than the Greaves</td><td class="n" data-gp="27000000">27,000,000</td><td class="n">5,250,754 · 21,972,637</td><td><span class="pill">Skip</span></td></tr>
+        <tr><td class="slot">Quiver</td><td class="name">Naga Quiver</td><td>2 more slots, <span class="el ice">ice +2%</span>. Comfort only</td><td class="n" data-gp="5099819">5,099,819</td><td class="n">3,250,020 · 5,113,739</td><td><span class="pill">Optional</span></td></tr>
+        <tr><td class="slot">Armor</td><td class="name">Stag Plate <span class="muted small">350</span></td><td>Distance +3, shielding +3, <span class="el phys">physical 3%</span> <span class="el ice">ice 8%</span>. Augment buffs Divine Grenade, which you don't use</td><td class="n" data-gp="42222222">42,222,222</td><td class="n">20,000,000 · 41,200,000</td><td><span class="pill">Sidegrade</span></td></tr>
+        <tr><td class="slot">Boots</td><td class="name">Stag Shinguards <span class="muted small">350</span></td><td>Distance +1, speed +10, <span class="el phys">physical 2%</span> <span class="el energy">energy 5%</span>. Divine Grenade augment</td><td class="n" data-gp="50000000">50,000,000</td><td class="n">20,000,000 · 44,500,000</td><td><span class="pill">Sidegrade</span></td></tr>
+        <tr><td class="slot">Amulet</td><td class="name">Enchanted Flamingo Amulet of Precision</td><td>Distance +4, holy ML +1. Far more than the Plasma collar per hour</td><td class="n" data-gp="77000000">77,000,000</td><td class="n">50,000,000 · 60,464,656</td><td><span class="pill">Skip</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Later, by level</h3>
+      <ul class="small">
+        <li><b>330:</b> Amber Bow. No sell offers on Refugia in the tracker.</li>
+        <li><b>350:</b> Stag Plate and Stag Shinguards: sidegrades for a Holy build (see above).</li>
+        <li><b>400:</b> Alicorn Ring (~41kk) first, then Soulbleeder (~140kk), Alicorn Headguard (~105kk), Alicorn Quiver (~110kk).</li>
+      </ul>
+      <p class="small muted">Gear gives far more per kk than gems at this level. Don't spend on gems yet.</p>
+    </div>
+    <div class="card">
+      <h3>Before you buy</h3>
+      <ul class="small">
+        <li>The tracker's Refugia data is from Sep 14. Open the in-game Market and check the current ask and bid first.</li>
+        <li>Buying from an existing sell offer costs no fee. Placing your own buy offer costs 2.5% of its value (max 2.5kk) when you create it.</li>
+        <li>A buy offer between the top bid and the ask often fills within a few days for items that sell monthly.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="market">
+  <div class="sec-head">
+    <div class="eyebrow">Fee rules from tibia.com news, Oct 1 · NPC prices from the market tracker</div>
+    <h2>Market &amp; selling</h2>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <h3>Market fee</h3>
+      <p class="small">Since Oct 6, creating an offer costs <b>2.5%</b> of its total, capped at <b>2,500,000</b> gold. Accepting someone else's offer is free. On a 3.4kk Ghost Chestplate sell offer that's 85k.</p>
+    </div>
+    <div class="card">
+      <h3>Sell list</h3>
+      <ul class="small">
+        <li>Ghost Chestplate · bid 2.3kk, ask 3.4kk</li>
+        <li>Fabulous Legs · bid 2.7kk, ask 3.5kk</li>
+        <li>Bow of Destruction · bid 2.2kk, ask 3.1kk</li>
+        <li>Stone Skin Amulet · ~5k on the market vs 500 at NPCs</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Rashid <span class="tag">buys most rare loot</span></h3>
+      <dl class="kv small">
+        <dt>Mon</dt><dd>Svargrond, Dankwart's tavern</dd>
+        <dt>Tue</dt><dd>Liberty Bay, Lyonel's tavern</dd>
+        <dt>Wed</dt><dd>Port Hope, Clyde's tavern</dd>
+        <dt>Thu</dt><dd>Ankrahmun, Arito's tavern</dd>
+        <dt>Fri</dt><dd>Darashia, Miraia's tavern</dd>
+        <dt>Sat</dt><dd>Edron, Mirabell's tavern</dd>
+        <dt>Sun</dt><dd>Carlin, above the depot</dd>
+      </dl>
+    </div>
+  </div>
+  <p class="small muted">Your Burster Spectre loot (glacier and platinum amulets, wands, rods, hexagonal rubies) is worth exactly its NPC price: the Oct 14 loot of 658,050 matched NPC values to the coin. Selling it on the market only pays for the Stone Skin Amulet.</p>
+</section>
+
+<!-- ============ CHAPTER: COMBAT ============ -->
+<div class="chapter" id="ch-combat">
+  <span class="ch-k">Chapter 3</span>
+  <h2 class="ch-t">Combat</h2>
+  <p>Spells and rotation, the Wheel of Destiny, gems, blessings and charms.</p>
+</div>
+<section id="spells">
+  <div class="sec-head">
+    <div class="eyebrow">Tap an incantation to copy it · values after the July 7 nerf</div>
+    <h2>Spells and rotation</h2>
+  </div>
+  <p class="lede">Default: Sharpshooter + Diamond Arrows, with Ethereal Barrage and Divine Barrage on one Multi-Action Button pressed every 2 s. Since Jan 27, 2026 spells unlock for free at their level; drag the ones you use from the Spellbook to the Action Bar.</p>
+  <div class="grid3">
+    <div class="card"><h3>Cooldowns</h3><p class="small">Attack spells share a 2 s group cooldown. Heals have their own 1 s group, so you can heal and attack at the same moment. Support spells use a 2 s group, and the two stances share a 10 s cooldown.</p></div>
+    <div class="card"><h3>What scales them</h3><p class="small"><b>Holy spells</b> grow with level and magic level. <b>Ethereal spells</b> grow with level and distance, so Sharpshooter, gear and potions boost them. Healing grows with level and magic level.</p></div>
+    <div class="card"><h3>Holy or physical?</h3><p class="small">Undead and demons often take extra holy damage. Physical is the safe default elsewhere. A monster's weaknesses are in its Bestiary entry once you unlock stage 2.</p></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Most spawns <span class="tag">physical</span></h3>
+      <p class="small">Sharpshooter + Diamond Arrows. <button class="inc" type="button" data-w="exori dir moe">exori dir moe</button> + <button class="inc" type="button" data-w="exori dir san">exori dir san</button> on one button, every 2 s. Swap in <button class="inc" type="button" data-w="exevo mas san">exevo mas san</button> when monsters are next to you.</p>
+    </div>
+    <div class="card">
+      <h3>Undead and demons <span class="tag">holy-weak</span></h3>
+      <p class="small">Divine Defiance + the storm arrow that matches the weakness (Firestorm vs spectres, Froststorm at Gazer Spectres). Rotate Divine Barrage + Divine Caldera.</p>
+    </div>
+    <div class="card">
+      <h3>Bosses</h3>
+      <p class="small">Holy Flash at the start, Strong Ethereal Spear every 8 s, Divine Missile in between, Avatar of Light if the Wheel has it.</p>
+    </div>
+    <div class="card">
+      <h3>Always running</h3>
+      <p class="small">Intense Recovery every 60 s, Haste, Paladin Familiar, your stance.</p>
+    </div>
+  </div>
+  <div class="note">The full barrage rotation costs about 310 mana every 4 s (~75 mana/s). Expect a Superior Mana Potion (240–360 mana, 254 gp) about every 4 s before mana leech. Ultimate Spirit Potions (488 gp) cover HP and mana together.</div>
+
+  <div class="scroll">
+    <table class="spells t-wide">
+      <thead><tr><th>Spell</th><th>Words</th><th class="n">Lvl</th><th class="n">Mana</th><th class="n">CD</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr class="band"><td colspan="6">Stances · pick one, it stays on</td></tr>
+        <tr><td class="name">Sharpshooter <span class="pill good">default</span></td><td><button class="inc" type="button" data-w="utori con">utori con</button></td><td class="n">20</td><td class="n">250</td><td class="n">—</td><td class="use">+32% distance on your total skill, so gear and potion bonuses are multiplied too.</td></tr>
+        <tr><td class="name">Divine Defiance</td><td><button class="inc" type="button" data-w="utori hur">utori hur</button></td><td class="n">20</td><td class="n">250</td><td class="n">—</td><td class="use">6% of distance as holy and healing magic level (~+7 at 125), 12% dodge vs monsters not next to you. For holy spawns.</td></tr>
+        <tr class="band"><td colspan="6">Area attacks · your main damage</td></tr>
+        <tr><td class="name">Ethereal Barrage <span class="el phys">phys</span></td><td><button class="inc" type="button" data-w="exori dir moe">exori dir moe</button></td><td class="n">60</td><td class="n">135</td><td class="n">4 s</td><td class="use">Hits your target and the squares around it. Scales with distance. Needs a target.</td></tr>
+        <tr><td class="name">Divine Barrage <span class="el holy">holy</span></td><td><button class="inc" type="button" data-w="exori dir san">exori dir san</button></td><td class="n">70</td><td class="n">175</td><td class="n">4 s</td><td class="use">Same shape, holy, scales with magic level. Base 130. Holy Wheel adds +8%.</td></tr>
+        <tr><td class="name">Divine Caldera <span class="el holy">holy</span></td><td><button class="inc" type="button" data-w="exevo mas san">exevo mas san</button></td><td class="n">50</td><td class="n">160</td><td class="n">4 s</td><td class="use">Radius 3 around you, not your target. Base 150. Use when monsters are adjacent.</td></tr>
+        <tr class="band"><td colspan="6">Single target</td></tr>
+        <tr><td class="name">Strong Ethereal Spear <span class="el phys">phys</span></td><td><button class="inc" type="button" data-w="exori gran con">exori gran con</button></td><td class="n">90</td><td class="n">55</td><td class="n">8 s</td><td class="use">Strong hit that scales with distance. Every 8 s on bosses and the last monster of a pull.</td></tr>
+        <tr><td class="name">Divine Missile <span class="el holy">holy</span></td><td><button class="inc" type="button" data-w="exori san">exori san</button></td><td class="n">40</td><td class="n">20</td><td class="n">2 s</td><td class="use">Cheap filler. Without a target it hits the square in front of you.</td></tr>
+        <tr><td class="name">Ethereal Spear <span class="el phys">phys</span></td><td><button class="inc" type="button" data-w="exori con">exori con</button></td><td class="n">23</td><td class="n">25</td><td class="n">2 s</td><td class="use">Filler against targets that resist holy.</td></tr>
+        <tr><td class="name">Holy Flash <span class="el holy">holy</span></td><td><button class="inc" type="button" data-w="utori san">utori san</button></td><td class="n">70</td><td class="n">30</td><td class="n">40 s</td><td class="use">Dazzles the target, then holy damage every 10–12 s. Boss opener only; it uses an attack slot.</td></tr>
+        <tr class="band"><td colspan="6">Wheel spells · only with the matching preset</td></tr>
+        <tr><td class="name">Gift of Life <span class="pill good">Holy</span></td><td><span class="muted small">passive</span></td><td class="n">—</td><td class="n">—</td><td class="n">30 h</td><td class="use">If a hit would kill you and overkill is under 20% of max HP: heal 20% HP, recover 20% mana, all cooldowns −60 s. The 30 h only counts down with a battle sign.</td></tr>
+        <tr><td class="name">Divine Empowerment <span class="pill">Physical</span></td><td><button class="inc" type="button" data-w="utevo grav san">utevo grav san</button></td><td class="n">—</td><td class="n">500</td><td class="n">32 s</td><td class="use">3×3 holy field under you for 5 s; +8% damage while you stand in it.</td></tr>
+        <tr><td class="name">Avatar of Light <span class="pill">Boss</span></td><td><button class="inc" type="button" data-w="uteta res sac">uteta res sac</button></td><td class="n">—</td><td class="n">1,500</td><td class="n">2 h</td><td class="use">15 s of 100% crit, crits +5%, 5% less damage taken.</td></tr>
+        <tr><td class="name">Divine Grenade <span class="pill">not used</span></td><td><button class="inc" type="button" data-w="exevo tempo mas san">exevo tempo mas san</button></td><td class="n">—</td><td class="n">160</td><td class="n">26 s</td><td class="use">Marker at the target's feet explodes after 3 s.</td></tr>
+        <tr class="band"><td colspan="6">Healing · separate 1 s group</td></tr>
+        <tr><td class="name">Intense Recovery <span class="pill good">always on</span></td><td><button class="inc" type="button" data-w="utura gran">utura gran</button></td><td class="n">100</td><td class="n">165</td><td class="n">60 s</td><td class="use">40 HP every 3 s for 60 s (800 total). Recast every minute.</td></tr>
+        <tr><td class="name">Divine Healing</td><td><button class="inc" type="button" data-w="exura san">exura san</button></td><td class="n">35</td><td class="n">160</td><td class="n">1 s</td><td class="use">Main heal. Cures paralysis.</td></tr>
+        <tr><td class="name">Salvation</td><td><button class="inc" type="button" data-w="exura gran san">exura gran san</button></td><td class="n">60</td><td class="n">210</td><td class="n">1 s</td><td class="use">Biggest heal, base 500 since June. When HP drops fast or below half.</td></tr>
+        <tr><td class="name">Intense Healing</td><td><button class="inc" type="button" data-w="exura gran">exura gran</button></td><td class="n">20</td><td class="n">70</td><td class="n">1 s</td><td class="use">Cheap paralysis break. Also <button class="inc" type="button" data-w="exana pox">exana pox</button> poison, <button class="inc" type="button" data-w="exana mort">exana mort</button> curse.</td></tr>
+        <tr class="band"><td colspan="6">Support</td></tr>
+        <tr><td class="name">Haste <span class="pill good">always on</span></td><td><button class="inc" type="button" data-w="utani hur">utani hur</button></td><td class="n">14</td><td class="n">60</td><td class="n">—</td><td class="use">+30% speed for 30 s, cures paralysis.</td></tr>
+        <tr><td class="name">Swift Foot</td><td><button class="inc" type="button" data-w="utamo tempo san">utamo tempo san</button></td><td class="n">55</td><td class="n">400</td><td class="n">4 s</td><td class="use">+80% speed for 10 s (cooldown fixed to 4 s on Oct 6); you can still attack and cast, at −30% damage. Escape or reposition.</td></tr>
+        <tr><td class="name">Divine Dazzle</td><td><button class="inc" type="button" data-w="exana amp res">exana amp res</button></td><td class="n">250</td><td class="n">80</td><td class="n">16 s</td><td class="use">Up to 3 monsters within 7 squares (ranged first) fight in melee for 8 s, so they walk to you. Not in lever boss rooms. Skip it in Roshamuul.</td></tr>
+        <tr><td class="name">Summon Paladin Familiar <span class="pill good">every hunt</span></td><td><button class="inc" type="button" data-w="utevo gran res sac">utevo gran res sac</button></td><td class="n">200</td><td class="n">2,000</td><td class="n">30 min</td><td class="use">15,000 HP bird for 15 min; throws fire and holy, heals itself. All exp is yours; timer pauses when you log out.</td></tr>
+        <tr><td class="name">Protect Party</td><td><button class="inc" type="button" data-w="utamo mas sio">utamo mas sio</button></td><td class="n">32</td><td class="n">varies</td><td class="n">—</td><td class="use">+3 shielding for 2 min to party members in the area. Duo only.</td></tr>
+        <tr><td class="name">Find Fiend</td><td><button class="inc" type="button" data-w="exiva moe res">exiva moe res</button></td><td class="n">25</td><td class="n">20</td><td class="n">—</td><td class="use">Direction to the nearest fiendish monster.</td></tr>
+        <tr><td class="name">Cancel Invisibility</td><td><button class="inc" type="button" data-w="exana ina">exana ina</button></td><td class="n">26</td><td class="n">200</td><td class="n">—</td><td class="use">Reveals invisible monsters and players.</td></tr>
+        <tr><td class="name">Magic Rope / Levitate</td><td><button class="inc" type="button" data-w="exani tera">exani tera</button> <button class="inc" type="button" data-w="exani hur up">exani hur up</button></td><td class="n">9 / 12</td><td class="n">20 / 50</td><td class="n">—</td><td class="use">Rope spots, or one floor up/down (<span class="mono">exani hur down</span>).</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">Skip Arrow Call, Conjure Arrow, Conjure Explosive Arrow and Enchant Spear. Holy Missile Rune hits a little harder than Divine Missile, but runes cost money and use the same attack slot.</p>
+</section>
+
+<section id="wheel">
+  <div class="sec-head">
+    <div class="eyebrow">285 points at 325, all spent · respec is free, temple only</div>
+    <h2>Wheel of Destiny</h2>
+  </div>
+  <p class="lede"><b>Keep Holy as the main build.</b> It saves you from one killing blow per 30 h of battle, gives the most HP and mana, and buffs Divine Barrage, which you cast in every spawn. Save Physical as a second preset for Diamond Arrow spawns. Boss comes later, once crit gear is in.</p>
+  <div class="tabs" role="tablist" aria-label="Wheel presets">
+    <button class="tab" role="tab" type="button" data-p="holy" aria-selected="true"><span class="dot" style="background:var(--tl)"></span>Holy <span class="rec">current</span></button>
+    <button class="tab" role="tab" type="button" data-p="physical" aria-selected="false"><span class="dot" style="background:var(--bl)"></span>Physical</button>
+    <button class="tab" role="tab" type="button" data-p="boss" aria-selected="false"><span class="dot" style="background:var(--br)"></span>Boss</button>
+  </div>
+  <div class="wheel-main">
+    <div class="wheel-box">
+      <svg class="wheel" id="wheelSvg" viewBox="-300 -300 600 600" role="img" aria-label="Paladin Wheel of Destiny with the selected preset highlighted"></svg>
+      <div class="legend"><span><b>VR</b> Vessel Resonance</span><span><b>+1</b> +1 distance</span><span><b>LL</b> 0.75% life leech</span><span><b>ML</b> 0.25% mana leech</span><span><b>DB</b> Divine Barrage</span><span><b>EB</b> Ethereal Barrage</span><span><b>DC</b> Divine Caldera</span><span><b>DZ</b> Divine Dazzle</span><span><b>SES</b> Strong Eth. Spear</span><span><b>PT</b> Positional Tactics</span><span><b>BM</b> Ballistic Mastery</span></div>
+      <div class="detail" id="wDetail" aria-live="polite"></div>
+    </div>
+    <div class="wsteps" id="wSteps"></div>
+  </div>
+  <div class="scroll">
+    <table class="t-mid">
+      <thead><tr><th></th><th>Holy <span class="pill good">main</span></th><th>Physical</th><th>Boss</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Revelation, stage 1</td><td>Gift of Life</td><td>Divine Empowerment</td><td>Avatar of Light</td></tr>
+        <tr><td class="name">Augment</td><td>Divine Barrage +8%</td><td>Ethereal Barrage +10% life leech</td><td>Divine Barrage +8%</td></tr>
+        <tr><td class="name">Hit points</td><td class="n">+320</td><td class="n">+270</td><td class="n">+100</td></tr>
+        <tr><td class="name">Mana</td><td class="n">+225</td><td class="n">+150</td><td class="n">0</td></tr>
+        <tr><td class="name">Capacity</td><td class="n">+200</td><td class="n">0</td><td class="n">+640</td></tr>
+        <tr><td class="name">Mitigation</td><td class="n">0%</td><td class="n">+7.5%</td><td class="n">+5.62%</td></tr>
+        <tr><td class="name">Gem vessel</td><td>Top-left</td><td>Bottom-left</td><td>Bottom-right</td></tr>
+        <tr><td class="name">Use for</td><td>Everyday, holy spawns, learning the character</td><td>Diamond + Ethereal spawns, once you can stand still in the field</td><td>Bosses, after crit gear</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">All three also give +1 distance, one Vessel Resonance and +4 damage and healing. HP and capacity are at 285 points. The Oct 17 Wheel screen shows HP +320: the 10 points since 316 went into the last Holy slice, now 60/100. It also confirms +1 distance, Divine Barrage augment I, Vessel Resonance top-left, +4 damage and healing, and Gift of Life stage 1. The planner codes below are the 261-point builds; put every extra point on the last slice of each.</p>
+  <div class="grid3" id="wCodes"></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Set it up in game</h3>
+      <ol class="small">
+        <li>Go to a temple. Changing points is free there and only there.</li>
+        <li>Open the Wheel and right-click a slice to fill or empty it. Alt, Shift, Ctrl or Ctrl+Shift change the step size.</li>
+        <li>Fill in the numbered order. A slice opens only after the one toward the centre is full.</li>
+        <li>Press Apply, then save each build under its own name in the preset menu.</li>
+        <li>Each preset turns on only its own domain's gem vessel. Put a lesser gem of that colour in it, ideally Hit Points.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>Get more points</h3>
+      <ul class="small">
+        <li><b>The Way of the Monk Quest</b> (275+, Premium): 10 promotion points and 847.8k exp.</li>
+        <li><b>Hunting Task Shop:</b> up to 50 points, each pricier (100, 200, 400, 700 task points…). You had 3,100 task points.</li>
+        <li><b>Gem mods at grade IV:</b> +1 point each. <b>Promotion Scrolls</b> from Bakragore: up to 50, endgame.</li>
+        <li>Milestones: 550 points for a stage 2 revelation, 575 for Positional Tactics and Ballistic Mastery, 625 for the first outer conviction perk.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="scroll">
+    <table class="t-mid">
+      <thead><tr><th>Paladin augment</th><th>Stage I</th><th>Stage II <span class="muted">(both slices)</span></th></tr></thead>
+      <tbody>
+        <tr><td class="name">Divine Barrage</td><td>+8% base damage</td><td>+12% base damage</td></tr>
+        <tr><td class="name">Ethereal Barrage</td><td>+10% life leech</td><td>+10% crit chance</td></tr>
+        <tr><td class="name">Divine Caldera</td><td>−20 mana</td><td>+10% base damage</td></tr>
+        <tr><td class="name">Strong Ethereal Spear</td><td>−2 s cooldown</td><td>+380% base damage</td></tr>
+        <tr><td class="name">Divine Dazzle</td><td>+2 targets</td><td>+4 s duration, −8 s cooldown</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">No Divine Grenade preset: none of TibiaPal's paladin presets uses it, Kusnier's June video questions its value, and it would take an attack slot.</p>
+</section>
+
+<section id="gems">
+  <div class="sec-head">
+    <div class="eyebrow">Gem Atelier and Fragment Workshop</div>
+    <h2>Gems</h2>
+  </div>
+  <div class="note">Don't spend on gems yet. Keep the +220 HP lesser gem in the top-left vessel (still there on Oct 17); it is the only active slot. Save greater gems until you can afford 6kk reveals and are hunting for a Revelation Mastery or Divine Caldera mod.</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Your gems</h3>
+      <ul class="small">
+        <li>Revealed: 19 gems on Oct 13, one more than before (earlier: 4 Marksman Gems with two elemental resistances each, 14 Lesser Marksman Gems). None are waiting to be revealed.</li>
+        <li>Only the top-left domain has a resonance, so only one gem works.</li>
+        <li>The regular gems become useful once a build has two resonances in their domain.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>How they work</h3>
+      <ul class="small">
+        <li>A gem fits only a vessel of its own colour. Rotating it costs 125k / 250k / 500k (lesser / regular / greater).</li>
+        <li>Each mod needs one Vessel Resonance in that domain. Resonances matching the gem size give +1 damage and healing (+2 for greater).</li>
+        <li>Revealing costs 125k, 1kk or 6kk.</li>
+        <li>On Refugia: lesser fragment ~7k, greater fragment ~170k, unrevealed Greater Marksman Gem ~300k.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-bottom:10px">Basic mods <span class="tag">grade I → IV</span></h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Mod</th><th class="n">I</th><th class="n">II</th><th class="n">III</th><th class="n">IV</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Hit Points</td><td class="n">+200</td><td class="n">+220</td><td class="n">+240</td><td class="n">+300</td></tr>
+            <tr><td class="name">Mana</td><td class="n">+300</td><td class="n">+330</td><td class="n">+360</td><td class="n">+450</td></tr>
+            <tr><td class="name">Mana + element</td><td class="n">150/1%</td><td class="n">165/1.1%</td><td class="n">180/1.2%</td><td class="n">225/1.5%</td></tr>
+            <tr><td class="name">HP + element</td><td class="n">100/1%</td><td class="n">110/1.1%</td><td class="n">120/1.2%</td><td class="n">150/1.5%</td></tr>
+            <tr><td class="name">Capacity</td><td class="n">+400</td><td class="n">+440</td><td class="n">+480</td><td class="n">+600</td></tr>
+            <tr><td class="name">Fire/earth/ice/energy</td><td class="n">+2%</td><td class="n">+2.2%</td><td class="n">+2.4%</td><td class="n">+3%</td></tr>
+            <tr><td class="name">Mitigation</td><td class="n">+20%</td><td class="n">+22%</td><td class="n">+24%</td><td class="n">+30%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted" style="margin-top:6px">Best lesser mods for paladins (TibiaPal): HP, mitigation, any resistance.</p>
+    </div>
+    <div style="display:grid;gap:14px;align-content:start">
+      <div class="card">
+        <h3>Greater gems <span class="tag">supreme mod</span></h3>
+        <ul class="small">
+          <li><b>Revelation Mastery:</b> +150 promotion points toward one revelation (+225 at IV). How players unlock a second revelation early.</li>
+          <li><b>Divine Caldera</b> +5% base damage (to 7.5%). <b>Salvation</b> +6% healing (to 9%).</li>
+          <li>Also Strong Ethereal Spear, Divine Missile and Grenade damage or crit, dodge, crit damage, life and mana leech.</li>
+        </ul>
+      </div>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Upgrade to</th><th class="n">Fragments</th><th class="n">Basic</th><th class="n">Supreme</th></tr></thead>
+          <tbody>
+            <tr><td>Grade II</td><td class="n">5</td><td class="n">2kk</td><td class="n">5kk</td></tr>
+            <tr><td>Grade III</td><td class="n">15</td><td class="n">5kk</td><td class="n">12.5kk</td></tr>
+            <tr><td>Grade IV</td><td class="n">30</td><td class="n">30kk</td><td class="n">75kk</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="systems">
+  <div class="sec-head">
+    <div class="eyebrow">Blessing prices from TibiaWiki's formula · charms and prey from your screenshots</div>
+    <h2>Blessings, charms &amp; prey</h2>
+  </div>
+  <div class="grid2">
+    <div class="card calc">
+      <h3>Blessing cost</h3>
+      <div class="row">
+        <label for="blLvl">Level<input type="number" id="blLvl" min="1" max="2000" value="325"></label>
+      </div>
+      <div class="out" id="blOut"></div>
+      <p class="small muted">Regular blessings cost 20,000 + 75 per level above 120; Blood and Heart of the Mountain 26,000 + 100 per level above 120; Twist of Fate is capped at 50,000 and only matters in PvP. Henricus (Thais jail, one floor down) sells all five regular ones at once for 10% more; you qualify through The Inquisition.</p>
+    </div>
+    <div class="card">
+      <h3>What 7/7 does</h3>
+      <ul class="small">
+        <li>Each blessing cuts exp and skill loss on death by 8%, up to 56%; promotion adds 30% more.</li>
+        <li>With 5 or more blessings, your equipment and backpack are safe on death.</li>
+        <li>The auction had 5/7. Buy Blood of the Mountain (Kais, northern Tiquanda) and Heart of the Mountain (Nomad, Hrodmir via Buddel) for 7/7.</li>
+      </ul>
+      <p class="small muted">Gift of Life (Holy Wheel) is a separate safety net: it saves you from one killing blow per 30 h of battle time.</p>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <h3>Charms <span class="tag">172 points + Freeze grade 1 on Oct 8</span></h3>
+      <ul class="small">
+        <li><b>New points:</b> since then you completed three bestiary entries: Frazzlemaw and Burster Spectre (50 charm points each on TibiaWiki) and Silencer. Check the new total in the Cyclopedia.</li>
+        <li><b>Next goal: Low Blow</b> (800 points). Since June 2026 other charms trigger only on the main target with area ammo; Low Blow still applies to the whole area.</li>
+        <li><b>150 minor charm echoes:</b> spend 100 on Void's Call or Vampiric Embrace, stage 1.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Prey</h3>
+      <ul class="small">
+        <li>Only one slot was active on Oct 8 (Frazzlemaw). Put an XP prey on the creature you'll farm most: asuras this weekend, Silencer in Roshamuul.</li>
+        <li>You have 15 prey wildcards from the auction.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Bounty and weekly tasks</h3>
+      <ul class="small">
+        <li><b>Bounty Task:</b> inactive on Oct 8. The Bounty Talisman in your backpack only helps while one runs (+3% damage, life leech and loot vs. task creatures).</li>
+        <li><b>Weekly task expansion</b> came with the auction.</li>
+        <li><b>Hunting Task Shop</b> sells up to 50 Wheel points; you had 3,100 task points.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER: HUNTING ============ -->
+<div class="chapter" id="ch-hunt">
+  <span class="ch-k">Chapter 4</span>
+  <h2 class="ch-t">Hunting</h2>
+  <p>Where to hunt at 325, guides for the spots you use, and the duo with Xee Ru.</p>
+</div>
+<section id="hunts">
+  <div class="sec-head">
+    <div class="eyebrow">TibiaPal paladin numbers (TibiaPal marks them as data from before the 2026 rebalance) · access from TibiaWiki</div>
+    <h2>Where to hunt</h2>
+  </div>
+  <div class="grid3">
+    <div class="card"><div class="eyebrow">This weekend</div><h3>Asura Palace</h3><p class="small">Open, no quest. +50% exp on Demon-class creatures until Oct 19 server save. Physical setup. See the <a href="#asura">guide</a>.</p></div>
+    <div class="card"><div class="eyebrow">Best exp, open now</div><h3>Roshamuul West · Book World IV</h3><p class="small">5.2kk and 4.2kk raw on TibiaPal. Ripper Spectres (4.1kk) are the safer open alternative.</p></div>
+    <div class="card"><div class="eyebrow">Best money, open now</div><h3>Lower Spike · Wote 8</h3><p class="small">1.5kk and 1.2kk loot per hour. You have the Zao quests for Wote 8, Draken Walls and Brimstone Bugs.</p></div>
+    <div class="card"><div class="eyebrow">One quest away</div><h3>Warzones 4–6</h3><p class="small">Dangerous Depths, started in your quest log. Up to 4.3kk exp, 1.2kk loot.</p></div>
+  </div>
+  <div class="controls" role="group" aria-label="Hunt table controls">
+    <div><span class="ctl-label">Show</span>
+      <span class="seg" id="hShow">
+        <button type="button" data-v="all" aria-pressed="true">All</button>
+        <button type="button" data-v="open" aria-pressed="false">Open to you</button>
+        <button type="button" data-v="quest" aria-pressed="false">Needs a quest</button>
+        <button type="button" data-v="money" aria-pressed="false">Money</button>
+      </span>
+    </div>
+    <div><span class="ctl-label">Sort</span>
+      <span class="seg" id="hSort">
+        <button type="button" data-v="level" aria-pressed="true">Level</button>
+        <button type="button" data-v="exp" aria-pressed="false">Exp</button>
+        <button type="button" data-v="loot" aria-pressed="false">Loot</button>
+      </span>
+    </div>
+    <input type="search" id="hQ" placeholder="Search spot or quest" aria-label="Search hunting spots">
+    <span class="count" id="hCount"></span>
+  </div>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Spot</th><th class="n">Lvl</th><th class="n">Raw exp/h</th><th class="n">Loot/h</th><th>Setup</th><th>Access</th></tr></thead>
+      <tbody id="hRows"></tbody>
+    </table>
+  </div>
+  <p class="small muted">Numbers come from experienced players with big lures and predate the 2026 rebalance, so expect less at first. Remember the ~144k per hour of imbuement upkeep when comparing loot. Loot uses market prices on established worlds; negative loot means the spot loses money. Gold drops were cut on several spawns on Sep 1, 2026. "Open to you" uses the quests ticked for Veritass in the <a href="#quests">quest checklist</a>. <i>Italic</i> access notes mean TibiaWiki lists no requirement but doesn't say "open" outright. Setup: "Ethereal" is the physical barrage setup, "Divine" the holy one.</p>
+  <h3>Goals for later</h3>
+  <div class="scroll">
+    <table class="t-mid">
+      <thead><tr><th class="n">Level</th><th>Spot</th><th class="n">Raw exp/h</th><th class="n">Loot/h</th></tr></thead>
+      <tbody>
+        <tr><td class="n">500+</td><td class="name">Venore Flimsies −1 and −2</td><td class="n">8.5kk</td><td class="n">1.5kk</td></tr>
+        <tr><td class="n">500+</td><td class="name">Port Hope Flimsies −1 and −2</td><td class="n">8.0kk</td><td class="n">1.0kk</td></tr>
+        <tr><td class="n">500+</td><td class="name">Upper Roshamuul (South)</td><td class="n">7.5kk</td><td class="n">1.5kk</td></tr>
+        <tr><td class="n">500+</td><td class="name">Falcon's Eagle</td><td class="n">7.0kk</td><td class="n">1.8kk</td></tr>
+        <tr><td class="n">500+</td><td class="name">Oramond Mountain Hideout −1/−2</td><td class="n">5.8kk</td><td class="n">1.2kk</td></tr>
+        <tr><td class="n">500+</td><td class="name">Warzone 2</td><td class="n">5.2kk</td><td class="n">1.3kk</td></tr>
+        <tr><td class="n">600+</td><td class="name">Upper Roshamuul (North + South)</td><td class="n">9.0kk</td><td class="n">1.8kk</td></tr>
+        <tr><td class="n">600+</td><td class="name">Norcferatu Dungeons West</td><td class="n">9.0kk</td><td class="n">800k</td></tr>
+        <tr><td class="n">600+</td><td class="name">Norcferatu Fortress</td><td class="n">8.8kk</td><td class="n">1.1kk</td></tr>
+        <tr><td class="n">600+</td><td class="name">Azzilon Castle</td><td class="n">8.6kk</td><td class="n">800k</td></tr>
+        <tr><td class="n">600+</td><td class="name">Cobra Bastion</td><td class="n">7.5kk</td><td class="n">800k</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="asura">
+  <div class="sec-head">
+    <div class="eyebrow">Spot guide · creature data from TibiaWiki · +50% Demon-class exp until Oct 19 server save</div>
+    <h2>Asura Palace</h2>
+  </div>
+  <p class="lede">Open to you with no access quest, in Tiquanda. TibiaPal lists it at 3.1kk raw exp per hour for paladins (data from before the 2026 rebalance); this weekend's Demon bonus puts that near 4.6kk. It's also the safest high-exp spot you can reach solo.</p>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Creature</th><th class="n">HP</th><th class="n">Exp</th><th class="n">Physical</th><th class="n">Holy</th><th>Immune</th><th>Hits with</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Midnight Asura</td><td class="n">3,100</td><td class="n">3,700</td><td class="n">100%</td><td class="n neg">70%</td><td><span class="el death">death</span></td><td>Melee up to 350, death strike 200, life drain wave 210, mana drain beam 110</td></tr>
+        <tr><td class="name">Dawnfire Asura</td><td class="n">2,900</td><td class="n">3,610</td><td class="n">110%</td><td class="n">110%</td><td><span class="el fire">fire</span></td><td>Weak to ice and energy too (110%, 105%)</td></tr>
+        <tr><td class="name">Frost Flower Asura</td><td class="n">3,500</td><td class="n">4,200</td><td class="n">105%</td><td class="n neg">70%</td><td><span class="el ice">ice</span></td><td>Melee 200, ice strike 200, freezing beam, mana drain beam 130</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <h3>Setup</h3>
+      <ul class="small">
+        <li><b>Physical:</b> Diamond Arrows, Sharpshooter, <button class="inc" type="button" data-w="exori dir moe">exori dir moe</button> every 2 s. Holy only does 70% to two of the three asuras.</li>
+        <li><b>No Firestorm Arrows:</b> Dawnfire asuras are fire-immune.</li>
+        <li><b>Wheel:</b> the Physical preset fits best (Ethereal Barrage +10% life leech, +7.5% mitigation). Staying on Holy keeps Gift of Life.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>With Xee Ru</h3>
+      <ul class="small">
+        <li>Frost Flower asuras are ice-immune: Xee Ru should use earth there (110% on Midnight and Frost Flower).</li>
+        <li>Ice still works on Dawnfire asuras (110%).</li>
+        <li>Both of you level from the Demon bonus; at 325 and 250 you share exp.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Next step up</h3>
+      <p class="small"><b>Asura Mirror</b> (Asura Vaults, 5.3kk raw on TibiaPal) needs the Asura Palace quest and The Lost Brother, level 250. Xee Ru is now 250 too.</p>
+    </div>
+  </div>
+</section>
+
+<section id="burster">
+  <div class="sec-head">
+    <div class="eyebrow">Spot guide · your Oct 14 and 15 hunts · creature data from TibiaWiki</div>
+    <h2>Burster Spectres</h2>
+  </div>
+  <div class="note bad"><b>Exp spot only.</b> Over two hunts you made about 2.38kk raw exp per hour and lost 372k per hour, before imbuement upkeep. Your bestiary entry is complete (2,951 kills). Asura Palace this weekend, Roshamuul with Xee Ru (+205k/h) or Book World IV (4.2kk) are better uses of time.</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>The creature</h3>
+      <dl class="kv small">
+        <dt>HP · exp</dt><dd>6,500 · 6,000 (4,050 each when shared in a duo, with the 35% party bonus)</dd>
+        <dt>Immune</dt><dd><b>physical</b>, paralysis, invisibility</dd>
+        <dt>Weak</dt><dd><span class="el fire">fire 120%</span>; <span class="el holy">holy 100%</span>; <span class="el ice">ice 30%</span></dd>
+        <dt>Hits with</dt><dd>Melee up to 400, ice ball and wave up to 380, life drain ball up to 400, berserk 300</dd>
+        <dt>Where</dt><dd>Buried Cathedral, Haunted Nexus</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <h3>If you go back</h3>
+      <ul class="small">
+        <li>Holy and fire only: Firestorm Arrows, <button class="inc" type="button" data-w="utori hur">utori hur</button>, Divine Barrage and Caldera. Diamond Arrows, Ethereal Barrage and Strong Ethereal Spear do nothing.</li>
+        <li>Quara Scale on the Unerring's 2nd slot, Greater Garlic Necklace and Bone Fiddle against the ice and life drain.</li>
+        <li>Xee Ru's ice does 30%: earth spells only.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="roshamuul">
+  <div class="sec-head">
+    <div class="eyebrow">Where both deaths happened · Lower Roshamuul and Roshamuul West</div>
+    <h2>Roshamuul: why you died and how to play it</h2>
+  </div>
+  <div class="note bad"><b>Frazzlemaw killed you at 310 on Oct 8, a Silencer at 312 on Oct 9.</b> The two rules that matter most: kill Silencers first, and never let a Frazzlemaw stand next to you. Your Oct 8 run made about 2.8kk exp/h while actually hunting. After two deaths, check Gift of Life is not on cooldown before going back.</div>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Monster</th><th class="n">HP</th><th class="n">Exp</th><th class="n">Holy</th><th class="n">Physical</th><th>Watch out for</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Silencer</td><td class="n">5,400</td><td class="n">5,100</td><td class="n">125%</td><td class="n">95%</td><td>Very fast, drains mana, poisons in melee. Immune to earth. Reaches you first.</td></tr>
+        <tr><td class="name">Frazzlemaw</td><td class="n">4,100</td><td class="n">3,740</td><td class="n">105%</td><td class="n">95%</td><td>Hits 1,300+. Explosion Beam 5 squares (350–600 life drain), Blood Berserk on all 8 squares around it (500+), bleeding.</td></tr>
+        <tr><td class="name">Shock Head</td><td class="n">4,200</td><td class="n">2,300</td><td class="n">100%</td><td class="n">90%</td><td>Rare, east side. Tar Wave up to 606. Immune to earth and fire.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <h3>How to play it</h3>
+      <ol class="small">
+        <li>Kill Silencers first. They arrive first, drain mana and give the most exp.</li>
+        <li>Never stand in a straight line in front of a Frazzlemaw. Step diagonally when they line up.</li>
+        <li>Never let a Frazzlemaw stand next to you.</li>
+        <li>Pull 2–4 monsters at ~3,700 HP. TibiaPal's 5.2kk assumes bigger pulls and better gear.</li>
+        <li>Skip Divine Dazzle and Divine Caldera: everything is melee and you don't want Frazzlemaws adjacent.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>Gear and supplies</h3>
+      <ul class="small">
+        <li><b>Amulet:</b> Greater Garlic Necklace while learning, then Collar of Blue Plasma.</li>
+        <li><b>Ring:</b> Prismatic Ring for safety, then Ring of Blue Plasma.</li>
+        <li><b>Extra:</b> Bone Fiddle. <b>Armor slot 2:</b> Snake Skin vs Silencer poison.</li>
+        <li><b>Arrows:</b> Diamond, 130 gp each at NPCs.</li>
+        <li><b>Potions:</b> Superior Mana (254 gp) as the main one; Ultimate Spirit (420–580 HP + 150–250 mana, 488 gp) when HP drops. Ultimate Mana is mage-only.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Setup and rotation</h3>
+      <ul class="small">
+        <li>Wheel: Holy is fine (Silencers take 125% holy) and keeps Gift of Life; Physical is TibiaPal's setup.</li>
+        <li>Start: <button class="inc" type="button" data-w="utori con">utori con</button> <button class="inc" type="button" data-w="utevo gran res sac">utevo gran res sac</button> <button class="inc" type="button" data-w="utura gran">utura gran</button> <button class="inc" type="button" data-w="utani hur">utani hur</button></li>
+        <li>Damage: <button class="inc" type="button" data-w="exori dir moe">exori dir moe</button> + <button class="inc" type="button" data-w="exori dir san">exori dir san</button> every 2 s; last monster <button class="inc" type="button" data-w="exori gran con">exori gran con</button>.</li>
+        <li>Heal: <button class="inc" type="button" data-w="exura san">exura san</button>; <button class="inc" type="button" data-w="exura gran san">exura gran san</button> when HP falls fast.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Ship from Thais (210 gp). Roshamuul has a depot and temple north-west of the prison. If deaths keep happening, switch to Asura Palace or Ripper Spectres while the armor and imbuements are upgraded.</p>
+</section>
+
+<section id="duo">
+  <div class="sec-head">
+    <div class="eyebrow">Veritass (Royal Paladin) + Xee Ru (Elder Druid) · both on Refugia</div>
+    <h2>Duo with Xee Ru</h2>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <div class="eyebrow">Shared exp right now</div>
+      <div style="font-family:var(--font-display);font-size:2rem;line-height:1.1" id="shVerdict">Yes</div>
+      <p class="small" id="shText"></p>
+    </div>
+    <div class="card">
+      <label class="eyebrow" for="lvV">Veritass level</label>
+      <input type="number" id="lvV" min="1" value="325">
+      <label class="eyebrow" for="lvX">Xee Ru level</label>
+      <input type="number" id="lvX" min="1" value="250">
+      <p class="small muted">Veritass 325 from your Oct 17 screenshot, Xee Ru 250 live on TibiaData. Change them to plan ahead.</p>
+    </div>
+    <div class="card">
+      <h3>Rules</h3>
+      <ul class="small">
+        <li>The lower level must be at least 2/3 of the higher, rounded down.</li>
+        <li>Both attack or heal at least every 2 min.</li>
+        <li>Stay within 30 squares of the leader, at most one floor apart.</li>
+        <li>Two vocations add +35% exp (three add 70%).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Veritass: pull and kill</h3>
+      <ul class="small">
+        <li>Walk first and lure. Keep monsters in front of you so Xee Ru stays out of reach.</li>
+        <li><button class="inc" type="button" data-w="exana amp res">exana amp res</button> Divine Dazzle groups ranged monsters for your barrages and his waves.</li>
+        <li><button class="inc" type="button" data-w="utamo mas sio">utamo mas sio</button> Protect Party: +3 shielding for both of you, 2 min.</li>
+        <li>Same barrage rotation as solo; Caldera when the pack is on you.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Xee Ru: heal and add damage</h3>
+      <ul class="small">
+        <li><button class="inc" type="button" data-w="utura sio">utura sio</button> Shared Conservation: +10% self-healing, and Heal Friend splashes 30% to a second target.</li>
+        <li><button class="inc" type="button" data-w='exura sio "Veritass"'>exura sio "Veritass"</button> Heal Friend (120 mana, 1 s). <button class="inc" type="button" data-w="exura gran mas res">exura gran mas res</button> Mass Healing when both are hurt.</li>
+        <li>Damage: Strong Ice Wave and Forked Glacier; Terra Wave and Forked Thorns on ice-resistant monsters. Eternal Winter / Wrath of Nature on big pulls.</li>
+        <li>Healing runes no longer work on others (since June 2026). Nature's Embrace unlocks at 275; Ice and Terra Burst at 300.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="card"><div class="eyebrow">Best element fit</div><h3>Werehyaenas</h3><p class="small">Ice 120% and holy 125%: both of your damage types are strong. Open, north of Darashia. Also counts toward Grimvale's 300 kills.</p></div>
+    <div class="card"><div class="eyebrow">Most exp, needs a quest</div><h3>Warzone 5 · Book World IV</h3><p class="small">4.3kk and 4.2kk. Dangerous Depths (both of you have started it) and Between the Lines (Veritass done, Xee Ru not yet).</p></div>
+    <div class="card"><div class="eyebrow">Open now: Xee Ru is 250</div><h3>Asura Mirror · Catacombs</h3><p class="small">5.3kk and 5.0kk, both level 250 spots (quests still apply). Lower Spike (1.5kk loot) is the best money on the list.</p></div>
+  </div>
+  <p class="small">Every spot in the <a href="#hunts">hunt table</a> marked <span class="pill">Druid-friendly</span> is also on TibiaPal's solo druid list, so Xee Ru is comfortable there. Gazer Spectres (ice 130%) killed Xee Ru at 206 on Oct 5: keep magic shield up. Lower Roshamuul has an ED+RP route on TibiaRoute (3–3.3kk), but both of your deaths there say wait.</p>
+</section>
+
+<!-- ============ CHAPTER: PROGRESS ============ -->
+<div class="chapter" id="ch-progress">
+  <span class="ch-k">Chapter 5</span>
+  <h2 class="ch-t">Progress</h2>
+  <p>Levels since the purchase, every hunt you've sent, bestiary, quests and history.</p>
+</div>
+
+<section id="levels">
+  <div class="sec-head">
+    <div class="eyebrow">From your screenshots and TibiaData · exp formula from TibiaWiki</div>
+    <h2>Levels</h2>
+  </div>
+  <div class="grid3">
+    <div class="card"><div class="eyebrow">Since the auction</div><h3>303 → 325</h3><p class="small">22 levels in 19 days, with two deaths in Lower Roshamuul on Oct 8 and 9.</p></div>
+    <div class="card"><div class="eyebrow">Pace, Oct 8 → 17</div><h3>8.2kk exp per day</h3><p class="small">From 489,223,095 to 563,092,041 exp in 9 days.</p></div>
+    <div class="card"><div class="eyebrow">At that pace</div><h3>350 by early November</h3><p class="small">400 around mid-December. Change the pace below to plan.</p></div>
+  </div>
+  <div class="chart-box">
+    <svg class="lchart" id="lchart" viewBox="0 0 720 260" role="img" aria-label="Veritass level from Sep 28 to Oct 17, 2026, rising from 303 to 325, with deaths on Oct 8 and Oct 9"></svg>
+    <div class="tip" id="ltip" hidden></div>
+    <div class="chart-legend"><span><i style="background:var(--gold)"></i>Level (exp-based levels from screenshots, others from TibiaData)</span><span><i style="background:var(--bad)"></i>Death</span></div>
+  </div>
+  <details>
+    <summary>Level data as a table</summary>
+    <div class="scroll">
+      <table class="t-mid">
+        <thead><tr><th>Date</th><th class="n">Level</th><th class="n">Exp</th><th>Source</th></tr></thead>
+        <tbody id="lvRows"></tbody>
+      </table>
+    </div>
+  </details>
+  <div class="card calc">
+    <h3>When will I reach…</h3>
+    <div class="row">
+      <label for="pExp">Current exp<input type="number" id="pExp" min="0" value="563092041"></label>
+      <label for="pRate">Exp per day<input type="number" id="pRate" min="1" value="8207661"></label>
+      <label for="pTarget">Target level<input type="number" id="pTarget" min="2" max="2000" value="350"></label>
+    </div>
+    <div class="out" id="pOut"></div>
+    <p class="small muted">Uses Tibia's exp table: exp for level L = 50/3 × (L³ − 6L² + 17L − 12). The start date is Oct 17, 2026.</p>
+  </div>
+</section>
+
+<section id="log">
+  <div class="sec-head">
+    <div class="eyebrow">From the Hunt Analysers you send me · newest first</div>
+    <h2>Hunt log</h2>
+  </div>
+  <div class="grid3">
+    <div class="card"><div class="eyebrow">Roshamuul duo · Oct 10–11</div><h3 class="ok">+205k profit/h</h3><p class="small">Two clean 2-hour hunts with Xee Ru. Your supplies were 73–74% of the party's, about 630k per hour.</p></div>
+    <div class="card"><div class="eyebrow">Burster Spectres · Oct 14–15</div><h3 class="no">−372k profit/h</h3><p class="small">About 2.38kk raw exp per hour. Oct 15 was a duo: Xee Ru owes you 167,948 to split it evenly.</p></div>
+    <div class="card"><div class="eyebrow">Real cost</div><h3>+144k/h imbuements</h3><p class="small">Not in the analyser's supplies. Subtract it from every balance below to see true profit.</p></div>
+  </div>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Date</th><th>Hunt</th><th class="n">Time</th><th class="n">Loot</th><th class="n">Supplies</th><th class="n">Balance</th><th class="n">Per hour</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="n">Oct 15<br><span class="muted small">14:04–15:31</span></td><td><span class="name">Duo with Xee Ru, Burster Spectres</span><span class="how">816 kills · raw 3,305,318 (2.27kk/h), 4,957,976 with bonuses · damage 1.90kk/h, healing 767k/h</span></td><td class="n">1:27</td><td class="n">462,950</td><td class="n">898,590</td><td class="n loot neg">−435,640</td><td class="n loot neg">−300k</td><td class="small">Veritass's analyser. Party Hunt (2:03 h): loot 1,035,473, supplies 1,565,553, balance −530,080. Veritass −432,988, Xee Ru −97,092: Xee Ru sends Veritass 167,948. 6 Hexagonal Rubies were 39% of the loot.</td></tr>
+        <tr><td class="n">Oct 14<br><span class="muted small">11:31–14:02</span></td><td><span class="name">Burster Spectres</span><span class="how">1,361 kills + 1 mummy · 9,117,676 exp with bonuses (3.63kk/h) · damage 1.88kk/h, healing 898k/h</span></td><td class="n">2:30</td><td class="n">658,050</td><td class="n">1,693,441</td><td class="n loot neg">−1,035,391</td><td class="n loot neg">−414k</td><td class="small">No deaths. About 6.08kk raw (2.43kk/h); 4,470 per kill suggests part of it was shared. Loot matched NPC prices to the coin.</td></tr>
+        <tr><td class="n">Oct 11<br><span class="muted small">18:04–20:05</span></td><td><span class="name">Duo with Xee Ru, Roshamuul</span><span class="how">Veritass leader · frazzlemaws and silencers</span></td><td class="n">2:00</td><td class="n">2,106,847</td><td class="n">1,717,280</td><td class="n loot">+389,567</td><td class="n loot">+194k</td><td class="small">No deaths. Xee Ru sent Veritass 1,783 gp; both ended at about 194,784.</td></tr>
+        <tr><td class="n">Oct 10<br><span class="muted small">12:07–14:10</span></td><td><span class="name">Duo with Xee Ru</span><span class="how">Veritass leader · spot not recorded</span></td><td class="n">2:02</td><td class="n">2,231,145</td><td class="n">1,788,835</td><td class="n loot">+442,310</td><td class="n loot">+216k</td><td class="small">No deaths. Veritass sent Xee Ru 74,683 gp.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Member breakdown, Oct 10 and 11</summary>
+    <div class="scroll">
+      <table class="t-wide">
+        <thead><tr><th>Date</th><th>Member</th><th class="n">Loot</th><th class="n">Supplies</th><th class="n">Profit</th><th class="n">Damage</th><th class="n">Dmg/s</th><th class="n">Healing</th></tr></thead>
+        <tbody>
+          <tr><td class="n" rowspan="2">Oct 11</td><td class="name">Veritass</td><td class="n">1,456,078</td><td class="n">1,263,077 <span class="muted">(74%)</span></td><td class="n">+193,001</td><td class="n">4,475,587 <span class="muted">(60%)</span></td><td class="n">618</td><td class="n">1,197,265</td></tr>
+          <tr><td class="name">Xee Ru</td><td class="n">650,769</td><td class="n">454,203 <span class="muted">(26%)</span></td><td class="n">+196,566</td><td class="n">2,938,065 <span class="muted">(40%)</span></td><td class="n">406</td><td class="n">660,198</td></tr>
+          <tr><td class="n" rowspan="2">Oct 10</td><td class="name">Veritass</td><td class="n">1,601,792</td><td class="n">1,305,954 <span class="muted">(73%)</span></td><td class="n">+295,838</td><td class="n">4,508,605 <span class="muted">(58%)</span></td><td class="n">613</td><td class="n">1,373,231</td></tr>
+          <tr><td class="name">Xee Ru</td><td class="n">629,353</td><td class="n">482,881 <span class="muted">(27%)</span></td><td class="n">+146,472</td><td class="n">3,259,148 <span class="muted">(42%)</span></td><td class="n">443</td><td class="n">520,558</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  <div class="note warn"><b>Supplies:</b> your ~630k per hour in Roshamuul is above the ~500k expected for Diamond Arrows nonstop, one mana potion every 4 s and the Plasma ring and collar. When only 1–2 monsters are left, use Strong Ethereal Spear and Divine Missile instead of the barrage pair (310 mana). If the Autumn Vintage succeeds on Refugia, potions heal 33% more for a week, which should cut this.</div>
+  <p class="small muted">Send the next Hunt Analyser with the spot name and the raw exp per hour, and I'll compare it with TibiaPal.</p>
+</section>
+
+<section id="bestiary">
+  <div class="sec-head">
+    <div class="eyebrow">From your Oct 8–17 screenshots</div>
+    <h2>Bestiary &amp; Bosstiary</h2>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Completed since the purchase</h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Creature</th><th class="n">Kills</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Frazzlemaw</td><td class="n">5,051</td><td>by Oct 13</td></tr>
+            <tr><td class="name">Silencer</td><td class="n">2,874</td><td>by Oct 13</td></tr>
+            <tr><td class="name">Burster Spectre</td><td class="n">2,951</td><td>Oct 15</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Also climbing: Shock Head 1,163 (Oct 17). Other large counts came with the character, e.g. Cinder Wyrmling 1,920, Gazer Spectre 1,647, Shell Drake 1,403, Draken Spellweaver 1,253.</p>
+    </div>
+    <div class="card">
+      <h3>Bosstiary</h3>
+      <p class="small">Deathstrike 12, Gnomevil 10, Abyssador 10, Lloyd 3, Bibby Bloodbath 2, Inkwing 2, Kroazur 2, Raxias 2, Herald of Fire 1, Lady Tenebris 1, Sir Leonard 1, Soul of Dragonking Zyrtarch 1, The Winter Bloom 1.</p>
+      <p class="small muted">Bosses on Boss Cooldowns with no cooldown on Oct 13 also include The Flaming Orchid and The Moonlight Aster. Today's boosted boss is Murcion.</p>
+    </div>
+  </div>
+</section>
+
+<section id="quests">
+  <div class="sec-head">
+    <div class="eyebrow">Access quests · tick what each of you has done · saved in this browser</div>
+    <h2>Quests</h2>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Do first, together</h3>
+      <ul class="small">
+        <li><b>Dangerous Depths:</b> Warzones 4–6, Diremaw tasks, Powerful Featherweight. 15 faction points per warzone (10 with the Bigfoot's Burden bosses, and your Bosstiary shows Deathstrike 12×, Gnomevil 10× and Abyssador 10×), then a Fragile Lava Funnel gives 8 h.</li>
+        <li><b>Between the Lines</b> (200): Book World II–IV, Crumbling Caverns. <b>Done for Veritass</b> (quest log, Oct 13); Xee still needs it, with Sling Herb + Star Herb.</li>
+        <li><b>Grimvale, An Ancient Feud:</b> werelions (needs 300 werehyaena kills), then Paradise Lost for Oskayaat.</li>
+        <li><b>Heart of Destruction</b> or the Forgotten Knowledge bosses: Powerful Epiphany.</li>
+        <li><b>The Way of the Monk</b> (275+, Veritass only for now): 10 Wheel points.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Long chains, start early</h3>
+      <ul class="small">
+        <li><b>The Dream Courts</b> (250): Ice Islands (you have it), Feyrist, Meriana, Relic Hunter rank, Ghostsilver Lantern, Flask of Medusa's Ointment, Broken Compass. Opens the Courts and Powerful Vibrancy.</li>
+        <li><b>Feaster of Souls</b> (250): Lion's Rock, Sea of Light, Shattered Isles to Ramoa, Blood Brothers mission 4. Opens the Flimsies.</li>
+        <li><b>The Lost Brother → Within the Tides:</b> Asura Mirror, Nagas, Turtles. Needs a Helmet of the Deep or Depth Galea.</li>
+        <li><b>Adventures of Galthen:</b> Iksupan. Later: Grave Danger, A Pirate's Tail, Ferumbras' Ascension.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="scroll">
+    <table class="qtable t-wide">
+      <thead><tr><th>Quest</th><th>Opens</th><th>Level</th><th>Starts at</th><th class="box">Veritass</th><th class="box">Xee Ru</th></tr></thead>
+      <tbody id="qRows"></tbody>
+    </table>
+  </div>
+  <p class="small muted">Veritass's quest log on Oct 13, unchanged on Oct 15: 11 completed (Between the Lines, Child of Destiny, Children of the Revolution, Targuna, The Ape City, The Ice Islands, The Inquisition, The New Frontier, The Pits of Inferno, The Shattered Isles, Wrath of the Emperor). Started: A Pirate's Tail, Adventurers Guild, An Uneasy Alliance, Bigfoot's Burden, Cults of Tibia, Dangerous Depths, Elemental Spheres, Factions, Ferumbras' Ascendant, Forgotten Knowledge, Friends and Traders, Grave Danger, Grimvale, Hot Cuisine, In Service of Yalahar, Killing in the Name of…, and more below the scroll (the list past "Killing in the Name of…" hasn't been seen yet). "Veritass log" and "Xee log" mark started quests (Xee's from Oct 8).</p>
+</section>
+
+<section id="timeline">
+  <div class="sec-head">
+    <div class="eyebrow">Everything that happened since the auction</div>
+    <h2>Timeline</h2>
+  </div>
+  <ul class="timeline small">
+    <li><span class="when">Sep 27</span>Char Bazaar bidding plan: Veritass picked as "best paladin".</li>
+    <li><span class="when">Sep 28</span>Auction ends; bought at level 303.</li>
+    <li><span class="when">Sep 30</span>First playbook: no quiver, empty slots, Wheel at 261 points.</li>
+    <li><span class="when">Oct 2–5</span>Exaltation Overload event.</li>
+    <li><span class="when">Oct 8</span>Level 310. New gear: Red Quiver, Stoic Iks Casque, Ghost Chestplate; Wheel at 269.</li>
+    <li class="death"><span class="when">Oct 8 · 13:11</span>Died at 310 to a Frazzlemaw, Lower Roshamuul.</li>
+    <li class="death"><span class="when">Oct 9 · 15:12</span>Died at 312 to a Silencer, Lower Roshamuul.</li>
+    <li><span class="when">Oct 10 · 12:07–14:10</span>Duo hunt with Xee Ru: +442k, no deaths.</li>
+    <li><span class="when">Oct 11 · 18:04–20:05</span>Duo in Roshamuul: +390k, no deaths. Level 316 that evening; armor Vampirism and helmet Epiphany ran out.</li>
+    <li><span class="when">Oct 13</span>Level 319. 86kk in the bank, Between the Lines done, Frazzlemaw and Silencer bestiary complete.</li>
+    <li><span class="when">Oct 14 · 11:31–14:02</span>Burster Spectres: 1,361 kills, 9.1kk exp, −1.04kk.</li>
+    <li><span class="when">Oct 15 · 14:04–15:31</span>Duo Burster Spectres: 816 kills, party −530k. Burster bestiary complete. New Falcon Coif and Falcon Bow, both imbued. Level 323.</li>
+    <li><span class="when">Oct 17</span>Level 325. Bought Unerring Dragon Scale Armor and Falcon Greaves; bank 22.3kk. Wheel 285. Xee Ru 250.</li>
+  </ul>
+</section>
+
+<!-- ============ CHAPTER: REFERENCE ============ -->
+<div class="chapter" id="ch-ref">
+  <span class="ch-k">Chapter 6</span>
+  <h2 class="ch-t">Reference</h2>
+  <p>The account, training, the 2026 rule changes, and where every number on this page comes from.</p>
+</div>
+
+<section id="account">
+  <div class="sec-head">
+    <div class="eyebrow">Auction, account and snapshots</div>
+    <h2>Account</h2>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>From the auction <a class="small" href="https://www.tibia.com/charactertrade/?subtopic=currentcharactertrades&amp;page=details&amp;auctionid=2267198">#2267198</a></h3>
+      <div class="scroll">
+        <table>
+          <tbody>
+            <tr><td>Auction</td><td>Ended Sep 28, 20:00 CEST. 100 TC minimum, no bids on Sep 27; planned max bid 1,287 TC</td></tr>
+            <tr><td>Created</td><td>2013</td></tr>
+            <tr><td>Skills then</td><td>Distance 115, shielding 102</td></tr>
+            <tr><td>Blessings</td><td>5/7</td></tr>
+            <tr><td>Charms</td><td>Freeze unlocked, 320 points spent</td></tr>
+            <tr><td>Boss points</td><td>240</td></tr>
+            <tr><td>Achievements</td><td>197 then, 208 now; 13 titles unlocked</td></tr>
+            <tr><td>Mounts / outfits</td><td>10 / 22</td></tr>
+            <tr><td>Extras</td><td>Weekly task expansion, 15 prey wildcards</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">After a trade, VIP and friend lists are wiped and the character shows "(traded)" for 30 days.</p>
+    </div>
+    <div style="display:grid;gap:14px;align-content:start">
+      <div class="card">
+        <h3>Same account</h3>
+        <ul class="small">
+          <li><b>Aol Var</b>, Master Sorcerer 160, Refugia (last login Oct 17)</li>
+          <li><b>Aidmo Tana</b>, Refugia</li>
+          <li><b>Keaf Kheor</b>, Nevia</li>
+        </ul>
+        <p class="small muted">Only one character can be online at a time.</p>
+      </div>
+      <div class="card">
+        <h3>Refugia</h3>
+        <dl class="kv small">
+          <dt>Type</dt><dd>Optional PvP, Europe, BattlEye since 2017</dd>
+          <dt>Online</dt><dd>262 when checked on Oct 17 (record 1,050 in 2009)</dd>
+          <dt>Created</dt><dd>July 2005</dd>
+          <dt>Merges</dt><dd>Not part of the Oct 22 world merges</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <details>
+    <summary>Screenshot snapshots, Oct 8 to Oct 17</summary>
+    <div class="grid2" style="margin-top:10px">
+      <div class="card">
+        <h3>Oct 17 <span class="tag">level 325</span></h3>
+        <ul class="small">
+          <li>563,092,041 exp, 27% into 325; 3,805,459 to 326. Stamina 41:25, offline training 1:00, XP Boost on.</li>
+          <li>HP 3,895, mana 5,070, speed 479, free capacity 3,748 oz. Bank 22,338,839.</li>
+          <li>Wheel 285: HP +320, mana +225, capacity +200.</li>
+          <li>Swap set on screen: distance 154 in combat, attack value 352, no leech, crits 5% / +10%.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Oct 15 <span class="tag">level 323</span></h3>
+        <ul class="small">
+          <li>552,100,119 exp, 16% into 323. HP 3,871, mana 5,040, speed 477.</li>
+          <li>Depot set: distance 117, attack value 285, protection physical 5%, earth 12%, energy 12%, ice 5%.</li>
+          <li>Quest log unchanged since Oct 13.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Oct 13 <span class="tag">level 319</span></h3>
+        <ul class="small">
+          <li>533,844,380 exp. Main set out of combat: distance 125, ML 31, shielding 102, attack value 302.</li>
+          <li>Protection: physical 14.19%, death 11.54%, earth 7%, energy 6%, fire 2%.</li>
+          <li>589 distilled ultimate mana potions in stock. 85,839,669 gp.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Oct 8–11 <span class="tag">levels 310–316</span></h3>
+        <ul class="small">
+          <li>Oct 11: distance 174 and ML 34 in combat with Sharpshooter and Plasma; attack value 392.</li>
+          <li>Oct 8: 489,223,095 exp. Depot 52 items, stash 15,569 items. Free capacity 1,336 oz.</li>
+          <li>VIP: Xee Ru, Ven Vi, Gzszi.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section id="training">
+  <div class="sec-head">
+    <div class="eyebrow">Exercise weapon prices raised 25% on Oct 6</div>
+    <h2>Skill training</h2>
+  </div>
+  <div class="scroll">
+    <table class="t-mid">
+      <thead><tr><th>Exercise weapon</th><th class="n">Price (gold)</th><th>Burn time</th><th class="n">Per hour</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Regular</td><td class="n">434,028</td><td>16 min 40 s</td><td class="n">~1.56kk</td></tr>
+        <tr><td class="name">Durable</td><td class="n">1,562,500</td><td>1 h</td><td class="n">1.56kk</td></tr>
+        <tr><td class="name">Lasting</td><td class="n">12,500,000</td><td>8 h</td><td class="n">1.56kk</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="small" style="margin:0;padding-left:1.2em;display:grid;gap:6px;max-width:80ch">
+    <li>All three cost the same per hour; buy by convenience. A house dummy gives +10% skill but doesn't change burn time.</li>
+    <li>Both monster hits and exercise weapons double during double skill events, so save weapons for those.</li>
+    <li>Magic level 31 is cheap to raise with exercise rods or wands, and it powers Divine Barrage, Caldera and every heal. Price it on the <a href="https://tibiaroute.com/calculators/excercise-weapon-skill-training">TibiaRoute calculator</a>.</li>
+  </ul>
+</section>
+
+<section id="changes">
+  <div class="sec-head">
+    <div class="eyebrow">June 16 vocation update + July 7 nerf · no further major balance planned (Sep 1)</div>
+    <h2>2026 changes and news</h2>
+  </div>
+  <div class="grid2">
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Change</th><th>Value now</th></tr></thead>
+        <tbody>
+          <tr><td>Sharpshooter becomes a stance</td><td>+32% distance (40% at release)</td></tr>
+          <tr><td>Divine Defiance stance</td><td>6% of distance as holy/healing ML (was 7.5%), 12% dodge (was 15%)</td></tr>
+          <tr><td>Divine / Ethereal Barrage</td><td>New. Base 130 (was 140) / 40, 4 s CD</td></tr>
+          <tr><td>Divine Caldera</td><td>Base 150 (was 160)</td></tr>
+          <tr><td>Salvation</td><td>Base 500 healing (was 400)</td></tr>
+          <tr><td>Swift Foot</td><td>Attack and cast while active, −30% damage, CD 4 s (only actually applied on Oct 6)</td></tr>
+          <tr><td>Market fee (Oct 6)</td><td>2.5% per created offer, max 2,500,000 (was 2%, max 1kk)</td></tr>
+          <tr><td>Exercise weapons (Oct 6)</td><td>+25%: 434,028 / 1,562,500 / 12,500,000 gold</td></tr>
+          <tr><td>Storm arrows (13 squares)</td><td>Shatterstorm 27 atk, lvl 50, 45 gp; elemental 21 atk, lvl 125, 75 gp</td></tr>
+          <tr><td>Charms with area ammo</td><td>Main target only (except Low Blow)</td></tr>
+          <tr><td>Combat modes</td><td>Removed: +20% attack, shields +30% defense</td></tr>
+          <tr><td>Superior Mana Potion</td><td>254 gp, 240–360 mana, lvl 100</td></tr>
+          <tr><td>Group exp bonus</td><td>2 vocations 35% (was 30%), 3 vocations 70%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Kusnier's videos</h3>
+      <p class="small"><b>Paladin Guide 300–400</b> (Mar 31, 2024): keep the quest list and spot names (Asura Palace and Mirror, Werelions, Warzones, Lower Roshamuul, Drefia Grim Reapers, Medusa Tower). Ignore its gear, prices, exp numbers and spells: it predates Weapon Proficiency, Bounty tasks, the Multi-Action Button, the charm rework and the whole rebalance.</p>
+      <p class="small">Watch the <a href="https://www.youtube.com/watch?v=1r2BMjvPSfY">Paladin Rebalance Deep-Dive</a> (Jun 13, 2026) instead, remembering it came before the July nerfs. For live numbers use <a href="https://tibiapal.com/hunting">tibiapal.com</a>; he also streams paladin on <a href="https://kick.com/Kusnier">Kick</a> and posts on <a href="https://www.youtube.com/c/Kusnierr/videos">YouTube</a>.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Recent tibia.com news that affects you</h3>
+    <ul class="small">
+      <li><b>Oct 13:</b> bug fixes (Mirrored Nightmare, NPC trade window selection). Nothing for paladins.</li>
+      <li><b>Oct 7:</b> Orcsoberfest Oct 9–16, then +50% exp for Demon-class creatures from Oct 16 to Oct 19 server save.</li>
+      <li><b>Oct 6:</b> Market fee and exercise weapon prices raised; Swift Foot cooldown fixed to 4 s; Echo Wardens back to their old behaviour.</li>
+      <li><b>Oct 1:</b> Annual Autumn Vintage, Oct 1–8 and Oct 17–24: potions +33% for 7 days on worlds that succeed.</li>
+      <li><b>Sep 21:</b> 17 worlds merge into 7 from Oct 22. Refugia isn't one of them.</li>
+      <li><b>Sep 23:</b> Community Manager Liamas left CipSoft; Rejana and Mirade cover until a successor is found.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="fresh">
+  <div class="sec-head">
+    <div class="eyebrow">How this page stays current</div>
+    <h2>Keeping it fresh</h2>
+  </div>
+  <p class="small">Write <b>"update Veritass"</b> in any chat with a screenshot: I check level, deaths and logins on TibiaData and GuildStats, read your Skills window, Hunt Analyser and Looks, and update this page. A page can't fetch live game data on its own, and skills aren't published anywhere I can read.</p>
+  <div class="scroll">
+    <table class="t-mid">
+      <thead><tr><th>Send</th><th>Updates</th><th>Your effort</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Skills window screenshot</td><td>Level, exp, HP, mana, skills, leech, protections, capacity</td><td>One upload</td></tr>
+        <tr><td class="name">Hunt Analyser / Party Hunt</td><td>Hunt log, profit, exp per hour, split between you and Xee Ru</td><td>One upload or paste</td></tr>
+        <tr><td class="name">Look at items (server log)</td><td>Gear table, imbuement timers</td><td>Paste the log</td></tr>
+        <tr><td class="name">Wheel, quest log, bestiary</td><td>Wheel points, quests, charm progress</td><td>One upload</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Optional: GitHub Actions tracker for level and deaths every 6 h</summary>
+    <div style="display:grid;gap:8px">
+      <pre class="code" id="yaml">name: veritass-tracker
+on:
+  schedule: [{ cron: "0 */6 * * *" }]
+  workflow_dispatch:
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p data
+          curl -sf https://api.tibiadata.com/v4/character/Veritass \
+            | jq -c '{t: .information.timestamp, level: .character.character.level, last_login: .character.character.last_login, deaths: [.character.deaths[] | {time, level, reason}]}' \
+            &gt;&gt; data/veritass.jsonl
+      - run: |
+          git config user.name tracker-bot
+          git config user.email tracker-bot@users.noreply.github.com
+          git add data &amp;&amp; (git commit -m "snapshot $(date -u +%FT%TZ)" &amp;&amp; git push || true)</pre>
+      <div><button type="button" class="btn" data-copy="yaml">Copy workflow</button></div>
+      <p class="small muted">If the repo is public, "update Veritass" can also read that file and chart your level over time.</p>
+    </div>
+  </details>
+</section>
+
+<section id="sources">
+  <div class="sec-head">
+    <div class="eyebrow">Where the numbers come from</div>
+    <h2>Sources</h2>
+  </div>
+  <ul class="sources small">
+    <li><a href="https://api.tibiadata.com/v4/character/Veritass">TibiaData</a>: Veritass, Xee Ru, Aol Var, Refugia, boosted creature and boss, news; read Oct 17</li>
+    <li>tibia.com news via TibiaData: <a href="https://www.tibia.com/news/?subtopic=newsarchive">Orcsoberfest (Oct 7)</a>, Annual Autumn Vintage (Oct 1), Market Fee and Exercise Weapons (Oct 1), Fixes and Changes (Oct 6, 13), Game World Merge Announcement (Sep 21)</li>
+    <li><a href="https://guildstats.eu/character?nick=Veritass">GuildStats</a></li>
+    <li><a href="https://tibiapal.com/hunting">TibiaPal hunting places</a> (marked as data from before the 2026 rebalance), <a href="https://tibiapal.com/equipment">equipment</a>, <a href="https://tibiapal.com/wheels#Paladin">Wheel builds</a> and <a href="https://tibiapal.com/wheel-planner">planner</a></li>
+    <li><a href="https://www.tibiamarket.top/">Tibia Market Tracker</a> API: Refugia prices (data from Sep 14) for gear and all imbuement materials, read Oct 17</li>
+    <li><a href="https://tibia.fandom.com/wiki/Imbuing">TibiaWiki: Imbuing</a> (materials, fees), <a href="https://tibia.fandom.com/wiki/Blessings">Blessings</a> (price formula), <a href="https://tibia.fandom.com/wiki/Rashid">Rashid</a>, <a href="https://tibia.fandom.com/wiki/Events">Events</a></li>
+    <li><a href="https://www.tibiawiki.com.br/">TibiaWiki BR</a>: Midnight, Dawnfire and Frost Flower Asura, Burster Spectre, Frazzlemaw, Silencer; item pages for Unerring, Falcon set, Hellstalker Visor, Inferniarch and Falcon Bow, Bow of Cataclysm, Stoic Iks Boots, Stag set, Gnome Armor, Eldritch Breeches, Foxtail Amulet; Imbuements</li>
+    <li><a href="https://www.tibia.com/library/?subtopic=spells&amp;vocation=Paladin">Paladin spell library</a>, <a href="https://tibia.fandom.com/wiki/Vocation_Adjustments_2026">Vocation Adjustments 2026</a>, TibiaRoute <a href="https://tibiaroute.com/news/Vocation-Adjustments-Release-State-8833-E95k">release state</a> and <a href="https://tibiaroute.com/news/Vocation-Adjustments-Changes-8872-J8pb">July changes</a></li>
+    <li><a href="https://tibia.fandom.com/wiki/Wheel_of_Destiny">Wheel of Destiny</a>, <a href="https://tibia.fandom.com/wiki/Gift_of_Life">Gift of Life</a>, <a href="https://tibia.fandom.com/wiki/Basic_Mod">Basic</a> and <a href="https://tibia.fandom.com/wiki/Supreme_Mod">Supreme Mods</a>, <a href="https://tibia.fandom.com/wiki/Minor_Charms">Minor Charms</a>, <a href="https://tibia.fandom.com/wiki/Party_Experience_Sharing">Party Experience Sharing</a>, <a href="https://tibia.fandom.com/wiki/Access_Quests">Access Quests</a></li>
+    <li><a href="https://tibiaroute.com/hunting-places">TibiaRoute hunt finder</a> and <a href="https://tibiaroute.com/calculators/excercise-weapon-skill-training">exercise calculator</a></li>
+  </ul>
+</section>
+
+<footer class="small muted">
+  <p>Level, HP, mana and Wheel from your Oct 17 screenshot; TibiaData agrees on 325, with no deaths since Oct 9. Gear and imbuement timers from your Oct 17 Looks; main-set skills from Oct 13. Market prices from the Tibia Market tracker (Refugia data from Sep 14) move daily; check in game before buying. Events and boosted creatures as of Oct 17, 2026.</p>
+</footer>
+
+</main>
+</div>
+
+<script>
+(function () {
+  // ---------- storage ----------
+  function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? d : v; } catch (e) { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  // ---------- copy ----------
+  function flash(b, label) {
+    var t = b.textContent; b.classList.add("ok");
+    if (label) b.textContent = label;
+    setTimeout(function () { b.classList.remove("ok"); if (label) b.textContent = t; }, 1200);
+  }
+  function selectText(el) { try { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {} }
+  function copy(text, btn, el, label) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { flash(btn, label); }, function () { selectText(el); });
+      else selectText(el);
+    } catch (e) { selectText(el); }
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("button.inc");
+    if (b) { e.preventDefault(); copy(b.getAttribute("data-w"), b, b); return; }
+    var c = e.target.closest("[data-copy]");
+    if (c) { var el = document.getElementById(c.getAttribute("data-copy")); copy(el.textContent, c, el, "Copied"); }
+  });
+
+  // ---------- pre-hunt checklist ----------
+  var ph = load("veritass-hub-prehunt", {});
+  var phBoxes = document.querySelectorAll("#prehuntList input[data-ph]");
+  function phRender() {
+    var n = 0;
+    phBoxes.forEach(function (b) { b.checked = !!ph[b.getAttribute("data-ph")]; b.closest("label").classList.toggle("done", b.checked); if (b.checked) n++; });
+    document.getElementById("phCount").textContent = n + " of " + phBoxes.length + " done";
+    document.getElementById("phBar").style.width = Math.round(n / phBoxes.length * 100) + "%";
+  }
+  phBoxes.forEach(function (b) { b.addEventListener("change", function () { ph[b.getAttribute("data-ph")] = b.checked; save("veritass-hub-prehunt", ph); phRender(); }); });
+  document.getElementById("phReset").addEventListener("click", function () { ph = {}; save("veritass-hub-prehunt", ph); phRender(); });
+  phRender();
+
+  // ---------- gear plan ----------
+  var TC = 44194;
+  var gear = load("veritass-hub-gear", { unit: "gp", done: {} });
+  if (!gear.done) gear.done = {};
+  // Oct 17: Unerring Dragon Scale Armor and Falcon Greaves bought
+  if (!gear.m17) { gear.done.unerring = true; gear.done.falcon = true; gear.m17 = true; save("veritass-hub-gear", gear); }
+  function fmt(gp) { return gear.unit === "tc" ? Math.round(gp / TC).toLocaleString("en-US") + " TC" : gp.toLocaleString("en-US") + " gp"; }
+  function gearRender() {
+    document.querySelectorAll(".price[data-gp]").forEach(function (el) { el.textContent = fmt(+el.getAttribute("data-gp")); });
+    document.querySelectorAll("td[data-gp], span[data-gp]:not(.price)").forEach(function (el) { var gp = +el.getAttribute("data-gp"); el.textContent = gear.unit === "tc" ? Math.round(gp / TC).toLocaleString("en-US") + " TC" : gp.toLocaleString("en-US"); });
+    var left = 0;
+    document.querySelectorAll("#plan > li").forEach(function (li) {
+      var id = li.getAttribute("data-id"), d = !!gear.done[id];
+      li.classList.toggle("done", d);
+      document.getElementById("done-" + id).checked = d;
+      if (!d) left += +li.getAttribute("data-price");
+    });
+    document.getElementById("left").textContent = fmt(left);
+    document.querySelectorAll("#unitSeg button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-unit") === gear.unit ? "true" : "false"); });
+  }
+  document.querySelectorAll("#unitSeg button").forEach(function (b) { b.addEventListener("click", function () { gear.unit = b.getAttribute("data-unit"); save("veritass-hub-gear", gear); gearRender(); }); });
+  document.querySelectorAll("#plan input[type=checkbox]").forEach(function (box) { box.addEventListener("change", function () { gear.done[box.id.replace("done-", "")] = box.checked; save("veritass-hub-gear", gear); gearRender(); }); });
+  gearRender();
+
+  // ---------- wheel ----------
+  (function () {
+    var RINGS = { 1: [22, 60], 2: [60, 108], 3: [108, 158], 4: [158, 208], 5: [208, 256] };
+    var DOM = { TR: { name: "Divine Grenade", color: "var(--tr)" }, TL: { name: "Gift of Life", color: "var(--tl)" }, BL: { name: "Divine Empowerment", color: "var(--bl)" }, BR: { name: "Avatar of Light", color: "var(--br)" } };
+    var PERK = {
+      VR: "Vessel Resonance: turns on one gem mod in this domain", "+1": "+1 distance fighting", LL: "+0.75% life leech", ML: "+0.25% mana leech",
+      DB: "Divine Barrage augment: +8% base damage, +12% with both slices", EB: "Ethereal Barrage augment: +10% life leech, then +10% crit chance",
+      DC: "Divine Caldera augment: −20 mana, then +10% base damage", DZ: "Divine Dazzle augment: +2 targets, then +4 s and −8 s cooldown",
+      SES: "Strong Ethereal Spear augment: −2 s cooldown, then +380% base damage",
+      PT: "Positional Tactics: +3 distance while nothing is adjacent, otherwise +3 holy and healing magic level", BM: "Ballistic Mastery: +4% physical and holy pierce with a bow"
+    };
+    // [id, domain, ring, angle from, angle to (deg, counter-clockwise from east), points, dedication, perk] — slice data read from the TibiaPal planner
+    var S = [
+      ["TR1","TR",1,0,90,50,"Mitigation","DC"],["TR2a","TR",2,0,45,75,"Capacity","LL"],["TR2b","TR",2,45,90,75,"Capacity","VR"],
+      ["TR3a","TR",3,0,30,100,"Mana","VR"],["TR3b","TR",3,30,60,100,"Mana","DZ"],["TR3c","TR",3,60,90,100,"Mana","+1"],
+      ["TR4a","TR",4,12,45,150,"Hit Points","ML"],["TR4b","TR",4,45,78,150,"Hit Points","VR"],["TR5","TR",5,12,78,200,"Hit Points + Mana","EB"],
+      ["TL1","TL",1,90,180,50,"Capacity","VR"],["TL2a","TL",2,90,135,75,"Mana","LL"],["TL2b","TL",2,135,180,75,"Mana","+1"],
+      ["TL3a","TL",3,90,120,100,"Hit Points","VR"],["TL3b","TL",3,120,150,100,"Hit Points","SES"],["TL3c","TL",3,150,180,100,"Hit Points","DB"],
+      ["TL4a","TL",4,102,135,150,"Mitigation","ML"],["TL4b","TL",4,135,168,150,"Mitigation","VR"],["TL5","TL",5,102,168,200,"Hit Points + Mana","PT"],
+      ["BL1","BL",1,180,270,50,"Mana","EB"],["BL2a","BL",2,180,225,75,"Hit Points","ML"],["BL2b","BL",2,225,270,75,"Hit Points","VR"],
+      ["BL3a","BL",3,180,210,100,"Mitigation","VR"],["BL3b","BL",3,210,240,100,"Mitigation","DZ"],["BL3c","BL",3,240,270,100,"Mitigation","+1"],
+      ["BL4a","BL",4,192,225,150,"Capacity","LL"],["BL4b","BL",4,225,258,150,"Capacity","VR"],["BL5","BL",5,192,258,200,"Hit Points + Mana","DC"],
+      ["BR1","BR",1,270,360,50,"Hit Points","VR"],["BR2a","BR",2,270,315,75,"Mitigation","ML"],["BR2b","BR",2,315,360,75,"Mitigation","+1"],
+      ["BR3a","BR",3,270,300,100,"Capacity","VR"],["BR3b","BR",3,300,330,100,"Capacity","DB"],["BR3c","BR",3,330,360,100,"Capacity","SES"],
+      ["BR4a","BR",4,282,315,150,"Mana","LL"],["BR4b","BR",4,315,348,150,"Mana","VR"],["BR5","BR",5,282,348,200,"Hit Points + Mana","BM"]
+    ];
+    var P = {
+      holy: { label: "Holy", color: "var(--tl)", code: "P0Y2AAAxUQkeJtxIAN_EcCAA", where: "Top-left domain · Gift of Life",
+        fills: [["TL1",50,"Top-left, inner ring","Capacity +200 · Vessel Resonance"],["TL2b",75,"Top-left, 2nd ring, slice by the left edge","Mana +225 · +1 distance"],["TL3c",100,"Top-left, 3rd ring, slice by the left edge","HP +200 · Divine Barrage augment I"],["TL3b",60,"Top-left, 3rd ring, middle slice","HP +120. The first 25 points unlock Gift of Life"]],
+        totals: [["+320","Hit points"],["+225","Mana"],["+200","Capacity"],["0%","Mitigation"]] },
+      physical: { label: "Physical", color: "var(--bl)", code: "P0Y2DAACpGYMobTKYA8X8kAAA", where: "Bottom-left domain · Divine Empowerment",
+        fills: [["BL1",50,"Bottom-left, inner ring","Mana +150 · Ethereal Barrage augment I"],["BL2b",75,"Bottom-left, 2nd ring, slice by the bottom edge","HP +150 · Vessel Resonance"],["BL3c",100,"Bottom-left, 3rd ring, slice by the bottom edge","Mitigation +7.5% · +1 distance"],["BL2a",60,"Bottom-left, 2nd ring, slice by the left edge","HP +120. The first 25 points unlock Divine Empowerment"]],
+        totals: [["+270","Hit points"],["+150","Mana"],["0","Capacity"],["+7.5%","Mitigation"]] },
+      boss: { label: "Boss", color: "var(--br)", code: "P0Y2DAAoy8VUBUCpT7HwkAAA", where: "Bottom-right domain · Avatar of Light",
+        fills: [["BR1",50,"Bottom-right, inner ring","HP +100 · Vessel Resonance"],["BR2b",75,"Bottom-right, 2nd ring, slice by the right edge","Mitigation +5.62% · +1 distance"],["BR3b",100,"Bottom-right, 3rd ring, middle slice","Capacity +400 · Divine Barrage augment I"],["BR3c",60,"Bottom-right, 3rd ring, slice by the right edge","Capacity +240. The first 25 points unlock Avatar of Light"]],
+        totals: [["+100","Hit points"],["0","Mana"],["+640","Capacity"],["+5.62%","Mitigation"]] }
+    };
+    var NS = "http://www.w3.org/2000/svg", svg = document.getElementById("wheelSvg");
+    function pt(r, a) { var t = a * Math.PI / 180; return [r * Math.cos(t), -r * Math.sin(t)]; }
+    function arc(a0, a1, r0, r1) {
+      var p0 = pt(r1, a0), p1 = pt(r1, a1), p2 = pt(r0, a1), p3 = pt(r0, a0), f = function (p) { return p[0].toFixed(2) + " " + p[1].toFixed(2); };
+      return "M" + f(p0) + " A" + r1 + " " + r1 + " 0 0 0 " + f(p1) + " L" + f(p2) + " A" + r0 + " " + r0 + " 0 0 1 " + f(p3) + " Z";
+    }
+    function mk(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; }
+    var ringNames = { 1: "inner ring", 2: "2nd ring", 3: "3rd ring", 4: "4th ring", 5: "outer ring" };
+    var slices = {}, gS = mk("g", {}), gL = mk("g", {});
+    S.forEach(function (s) {
+      var r = RINGS[s[2]], c = pt((r[0] + r[1]) / 2, (s[3] + s[4]) / 2);
+      var path = mk("path", { d: arc(s[3], s[4], r[0], r[1]), "class": "slice", tabindex: "0", fill: DOM[s[1]].color, "fill-opacity": "0.14", "aria-label": DOM[s[1]].name + " domain, " + ringNames[s[2]] + ": " + s[6] + ", " + PERK[s[7]] }, gS);
+      var t = mk("text", { x: c[0].toFixed(1), y: c[1].toFixed(1), "class": "lbl" }, gL); t.textContent = s[7];
+      slices[s[0]] = { d: s, path: path, text: t };
+      ["mouseenter", "focus", "click"].forEach(function (ev) { path.addEventListener(ev, function () { detail(s[0]); }); });
+    });
+    mk("circle", { cx: 0, cy: 0, r: 20, "class": "hub" });
+    mk("text", { x: 0, y: 0, "class": "hubtxt" }).textContent = "285";
+    [["TR", 222, -266, "top-right"], ["TL", -222, -266, "top-left"], ["BL", -222, 262, "bottom-left"], ["BR", 222, 262, "bottom-right"]].forEach(function (c) {
+      mk("text", { x: c[1], y: c[2], "class": "corner", fill: DOM[c[0]].color }).textContent = DOM[c[0]].name;
+      mk("text", { x: c[1], y: c[2] + 16, "class": "corner-sub" }).textContent = c[3];
+    });
+    var cur = "holy", box = document.getElementById("wDetail");
+    function idle() { box.innerHTML = '<div class="k">Slice details</div><div class="small">Tap or hover a slice to see what it gives. Numbered slices are the ones this preset fills, in order.</div>'; }
+    function detail(id) {
+      var s = slices[id].d, pr = P[cur], got = 0, order = 0;
+      pr.fills.forEach(function (f, i) { if (f[0] === id) { got = f[1]; order = i + 1; } });
+      Object.keys(slices).forEach(function (k) { slices[k].path.classList.toggle("active", k === id); });
+      box.innerHTML = '<div class="k">' + esc(DOM[s[1]].name + " domain · " + ringNames[s[2]] + " · " + s[5] + " points") + '</div><div><b>Dedication:</b> ' + esc(s[6]) + '<br><b>Perk when full:</b> ' + esc(PERK[s[7]]) + '</div><div class="small muted">' +
+        esc(order ? "Step " + order + " in " + pr.label + ": put " + got + " of " + s[5] + " points here." : "Not used in the " + pr.label + " preset.") + "</div>";
+    }
+    function render(name) {
+      cur = name; var pr = P[name];
+      Object.keys(slices).forEach(function (k) { var sl = slices[k]; sl.path.setAttribute("fill-opacity", "0.14"); sl.path.classList.remove("active"); sl.text.setAttribute("class", "lbl"); sl.text.textContent = sl.d[7]; });
+      pr.fills.forEach(function (f, i) { var sl = slices[f[0]], full = f[1] >= sl.d[5]; sl.path.setAttribute("fill-opacity", full ? "0.95" : "0.55"); sl.text.setAttribute("class", "lbl pick"); sl.text.textContent = full ? String(i + 1) : (i + 1) + "·" + f[1]; });
+      document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", t.getAttribute("data-p") === name ? "true" : "false"); });
+      var h = '<h3>' + esc(pr.label) + '</h3><p class="small muted">' + esc(pr.where) + '. Fill in this order:</p><ol style="margin-top:10px">';
+      pr.fills.forEach(function (f, i) { h += '<li><span class="dnum" style="background:' + pr.color + '">' + (i + 1) + '</span><div><b>' + esc(f[2]) + '</b> <span class="pts">' + f[1] + " / " + slices[f[0]].d[5] + '</span><br><span class="small">' + esc(f[3]) + "</span></div></li>"; });
+      h += '</ol><div class="totals">' + pr.totals.map(function (t) { return "<div><b>" + t[0] + "</b><span>" + t[1] + "</span></div>"; }).join("") + "</div>";
+      document.getElementById("wSteps").innerHTML = h;
+      idle(); save("veritass-hub-wheel", name);
+    }
+    document.querySelectorAll(".tab").forEach(function (t) { t.addEventListener("click", function () { render(t.getAttribute("data-p")); }); });
+    var codes = document.getElementById("wCodes");
+    ["holy", "physical", "boss"].forEach(function (k) {
+      var pr = P[k], card = document.createElement("div"); card.className = "card";
+      card.innerHTML = '<h3 style="color:' + pr.color + '">' + pr.label + ' code</h3><div class="code-row"><code class="c" id="code-' + k + '">' + pr.code + '</code><button class="btn" type="button" data-copy="code-' + k + '">Copy</button></div>' +
+        '<div class="small"><a href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">TibiaPal planner</a> · <a href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">tibia.com planner</a></div>';
+      codes.appendChild(card);
+    });
+    var start = load("veritass-hub-wheel", "holy"); render(P[start] ? start : "holy");
+  })();
+
+  // ---------- quests + hunts ----------
+  var W = "https://tibia.fandom.com/wiki/";
+  // n name, w wiki page, lvl, start, opens, pre (needs first), x Xee Ru's quest log on Oct 8
+  var Q = {
+    dd:   { n: "Dangerous Depths", w: "Dangerous_Depths_Quest/Spoiler", lvl: "100 (rec. 200)", start: "Gnome Deep Hub, from Kazordoon", opens: "Warzones 4–6, Diremaw tasks, Powerful Featherweight", x: "started", vs: "started" },
+    btl:  { n: "Between the Lines", w: "Between_the_Lines_Quest/Spoiler", lvl: "200", start: "Wyrdin in Edron", opens: "Book World II–IV, Crumbling Caverns", pre: "Druids need Sling Herb + Star Herb. Familiar is locked mid-quest" },
+    gv1:  { n: "Grimvale: An Ancient Feud", w: "Grimvale_Quest/Spoiler", lvl: "rec. 100–200", start: "Domizian in Darashia", opens: "Lion Sanctum (werelions)", pre: "Needs 300 werehyaena kills", vs: "started" },
+    gv2:  { n: "Grimvale: Paradise Lost", w: "Grimvale_Quest/Spoiler", lvl: "rec. 100", start: "Domizian, then Tonar in Ankrahmun", opens: "Oskayaat: weretigers, werecrocodiles", pre: "After An Ancient Feud" },
+    hod:  { n: "Heart of Destruction", w: "Heart_of_Destruction_Quest/Spoiler", lvl: "150 (rec. 250+)", start: "", opens: "Powerful Strike, Void, Vampirism, Epiphany" },
+    fk:   { n: "Forgotten Knowledge", w: "Forgotten_Knowledge_Quest/Spoiler", lvl: "rec. 200", start: "", opens: "Intricate imbuing (part 1); Last Lore Keeper unlocks Powerful Strike/Epiphany", vs: "started" },
+    monk: { n: "The Way of the Monk", w: "The_Way_of_the_Monk_Quest", lvl: "275", start: "", opens: "+10 Wheel points, 847.8k exp" },
+    ape:  { n: "The Ape City", w: "The_Ape_City_Quest/Spoiler", lvl: "rec. 130", start: "", opens: "Deeper Banuta" },
+    nf:   { n: "The New Frontier", w: "The_New_Frontier_Quest/Spoiler", lvl: "77", start: "", opens: "Zao, Lizard City" },
+    wote: { n: "Wrath of the Emperor", w: "Wrath_of_the_Emperor_Quest/Spoiler", lvl: "80", start: "", opens: "Razachai, Draken Walls, Brimstone Bugs, Wote 8, lower Banuta", pre: "Needs Children of the Revolution first" },
+    inq:  { n: "The Inquisition", w: "The_Inquisition_Quest/Spoiler", lvl: "100+", start: "", opens: "Inquisition hunts, Henricus blessing" },
+    td:   { n: "Threatened Dreams", w: "Threatened_Dreams_Quest/Spoiler", lvl: "30 (rec. 100)", start: "Maelyrra at the Donut Gate, Feyrist", opens: "Candia (Nibblemaws), Dream Courts prerequisite" },
+    tm:   { n: "Twenty Miles Beneath the Sea", w: "Twenty_Miles_Beneath_the_Sea_Quest/Spoiler", lvl: "rec. 100", start: "", opens: "Seacrest Grounds" },
+    lb:   { n: "Liquid Black", w: "Liquid_Black_Quest/Spoiler", lvl: "rec. 130", start: "", opens: "Deeplings Library (with the world change)" },
+    rv:   { n: "Rathleton votes (50)", w: "Rathleton_Quest/Spoiler", lvl: "—", start: "Marvin, Rathleton Magistrate", opens: "Oramond Catacombs", pre: "Votes come from Oramond Quest tasks", x: "started" },
+    dt:   { n: "Dark Trails", w: "Dark_Trails_Quest/Spoiler", lvl: "", start: "", opens: "Abandoned Sewers, Fury Dungeon" },
+    isy:  { n: "In Service of Yalahar", w: "In_Service_of_Yalahar_Quest/Spoiler", lvl: "50 (rec. 120)", start: "", opens: "Yalahar quarters (Grim Reapers)", x: "started", vs: "started" },
+    exp:  { n: "The Explorer Society", w: "The_Explorer_Society_Quest/Spoiler", lvl: "20 / 80", start: "", opens: "Yalahar travel, Relic Hunter rank (Dream Courts)", x: "started" },
+    ap:   { n: "Asura Palace", w: "Asura_Palace_Quest/Spoiler", lvl: "rec. 200", start: "Asura Palace", opens: "Asura Mirror (with The Lost Brother)" },
+    lbro: { n: "The Lost Brother", w: "The_Lost_Brother_Quest/Spoiler", lvl: "rec. 200", start: "Asura Palace", opens: "Asura Mirror, Marapur" },
+    wtt:  { n: "Within the Tides", w: "Within_the_Tides_Quest/Spoiler", lvl: "rec. 150", start: "North-east Tiquanda", opens: "Nagas, Marapur Turtles", pre: "Needs The Lost Brother and a Helmet of the Deep or Depth Galea" },
+    gal:  { n: "Adventures of Galthen", w: "Adventures_of_Galthen_Quest/Spoiler", lvl: "rec. 250", start: "Sealed ruins in Tiquanda (bring 5 nails)", opens: "Iksupan" },
+    fos:  { n: "Feaster of Souls", w: "Feaster_of_Souls_Quest/Spoiler", lvl: "250", start: "", opens: "Venore and Port Hope Flimsies", pre: "Needs Lion's Rock, Sea of Light, Shattered Isles (Ramoa), Blood Brothers 4" },
+    dc:   { n: "The Dream Courts", w: "The_Dream_Courts_Quest/Spoiler", lvl: "250", start: "Myzzi, north-east of Edron", opens: "Summer and Winter Court, Powerful Vibrancy", pre: "Long chain; see the card above", x: "started" }
+  };
+  var QORDER = ["dd", "btl", "gv1", "hod", "fk", "monk", "td", "tm", "isy", "exp", "rv", "dt", "lb", "ap", "lbro", "wtt", "gv2", "gal", "fos", "dc", "ape", "nf", "wote", "inq"];
+  var done = load("veritass-hub-quests", null);
+  if (!done || !done.v || !done.x) done = { v: { ape: true, nf: true, wote: true, inq: true, btl: true }, x: {} };
+  // Oct 13 quest log: Between the Lines completed for Veritass
+  if (!done.m13) { done.v.btl = true; done.m13 = true; save("veritass-hub-quests", done); }
+
+  // Access per spot: q quests, k kind (open|level|event|nc), t tag text, h how, u unverified
+  var OPEN = function (h, u) { return { q: [], k: "open", t: "Open", h: h, u: u }; };
+  var A = {
+    yal: { q: ["isy"], h: "Cemetery Quarter. Its gate works after the right mission." },
+    orw: { q: [], k: "event", t: "Raid", h: "Rathleton. Only while the raid is running." },
+    ori: OPEN("Same Oramond spawn while no raid runs."),
+    glo: OPEN("Rathleton. TibiaWiki has no page for this spot.", true),
+    pir: OPEN("The Wreckoning, north of Kilmaresh (ship to Issavi).", true),
+    nc:  { q: [], k: "nc", t: "Not checked", h: "Access not checked." },
+    brim:{ q: ["nf", "wote"], h: "Beneath Razachai." },
+    deep:{ q: ["lb"], k: "event", t: "World change", h: "Fiehonja. Also needs the Deeplings world change at stage 2 or 3." },
+    liz: { q: ["nf"], h: "Zao. Inside Razachai also needs Wrath of the Emperor.", u: true },
+    bw:  { q: ["btl"], h: "Teleport in Edron with the Magic Bookmark. Level 200." },
+    wl:  { q: ["gv1"], h: "Lion Sanctum under Lion's Rock, north-west of Darashia." },
+    can: { q: ["td"], h: "Chocolate Mines on Candia. Donut Gate needs the Gingerbread Key." },
+    hya: OPEN("Hyaena Lairs under the desert north of Darashia.", true),
+    asu: OPEN("Tiquanda. No access quest."),
+    cc:  { q: ["btl"], h: "The “Pen and Sword” part of Between the Lines." },
+    drk: { q: ["nf", "wote"], h: "Around Razachai." },
+    dire:{ q: ["dd"], h: "Gnome Deep Hub task areas. The daily Diremaw task earns warzone points." },
+    ban8:{ q: ["ape", "wote"], h: "The 4 deepest floors need Wrath of the Emperor too." },
+    ban6:{ q: ["ape"], h: "Deeper Banuta." },
+    med: OPEN("South-west Tiquanda. Hole north of the tower, then a tunnel."),
+    sea: { q: ["tm"], h: "Seacrest Grounds, west of Rathleton. Opens in parts." },
+    wz:  { q: ["dd"], h: "15 faction points, then a Fragile Lava Funnel gives 8 h per entry." },
+    lrosh: OPEN("Ship from Thais (210 gp). Right after the ramp from the camp. Both deaths were here."),
+    mir: { q: ["ap", "lbro"], k: "level", t: "Lvl 250", h: "Asura Vaults. Use the mirror on the palace ground floor." },
+    rosw:OPEN("Ship from Thais. Opened for the server by the Roshamuul world change.", true),
+    cat: { q: ["rv"], h: "Oramond Dungeon. Monsters change every 14 days with the vote." },
+    sew: { q: ["dt"], h: "Via the Rathleton Sewers under Lower Rathleton." },
+    w8:  { q: ["nf", "wote"], h: "Zao, inside the Wrath of the Emperor areas." },
+    gaz: OPEN("Haunted Temple, north of Port Hope. Portals and Buried Cathedral need The Dream Courts.", true),
+    carn:{ q: [], k: "level", t: "Lvl 250", h: "Under northern Tiquanda." },
+    spike:{ q: [], k: "level", t: "Lvl 80+", h: "Last 3 floors of The Spike (Kazordoon). Level gate only." },
+    vfl: { q: ["fos"], k: "level", t: "Lvl 250", h: "Brain Grounds: invisible teleport north of the Jakundaf Desert." },
+    pfl: { q: ["fos"], k: "level", t: "Lvl 250", h: "Netherworld: invisible teleport east of Banuta." },
+    court:{ q: ["dc"], k: "level", t: "Lvl 250", h: "Court of Summer or Winter." },
+    naga:{ q: ["lbro", "wtt"], h: "Temple of the Moon Goddess, under Marapur." },
+    turt:{ q: ["lbro", "wtt"], h: "Marapur islands. Naga boats move you between areas." },
+    iks: { q: ["gal"], h: "Iksupan, Tiquanda." },
+    osk: { q: ["gv1", "gv2"], h: "Oskayaat. Get ferryman Tonar's ocarina back and he sails you there." },
+    rip: OPEN("Haunted Cellar under the abandoned house in the Outlaw Camp (Venore).", true),
+    fury:{ q: ["dt"], h: "North of Rathleton, opened during Dark Trails. The Xee Ru page lists it as Fury Gate only; check in game." },
+    nmi: { q: [], k: "event", t: "Event", h: "Only during the Nightmare Isles mini world change." }
+  };
+  // [name, level, exp kk/h, loot k/h, setup, access key, flags (m = money, d = druid-friendly), note]
+  var H = [
+    ["Yalahar Grim Reapers (Firestorm)", 150, 2.75, -400, "Firestorm · Divine", "yal", "", "Loses money"],
+    ["Oramond Wildlife Raid (inactive)", 150, 2.6, 300, "Diamond · Ethereal", "ori", "", ""],
+    ["Glooth Tower", 150, 2.1, 400, "Diamond · Ethereal", "glo", "", "TibiaRoute: 2.2kk / 303k"],
+    ["Pirats Wreckoning", 150, 1.9, 600, "Diamond · Ethereal, Divine", "pir", "m", "TibiaRoute: 2.4kk / 553k"],
+    ["Elder Wyrms Drefia", 150, 1.8, 200, "Diamond · Ethereal", "nc", "", ""],
+    ["Otherworld Kazordoon (Dwarf Bridge)", 150, 1.4, 250, "Diamond · Ethereal", "nc", "", ""],
+    ["Brimstone Bugs (WotE)", 150, 1.3, 1000, "Diamond · Ethereal", "brim", "m", "Low exp, high loot"],
+    ["Deeplings Library", 120, 1.6, 800, "Shatterstorm · Ethereal", "deep", "m", "Deeplings are ice-immune: Xee uses earth"],
+    ["Lizard City", 120, 1.6, 700, "Crystalline · Ethereal, Divine", "liz", "m", ""],
+    ["Oramond Wildlife Raid (active)", 180, 4.5, 1000, "Diamond · Ethereal", "orw", "m", ""],
+    ["Oramond Golem Raid (active)", 180, 3.3, 1000, "Diamond · Ethereal", "orw", "m", ""],
+    ["Book World: Chapter III", 200, 3.9, 400, "Diamond · Ethereal", "bw", "d", ""],
+    ["Yalahar Grim Reapers", 200, 3.4, -200, "Diamond · Ethereal", "yal", "d", "Loses money; exp only"],
+    ["Werelions −1", 200, 3.2, 300, "Diamond · Ethereal", "wl", "", "Ice 125%: strong for Xee. TibiaRoute: 1.8kk / 419k"],
+    ["Candia Nibblemaws", 200, 3.2, 250, "Diamond · Ethereal", "can", "", ""],
+    ["Werehyaenas South", 200, 3.1, 300, "Diamond · Divine", "hya", "", "Ice 120%, holy 125%: best duo fit"],
+    ["Asura Palace", 200, 3.1, 100, "Diamond · Ethereal", "asu", "", "Demon class: +50% exp until Oct 19 server save. Holy only 70% on Midnight and Frost Flower"],
+    ["Crumbling Caverns", 200, 2.9, 300, "Diamond · Ethereal", "cc", "d", ""],
+    ["Draken Walls", 200, 2.8, 750, "Diamond · Ethereal", "drk", "md", "Ice 105–110%"],
+    ["Werelions −2", 200, 2.8, 300, "Diamond · Ethereal", "wl", "", ""],
+    ["Diremaw Task Area", 200, 2.7, 600, "Diamond · Ethereal", "dire", "md", "TibiaRoute: 2kk / 500k"],
+    ["Deeper Banuta −8", 200, 2.6, 300, "Diamond · Ethereal", "ban8", "m", "TibiaRoute: 2.8kk / 943k"],
+    ["Book World: Chapter II", 200, 2.6, 200, "Diamond · Ethereal", "bw", "d", ""],
+    ["Medusa Tower", 200, 2.6, 100, "Diamond · Ethereal", "med", "", ""],
+    ["Werehyaenas North", 200, 2.5, 250, "Diamond · Divine", "hya", "d", ""],
+    ["Barkless Elves", 200, 2.4, -300, "Diamond · Ethereal", "nc", "", "Loses money"],
+    ["Deeper Banuta −6", 200, 2.3, 250, "Diamond · Ethereal", "ban6", "", ""],
+    ["Otherworld Edron", 200, 2.3, 200, "Diamond · Ethereal", "nc", "", ""],
+    ["Seacrest Serpents", 200, 2.2, 350, "Diamond · Ethereal", "sea", "d", "Ice 0%: better for Veritass"],
+    ["Drefia Grim Reapers", 200, 2.2, -250, "Diamond · Divine", "nc", "", "Loses money"],
+    ["Warzone 5", 230, 4.3, 800, "Diamond · Ethereal", "wz", "", "TibiaRoute: 2.2kk / 305k"],
+    ["Book World: Chapter IV", 230, 4.2, 400, "Diamond · Ethereal", "bw", "d", ""],
+    ["Warzone 6", 230, 3.5, 1200, "Diamond · Ethereal", "wz", "m", "TibiaRoute: 3.3kk / 1.1kk"],
+    ["Warzone 4", 230, 3.5, 1200, "Diamond · Ethereal", "wz", "m", "TibiaRoute: 1.5kk / 400k"],
+    ["Lower Roshamuul", 230, 3.4, 400, "Diamond · Ethereal", "lrosh", "", "ED+RP route 3–3.3kk. Read the Roshamuul rules"],
+    ["Asura Mirror", 250, 5.3, 600, "Diamond · Ethereal", "mir", "", "TibiaRoute: 6kk / 800k"],
+    ["Roshamuul West", 250, 5.2, 600, "Diamond · Ethereal", "rosw", "", "TibiaRoute (550+): 5.5–8kk"],
+    ["Oramond Catacombs", 250, 5.0, 400, "Diamond · Ethereal", "cat", "", ""],
+    ["Oramond Catacombs (no Fatal Hold)", 250, 4.1, 300, "Diamond · Ethereal", "cat", "", ""],
+    ["Oramond Abandoned Sewers", 250, 3.1, 300, "Diamond · Ethereal", "sew", "", ""],
+    ["Wote 8 Drakens", 250, 3.0, 1200, "Diamond · Ethereal", "w8", "m", ""],
+    ["Gazer Spectres", 250, 3.0, 300, "Froststorm · Divine", "gaz", "", "Ice 130%, resists physical. Xee died here at 206"],
+    ["Carnivora's Rocks", 250, 2.0, 600, "Firestorm · Divine", "carn", "md", "TibiaRoute: 2kk / 1kk"],
+    ["Lower Spike", 275, 3.2, 1500, "Diamond · Ethereal", "spike", "md", "Best loot on the list"],
+    ["Venore Flimsies −1", 300, 6.0, 300, "Firestorm · Divine", "vfl", "", ""],
+    ["Summer Court", 300, 5.0, 800, "Diamond · Ethereal", "court", "m", "TibiaRoute (druid solo): 5kk / 2.1kk"],
+    ["Nagas (Marapur)", 300, 5.0, 400, "Diamond · Ethereal", "naga", "", "TibiaRoute: 3.1kk / 825k"],
+    ["Iksupan Occupied Sanctuary", 300, 4.7, 300, "Diamond · Ethereal", "iks", "", ""],
+    ["Iksupan Last Stand", 300, 4.4, 900, "Diamond · Ethereal", "iks", "m", ""],
+    ["Winter Court", 300, 4.4, 500, "Diamond · Ethereal", "court", "", ""],
+    ["Weretigers −2", 300, 4.3, 800, "Diamond · Ethereal", "osk", "m", ""],
+    ["Ripper Spectres (Haunted House)", 300, 4.1, 500, "Firestorm · Divine", "rip", "", "Safer open alternative to Roshamuul"],
+    ["Roshamuul Mines (Terrorsleeps)", 300, 4.0, 400, "Diamond · Ethereal", "nc", "", ""],
+    ["Werecrocodiles −1", 300, 3.9, 600, "Diamond · Divine", "osk", "m", ""],
+    ["Oramond Fury Dungeon", 300, 3.9, 300, "Diamond · Ethereal", "fury", "", ""],
+    ["Nightmare Isles", 300, 3.3, 300, "Diamond · Ethereal", "nmi", "", "Gold drops cut on Sep 1"],
+    ["Burster Spectres", 300, 3.3, 100, "Firestorm · Divine", "nc", "", "Immune to physical. Your 2 hunts: ~2.4kk raw/h, −372k/h; bestiary done. Buried Cathedral or Haunted Nexus. Ice 30%: poor for Xee"],
+    ["Marapur Turtles", 300, 2.6, 1200, "Diamond · Ethereal", "turt", "m", "TibiaRoute: 2.4–2.8kk / 1.3kk"],
+    ["Port Hope Flimsies −1", 400, 6.0, 700, "Firestorm · Divine", "pfl", "", ""]
+  ];
+  function has(who, a) { return a.q.every(function (id) { return !!done[who][id]; }); }
+  function openTo(who, a) { return a.k !== "nc" && has(who, a); }
+  var hs = load("veritass-hub-hunts", { show: "all", sort: "level" });
+  var maxE = Math.max.apply(null, H.map(function (d) { return d[2]; })), maxL = Math.max.apply(null, H.map(function (d) { return d[3]; }));
+  function fmtLoot(v) { return v >= 1000 ? (v / 1000).toFixed(1) + "kk" : v < 0 ? "−" + Math.abs(v) + "k" : v + "k"; }
+  function mark(ok) { return ok ? '<span class="ok">✓</span>' : '<span class="no">✗</span>'; }
+  function accCell(a) {
+    var h = "";
+    if (a.k && a.k !== "nc") h += '<span class="pill ' + (a.k === "open" ? "good" : a.k === "level" ? "warn" : "") + '">' + esc(a.t) + "</span> ";
+    if (a.q.length) h += '<span class="qn">' + a.q.map(function (id) { return '<a href="' + W + Q[id].w + '">' + esc(Q[id].n) + "</a>"; }).join(" + ") + "</span>";
+    h += '<span class="how' + (a.u ? " unv" : "") + '">' + esc(a.h) + "</span>";
+    if (a.q.length) h += '<span class="who">Veritass ' + mark(has("v", a)) + " · Xee Ru " + mark(has("x", a)) + "</span>";
+    return h;
+  }
+  function band(l) { return l < 180 ? "Level 120–150+" : l < 200 ? "Level 180+ · raids" : l < 230 ? "Level 200+" : l < 250 ? "Level 230+" : l < 275 ? "Level 250+" : l < 300 ? "Level 275+" : l < 400 ? "Level 300+" : "Level 400+"; }
+  function huntRender() {
+    var q = document.getElementById("hQ").value.trim().toLowerCase();
+    var list = H.filter(function (d) {
+      var a = A[d[5]];
+      if (hs.show === "open" && !openTo("v", a)) return false;
+      if (hs.show === "quest" && (!a.q.length || has("v", a))) return false;
+      if (hs.show === "money" && d[6].indexOf("m") < 0) return false;
+      if (q) { var hay = (d[0] + " " + d[7] + " " + a.h + " " + a.q.map(function (id) { return Q[id].n; }).join(" ")).toLowerCase(); if (hay.indexOf(q) < 0) return false; }
+      return true;
+    });
+    var k = hs.sort === "exp" ? 2 : hs.sort === "loot" ? 3 : 1;
+    list.sort(function (a, b) { return k === 1 ? a[1] - b[1] || b[2] - a[2] : b[k] - a[k]; });
+    var html = "", last = "";
+    list.forEach(function (d) {
+      var a = A[d[5]];
+      if (k === 1 && band(d[1]) !== last) { last = band(d[1]); html += '<tr class="band"><td colspan="6">' + last + "</td></tr>"; }
+      var chips = "";
+      if (d[6].indexOf("m") >= 0) chips += ' <span class="pill good">Money</span>';
+      if (d[6].indexOf("d") >= 0) chips += ' <span class="pill">Druid-friendly</span>';
+      if (a.q.length && has("v", a)) chips += ' <span class="pill gold">You have it</span>';
+      var eW = Math.round(d[2] / maxE * 100), lW = Math.max(0, Math.round(d[3] / maxL * 100));
+      html += '<tr><td><span class="name">' + esc(d[0]) + "</span>" + chips + (d[7] ? '<span class="how">' + esc(d[7]) + "</span>" : "") + "</td>" +
+        '<td class="n">' + d[1] + "+</td>" +
+        '<td class="n exp">' + d[2].toFixed(Math.round(d[2] * 100) % 10 ? 2 : 1) + 'kk<span class="bar" style="width:' + eW + '%"></span></td>' +
+        '<td class="n loot' + (d[3] < 0 ? " neg" : "") + '">' + fmtLoot(d[3]) + (d[3] > 0 ? '<span class="bar" style="width:' + lW + '%"></span>' : "") + "</td>" +
+        '<td class="setup">' + esc(d[4]) + "</td>" +
+        '<td class="acc">' + accCell(a) + "</td></tr>";
+    });
+    document.getElementById("hRows").innerHTML = html || '<tr><td colspan="6">No spots match. Clear the search or pick "All".</td></tr>';
+    document.getElementById("hCount").textContent = list.length + " spots";
+    [["hShow", "show"], ["hSort", "sort"]].forEach(function (p) { document.querySelectorAll("#" + p[0] + " button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-v") === hs[p[1]] ? "true" : "false"); }); });
+    save("veritass-hub-hunts", hs);
+  }
+  [["hShow", "show"], ["hSort", "sort"]].forEach(function (p) { document.querySelectorAll("#" + p[0] + " button").forEach(function (b) { b.addEventListener("click", function () { hs[p[1]] = b.getAttribute("data-v"); huntRender(); }); }); });
+  document.getElementById("hQ").addEventListener("input", huntRender);
+
+  function questRender() {
+    document.getElementById("qRows").innerHTML = QORDER.map(function (id) {
+      var q = Q[id];
+      return "<tr><td><a class=\"name\" href=\"" + W + q.w + "\">" + esc(q.n) + "</a>" + (q.vs ? ' <span class="pill gold">Veritass log: ' + q.vs + "</span>" : "") + (q.x ? ' <span class="pill warn">Xee log: ' + q.x + "</span>" : "") + (q.pre ? '<span class="pre">' + esc(q.pre) + "</span>" : "") + "</td>" +
+        '<td class="small">' + esc(q.opens) + "</td><td class=\"n small\">" + esc(q.lvl || "—") + "</td><td class=\"small\">" + (q.start ? esc(q.start) : '<span class="muted">see TibiaWiki</span>') + "</td>" +
+        '<td class="box"><input type="checkbox" id="qv-' + id + '" data-who="v" data-q="' + id + '"' + (done.v[id] ? " checked" : "") + ' aria-label="Veritass finished ' + esc(q.n) + '"></td>' +
+        '<td class="box"><input type="checkbox" id="qx-' + id + '" data-who="x" data-q="' + id + '"' + (done.x[id] ? " checked" : "") + ' aria-label="Xee Ru finished ' + esc(q.n) + '"></td></tr>';
+    }).join("");
+  }
+  document.getElementById("qRows").addEventListener("change", function (e) {
+    var t = e.target; if (!t.matches("input[type=checkbox]")) return;
+    done[t.getAttribute("data-who")][t.getAttribute("data-q")] = t.checked;
+    save("veritass-hub-quests", done); huntRender();
+  });
+  questRender(); huntRender();
+
+  // ---------- shared exp ----------
+  function range(l) { return [Math.floor(l / 1.5), Math.floor(l * 1.5 + 1)]; }
+  function canShare(a, b) { var lo = Math.min(a, b), hi = Math.max(a, b); return lo >= Math.floor(hi / 1.5); }
+  // self-check against the ranges GuildStats shows (Veritass 314: 209–472; Xee Ru 222: 148–334)
+  console.assert(range(314).join() === "209,472" && range(222).join() === "148,334" && canShare(316, 229) && !canShare(316, 209), "share range math");
+  function shareRender() {
+    var v = Math.max(1, +document.getElementById("lvV").value || 1), x = Math.max(1, +document.getElementById("lvX").value || 1);
+    var ok = canShare(v, x), rv = range(v), rx = range(x), el = document.getElementById("shVerdict");
+    el.textContent = ok ? "Yes" : "No"; el.style.color = ok ? "var(--good)" : "var(--bad)";
+    var t = "Veritass " + v + " shares with " + rv[0] + "–" + rv[1] + ". Xee Ru " + x + " shares with " + rx[0] + "–" + rx[1] + ". ";
+    if (ok && v >= x) t += "Veritass can reach level " + rx[1] + " before Xee Ru at " + x + " drops out of range.";
+    else if (ok) t += "Xee Ru can reach level " + rv[1] + " before Veritass drops out of range.";
+    else t += "The lower character needs level " + Math.floor(Math.max(v, x) / 1.5) + " to share.";
+    document.getElementById("shText").textContent = t;
+  }
+  ["lvV", "lvX"].forEach(function (id) { document.getElementById(id).addEventListener("input", shareRender); });
+  shareRender();
+})();
+</script>
+<script>
+
+(function () {
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? d : v; } catch (e) { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function n(v) { return Math.round(v).toLocaleString("en-US"); }
+  function kk(v) { return v >= 1e6 ? (v / 1e6).toFixed(v >= 1e7 ? 1 : 2) + "kk" : Math.round(v / 1000) + "k"; }
+
+  // ---------- imbuement costs (Refugia tracker, data from Sep 14) ----------
+  var IM = [{"name": "Vampirism", "on": "Weapons, armors", "effP": "Life leech 25%", "effI": "Life leech 10%", "mine": "Bow, armor", "mats": [["Vampire Teeth", 25, 616], ["Bloody Pincers", 15, 16887], ["Piece of Dead Brain", 5, 23999]], "scrollP": 660090}, {"name": "Void", "on": "Weapons, helmets", "effP": "Mana leech 8%", "effI": "Mana leech 5%", "mine": "Bow, helmet", "mats": [["Rope Belt", 25, 5293], ["Silencer Claws", 25, 4687], ["Some Grimeleech Wings", 5, 1855]], "scrollP": 550090}, {"name": "Strike", "on": "Weapons", "effP": "Critical hits (+5% chance, +40% damage on your sheet)", "effI": "Smaller critical bonus", "mine": "Bow", "mats": [["Protective Charm", 20, 4998], ["Sabretooth", 25, 8697], ["Vexclaw Talon", 5, 2200]], "scrollP": 545090}, {"name": "Epiphany", "on": "Helmets", "effP": "Magic level +4", "effI": "Magic level +2", "mine": "Coif (Intricate)", "mats": [["Elvish Talisman", 25, 8887], ["Broken Shamanic Staff", 15, 11050], ["Strand of Medusa Hair", 15, 1077]], "scrollP": 1273991}, {"name": "Vibrancy", "on": "Boots", "effP": "50% chance to remove paralysis", "effI": "25% chance to remove paralysis", "mine": "", "mats": [["Wereboar Hooves", 20, 199], ["Crystallized Anger", 15, 689], ["Quill", 5, 1039]], "scrollP": 1444444}, {"name": "Featherweight", "on": "Backpacks", "effP": "Capacity +15%", "effI": "Capacity +8%", "mine": "", "mats": [["Fairy Wings", 20, 360], ["Little Bowl of Myrrh", 10, 3999], ["Goosebump Leather", 5, 999]], "scrollP": 370090}, {"name": "Quara Scale", "on": "Armors", "effP": "Ice protection +15%", "effI": "Ice protection +8%", "mine": "", "mats": [["Winter Wolf Fur", 25, 8997], ["Thick Fur", 15, 943], ["Deepling Warts", 10, 169]], "scrollP": 809554}, {"name": "Snake Skin", "on": "Armors", "effP": "Earth protection +15%", "effI": "Earth protection +8%", "mine": "", "mats": [["Piece of Swampling Wood", 25, 18000], ["Snake Skin", 20, 597], ["Brimstone Fangs", 10, 11999]], "scrollP": 997777}, {"name": "Dragon Hide", "on": "Armors", "effP": "Fire protection +15%", "effI": "Fire protection +8%", "mine": "", "mats": [["Green Dragon Leather", 20, 8985], ["Blazing Bone", 10, 575], ["Draken Sulphur", 5, 718]], "scrollP": 1056899}, {"name": "Demon Presence", "on": "Armors", "effP": "Holy protection +15%", "effI": "Holy protection +8%", "mine": "", "mats": [["Cultish Robe", 25, 180], ["Cultish Mask", 25, 18978], ["Hellspawn Tail", 20, 925]], "scrollP": 1097001}, {"name": "Lich Shroud", "on": "Armors", "effP": "Death protection +10%", "effI": "Death protection +5%", "mine": "", "mats": [["Flask of Embalming Fluid", 25, 5600], ["Gloom Wolf Fur", 20, 32497], ["Mystical Hourglass", 5, 698]], "scrollP": 1566108}, {"name": "Cloud Fabric", "on": "Armors", "effP": "Energy protection +15%", "effI": "Energy protection +8%", "mine": "", "mats": [["Wyvern Talisman", 20, 8999], ["Crawler Head Plating", 15, 3641], ["Wyrm Scale", 10, 380]], "scrollP": 1249992}, {"name": "Swiftness", "on": "Boots, legs", "effP": "Speed +30", "effI": "Speed +15", "mine": "", "mats": [["Damselfly Wing", 15, 555], ["Compass", 25, 980], ["Waspoid Wing", 20, 975]], "scrollP": 398003}];
+  var imLvl = load("veritass-hub-imlvl", "p");
+  function imRender() {
+    var p = imLvl === "p", rows = "";
+    IM.forEach(function (m) {
+      var mats = p ? m.mats : m.mats.slice(0, 2);
+      var mat = 0, missing = false;
+      var list = mats.map(function (x) { if (x[2] <= 0) missing = true; mat += x[1] * Math.max(0, x[2]); return x[1] + " " + x[0] + ' <span class="muted">(' + (x[2] > 0 ? n(x[2]) : "no offer") + ")</span>"; }).join(", ");
+      var fee = p ? 250000 : 60000, tot = mat + fee, scroll = p ? m.scrollP : 0;
+      var cheaper = scroll > 0 && scroll < tot;
+      rows += "<tr><td class=\"name\">" + esc(m.name) + (m.mine ? ' <span class="pill gold">' + esc(m.mine) + "</span>" : "") + "</td><td class=\"small\">" + esc(m.on) + "</td><td class=\"small\">" + esc(p ? m.effP : m.effI) + "</td>" +
+        '<td class="n">' + (missing ? "—" : n(mat)) + '</td><td class="n name">' + (missing ? "—" : n(tot)) + '</td><td class="n">' + (missing ? "—" : kk(tot / 20)) + "</td>" +
+        '<td class="n">' + (scroll > 0 ? n(scroll) + (cheaper ? ' <span class="pill good">cheaper</span>' : "") : '<span class="muted">' + (p ? "none" : "no offers") + "</span>") + '</td><td class="small">' + list + "</td></tr>";
+    });
+    document.getElementById("imRows").innerHTML = rows;
+    document.getElementById("imNote").textContent = p ? "Fee 200,000 + 50,000 for a 100% chance" : "Fee 30,000 + 30,000 for a 100% chance";
+    document.querySelectorAll("#imLevel button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-v") === imLvl ? "true" : "false"); });
+  }
+  document.querySelectorAll("#imLevel button").forEach(function (b) { b.addEventListener("click", function () { imLvl = b.getAttribute("data-v"); save("veritass-hub-imlvl", imLvl); imRender(); }); });
+  imRender();
+
+  // ---------- blessings ----------
+  function blessPrices(l) {
+    var reg = l <= 30 ? 2000 : l < 120 ? 200 * (l - 20) : 20000 + 75 * (l - 120);
+    var enh = l < 120 ? 260 * (l - 20) : 26000 + 100 * (l - 120);
+    if (l <= 30) enh = 2600;
+    var tof = l <= 30 ? 2000 : Math.min(50000, 200 * (l - 20));
+    return { reg: reg, enh: enh, tof: tof, five: reg * 5, inq: Math.round(reg * 5 * 1.1), seven: reg * 5 + enh * 2 };
+  }
+  console.assert(blessPrices(325).reg === 35375 && blessPrices(325).enh === 46500 && blessPrices(303).reg === 33725, "blessing formula");
+  function blRender() {
+    var l = Math.max(1, Math.min(2000, +document.getElementById("blLvl").value || 325)), b = blessPrices(l);
+    document.getElementById("blOut").innerHTML = [[n(b.reg), "Each regular"], [n(b.enh), "Blood / Heart each"], [n(b.seven), "All 7 (no Twist)"], [n(b.inq), "Henricus, 5 regular"], [n(b.tof), "Twist of Fate"]]
+      .map(function (x) { return "<div><b>" + x[0] + "</b><span>" + x[1] + "</span></div>"; }).join("");
+  }
+  document.getElementById("blLvl").addEventListener("input", blRender);
+  blRender();
+
+  // ---------- levels ----------
+  function expFor(L) { return Math.floor(50 * (L * L * L - 6 * L * L + 17 * L - 12) / 3); }
+  function levelFor(x) { var L = 1; while (expFor(L + 1) <= x) L++; return L; }
+  console.assert(expFor(325) === 561664800 && levelFor(563092041) === 325, "exp table");
+  var LV = [
+    ["2026-09-28", 303, null, "Auction"],
+    ["2026-10-08", 310, 489223095, "Screenshot"],
+    ["2026-10-10", 312, null, "TibiaData"],
+    ["2026-10-11", 316, 517225632, "Screenshot"],
+    ["2026-10-13", 319, 533844380, "Screenshot"],
+    ["2026-10-15", 323, 552100119, "Screenshot"],
+    ["2026-10-17", 325, 563092041, "Screenshot"]
+  ];
+  var DEATHS = [["2026-10-08", 310, "Frazzlemaw, Lower Roshamuul"], ["2026-10-09", 312, "Silencer, Lower Roshamuul"]];
+  function day(s) { return Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10)) / 864e5; }
+  function fmtDate(s) { var m = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+s.slice(5, 7) - 1]; return m + " " + (+s.slice(8, 10)); }
+  function chart() {
+    var svg = document.getElementById("lchart"), NS = "http://www.w3.org/2000/svg";
+    var W = Math.round(Math.max(320, Math.min(900, svg.parentNode.clientWidth - 28 || 720))), H = W < 520 ? 230 : 260, L = 40, R = 26, T = 18, B = 34;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var d0 = day(LV[0][0]), d1 = day(LV[LV.length - 1][0]), y0 = 300, y1 = 330;
+    function X(s) { return L + (day(s) - d0) / (d1 - d0) * (W - L - R); }
+    function Y(v) { return T + (y1 - v) / (y1 - y0) * (H - T - B); }
+    function mk(tag, a, p) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; }
+    var g = mk("g", { "class": "grid" }), ax = mk("g", { "class": "axis" });
+    [300, 305, 310, 315, 320, 325, 330].forEach(function (v) { mk("line", { x1: L, x2: W - R, y1: Y(v), y2: Y(v) }, g); var t = mk("text", { x: L - 8, y: Y(v) + 4, "text-anchor": "end" }, ax); t.textContent = v; });
+    (W < 520 ? ["2026-09-28", "2026-10-08", "2026-10-17"] : ["2026-09-28", "2026-10-03", "2026-10-08", "2026-10-13", "2026-10-17"]).forEach(function (s) { var t = mk("text", { x: X(s), y: H - 10, "text-anchor": "middle" }, ax); t.textContent = fmtDate(s); });
+    var pts = LV.map(function (r) { return [X(r[0]), Y(r[1])]; });
+    mk("path", { "class": "area", d: "M" + pts[0][0] + " " + Y(y0) + " L" + pts.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L") + " L" + pts[pts.length - 1][0] + " " + Y(y0) + " Z" });
+    mk("path", { "class": "line", d: "M" + pts.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L") });
+    var tip = document.getElementById("ltip"), box = svg.parentNode;
+    function show(x, y, html) { var r = svg.getBoundingClientRect(), s = r.width / W; tip.innerHTML = html; tip.hidden = false; tip.style.left = (x * s + (r.left - box.getBoundingClientRect().left)) + "px"; tip.style.top = (y * s + (r.top - box.getBoundingClientRect().top)) + "px"; }
+    function hide() { tip.hidden = true; }
+    LV.forEach(function (r, i) {
+      var x = pts[i][0], y = pts[i][1], last = i === LV.length - 1;
+      mk("circle", { "class": "pt" + (last ? " end" : ""), cx: x, cy: y, r: last ? 6 : 4.5 });
+      if (i === 0 || last) { var t = mk("text", { "class": "lbl", x: x + (last ? -10 : 8), y: y - 10, "text-anchor": last ? "end" : "start" }); t.textContent = r[1]; }
+      var h = mk("circle", { "class": "hit", cx: x, cy: y, r: 16, tabindex: "0", "aria-label": fmtDate(r[0]) + ": level " + r[1] });
+      var html = "<b>" + fmtDate(r[0]) + "</b> · level " + r[1] + (r[2] ? "<br>" + n(r[2]) + " exp" : "") + "<br><span style=\"opacity:.75\">" + r[3] + "</span>";
+      ["mouseenter", "focus", "click"].forEach(function (ev) { h.addEventListener(ev, function () { show(x, y, html); }); });
+      ["mouseleave", "blur"].forEach(function (ev) { h.addEventListener(ev, hide); });
+    });
+    DEATHS.forEach(function (d) {
+      var x = X(d[0]), y = Y(d[1]);
+      mk("rect", { "class": "death", x: x - 6, y: y - 6, width: 12, height: 12, transform: "rotate(45 " + x + " " + y + ")" });
+      var h = mk("circle", { "class": "hit", cx: x, cy: y, r: 14, tabindex: "0", "aria-label": "Died " + fmtDate(d[0]) + " at " + d[1] });
+      ["mouseenter", "focus"].forEach(function (ev) { h.addEventListener(ev, function () { show(x, y, "<b>Died " + fmtDate(d[0]) + "</b> at " + d[1] + "<br>" + esc(d[2])); }); });
+      ["mouseleave", "blur"].forEach(function (ev) { h.addEventListener(ev, hide); });
+    });
+  }
+  chart();
+  document.getElementById("lvRows").innerHTML = LV.slice().reverse().map(function (r) { return "<tr><td>" + fmtDate(r[0]) + '</td><td class="n">' + r[1] + '</td><td class="n">' + (r[2] ? n(r[2]) : "—") + "</td><td>" + r[3] + "</td></tr>"; }).join("");
+  var rzT = 0, lastW = window.innerWidth;
+  window.addEventListener("resize", function () { if (window.innerWidth === lastW) return; lastW = window.innerWidth; clearTimeout(rzT); rzT = setTimeout(chart, 150); });
+  function projRender() {
+    var x = Math.max(0, +document.getElementById("pExp").value || 0), rate = Math.max(1, +document.getElementById("pRate").value || 1), t = Math.max(2, Math.min(2000, +document.getElementById("pTarget").value || 350));
+    var cur = levelFor(x), need = Math.max(0, expFor(t) - x), days = need / rate;
+    var d = new Date(Date.UTC(2026, 9, 17) + Math.ceil(days) * 864e5);
+    var into = expFor(cur + 1) > expFor(cur) ? (x - expFor(cur)) / (expFor(cur + 1) - expFor(cur)) : 0;
+    document.getElementById("pOut").innerHTML = [[cur + " · " + Math.floor(into * 100) + "%", "Level now"], [n(need), "Exp to " + t], [need ? days.toFixed(1) : "0", "Days at this pace"], [need ? d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }) : "reached", "Around"]]
+      .map(function (v) { return "<div><b>" + v[0] + "</b><span>" + v[1] + "</span></div>"; }).join("");
+  }
+  ["pExp", "pRate", "pTarget"].forEach(function (id) { document.getElementById(id).addEventListener("input", projRender); });
+  projRender();
+
+  // ---------- scroll spy ----------
+  var links = {};
+  document.querySelectorAll(".side a[href^='#']").forEach(function (a) { var id = a.getAttribute("href").slice(1); (links[id] = links[id] || []).push(a); });
+  var chapterOf = {};
+  document.querySelectorAll("#idx > li").forEach(function (li) { var ch = li.querySelector("a.ch").getAttribute("href").slice(1); chapterOf[ch] = ch; li.querySelectorAll(".sub a").forEach(function (a) { chapterOf[a.getAttribute("href").slice(1)] = ch; }); });
+  var targets = Object.keys(chapterOf).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  function spy() {
+    var y = window.innerHeight * 0.3, cur = targets[0];
+    targets.forEach(function (el) { if (el.getBoundingClientRect().top <= y) cur = el; });
+    if (!cur) return;
+    var id = cur.id, ch = chapterOf[id];
+    document.querySelectorAll(".side a.on").forEach(function (a) { a.classList.remove("on"); });
+    (links[id] || []).forEach(function (a) { a.classList.add("on"); });
+    (links[ch] || []).forEach(function (a) { a.classList.add("on"); if (a.classList.contains("ch") && window.innerWidth < 1100) { try { a.scrollIntoView({ block: "nearest", inline: "center" }); } catch (e) {} } });
+  }
+  var spyT = 0;
+  window.addEventListener("scroll", function () { if (spyT) return; spyT = setTimeout(function () { spyT = 0; spy(); }, 80); }, { passive: true });
+  spy();
+
+  // ---------- search ----------
+  var q = document.getElementById("q"), qres = document.getElementById("qres");
+  var secs = Array.prototype.map.call(document.querySelectorAll("main section[id], main header[id]"), function (s) {
+    var h = s.querySelector("h1, h2");
+    var parts = [], w = document.createTreeWalker(s, NodeFilter.SHOW_TEXT), t;
+    while ((t = w.nextNode())) { if (t.parentNode && t.parentNode.closest && t.parentNode.closest("svg, script, style")) continue; parts.push(t.nodeValue); }
+    return { id: s.id, title: h ? h.textContent.trim() : s.id, text: parts.join(" ").replace(/\s+/g, " ").trim() };
+  });
+  function snippet(t, i, len) { var a = Math.max(0, i - 40), b = Math.min(t.length, i + len + 60); return (a ? "…" : "") + esc(t.slice(a, i)) + "<mark>" + esc(t.slice(i, i + len)) + "</mark>" + esc(t.slice(i + len, b)) + (b < t.length ? "…" : ""); }
+  function search() {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { qres.hidden = true; qres.innerHTML = ""; return; }
+    var hits = [];
+    secs.forEach(function (s) { var low = s.text.toLowerCase(), i = low.indexOf(v), c = 0, j = i; while (j >= 0) { c++; j = low.indexOf(v, j + v.length); } if (i >= 0) hits.push({ s: s, i: i, c: c, t: s.title.toLowerCase().indexOf(v) >= 0 }); });
+    hits.sort(function (a, b) { return (b.t - a.t) || (b.c - a.c); });
+    qres.innerHTML = hits.length ? hits.slice(0, 8).map(function (h) { return '<li><button type="button" data-go="' + h.s.id + '"><b>' + esc(h.s.title) + ' <span class="muted">· ' + h.c + "×</span></b><span>" + snippet(h.s.text, h.i, v.length) + "</span></button></li>"; }).join("") : '<li class="none">Nothing found for "' + esc(q.value.trim()) + '".</li>';
+    qres.hidden = false;
+  }
+  q.addEventListener("input", search);
+  q.addEventListener("keydown", function (e) { if (e.key === "Enter") { var b = qres.querySelector("button"); if (b) b.click(); } if (e.key === "Escape") { q.value = ""; search(); } });
+  qres.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-go]"); if (!b) return;
+    var el = document.getElementById(b.getAttribute("data-go"));
+    qres.hidden = true;
+    if (el) { el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+  });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".search")) qres.hidden = true; });
+  q.addEventListener("focus", function () { if (q.value.trim().length >= 2) search(); });
+})();
+</script>
+</body>
+</html>
