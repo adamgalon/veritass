@@ -274,6 +274,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .sub a.on { color: var(--ink); background: var(--sunk); font-weight: 700; }
 }
 .brand { gap: 2px; }
+.weblinks { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: -6px; }
+.weblinks a { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; max-width: 100%; text-decoration: none; color: var(--ink); font-size: 0.9rem; font-weight: 500; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); overflow-wrap: anywhere; }
+.weblinks a:hover { border-color: var(--gold); }
+.weblinks a span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--gold); }
+.weblinks a i { font-style: normal; color: var(--muted); }
 .brand b { font-family: var(--font-display); font-size: 1.5rem; line-height: 1; }
 .brand span { font-size: 0.82rem; color: var(--muted); }
 .side-foot { font-size: 0.78rem; color: var(--muted); gap: 4px; }
@@ -390,6 +395,10 @@ td.c { text-align: center; }
 
 <!-- ============ CHARACTER SHEET ============ -->
 <header class="sheet" id="top">
+  <nav class="weblinks" aria-label="Web links">
+    <a href="https://adamgalon.github.io/veritass/" target="_blank" rel="noopener"><span>Web page</span> adamgalon.github.io/veritass <i aria-hidden="true">↗</i></a>
+    <a href="https://github.com/adamgalon/veritass" target="_blank" rel="noopener"><span>GitHub</span> adamgalon/veritass <i aria-hidden="true">↗</i></a>
+  </nav>
   <div class="sheet-top">
     <div class="sheet-head">
       <div class="eyebrow">Refugia · Optional PvP · Premium · checked Oct 17, 2026</div>
