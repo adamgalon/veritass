@@ -362,6 +362,34 @@ svg.lchart { width: 100%; height: auto; display: block; overflow: visible; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 td.c { text-align: center; }
 .ok-ico::before { content: "✓ "; } .no-ico::before { content: "✗ "; }
+
+/* ---------- tabs and folding ---------- */
+.pane { display: grid; gap: 52px; min-width: 0; }
+.pane[hidden] { display: none; }
+.pane-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: -30px; }
+.pane-bar .crumb { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); font-weight: 700; }
+.pane-bar .btns { display: flex; gap: 6px; }
+.sec-head { position: relative; }
+.fold-btn { all: unset; box-sizing: border-box; cursor: pointer; justify-self: start; display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: var(--gold); padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.fold-btn:hover { border-color: var(--gold); }
+.fold-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.fold-btn::before { content: "▾"; font-size: 0.8em; transition: transform .15s; }
+section.folded .fold-btn::before { transform: rotate(-90deg); }
+section.folded > :not(.sec-head):not(.lede) { display: none !important; }
+section.folded { gap: 10px; }
+section.folded .sec-head { border-bottom-width: 1px; }
+.tbl-h { font-size: 1.05rem; margin: 6px 0 -8px; }
+details.fold-tbl { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: var(--surface); }
+details.fold-tbl > summary { font-size: 0.98rem; }
+details.fold-tbl[open] { display: grid; gap: 12px; }
+.scroll.tall { max-height: 72vh; overflow: auto; }
+.scroll.tall thead th { position: sticky; top: 0; z-index: 1; background: var(--surface); }
+@media (min-width: 1100px) {
+  .idx > li:not(.cur) > .sub { display: none; }
+  .sec-head { grid-template-columns: minmax(0, 1fr) auto; }
+  .sec-head > * { grid-column: 1; }
+  .sec-head > .fold-btn { grid-column: 2; grid-row: 1 / span 2; align-self: end; }
+}
 </style>
 </head>
 <body>
@@ -375,24 +403,23 @@ td.c { text-align: center; }
     <ul class="qres" id="qres" hidden></ul>
   </div>
   <ul class="idx" id="idx">
-    <li><a class="ch" href="#ch-now">Now</a>
-      <ul class="sub"><li><a href="#top">Character</a></li><li><a href="#events">This week in Tibia</a></li><li><a href="#next">Do next</a></li><li><a href="#prehunt">Before a hunt</a></li></ul></li>
-    <li><a class="ch" href="#ch-gear">Gear</a>
-      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#upgrades">Upgrades</a></li><li><a href="#market">Market &amp; selling</a></li></ul></li>
-    <li><a class="ch" href="#ch-combat">Combat</a>
-      <ul class="sub"><li><a href="#spells">Spells</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li></ul></li>
-    <li><a class="ch" href="#ch-hunt">Hunting</a>
+    <li data-tab="now"><a class="ch" href="#tab-now">Character</a>
+      <ul class="sub"><li><a href="#top">Character sheet</a></li><li><a href="#events">This week in Tibia</a></li><li><a href="#next">Do next</a></li><li><a href="#prehunt">Before a hunt</a></li></ul></li>
+    <li data-tab="build"><a class="ch" href="#tab-build">Gear &amp; build</a>
+      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#upgrades">Upgrades</a></li><li><a href="#market">Market &amp; selling</a></li><li><a href="#spells">Spells</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li></ul></li>
+    <li data-tab="hunt"><a class="ch" href="#tab-hunt">Hunting</a>
       <ul class="sub"><li><a href="#solo">Solo plan</a></li><li><a href="#loadout">Loadout by spot</a></li><li><a href="#hunts">Where to hunt</a></li><li><a href="#asura">Asura Palace</a></li><li><a href="#burster">Burster Spectres</a></li><li><a href="#roshamuul">Roshamuul</a></li><li><a href="#duo">Duo with Xee Ru</a></li></ul></li>
-    <li><a class="ch" href="#ch-progress">Progress</a>
+    <li data-tab="progress"><a class="ch" href="#tab-progress">Progress</a>
       <ul class="sub"><li><a href="#levels">Levels</a></li><li><a href="#log">Hunt log</a></li><li><a href="#bestiary">Bestiary</a></li><li><a href="#quests">Quests</a></li><li><a href="#timeline">Timeline</a></li></ul></li>
-    <li><a class="ch" href="#ch-ref">Reference</a>
+    <li data-tab="ref"><a class="ch" href="#tab-ref">Reference</a>
       <ul class="sub"><li><a href="#account">Account</a></li><li><a href="#training">Training</a></li><li><a href="#changes">2026 changes</a></li><li><a href="#fresh">Keeping it fresh</a></li><li><a href="#sources">Sources</a></li></ul></li>
   </ul>
-  <div class="side-foot"><span>Data as of Oct 23, 2026</span><span>Write "update Veritass" in chat to refresh</span></div>
+  <div class="side-foot"><span>Data as of Oct 24, 2026</span><span>Write "update Veritass" in chat to refresh</span></div>
 </aside>
 
 <main class="main">
 
+<div class="pane" id="tab-now" data-tab="now">
 <!-- ============ CHARACTER SHEET ============ -->
 <header class="sheet" id="top">
   <nav class="weblinks" aria-label="Web links">
@@ -401,35 +428,32 @@ td.c { text-align: center; }
   </nav>
   <div class="sheet-top">
     <div class="sheet-head">
-      <div class="eyebrow">Refugia · Optional PvP · Premium · checked Oct 23, 2026</div>
+      <div class="eyebrow">Refugia · Optional PvP · Premium · checked Oct 24, 2026</div>
       <h1>Veritass</h1>
       <div class="voc">Royal Paladin · Holy build</div>
           </div>
-    <div class="lvl-badge" aria-label="Level 333"><span>Level</span><b>333</b><span>Oct 23</span></div>
+    <div class="lvl-badge" aria-label="Level 333, 96 percent to 334"><span>Level</span><b>333</b><span>96% · Oct 24</span></div>
   </div>
   <div class="status">
-    <span class="pill">Book World duo Oct 22 · last login Oct 23</span>
+    <span class="pill good">The Way of the Monk done · +10 Wheel points</span>
     <span class="pill good">Shares exp with Xee Ru (265)</span>
-    <span class="pill gold">Wheel: Holy – Gift of Life</span>
-    <span class="pill gold">Bank 22,338,839 gp (Oct 17)</span>
-    <span class="pill">XP Boost on · stamina 40:08</span>
+    <span class="pill gold">Wheel: Holy – Gift of Life · 304 points</span>
+    <span class="pill gold">Gold 12,960,965 (Cyclopedia, Oct 24)</span>
+    <span class="pill">XP Boost on · stamina 40:47</span>
     <span class="pill">"(traded)" until about Oct 28</span>
   </div>
   <div class="stats" aria-label="Character stats">
-    <div class="stat"><b>3,969</b><span>Hit points</span><i>Oct 22 at 331; +10 per level, about 3,989 at 333 if the Wheel is unchanged</i></div>
-    <div class="stat"><b>5,160</b><span>Mana</span><i>Oct 22 at 331; +15 per level, about 5,190 at 333 if the Wheel is unchanged</i></div>
-    <div class="stat"><b>133</b><span>Distance</span><i>main set while hunting, Oct 22</i></div>
+    <div class="stat"><b>4,005</b><span>Hit points</span><i>base 3,435 at 333 + Wheel 350 + gem 220 (Oct 24)</i></div>
+    <div class="stat"><b>5,190</b><span>Mana</span><i>base 4,965 at 333 + Wheel 225 (Oct 24)</i></div>
+    <div class="stat"><b>133</b><span>Distance</span><i>main set while hunting, Oct 22 (154 on your Oct 24 town screenshot, see <a href="#gear">Equipment</a>)</i></div>
     <div class="stat"><b>36</b><span>Magic level</span><i>main set with the Falcon Coif (31 in the swap set)</i></div>
     <div class="stat"><b>104</b><span>Shielding</span><i>main set</i></div>
     <div class="stat good"><b>50% / 16%</b><span>Life / mana leech</span><i>Vampirism on bow and Unerring, Void on bow and helmet</i></div>
     <div class="stat"><b>10% · +52.5%</b><span>Crit chance · dmg</span><i>on your Oct 22 sheet</i></div>
-    <div class="stat warn"><b>293</b><span>Wheel points</span><i>8 more than on Oct 17; check they're all placed</i></div>
-    <div class="stat bad"><b>196 oz</b><span>Free capacity</span><i>Oct 22, 16:18; Featherweight has run out</i></div>
+    <div class="stat good"><b>304</b><span>Wheel points</span><i>all placed on Oct 24: 283 from levels + 21 extra (10 from The Way of the Monk)</i></div>
+    <div class="stat"><b>521 oz</b><span>Free capacity</span><i>Oct 24, in town (196 on Oct 22)</i></div>
   </div>
-  <div class="alarm" role="note">
-    <span class="mark">!</span>
-    <p><b>Re-imbue the backpack and check the boots.</b> On Oct 22 your Imbuements window showed the Ghost Backpack's Featherweight gone and the boots' slot empty, and free capacity was down to 196–220 oz. The rest had time left at 14:03: bow 7:55 h, Falcon Coif 8:55 h, Unerring 13 h.</p>
-  </div>
+  <div class="note"><b>Imbuement timers (Look, Oct 24, 02:37):</b> Bow of Cataclysm 11:47 h, Stoic Iks Casque 11:40 h, Winged Boots 11:27 h, Unerring 10:37 h, Falcon Coif 6:31 h, Falcon Bow 5:29 h, Embrace of Nature 18:18 h. Imbuements pause in protection zones and the Imbuements window then shows empty frames: that's why I wrongly flagged the boots as empty on Oct 22. Check the Ghost Backpack's Featherweight with Look before a long hunt.</div>
 </header>
 
 <!-- ============ CHAPTER: NOW ============ -->
@@ -471,9 +495,9 @@ td.c { text-align: center; }
       <p class="small">Creating a market offer now costs 2.5% (max 2.5kk). Exercise weapons cost 434,028 / 1,562,500 / 12,500,000 gold (regular / durable / lasting).</p>
     </div>
     <div class="ev">
-      <span class="when">Oct 23 only</span>
-      <h3>Boosted today</h3>
-      <p class="small">Creature: Rustheap Golem. Boss: The Diamond Blossom. Both change every day at server save.</p>
+      <span class="when">Until server save, Oct 24</span>
+      <h3>Boosted</h3>
+      <p class="small">Creature: Rustheap Golem. Boss: The Diamond Blossom. Checked on tibia.com and TibiaData at 00:56 UTC on Oct 24; both change every day at server save (10:00 CEST), so check <a href="https://www.tibia.com/library/?subtopic=creatures">tibia.com</a> after that.</p>
     </div>
   </div>
 </section>
@@ -484,12 +508,15 @@ td.c { text-align: center; }
     <h2>Do next</h2>
   </div>
   <ol class="todo">
-    <li><div><p><b>Check your Wheel points.</b> Level 333 gives 293 (one per level from 51, plus your 10 extra), 8 more than on Oct 17. Your HP bonus had grown by 14 by Oct 22, so some may already be placed. Put the rest into the last Holy slice (60/100 on Oct 17). Temple only. See the <a href="#wheel">Wheel</a>.</p></div></li>
+    <li><div><p><b>Put a boss in Boss Slot 1.</b> It was empty on Oct 24, so its loot bonus is wasted. Pick the boss you'll kill most in the next weeks. You have 240 of 250 Boss Points: 10 more lift the equipment loot bonus from 49% to 50%. See the <a href="#bestiary">Bosstiary</a>.</p></div></li>
+    <li><div><p><b>Use your charms.</b> 48 charm points unspent and 5 charm slots free. Low Blow (+4% crit) sits on Frazzlemaw; move it to the main creature of the spot you farm now, if the Cyclopedia offers it there. Vampiric Embrace (+1.6% life leech) is unlocked: check it's on a creature. See <a href="#systems">charms</a>.</p></div></li>
+    <li><div><p><b>Fill the second gem vessel.</b> Your Wheel now has a Vessel Resonance bottom-right as well as top-left, but only the top-left gem (+220 HP) is active. A lesser gem of the bottom-right domain's colour adds its mods for free. See <a href="#gems">gems</a>.</p></div></li>
+    <li><div><p><b>Asura Mirror is one quest away.</b> The Lost Brother is done in your log, so the Asura Palace quest is all that's left for Asura Mirror: 5.3kk raw and 600k loot on TibiaPal at level 250, your best open exp spot after that. Xee Ru would need both quests. See <a href="#asura">Asura Palace</a>.</p></div></li>
     <li><div><p><b>Eat, and keep 7/7 blessings.</b> At 333 that's 274,475 gp: five regular blessings at 35,975 and Blood and Heart of the Mountain at 47,300. Henricus sells the five regular ones in one go (you have The Inquisition) for about 198,000.</p></div></li>
-    <li><div><p><b>Sell the old pieces:</b> Ghost Chestplate, Fabulous Legs and Bow of Destruction, about 7–10kk together. Selling to an existing buy offer costs no fee; creating your own offer costs 2.5%.</p></div></li>
+    <li><div><p><b>Sell the old pieces:</b> Ghost Chestplate and Bow of Destruction, about 5–6kk together, plus Prismatic Legs (~26k). Fabulous Legs weren't in your Oct 24 Looks: sold already? Selling to an existing buy offer costs no fee; creating your own offer costs 2.5%.</p></div></li>
     <li><div><p><b>Last upgrades to imbuements:</b> when the boots' Basic Vibrancy (15%) runs out, Intricate (25%) costs ~74k. Put Epiphany on the Casque, or keep wearing the Falcon Coif while it has it.</p></div></li>
-    <li><div><p><b>Do Dangerous Depths with Xee Ru.</b> It's started in your quest log and opens Warzones 4–6. Book World IV (4.2kk) is open to both of you now.</p></div></li>
-    <li><div><p><b>Pick up cheap money-savers.</b> The Traveling Trader (sell gear to Rashid) and The Postman Missions (cheaper boats) if you don't have them yet. See the <a href="#qol">quality-of-life quests</a>.</p></div></li>
+    <li><div><p><b>Do Dangerous Depths with Xee Ru.</b> 2 of 5 missions done (Gnomal Warming Measurements, Uncharted Territory); it opens Warzones 4–6. Book World IV (4.2kk) is open to both of you now.</p></div></li>
+    <li><div><p><b>Next quests.</b> The Secret Library looks open to you (The Lost Brother, The New Frontier, Liquid Black and Cults of Tibia are all in your log, and its first mission is done): it leads to Falcon Bastion and the underground Asura Palace. Shadows of Yalahar is open too (In Service of Yalahar mission 3 done). The Postman Missions aren't started. See the <a href="#qol">quality-of-life quests</a>.</p></div></li>
     <li><div><p><b>Know your real cost per hour.</b> Your main set's imbuements wear down at about 185k per hour of hunting (about 205k with the Falcon Coif). A spot needs to beat that on the Hunt Analyser balance just to break even.</p></div></li>
   </ol>
 </section>
@@ -538,6 +565,9 @@ td.c { text-align: center; }
   </div>
 </section>
 
+</div>
+
+<div class="pane" id="tab-build" data-tab="build">
 <!-- ============ CHAPTER: GEAR ============ -->
 <div class="chapter" id="ch-gear">
   <span class="ch-k">Chapter 2</span>
@@ -547,35 +577,59 @@ td.c { text-align: center; }
 
 <section id="gear">
   <div class="sec-head">
-    <div class="eyebrow">From your Oct 17 Looks · stats from TibiaWiki</div>
+    <div class="eyebrow">From your Look texts, Oct 24, 02:37 · market prices: Tibia Market Tracker, Refugia, last updated Sep 14</div>
     <h2>Equipment</h2>
   </div>
-  <p class="lede">Your main set is the Bow of Cataclysm, Stoic Iks Casque (or Falcon Coif), the new Unerring Dragon Scale Armor and Falcon Greaves, and Winged Boots. Three old pieces are ready to sell.</p>
+  <p class="lede">You hunt in the Bow of Cataclysm, Falcon Coif, Unerring Dragon Scale Armor, Falcon Greaves and Winged Boots. Four pieces are swaps for specific spawns, and two or three are worth selling.</p>
+  <h3 class="tbl-h">Main set</h3>
   <div class="scroll">
     <table class="t-wide">
-      <thead><tr><th>Slot</th><th>Item</th><th>Stats</th><th>Imbuements (Oct 17, 13:17)</th><th>Verdict</th></tr></thead>
+      <thead><tr><th>Slot</th><th>Item</th><th>Stats</th><th>Imbuements (Oct 24)</th><th>Verdict</th></tr></thead>
       <tbody>
-        <tr class="band"><td colspan="5">Main set</td></tr>
-        <tr><td class="slot">Weapon</td><td class="name">Bow of Cataclysm, tier 1</td><td>Atk +6, Hit +4%, distance +1, <span class="el death">death +4%</span>, Onslaught 0.5%. Proficiency 5: +1 distance, +1 holy ML, holy crits, +3% vs bosses</td><td>Powerful Strike, Void, Vampirism (12:12 h)</td><td><span class="pill good">Main for Holy</span></td></tr>
-        <tr><td class="slot">Helmet</td><td class="name">Stoic Iks Casque</td><td>Arm 8, distance +2, <span class="el phys">physical +3%</span> <span class="el energy">energy +6%</span>. Divine Missile +13% base damage</td><td>Powerful Void (12:10 h), <b>2nd slot empty</b></td><td><span class="pill good">Keep</span> <span class="pill warn">Add Epiphany</span></td></tr>
-        <tr><td class="slot">Armor</td><td class="name">Unerring Dragon Scale Armor <span class="muted small">new</span></td><td>Arm 17, distance +3, holy ML +1, <span class="el energy">energy +10%</span> <span class="el earth">earth −5%</span>. Strong Ethereal Spear +4% life leech. 135 oz</td><td>Powerful Vampirism, Powerful Quara Scale (20:00 h)</td><td><span class="pill good">Main</span></td></tr>
-        <tr><td class="slot">Legs</td><td class="name">Falcon Greaves <span class="muted small">new</span></td><td>Arm 10, distance +3, sword, club, axe +3, <span class="el phys">physical +7%</span> <span class="el ice">ice +7%</span>. 36 oz</td><td>no slots</td><td><span class="pill good">Main</span></td></tr>
-        <tr><td class="slot">Boots</td><td class="name">Winged Boots</td><td>Arm 2, speed +15, distance +1, <span class="el earth">earth +7%</span></td><td>Basic Vibrancy (19:59 h)</td><td><span class="pill good">Keep</span></td></tr>
-        <tr><td class="slot">Quiver</td><td class="name">Red Quiver</td><td>6 slots</td><td>—</td><td><span class="pill good">Keep</span></td></tr>
-        <tr><td class="slot">Amulet</td><td class="name">Probably Foxtail Amulet</td><td>Arm 2, <span class="el phys">physical +5%</span>, level 100. Confirm with a Look</td><td>—</td><td><span class="pill">Plasma when hunting</span></td></tr>
+        <tr><td class="slot">Weapon</td><td class="name">Bow of Cataclysm <span class="muted small">tier 1</span></td><td>Atk +6, Hit +4%, distance +1, <span class="el death">death +4%</span>. Onslaught 0.5%. Classification 3, level 250, 47 oz. Proficiency 5: +1 distance, +1 holy ML, holy crits, +3% vs bosses</td><td>Powerful Strike, Void, Vampirism (11:47 h)</td><td><span class="pill good">Main for Holy</span></td></tr>
+        <tr><td class="slot">Helmet</td><td class="name">Falcon Coif</td><td>Arm 10, distance +2, shielding +2, <span class="el phys">physical +3%</span> <span class="el fire">fire +10%</span>. Classification 4, level 300, 28 oz</td><td>Powerful Void, Intricate Epiphany (6:31 h)</td><td><span class="pill good">Main while the Casque lacks Epiphany</span></td></tr>
+        <tr><td class="slot">Armor</td><td class="name">Unerring Dragon Scale Armor</td><td>Arm 17, distance +3, holy ML +1, <span class="el energy">energy +10%</span> <span class="el earth">earth −5%</span>. Strong Ethereal Spear +4% life leech. Classification 4, level 300, 135 oz</td><td>Powerful Quara Scale, Powerful Vampirism (10:37 h)</td><td><span class="pill good">Main</span></td></tr>
+        <tr><td class="slot">Legs</td><td class="name">Falcon Greaves</td><td>Arm 10, distance +3, sword, club, axe +3, <span class="el phys">physical +7%</span> <span class="el ice">ice +7%</span>. Classification 4, level 300, 36 oz</td><td>no slots</td><td><span class="pill good">Main</span></td></tr>
+        <tr><td class="slot">Boots</td><td class="name">Winged Boots</td><td>Arm 2, speed +15, distance +1, <span class="el earth">earth +7%</span>. Classification 3, level 220, 12 oz</td><td>Basic Vibrancy (11:27 h)</td><td><span class="pill good">Keep</span></td></tr>
+        <tr><td class="slot">Amulet</td><td class="name">Foxtail Amulet <span class="muted small">by its icon</span></td><td>Arm 2, <span class="el phys">physical +5%</span>, level 100, no timer. Grimvale reward, and Grimvale is done in your log. Not in your Looks yet</td><td>—</td><td><span class="pill">Plasma when hunting</span></td></tr>
         <tr><td class="slot">Ring</td><td class="name">Butterfly Ring</td><td><span class="el death">death +3%</span></td><td>—</td><td><span class="pill">Plasma when hunting</span></td></tr>
-        <tr><td class="slot">Extra</td><td class="name">Not identified</td><td>A blue orb; adds about <span class="el death">death +5%</span> going by your totals. The Bone Fiddle (life drain +5%) is in the Zaoan chest</td><td>—</td><td><span class="pill warn">Look at it</span></td></tr>
-        <tr><td class="slot">Backpack</td><td class="name">Ghost Backpack</td><td>Vol 26; 2,900 oz with its contents (13:18)</td><td>Powerful Featherweight (19:51 h)</td><td><span class="pill good">Keep</span></td></tr>
-        <tr class="band"><td colspan="5">Swaps</td></tr>
-        <tr><td class="slot">Weapon</td><td class="name">Falcon Bow</td><td>Atk +6, Hit +5%, distance +2, <span class="el fire">fire +5%</span>, level 300, 35 oz. Proficiency starts at 0; perks favour auto-attacks and Divine Missile, +1 healing ML at level 4</td><td>Powerful Void, Strike, Vampirism (14:56 h)</td><td><span class="pill">Swap bow</span></td></tr>
-        <tr><td class="slot">Helmet</td><td class="name">Falcon Coif</td><td>Arm 10, distance +2, shielding +2, <span class="el phys">physical +3%</span> <span class="el fire">fire +10%</span>, level 300</td><td>Powerful Void, Intricate Epiphany (15:54 h)</td><td><span class="pill good">Wear while the Casque lacks Epiphany</span></td></tr>
-        <tr class="band"><td colspan="5">Sell</td></tr>
-        <tr><td class="slot">Armor</td><td class="name">Ghost Chestplate</td><td>Arm 17, distance +2, <span class="el phys">physical +3%</span>, 123 oz</td><td>Powerful Vampirism (8:55 h), empty</td><td><span class="pill warn">Sell</span> <span class="small muted">bid 2.3kk · ask 3.4kk</span></td></tr>
-        <tr><td class="slot">Legs</td><td class="name">Fabulous Legs</td><td>Arm 9, distance +2, melee +2, <span class="el phys">physical +4%</span> <span class="el fire">fire +2%</span></td><td>no slots</td><td><span class="pill warn">Sell</span> <span class="small muted">bid 2.7kk · ask 3.5kk</span></td></tr>
-        <tr><td class="slot">Weapon</td><td class="name">Bow of Destruction</td><td>Atk +5, Hit +5%, level 200, 55 oz</td><td>3 empty slots</td><td><span class="pill warn">Sell</span> <span class="small muted">bid 2.2kk · ask 3.1kk</span></td></tr>
+        <tr><td class="slot">Extra</td><td class="name">Not identified</td><td>A blue orb; about <span class="el death">death +5%</span> going by your totals. The Bone Fiddle (life drain +5%) is in the Zaoan chest</td><td>—</td><td><span class="pill warn">Look at it</span></td></tr>
+        <tr><td class="slot">Quiver</td><td class="name">Red Quiver</td><td>6 slots</td><td>—</td><td><span class="pill good">Keep</span></td></tr>
+        <tr><td class="slot">Backpack</td><td class="name">Ghost Backpack</td><td>Vol 26</td><td>Featherweight ran out by Oct 22; not in your Oct 24 Looks</td><td><span class="pill warn">Look at it</span></td></tr>
       </tbody>
     </table>
   </div>
+  <details class="fold-tbl">
+  <summary>Swaps: Falcon Bow, Stoic Iks Casque, Embrace of Nature, Prismatic Boots</summary>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Slot</th><th>Item</th><th>Stats</th><th>Imbuements (Oct 24)</th><th>When to wear it</th></tr></thead>
+      <tbody>
+        <tr><td class="slot">Weapon</td><td class="name">Falcon Bow</td><td>Atk +6, Hit +5%, distance +2, <span class="el fire">fire +5%</span>. Classification 4, level 300, 35 oz. Proficiency starts at 0; +1 healing ML at level 4</td><td>Powerful Void, Strike, Vampirism (5:29 h)</td><td>Fire-heavy spawns, or to level its proficiency</td></tr>
+        <tr><td class="slot">Helmet</td><td class="name">Stoic Iks Casque</td><td>Arm 8, distance +2, <span class="el phys">physical +3%</span> <span class="el energy">energy +6%</span>. Divine Missile +13% base damage. Classification 4, level 250, 35 oz</td><td>Powerful Void (11:40 h), <b>2nd slot empty</b></td><td>Back to main once it has Epiphany</td></tr>
+        <tr><td class="slot">Armor</td><td class="name">Embrace of Nature <span class="muted small">new on the page</span></td><td>Arm 16, distance +4, <span class="el ice">ice +11%</span> <span class="el energy">energy −3%</span>. Classification 3, level 220, 24 oz: 111 oz lighter than the Unerring. One imbuement slot. Drops from the Grave Danger bosses (Count Vlarkorth, Duke Krule, Lord Azaram, Sir Baeloc)</td><td>Powerful Dragon Hide, <span class="el fire">fire +15%</span> (18:18 h)</td><td>Only fire and ice spawns without energy damage. You lose the Unerring's Vampirism, holy ML +1 and spear leech, so your life leech drops a lot. Worth ~25k, so keeping it costs nothing</td></tr>
+        <tr><td class="slot">Boots</td><td class="name">Prismatic Boots</td><td>Arm 3, speed +15, <span class="el death">death +3%</span>. Classification 2, level 150, 18 oz</td><td>1 slot, empty</td><td>Rarely: they trade the Winged Boots' distance +1 and earth +7% for death +3%. Worth ~7k</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </details>
+  <details class="fold-tbl">
+  <summary>Depot and sell: Ghost Chestplate, Bow of Destruction, Prismatic Legs, Fabulous Legs</summary>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Item</th><th>Stats</th><th>Imbuements</th><th class="n">Market (Sep 14)</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Ghost Chestplate</td><td>Arm 17, distance +2, <span class="el phys">physical +3%</span>. Classification 3, level 230, 123 oz</td><td>Powerful Vampirism (8:13 h), 2nd empty</td><td class="n">bid 2.30kk · ask 3.40kk<br><span class="muted small">avg sold 3.17kk, 60 a month</span></td><td><span class="pill warn">Sell</span></td></tr>
+        <tr><td class="name">Bow of Destruction</td><td>Atk +5, Hit +5%. Classification 2, level 200, 55 oz</td><td>3 empty slots</td><td class="n">bid 2.18kk · ask 3.10kk<br><span class="muted small">avg sold 2.92kk, 7 a month</span></td><td><span class="pill warn">Sell</span></td></tr>
+        <tr><td class="name">Prismatic Legs <span class="muted small">tier 1</span></td><td>Arm 8, distance +2, <span class="el phys">physical +3%</span>. Transcendence 0.13%. Classification 2, level 150, 71 oz</td><td>—</td><td class="n">avg sold ~26k<br><span class="muted small">buy offers ~1.5k</span></td><td><span class="pill warn">Sell</span> <span class="small muted">Falcon Greaves beat it everywhere</span></td></tr>
+        <tr><td class="name">Fabulous Legs</td><td>Arm 9, distance +2, melee +2, <span class="el phys">physical +4%</span> <span class="el fire">fire +2%</span></td><td>no slots</td><td class="n">bid 2.70kk · ask 3.50kk</td><td><span class="pill">Not in your Oct 24 Looks: sold?</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">Prices are the tracker's last Refugia snapshot (Sep 14); it hasn't updated Refugia since, so check the in-game Market before you post. Selling into a buy offer is free; your own sell offer costs 2.5% (see <a href="#market">Market</a>).</p>
+  </details>
+  <details class="fold-tbl">
+  <summary>Your sheet, which bow and helmet, swap items by spawn</summary>
   <div class="grid2">
     <div class="card">
       <h3>Main set on your sheet <span class="tag">Oct 22, 14:03, with the Falcon Coif</span></h3>
@@ -591,6 +645,7 @@ td.c { text-align: center; }
         <div><b>−5%</b><span>Earth</span></div>
       </div>
       <p class="small muted">Read from the Skills window during the Oct 22 Book World duo. Earth is negative because of the Unerring (−5%); the Enchanted Sleep Shawl (+24%) fixes that on earth spawns.</p>
+      <p class="small"><b>Oct 24, in town:</b> distance 154, magic 31, shielding 102, attack value 353, crit +5% / +10%; physical +5%, earth +12%, energy +12%, ice +5%, death +7.85%. Magic and crit are lower because imbuements pause in protection zones. Distance is 37 higher than in town on Oct 22 (117), which no item in your Looks explains. Tell me what boosted it.</p>
     </div>
     <div class="card">
       <h3>Which bow and helmet</h3>
@@ -607,11 +662,13 @@ td.c { text-align: center; }
     <ul class="small">
       <li><b>Normal hunting:</b> Collar and Ring of Blue Plasma. Distance +7 and magic level +3 for about 33,500 gp per hour (collar 8,878 + ring 7,898 per 30 min).</li>
       <li><b>Life drain spawns</b> (Frazzlemaws, Burster Spectres): Greater Garlic Necklace (+50%) and Bone Fiddle (+5%).</li>
+      <li><b>Fire and ice:</b> Embrace of Nature with its Dragon Hide (fire +15%, ice +11%), at the cost of the armor's Vampirism.</li>
       <li><b>Heavy physical:</b> Prismatic Ring (<span class="el phys">physical +10%</span> <span class="el energy">energy +8%</span>), Foxtail Amulet (<span class="el phys">physical +5%</span>, permanent). The Enchanted Sleep Shawl in the same amulet slot gives <span class="el phys">physical +7%</span> and distance +3, but it runs out after 60 minutes.</li>
-      <li><b>Earth:</b> Enchanted Sleep Shawl (distance +3, <span class="el phys">physical +7%</span> <span class="el earth">earth +24%</span>, 60-minute item). <b>Fire:</b> Falcon Coif (<span class="el fire">fire +10%</span>) and Falcon Bow (+5%).</li>
+      <li><b>Earth:</b> Enchanted Sleep Shawl (distance +3, <span class="el phys">physical +7%</span> <span class="el earth">earth +24%</span>, 60-minute item, about 646k each on the Sep 14 market, so only for dangerous earth spawns). <b>Fire:</b> Falcon Coif (<span class="el fire">fire +10%</span>) and Falcon Bow (+5%).</li>
       <li><b>During a Bounty Task:</b> Bounty Talisman in the extra slot (+3% damage, life leech and loot against task creatures).</li>
     </ul>
   </div>
+  </details>
 </section>
 
 <section id="imbue">
@@ -884,7 +941,7 @@ td.c { text-align: center; }
 
 <section id="wheel">
   <div class="sec-head">
-    <div class="eyebrow">293 points at 333 (285 on Oct 17) · respec is free, temple only</div>
+    <div class="eyebrow">304 points at 333, all placed (Oct 24) · respec is free, temple only</div>
     <h2>Wheel of Destiny</h2>
   </div>
   <p class="lede"><b>Keep Holy as the main build.</b> It saves you from one killing blow per 30 h of battle, gives the most HP and mana, and buffs Divine Barrage, which you cast in every spawn. Save Physical as a second preset for Diamond Arrow spawns. Boss comes later, once crit gear is in.</p>
@@ -916,7 +973,8 @@ td.c { text-align: center; }
       </tbody>
     </table>
   </div>
-  <p class="small muted">All three also give +1 distance, one Vessel Resonance and +4 damage and healing. HP and capacity are at 285 points. The Oct 17 Wheel screen shows HP +320: the 10 points since 316 went into the last Holy slice, now 60/100. It also confirms +1 distance, Divine Barrage augment I, Vessel Resonance top-left, +4 damage and healing, and Gift of Life stage 1. The planner codes below are the 261-point builds; put every extra point on the last slice of each.</p>
+  <p class="small"><b>Your Wheel on Oct 24</b> (0 of 304 points left): dedication HP +350, mana +225, capacity +200, mitigation 0.30%; conviction +1 distance, Divine Barrage augment I, Vessel Resonance top-left and bottom-right; vessels HP +220, damage and healing +1; revelation damage and healing +4, Gift of Life stage 1 (Avatar of Light, Divine Empowerment, Divine Grenade locked). 304 = 283 from levels + 21 extra, 10 of them from The Way of the Monk.</p>
+  <p class="small muted">All three also give +1 distance, one Vessel Resonance and +4 damage and healing. HP and capacity in the table are at 285 points. The Oct 17 Wheel screen shows HP +320: the 10 points since 316 went into the last Holy slice, now 60/100. It also confirms +1 distance, Divine Barrage augment I, Vessel Resonance top-left, +4 damage and healing, and Gift of Life stage 1. The planner codes below are the 261-point builds; put every extra point on the last slice of each.</p>
   <div class="grid3" id="wCodes"></div>
   <div class="grid2">
     <div class="card">
@@ -932,7 +990,7 @@ td.c { text-align: center; }
     <div class="card">
       <h3>Get more points</h3>
       <ul class="small">
-        <li><b>The Way of the Monk Quest</b> (275+, Premium): 10 promotion points and 847.8k exp.</li>
+        <li><b>The Way of the Monk Quest</b> (275+, Premium): 10 promotion points. <span class="pill good">Done Oct 23</span></li>
         <li><b>Hunting Task Shop:</b> up to 50 points, each pricier (100, 200, 400, 700 task points…). You had 3,100 task points.</li>
         <li><b>Gem mods at grade IV:</b> +1 point each. <b>Promotion Scrolls</b> from Bakragore: up to 50, endgame.</li>
         <li>Milestones: 550 points for a stage 2 revelation, 575 for Positional Tactics and Ballistic Mastery, 625 for the first outer conviction perk.</li>
@@ -959,13 +1017,13 @@ td.c { text-align: center; }
     <div class="eyebrow">Gem Atelier and Fragment Workshop</div>
     <h2>Gems</h2>
   </div>
-  <div class="note">Don't spend on gems yet. Keep the +220 HP lesser gem in the top-left vessel (still there on Oct 17); it is the only active slot. Save greater gems until you can afford 6kk reveals and are hunting for a Revelation Mastery or Divine Caldera mod.</div>
+  <div class="note">Keep the +220 HP lesser gem in the top-left vessel. Since Oct 24 the Wheel also has a Vessel Resonance bottom-right, but the Vessels panel shows only the top-left gem: put one of your lesser gems of that domain's colour there. Otherwise, don't spend on gems yet. Save greater gems until you can afford 6kk reveals and are hunting for a Revelation Mastery or Divine Caldera mod.</div>
   <div class="grid2">
     <div class="card">
       <h3>Your gems</h3>
       <ul class="small">
         <li>Revealed: 19 gems on Oct 13, one more than before (earlier: 4 Marksman Gems with two elemental resistances each, 14 Lesser Marksman Gems). None are waiting to be revealed.</li>
-        <li>Only the top-left domain has a resonance, so only one gem works.</li>
+        <li>Two domains have a resonance on Oct 24 (top-left and bottom-right), so two gems can work.</li>
         <li>The regular gems become useful once a build has two resonances in their domain.</li>
       </ul>
     </div>
@@ -1047,11 +1105,12 @@ td.c { text-align: center; }
   </div>
   <div class="grid3">
     <div class="card">
-      <h3>Charms <span class="tag">172 points + Freeze grade 1 on Oct 8</span></h3>
+      <h3>Charms <span class="tag">Cyclopedia, Oct 24</span></h3>
       <ul class="small">
-        <li><b>New points:</b> since then you completed three bestiary entries: Frazzlemaw and Burster Spectre (50 charm points each on TibiaWiki) and Silencer. Check the new total in the Cyclopedia.</li>
-        <li><b>Next goal: Low Blow</b> (800 points). Since June 2026 other charms trigger only on the main target with area ammo; Low Blow still applies to the whole area.</li>
-        <li><b>150 minor charm echoes:</b> spend 100 on Void's Call or Vampiric Embrace, stage 1.</li>
+        <li><b>Low Blow</b> unlocked: +4% crit, on Frazzlemaw. Grade 2 (+8%) costs 1,200 points. It still applies to the whole area with area ammo.</li>
+        <li><b>Vampiric Embrace</b> (minor) unlocked: +1.6% life leech. Grade 2 (2.4%) costs 150 echoes.</li>
+        <li><b>Points:</b> 48 of 848 unspent, 50 of 150 echoes. You can assign 5 more charms (one major and one minor per creature).</li>
+        <li>Resetting all charms costs 2,663,000.</li>
       </ul>
     </div>
     <div class="card">
@@ -1072,6 +1131,9 @@ td.c { text-align: center; }
   </div>
 </section>
 
+</div>
+
+<div class="pane" id="tab-hunt" data-tab="hunt">
 <!-- ============ CHAPTER: HUNTING ============ -->
 <div class="chapter" id="ch-hunt">
   <span class="ch-k">Chapter 4</span>
@@ -1156,7 +1218,7 @@ td.c { text-align: center; }
 
 <section id="hunts">
   <div class="sec-head">
-    <div class="eyebrow">TibiaPal paladin numbers (TibiaPal marks them as data from before the 2026 rebalance) · access from TibiaWiki</div>
+    <div class="eyebrow">TibiaPal paladin numbers (marked as data from before the 2026 rebalance; re-checked Oct 24, unchanged) · access from TibiaWiki</div>
     <h2>Where to hunt</h2>
   </div>
   <div class="grid3">
@@ -1186,14 +1248,15 @@ td.c { text-align: center; }
     <span class="count" id="hCount"></span>
   </div>
   <div class="note" id="hDuoNote" hidden><b>Party with Xee Ru:</b> spots both of you can enter, going by the quests ticked for each of you in the <a href="#quests">quest checklist</a>, up to level 300 so Xee Ru (265) keeps up. Exp is TibiaPal's solo paladin number; in a party each of you gets the total × 1.35 ÷ 2 (two vocations). Rows with "Duo" notes have your own results or element data for both of you. Tick Xee Ru's finished quests in the checklist to unlock more rows (Zao, Banuta, Oskayaat).</div>
-  <div class="scroll">
+  <div class="scroll tall">
     <table class="t-wide">
       <thead><tr><th>Spot</th><th class="n">Lvl</th><th class="n">Raw exp/h</th><th class="n">Loot/h</th><th>Setup</th><th>Access</th></tr></thead>
       <tbody id="hRows"></tbody>
     </table>
   </div>
   <p class="small muted">Numbers come from experienced players with big lures and predate the 2026 rebalance, so expect less at first. Remember the ~185k per hour of imbuement upkeep when comparing loot. Loot uses market prices on established worlds; negative loot means the spot loses money. Gold drops were cut on several spawns on Sep 1, 2026. "Open to you" uses the quests ticked for Veritass in the <a href="#quests">quest checklist</a>. <i>Italic</i> access notes mean TibiaWiki lists no requirement but doesn't say "open" outright. Setup: "Ethereal" is the physical barrage setup, "Divine" the holy one.</p>
-  <h3>Goals for later</h3>
+  <details>
+  <summary>Goals for later, 500+</summary>
   <div class="scroll">
     <table class="t-mid">
       <thead><tr><th class="n">Level</th><th>Spot</th><th class="n">Raw exp/h</th><th class="n">Loot/h</th></tr></thead>
@@ -1212,6 +1275,7 @@ td.c { text-align: center; }
       </tbody>
     </table>
   </div>
+  </details>
 </section>
 
 <section id="asura">
@@ -1388,6 +1452,9 @@ td.c { text-align: center; }
   <p class="small">Every spot in the <a href="#hunts">hunt table</a> marked <span class="pill">Druid-friendly</span> is also on TibiaPal's solo druid list, so Xee Ru is comfortable there. Gazer Spectres (ice 130%) killed Xee Ru at 206 on Oct 5: keep magic shield up. Lower Roshamuul has an ED+RP route on TibiaRoute (3–3.3kk); your Oct 11 duo there made +390k in 2 h. All spots both of you can enter are in the <a href="#hunts">hunt table</a> under "Party with Xee Ru".</p>
 </section>
 
+</div>
+
+<div class="pane" id="tab-progress" data-tab="progress">
 <!-- ============ CHAPTER: PROGRESS ============ -->
 <div class="chapter" id="ch-progress">
   <span class="ch-k">Chapter 5</span>
@@ -1401,12 +1468,12 @@ td.c { text-align: center; }
     <h2>Levels</h2>
   </div>
   <div class="grid3">
-    <div class="card"><div class="eyebrow">Since the auction</div><h3>303 → 333</h3><p class="small">30 levels in 25 days.</p></div>
-    <div class="card"><div class="eyebrow">Pace, Oct 8 → 22</div><h3>7.6kk exp per day</h3><p class="small">From 489,223,095 to 595,630,584 exp in 14 days.</p></div>
+    <div class="card"><div class="eyebrow">Since the auction</div><h3>303 → 333</h3><p class="small">30 levels in 26 days; 96% into 333 on Oct 24.</p></div>
+    <div class="card"><div class="eyebrow">Pace, Oct 8 → 24</div><h3>7.5kk exp per day</h3><p class="small">From 489,223,095 to 609,735,284 exp in 16 days.</p></div>
     <div class="card"><div class="eyebrow">At that pace</div><h3>350 around Nov 5</h3><p class="small">400 around Dec 20. Change the pace below to plan.</p></div>
   </div>
   <div class="chart-box">
-    <svg class="lchart" id="lchart" viewBox="0 0 720 260" role="img" aria-label="Veritass level from Sep 28 to Oct 23, 2026, rising from 303 to 333"></svg>
+    <svg class="lchart" id="lchart" viewBox="0 0 720 260" role="img" aria-label="Veritass level from Sep 28 to Oct 24, 2026, rising from 303 to 333"></svg>
     <div class="tip" id="ltip" hidden></div>
     <div class="chart-legend"><span><i style="background:var(--gold)"></i>Level (exp-based levels from screenshots, others from TibiaData)</span></div>
   </div>
@@ -1422,12 +1489,12 @@ td.c { text-align: center; }
   <div class="card calc">
     <h3>When will I reach…</h3>
     <div class="row">
-      <label for="pExp">Current exp<input type="number" id="pExp" min="0" value="595630584"></label>
-      <label for="pRate">Exp per day<input type="number" id="pRate" min="1" value="7600535"></label>
+      <label for="pExp">Current exp<input type="number" id="pExp" min="0" value="609735284"></label>
+      <label for="pRate">Exp per day<input type="number" id="pRate" min="1" value="7532012"></label>
       <label for="pTarget">Target level<input type="number" id="pTarget" min="2" max="2000" value="350"></label>
     </div>
     <div class="out" id="pOut"></div>
-    <p class="small muted">Uses Tibia's exp table: exp for level L = 50/3 × (L³ − 6L² + 17L − 12). The start date is Oct 17, 2026. The default exp is from Oct 22 (level 331); at level 333 you have at least 604,439,200.</p>
+    <p class="small muted">Uses Tibia's exp table: exp for level L = 50/3 × (L³ − 6L² + 17L − 12). Days count from today. The default exp is your Oct 24 screenshot (609,735,284, 96% into 333).</p>
   </div>
 </section>
 
@@ -1442,6 +1509,8 @@ td.c { text-align: center; }
     <div class="card"><div class="eyebrow">Burster Spectres · Oct 14–15</div><h3 class="no">−372k profit/h</h3><p class="small">About 2.38kk raw exp per hour. Oct 15 was a duo: Xee Ru owes you 167,948 to split it evenly.</p></div>
     <div class="card"><div class="eyebrow">Real cost</div><h3>+185k/h imbuements</h3><p class="small">Not in the analyser's supplies. Subtract it from every balance below to see true profit.</p></div>
   </div>
+  <details class="fold-tbl">
+  <summary>All hunts with full analyser data, newest first</summary>
   <div class="scroll">
     <table class="t-wide">
       <thead><tr><th>Date</th><th>Hunt</th><th class="n">Time</th><th class="n">Loot</th><th class="n">Supplies</th><th class="n">Balance</th><th class="n">Per hour</th><th>Notes</th></tr></thead>
@@ -1456,6 +1525,7 @@ td.c { text-align: center; }
       </tbody>
     </table>
   </div>
+  </details>
   <details>
     <summary>Member breakdown, Oct 10 and 11</summary>
     <div class="scroll">
@@ -1476,7 +1546,7 @@ td.c { text-align: center; }
 
 <section id="bestiary">
   <div class="sec-head">
-    <div class="eyebrow">From your screenshots · trackers read Oct 21, 14:41; Crusader and Behemoth Oct 22</div>
+    <div class="eyebrow">From your screenshots · Cyclopedia and trackers read Oct 24, 02:33–02:41</div>
     <h2>Bestiary &amp; Bosstiary</h2>
   </div>
   <div class="grid2">
@@ -1492,17 +1562,19 @@ td.c { text-align: center; }
           </tbody>
         </table>
       </div>
-      <p class="small muted">Biggest counts in your Bestiary Tracker on Oct 21: Shell Drake 1,808, Draken Spellweaver 1,253, Dawnfire Asura 1,169, Shock Head 1,163, Hellspawn 753, Lion Hydra 730 of 2,500. Bluebeak isn't tracked (at least 595 of 2,500 from the Oct 21 hunt). Earlier screenshots also showed Cinder Wyrmling 1,920 and Gazer Spectre 1,647.</p>
+      <p class="small"><b>Bestiary:</b> 383 of 833 creatures known across 21 classes (Humanoid 50 of 96, Human 47 of 96, Mammal 38 of 75, Vermin 34 of 61, Magical 32 of 58, Undead 28 of 94); 848 charm points earned in total.</p>
+      <p class="small muted">Biggest counts in your Bestiary Tracker: Shell Drake 1,808, Draken Spellweaver 1,253, Dawnfire Asura 1,169, Shock Head 1,163, Hellspawn 753, Lion Hydra 730 of 2,500. Bluebeak isn't tracked (at least 595 of 2,500 from the Oct 21 hunt). Earlier screenshots also showed Cinder Wyrmling 1,920 and Gazer Spectre 1,647.</p>
       <details>
         <summary>All 44 tracked creatures</summary>
-        <p class="small">Barbarian Headsplitter 171 · Barkless Devotee 625 · Barkless Fanatic 528 · Behemoth 119 · Chakoya Windcaller 209 · Crusader 1,484 · Dawnfire Asura 1,169 · Destroyer 74 · Draken Spellweaver 1,253 · Duskbringer 4 · Elder Wyrm 105 · Enfeebled Silencer 197 · Fox 12 · Frost Flower Asura 304 · Hellspawn 753 · Hero 276 · Hydra 110 · Lamassu 22 · Lion Hydra 730 · Lizard Sentinel 296 · Minotaur 187 · Minotaur Guard 80 · Minotaur Hunter 160 · Quara Constrictor… 525 · Quara Hydromancer… 603 · Quara Pincher Scout 571 · Quara Predator Scout 615 · Renegade Knight 137 · Scorpion 325 · Shell Drake 1,808 · Shock Head 1,163 · Smuggler 51 · Stone Golem 316 · Troll 116 · Vicious Squire 355 · Vile Grandmaster 89 · Weakened Frazzlemaw 340 · Werebadger 187 · Werebear 70 · Werefox 268 · Winter Wolf 147 · Worm Priestess 177 · Wyrm 96 · Yielothax 147</p>
+        <p class="small">Barbarian Headsplitter 171 · Barkless Devotee 636 · Barkless Fanatic 528 · Behemoth 119 · Chakoya Windcaller 209 · Crusader 1,484 · Dawnfire Asura 1,169 · Destroyer 84 · Draken Spellweaver 1,253 · Duskbringer 4 · Elder Wyrm 105 · Enfeebled Silencer 197 · Fox 12 · Frost Flower Asura 304 · Hellspawn 753 · Hero 276 · Hydra 110 · Lamassu 22 · Lion Hydra 730 · Lizard Sentinel 296 · Minotaur 187 · Minotaur Guard 80 · Minotaur Hunter 160 · Quara Constrictor… 525 · Quara Hydromancer… 603 · Quara Pincher Scout 571 · Quara Predator Scout 615 · Renegade Knight 137 · Scorpion 325 · Shell Drake 1,808 · Shock Head 1,163 · Smuggler 51 · Stone Golem 316 · Troll 116 · Vicious Squire 355 · Vile Grandmaster 89 · Weakened Frazzlemaw 340 · Werebadger 187 · Werebear 70 · Werefox 268 · Winter Wolf 147 · Worm Priestess 177 · Wyrm 96 · Yielothax 147</p>
         <p class="small muted">"…" marks names the tracker cuts off.</p>
       </details>
     </div>
     <div class="card">
       <h3>Bosstiary</h3>
-      <p class="small">Deathstrike 12, Abyssador 10, Gnomevil 10, <b>Chikhaton 5</b> and <b>Phrodomo 5</b> (bars full), Lloyd 3, Bibby Bloodbath 2, Inkwing 2, Kroazur 2, Raxias 2, Diseased Fred 1, Herald of Fire 1, Lady Tenebris 1, Sir Leonard 3 (two kills on Oct 22), Soul of Dragonking Zyrtarch 1, The Flaming Orchid 1, The Moonlight Aster 1, The Winter Bloom 1.</p>
-      <p class="small muted">From the Bosstiary Tracker on Oct 21; new since Oct 13: Chikhaton, Phrodomo, Diseased Fred, The Flaming Orchid and The Moonlight Aster. Boosted boss on Oct 21: Ichgahal.</p>
+      <p class="small">Deathstrike 12, Abyssador 10, Gnomevil 10, <b>Chikhaton 5</b> and <b>Phrodomo 5</b> (bars full), Lloyd 3, Bibby Bloodbath 2, Inkwing 2, Kroazur 2, Raxias 2, Diseased Fred 1, Herald of Fire 1, Lady Tenebris 1, Sir Leonard 2, Soul of Dragonking Zyrtarch 1, The Flaming Orchid 1, The Moonlight Aster 1, The Winter Bloom 1.</p>
+      <p class="small"><b>Boss Points 240 of 250</b>: equipment loot bonus 49%, 50% at 250. <b>Boss Slot 1 is empty</b>; Slot 2 opens at 1,500 points.</p>
+      <p class="small muted">From the Cyclopedia on Oct 24: 18 bosses with kills. Chikhaton and Phrodomo have all three stars.</p>
     </div>
   </div>
 </section>
@@ -1516,23 +1588,23 @@ td.c { text-align: center; }
     <div class="card">
       <h3>Do first, together</h3>
       <ul class="small">
-        <li><b>Dangerous Depths:</b> Warzones 4–6, Diremaw tasks, Powerful Featherweight. 15 faction points per warzone (10 with the Bigfoot's Burden bosses, and your Bosstiary shows Deathstrike 12×, Gnomevil 10× and Abyssador 10×), then a Fragile Lava Funnel gives 8 h.</li>
+        <li><b>Dangerous Depths</b> (2 of 5 missions done)<b>:</b> Warzones 4–6, Diremaw tasks, Powerful Featherweight. 15 faction points per warzone (10 with the Bigfoot's Burden bosses, and your Bosstiary shows Deathstrike 12×, Gnomevil 10× and Abyssador 10×), then a Fragile Lava Funnel gives 8 h.</li>
         <li><b>Between the Lines</b> (200): Book World II–IV, Crumbling Caverns. <b>Done for both of you</b> (Veritass Oct 13, Xee Ru by Oct 17).</li>
         <li><b>Grimvale, An Ancient Feud:</b> werelions (needs 300 werehyaena kills), then Paradise Lost for Oskayaat.</li>
         <li><b>Heart of Destruction</b> or the Forgotten Knowledge bosses: Powerful Epiphany.</li>
-        <li><b>The Way of the Monk</b> (275+, Veritass only for now): 10 Wheel points. <b>Started</b> (in the quest log on Oct 21).</li>
+        <li><b>The Way of the Monk</b> (275+): 10 Wheel points. <b>Done for Veritass</b> (Oct 23; the Wheel shows 304 points). Xee Ru can do it at 275.</li>
         <li><b>The Order of the Cobra</b> (250, rec. 300): Cobra Bastion and its daily bosses. Both of you qualify now. Bring a Cheesy Figurine; take the boat at the ruined bridge north-east of Ankrahmun. Tracked under Grave Danger, which is already in Veritass's log.</li>
-        <li><b>Too Hot to Handle:</b> needs only the Bigfoot's Burden Recruitment mission. Opens Antrum of the Fallen, Grotto of the Lost, Dwelling of the Forgotten and The Brainstealer. Starts with Gnomystery in Kazordoon.</li>
+        <li><b>Too Hot to Handle:</b> needs only the Bigfoot's Burden Recruitment mission, which is done in your log. Opens Antrum of the Fallen, Grotto of the Lost, Dwelling of the Forgotten and The Brainstealer. Starts with Gnomystery in Kazordoon.</li>
       </ul>
     </div>
     <div class="card">
       <h3>Long chains, start early</h3>
       <ul class="small">
         <li><b>The Dream Courts</b> (250): Ice Islands (you have it), Feyrist, Meriana, Relic Hunter rank, Ghostsilver Lantern, Flask of Medusa's Ointment, Broken Compass. Opens the Courts and Powerful Vibrancy.</li>
-        <li><b>Feaster of Souls</b> (250): Lion's Rock, Sea of Light, Shattered Isles to Ramoa, Blood Brothers mission 4. Opens the Flimsies.</li>
+        <li><b>Feaster of Souls</b> (250): Lion's Rock (done), Sea of Light, Shattered Isles to Ramoa (done), Blood Brothers mission 4. Opens the Flimsies.</li>
         <li><b>Blood Brothers</b> (40): start with Julius in Yalahar's Trade Quarter. Mission 4 opens Vengoth, which Feaster of Souls and Bloody Tusks both need.</li>
-        <li><b>The Lost Brother → Within the Tides → Shards of a Broken Moon:</b> Asura Mirror, Nagas, Turtles, then True Feverbloom Asuras (Shards also needs Grimvale: Paradise Lost). Within the Tides needs a Helmet of the Deep or Depth Galea.</li>
-        <li><b>The Secret Library → Order of the Lion:</b> the Library (250) opens Falcon Bastion, Deep Desert, Deathlings and the underground Asura Palace. With the Cobra and Falcon orders done, the Lion (rec. 300+) opens Bounac.</li>
+        <li><b>The Lost Brother (done, under Adventurers Guild in your log) → Within the Tides → Shards of a Broken Moon:</b> Asura Mirror, Nagas, Turtles, then True Feverbloom Asuras (Shards also needs Grimvale: Paradise Lost). Within the Tides needs a Helmet of the Deep or Depth Galea.</li>
+        <li><b>The Secret Library → Order of the Lion:</b> its requirements are all in your log and its first mission (High and Dry) is done. The Library (250) opens Falcon Bastion, Deep Desert, Deathlings and the underground Asura Palace. With the Cobra and Falcon orders done, the Lion (rec. 300+) opens Bounac.</li>
         <li><b>Adventures of Galthen:</b> Iksupan. Later: A Pirate's Tail, Ferumbras' Ascension.</li>
       </ul>
     </div>
@@ -1552,30 +1624,30 @@ td.c { text-align: center; }
       <tbody id="qRows"></tbody>
     </table>
   </div>
-  <p class="small muted">Veritass's quest log on Oct 13, unchanged on Oct 15 and Oct 21 except that The Way of the Monk is now started: 11 completed (Between the Lines, Child of Destiny, Children of the Revolution, Targuna, The Ape City, The Ice Islands, The Inquisition, The New Frontier, The Pits of Inferno, The Shattered Isles, Wrath of the Emperor). Started: A Pirate's Tail, Adventurers Guild, An Uneasy Alliance, Bigfoot's Burden, Cults of Tibia, Dangerous Depths, Elemental Spheres, Factions, Ferumbras' Ascendant, Forgotten Knowledge, Friends and Traders, Grave Danger, Grimvale, Hot Cuisine, In Service of Yalahar, Killing in the Name of…, and more below the scroll (the list past "Killing in the Name of…" hasn't been seen yet). "Veritass log" and "Xee log" mark started quests (Xee's from Oct 8).</p>
+  <p class="small muted"><b>Full quest log, Oct 24:</b> 11 quest lines completed (Between the Lines, Child of Destiny, Children of the Revolution, Targuna, The Ape City, The Ice Islands, The Inquisition, The New Frontier, The Pits of Inferno, The Shattered Isles, Wrath of the Emperor). Missions done in the others: The Way of the Monk (The Three-Fold Path), Adventurers Guild (The Lost Brother), Bigfoot's Burden (Recruitment, The Worm from Below), Dangerous Depths (Gnomal Warming Measurements, Uncharted Territory), Factions and Secret Service (CGB, top agent), Forgotten Knowledge (Bane of the Cosmic Force, Circle of the Black Sphinx), Friends and Traders (Assistant of Ecclesius, The Blessed Stake, The Travelling Trader), Grimvale, Hot Cuisine, In Service of Yalahar (missions 1–3, Searoutes), Killing in the Name of… (Paw and Fur: Drakens, Fazzrah, Killer Caimans), Liquid Black (Lagatos' Book of Death, The First Visitor), Oramond (Communication Breakdown, Sabotage), Rottin Wood (all five), The Explorer Society (Joining), The Secret Library (High and Dry), The Thieves Guild (Ivory Poaching), The Ultimate Challenges (The Annihilator, The Shadow Nexus), The White Raven Monastery (Access to the Isle of Kings), Threatened Dreams (5 of 6, Sweet Dreams left), Tibia Tales (Fish for a Serpent, Lion's Rock, The Hunt for the Sea Serpent). Also in the log with nothing done yet: A Pirate's Tail, An Uneasy Alliance, Cults of Tibia, Elemental Spheres, Ferumbras' Ascendant, Grave Danger, Loose Ends, Measuring Tibia, Primal Ordeal, Rathleton, Roshamuul, Spike Tasks, The Dream Courts, The First Dragon, The Scatterbrained Sorcerer, Unnatural Selection, War Against the Hive. "Veritass log" and "Xee log" below mark started quests (Xee's from Oct 8).</p>
   <p class="small muted">Checked against Strojny's <a href="https://www.youtube.com/watch?v=8zE2rZiWqIg">must-do access quests list</a> (Oct 17, 2026). Levels and unlocks above come from TibiaWiki, not the video. Ferumbras' Ascension and Sweet Dreams weren't added because their wiki pages couldn't be read.</p>
   <div class="card" id="qol">
     <h3>Quality-of-life quests</h3>
-    <p class="small muted">From Strojny's <a href="https://www.youtube.com/watch?v=FhcnXS31BvA">Must Have Quests pt. 2</a> (Oct 20, 2026); details from TibiaWiki. "?" means the quest isn't in the part of your quest log I've seen (A to Killing in the Name of…). Send the rest of the log and I'll fill it in.</p>
+    <p class="small muted">From Strojny's <a href="https://www.youtube.com/watch?v=FhcnXS31BvA">Must Have Quests pt. 2</a> (Oct 20, 2026); details from TibiaWiki. Status from your full quest log on Oct 24; "Not started" means it isn't in the log at all.</p>
     <div class="scroll">
       <table class="t-wide">
         <thead><tr><th>Quest</th><th>What it saves or earns</th><th>Level</th><th>Veritass</th></tr></thead>
         <tbody>
-          <tr><td class="name">The Traveling Trader</td><td>Sell gear to Rashid. He moves daily: Mon Svargrond, Tue Liberty Bay, Wed Port Hope, Thu Ankrahmun, Fri Darashia, Sat Edron, Sun Carlin.</td><td class="n">—</td><td>?</td></tr>
-          <tr><td class="name">The Postman Missions</td><td>Cheaper boat trips, parcels and letters. The Post Officer's Hat also saves 6,000 gp in The Thieves Guild.</td><td class="n">rec. 30</td><td>?</td></tr>
-          <tr><td class="name">The Djinn War</td><td>Trade with the Efreet or the Marid. You pick one side for good.</td><td class="n">40</td><td>?</td></tr>
-          <tr><td class="name">The Sweaty Cyclops</td><td>He forges Royal Steel, Hell Steel and Infernal Bolts from gear. Needed for iron ore trades in Beregar; Koshei starts here too.</td><td class="n">—</td><td>?</td></tr>
+          <tr><td class="name">The Traveling Trader</td><td>Sell gear to Rashid. He moves daily: Mon Svargrond, Tue Liberty Bay, Wed Port Hope, Thu Ankrahmun, Fri Darashia, Sat Edron, Sun Carlin.</td><td class="n">—</td><td><span class="pill good">Done</span></td></tr>
+          <tr><td class="name">The Postman Missions</td><td>Cheaper boat trips, parcels and letters. The Post Officer's Hat also saves 6,000 gp in The Thieves Guild.</td><td class="n">rec. 30</td><td><span class="pill">Not started</span></td></tr>
+          <tr><td class="name">The Djinn War</td><td>Trade with the Efreet or the Marid. You pick one side for good.</td><td class="n">40</td><td><span class="pill">Not started</span></td></tr>
+          <tr><td class="name">The Sweaty Cyclops</td><td>He forges Royal Steel, Hell Steel and Infernal Bolts from gear. Needed for iron ore trades in Beregar; Koshei starts here too.</td><td class="n">—</td><td><span class="pill">Not started</span></td></tr>
           <tr><td class="name">The Inquisition</td><td>Henricus sells the five regular blessings in one go.</td><td class="n">100+</td><td><span class="pill good">Done</span></td></tr>
           <tr><td class="name">The Pits of Inferno</td><td>In the video's list; nothing left to do.</td><td class="n">—</td><td><span class="pill good">Done</span></td></tr>
-          <tr><td class="name">Hot Cuisine</td><td>15 dishes with buffs, from Jean Pierre near Ashta'daramai.</td><td class="n">35</td><td><span class="pill gold">Started</span></td></tr>
-          <tr><td class="name">Killing in the Name of…</td><td>Hunting tasks.</td><td class="n">—</td><td><span class="pill gold">Started</span></td></tr>
-          <tr><td class="name">Forgotten Knowledge · The Way of the Monk</td><td>Intricate imbuing; +10 Wheel points. Both are in the quest table above.</td><td class="n">200 · 275</td><td><span class="pill gold">Both started</span></td></tr>
-          <tr><td class="name">Opticording Sphere</td><td>The Supreme Cube. Five players; needs Bigfoot's Burden rank II and Liquid Black mission 1.</td><td class="n">200 (rec. 300)</td><td>?</td></tr>
-          <tr><td class="name">The Hidden City of Beregar</td><td>Beregar mines and troll caves, Rust Remover. Needs The Ultimate Booze Quest.</td><td class="n">120</td><td>?</td></tr>
-          <tr><td class="name">Shadows of Yalahar</td><td>Telas's laboratories, Golem Wrench, trading with Telas. Needs In Service of Yalahar mission 3 (you've both started it).</td><td class="n">75</td><td>?</td></tr>
-          <tr><td class="name">Secret Service</td><td>One of three tools, depending on the agency you join. Shards of a Broken Moon asks for all three.</td><td class="n">50</td><td>?</td></tr>
-          <tr><td class="name">The Thieves Guild</td><td>Trading with Black Bert. Bring 10 Elephant Tusks.</td><td class="n">—</td><td>?</td></tr>
-          <tr><td class="name">Koshei the Deathless</td><td>Koshei's Ancient Amulet, or fight Koshei for Blue Legs and get the 5,000 gp fee back.</td><td class="n">—</td><td>?</td></tr>
+          <tr><td class="name">Hot Cuisine</td><td>15 dishes with buffs, from Jean Pierre near Ashta'daramai.</td><td class="n">35</td><td><span class="pill gold">Started</span> <span class="small muted">first part done; Cold Nose – Hot Dishes! next</span></td></tr>
+          <tr><td class="name">Killing in the Name of…</td><td>Hunting tasks.</td><td class="n">—</td><td><span class="pill gold">Started</span> <span class="small muted">Paw and Fur: Drakens, Fazzrah, Killer Caimans done</span></td></tr>
+          <tr><td class="name">Forgotten Knowledge · The Way of the Monk</td><td>Intricate imbuing; +10 Wheel points. Both are in the quest table above.</td><td class="n">200 · 275</td><td><span class="pill gold">Knowledge: 2 of 3</span> <span class="pill good">Monk done</span></td></tr>
+          <tr><td class="name">Opticording Sphere</td><td>The Supreme Cube. Five players; needs Bigfoot's Burden rank II and Liquid Black mission 1.</td><td class="n">200 (rec. 300)</td><td><span class="pill">Not started</span></td></tr>
+          <tr><td class="name">The Hidden City of Beregar</td><td>Beregar mines and troll caves, Rust Remover. Needs The Ultimate Booze Quest.</td><td class="n">120</td><td><span class="pill">Not started</span></td></tr>
+          <tr><td class="name">Shadows of Yalahar</td><td>Telas's laboratories, Golem Wrench, trading with Telas. Needs In Service of Yalahar mission 3, which you've done.</td><td class="n">75</td><td><span class="pill">Not started</span> <span class="pill good">Open now</span></td></tr>
+          <tr><td class="name">Secret Service</td><td>One of three tools, depending on the agency you join. Shards of a Broken Moon asks for all three.</td><td class="n">50</td><td><span class="pill good">Done</span> <span class="small muted">CGB</span></td></tr>
+          <tr><td class="name">The Thieves Guild</td><td>Trading with Black Bert. Bring 10 Elephant Tusks.</td><td class="n">—</td><td><span class="pill gold">Started</span> <span class="small muted">Ivory Poaching done; Burglary next</span></td></tr>
+          <tr><td class="name">Koshei the Deathless</td><td>Koshei's Ancient Amulet, or fight Koshei for Blue Legs and get the 5,000 gp fee back.</td><td class="n">—</td><td><span class="pill">Not started</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -1607,10 +1679,14 @@ td.c { text-align: center; }
     <li><span class="when">Oct 21 · 13:25–14:35</span>Book World duo with Xee Ru (lion hydras, bluebeaks): 2.04kk raw, party +277,119. Level 329 at 13:44. Xee Ru 260. The Way of the Monk started.</li>
     <li><span class="when">Oct 22 · 00:19–01:21</span>Lower Spike solo test: 330k raw per hour, −36,173. TibiaPal's 3.2kk / 1.5kk didn't hold up.</li>
     <li><span class="when">Oct 22 · ~12:03–14:03</span>Book World duo with Xee Ru: 2.71kk raw per hour each, party +750,843, Sir Leonard twice. Level 330 at 12:18, 331 at 13:34.</li>
-    <li><span class="when">Oct 23</span>TibiaData (16:25 UTC): Veritass 333, Xee Ru 265.</li>
+    <li><span class="when">Oct 23</span>TibiaData (16:25 UTC): Veritass 333, Xee Ru 265. The Way of the Monk done: Wheel up to 304 points, achievement points 208 → 210.</li>
+    <li><span class="when">Oct 24 · 02:33–02:41</span>Full quest log, Wheel and Cyclopedia screenshots: 609,735,284 exp (96% into 333), HP 4,005, mana 5,190, all 304 Wheel points placed, Low Blow and Vampiric Embrace charms, Boss Points 240. Hunt Analyser of the quest run: 1:57 h, raw 975,490, −196k.</li>
   </ul>
 </section>
 
+</div>
+
+<div class="pane" id="tab-ref" data-tab="ref">
 <!-- ============ CHAPTER: REFERENCE ============ -->
 <div class="chapter" id="ch-ref">
   <span class="ch-k">Chapter 6</span>
@@ -1665,8 +1741,18 @@ td.c { text-align: center; }
     </div>
   </div>
   <details>
-    <summary>Screenshot snapshots, Oct 8 to Oct 22</summary>
+    <summary>Screenshot snapshots, Oct 8 to Oct 24</summary>
     <div class="grid2" style="margin-top:10px">
+      <div class="card">
+        <h3>Oct 24 <span class="tag">level 333</span></h3>
+        <ul class="small">
+          <li>02:33, in town: 609,735,284 exp, 96% into 333; HP 4,005, mana 5,190, capacity 521, speed 487, stamina 40:47, offline training 12:00, XP Boost on (150%).</li>
+          <li>Town set: magic 31, distance 154, shielding 102, club 35, sword and axe 13, attack value 353, crits +5% / +10%; physical +5%, earth +12%, energy +12%, ice +5%, death +7.85%.</li>
+          <li>Wheel: 0 of 304 points left. Cyclopedia: 12,960,965 gold, 48 of 848 charm points, 50 of 150 echoes, Boss Points 240.</li>
+          <li>Hunt Analyser (quest run): 1:57 h, raw 975,490, loot 59,660, supplies 255,800, −196k; kills include 11 barkless devotees and 2 blightwalkers.</li>
+          <li>Looks at 02:37–02:39: the full gear list in <a href="#gear">Equipment</a>.</li>
+        </ul>
+      </div>
       <div class="card">
         <h3>Oct 22 <span class="tag">level 331</span></h3>
         <ul class="small">
@@ -1859,8 +1945,10 @@ jobs:
   </ul>
 </section>
 
+</div>
+
 <footer class="small muted">
-  <p>Level, exp, HP, mana, capacity, main-set skills, protections and imbuement timers from your Oct 22 screenshots (14:03 and 16:18); levels checked on TibiaData Oct 23. Bank from Oct 17. Gear from your Oct 17 Looks. Market prices from the Tibia Market tracker (Refugia data from Sep 14) move daily; check in game before buying. Events and boosted creatures as of Oct 23, 2026.</p>
+  <p>Level, exp, HP, mana, capacity, Wheel, charms, Bosstiary and the full quest log from your Oct 24 screenshots (02:33–02:41); gear and imbuement timers from your Oct 24 Looks; main-set hunting skills and protections from Oct 22 (14:03). Levels checked on TibiaData Oct 24. Gold from the Oct 24 Cyclopedia. Market prices from the Tibia Market tracker (Refugia data from Sep 14) move daily; check in game before buying. Events as of Oct 24, 2026.</p>
 </footer>
 
 </main>
@@ -2025,41 +2113,41 @@ jobs:
   var W = "https://tibia.fandom.com/wiki/";
   // n name, w wiki page, lvl, start, opens, pre (needs first), x Xee Ru's quest log on Oct 8
   var Q = {
-    bb:   { n: "Bigfoot's Burden", w: "Bigfoot%27s_Burden_Quest", lvl: "80 (rec. 120)", start: "", opens: "Gnomegate, Gnomebase Alpha, crystal teleporters, Warzones 1–3", pre: "Needed for Dangerous Depths and Too Hot to Handle", vs: "started" },
+    bb:   { n: "Bigfoot's Burden", w: "Bigfoot%27s_Burden_Quest", lvl: "80 (rec. 120)", start: "", opens: "Gnomegate, Gnomebase Alpha, crystal teleporters, Warzones 1–3", pre: "Needed for Dangerous Depths and Too Hot to Handle", vs: "Recruitment, Worm from Below done" },
     thth: { n: "Too Hot to Handle", w: "Too_Hot_to_Handle_Quest", lvl: "", start: "Gnomystery, by a closed crypt in Kazordoon", opens: "Antrum of the Fallen, Grotto of the Lost, Dwelling of the Forgotten, The Brainstealer", pre: "Needs the Bigfoot's Burden Recruitment mission" },
     bbro: { n: "Blood Brothers", w: "https://www.tibiawiki.com.br/wiki/Blood_Brothers_Quest", lvl: "40 (rec. 70–110)", start: "Julius, Trade Quarter entrance in Yalahar", opens: "Vengoth and its castle", pre: "Mission 4 is enough for Feaster of Souls and Bloody Tusks" },
     cob:  { n: "The Order of the Cobra", w: "https://www.tibiawiki.com.br/wiki/The_Order_of_the_Cobra_Quest", lvl: "250 (rec. 300)", start: "Boat at a ruined bridge north-east of Ankrahmun", opens: "Cobra Bastion, daily bosses", pre: "Bring a Cheesy Figurine. Tracked under Grave Danger in the quest log" },
-    sl:   { n: "The Secret Library", w: "https://www.tibiawiki.com.br/wiki/The_Secret_Library_Quest", lvl: "250 (rec. 350–500)", start: "Dedoras in Cormaya", opens: "Falcon Bastion, Deep Desert, Deathlings, underground Asura Palace, the Library", pre: "Needs The Lost Brother and The New Frontier, plus Liquid Black and Cults of Tibia (Prosperity) started" },
+    sl:   { n: "The Secret Library", w: "https://www.tibiawiki.com.br/wiki/The_Secret_Library_Quest", lvl: "250 (rec. 350–500)", start: "Dedoras in Cormaya", opens: "Falcon Bastion, Deep Desert, Deathlings, underground Asura Palace, the Library", pre: "Needs The Lost Brother and The New Frontier, plus Liquid Black and Cults of Tibia (Prosperity) started. All four are in your Oct 24 log; check that the Cults of Tibia part is Prosperity", vs: "High and Dry done" },
     lion: { n: "The Order of the Lion", w: "https://www.tibiawiki.com.br/wiki/The_Order_of_the_Lion_Quest", lvl: "250 (rec. 300+)", start: "Boat to Bounac, south of Thais (daytime)", opens: "Bounac city and depot, daily bosses, Ancient Lion Knight", pre: "Needs the Cobra and Falcon orders. Bring 20 Hams, 10 Breads, 20 Broken Longbows" },
     stag: { n: "The Order of the Stag", w: "https://www.tibiawiki.com.br/wiki/The_Order_of_the_Stag_Quest", lvl: "250 (rec. 500+)", start: "Kesar The Younger in Bounac (daytime)", opens: "Isle of Ada, Stag Bastion, silver mines, Bloodfire Gorge, Court Warlock", pre: "Needs The Order of the Lion" },
     shard:{ n: "Shards of a Broken Moon", w: "https://www.tibiawiki.com.br/wiki/Shards_of_a_Broken_Moon_Quest", lvl: "250", start: "Saraki or Nilavarna in Marapur", opens: "True Feverbloom Asura area (8,600 exp each since Oct 20)", pre: "Needs Grimvale: Paradise Lost and Within the Tides" },
     kil:  { n: "Kilmaresh", w: "https://www.tibiawiki.com.br/wiki/Kilmaresh_Quest", lvl: "rec. 350+", start: "Eshaya in Issavi", opens: "Sun Medal (Gryphon mount part), trading with Khanna" },
     nrw:  { n: "No Rest for the Wicked", w: "https://www.tibiawiki.com.br/wiki/No_Rest_for_the_Wicked_Quest", lvl: "250 (rec. 500+)", start: "Fernlor, Arcane Academy in Edron", opens: "Azzilon Castle and catacombs, boss Arbaziloth", pre: "Bring 100 Demonic Core Essences" },
     tusk: { n: "Bloody Tusks", w: "https://www.tibiawiki.com.br/wiki/Bloody_Tusks_Quest", lvl: "250 (rec. 600+)", start: "An Ominous Bat in Edron", opens: "Bloody Tusks, Norcferatu shortcuts, Gloom Maw mount", pre: "Needs Blood Brothers mission 4. Norcferatu Dungeons exp cut about 14% on Oct 20" },
-    dd:   { n: "Dangerous Depths", w: "Dangerous_Depths_Quest/Spoiler", lvl: "100 (rec. 200)", start: "Gnome Deep Hub, from Kazordoon", opens: "Warzones 4–6, Diremaw tasks, Powerful Featherweight", x: "started", vs: "started" },
+    dd:   { n: "Dangerous Depths", w: "Dangerous_Depths_Quest/Spoiler", lvl: "100 (rec. 200)", start: "Gnome Deep Hub, from Kazordoon", opens: "Warzones 4–6, Diremaw tasks, Powerful Featherweight", x: "started", vs: "2 of 5 missions" },
     btl:  { n: "Between the Lines", w: "Between_the_Lines_Quest/Spoiler", lvl: "200", start: "Wyrdin in Edron", opens: "Book World II–IV, Crumbling Caverns", vs: "done", x: "done" },
-    gv1:  { n: "Grimvale: An Ancient Feud", w: "Grimvale_Quest/Spoiler", lvl: "rec. 100–200", start: "Domizian in Darashia", opens: "Lion Sanctum (werelions)", pre: "Needs 300 werehyaena kills", vs: "started" },
+    gv1:  { n: "Grimvale: An Ancient Feud", w: "Grimvale_Quest/Spoiler", lvl: "rec. 100–200", start: "Domizian in Darashia", opens: "Lion Sanctum (werelions)", pre: "Needs 300 werehyaena kills", vs: "Grimvale mission done" },
     gv2:  { n: "Grimvale: Paradise Lost", w: "Grimvale_Quest/Spoiler", lvl: "rec. 100", start: "Domizian, then Tonar in Ankrahmun", opens: "Oskayaat: weretigers, werecrocodiles", pre: "After An Ancient Feud" },
     hod:  { n: "Heart of Destruction", w: "Heart_of_Destruction_Quest/Spoiler", lvl: "150 (rec. 250+)", start: "", opens: "Powerful Strike, Void, Vampirism, Epiphany" },
-    fk:   { n: "Forgotten Knowledge", w: "Forgotten_Knowledge_Quest/Spoiler", lvl: "rec. 200", start: "", opens: "Intricate imbuing (part 1); Last Lore Keeper unlocks Powerful Strike/Epiphany", vs: "started" },
-    monk: { n: "The Way of the Monk", w: "The_Way_of_the_Monk_Quest", lvl: "275", start: "", opens: "+10 Wheel points, 847.8k exp", vs: "started" },
+    fk:   { n: "Forgotten Knowledge", w: "Forgotten_Knowledge_Quest/Spoiler", lvl: "rec. 200", start: "", opens: "Intricate imbuing (part 1); Last Lore Keeper unlocks Powerful Strike/Epiphany", vs: "2 of 3 missions" },
+    monk: { n: "The Way of the Monk", w: "The_Way_of_the_Monk_Quest", lvl: "275", start: "", opens: "+10 Wheel points, 847.8k exp", vs: "done Oct 23" },
     ape:  { n: "The Ape City", w: "The_Ape_City_Quest/Spoiler", lvl: "rec. 130", start: "", opens: "Deeper Banuta" },
     nf:   { n: "The New Frontier", w: "The_New_Frontier_Quest/Spoiler", lvl: "77", start: "", opens: "Zao, Lizard City" },
     wote: { n: "Wrath of the Emperor", w: "Wrath_of_the_Emperor_Quest/Spoiler", lvl: "80", start: "", opens: "Razachai, Draken Walls, Brimstone Bugs, Wote 8, lower Banuta", pre: "Needs Children of the Revolution first" },
     inq:  { n: "The Inquisition", w: "The_Inquisition_Quest/Spoiler", lvl: "100+", start: "", opens: "Inquisition hunts, Henricus blessing" },
-    td:   { n: "Threatened Dreams", w: "Threatened_Dreams_Quest/Spoiler", lvl: "30 (rec. 100)", start: "Maelyrra at the Donut Gate, Feyrist", opens: "Candia (Nibblemaws), Dream Courts prerequisite" },
+    td:   { n: "Threatened Dreams", w: "Threatened_Dreams_Quest/Spoiler", lvl: "30 (rec. 100)", start: "Maelyrra at the Donut Gate, Feyrist", opens: "Candia (Nibblemaws), Dream Courts prerequisite", vs: "5 of 6, Sweet Dreams left" },
     tm:   { n: "Twenty Miles Beneath the Sea", w: "Twenty_Miles_Beneath_the_Sea_Quest/Spoiler", lvl: "rec. 100", start: "", opens: "Seacrest Grounds" },
-    lb:   { n: "Liquid Black", w: "Liquid_Black_Quest/Spoiler", lvl: "rec. 130", start: "", opens: "Deeplings Library (with the world change)" },
-    rv:   { n: "Rathleton votes (50)", w: "Rathleton_Quest/Spoiler", lvl: "—", start: "Marvin, Rathleton Magistrate", opens: "Oramond Catacombs", pre: "Votes come from Oramond Quest tasks", x: "started" },
+    lb:   { n: "Liquid Black", w: "Liquid_Black_Quest/Spoiler", lvl: "rec. 130", start: "", opens: "Deeplings Library (with the world change)", vs: "2 of 3 missions" },
+    rv:   { n: "Rathleton votes (50)", w: "Rathleton_Quest/Spoiler", lvl: "—", start: "Marvin, Rathleton Magistrate", opens: "Oramond Catacombs", pre: "Votes come from Oramond Quest tasks", x: "started", vs: "started" },
     dt:   { n: "Dark Trails", w: "Dark_Trails_Quest/Spoiler", lvl: "", start: "", opens: "Abandoned Sewers, Fury Dungeon" },
-    isy:  { n: "In Service of Yalahar", w: "In_Service_of_Yalahar_Quest/Spoiler", lvl: "50 (rec. 120)", start: "", opens: "Yalahar quarters (Grim Reapers)", x: "started", vs: "started" },
-    exp:  { n: "The Explorer Society", w: "The_Explorer_Society_Quest/Spoiler", lvl: "20 / 80", start: "", opens: "Yalahar travel, Relic Hunter rank (Dream Courts)", x: "started" },
+    isy:  { n: "In Service of Yalahar", w: "In_Service_of_Yalahar_Quest/Spoiler", lvl: "50 (rec. 120)", start: "", opens: "Yalahar quarters (Grim Reapers)", x: "started", vs: "missions 1–3 done" },
+    exp:  { n: "The Explorer Society", w: "The_Explorer_Society_Quest/Spoiler", lvl: "20 / 80", start: "", opens: "Yalahar travel, Relic Hunter rank (Dream Courts)", x: "started", vs: "Joining done" },
     ap:   { n: "Asura Palace", w: "Asura_Palace_Quest/Spoiler", lvl: "rec. 200", start: "Asura Palace", opens: "Asura Mirror (with The Lost Brother)" },
-    lbro: { n: "The Lost Brother", w: "The_Lost_Brother_Quest/Spoiler", lvl: "rec. 200", start: "Asura Palace", opens: "Asura Mirror, Marapur" },
+    lbro: { n: "The Lost Brother", w: "The_Lost_Brother_Quest/Spoiler", lvl: "rec. 200", start: "Asura Palace", opens: "Asura Mirror, Marapur", vs: "done (Adventurers Guild)" },
     wtt:  { n: "Within the Tides", w: "Within_the_Tides_Quest/Spoiler", lvl: "rec. 150", start: "North-east Tiquanda", opens: "Nagas, Marapur Turtles", pre: "Needs The Lost Brother and a Helmet of the Deep or Depth Galea" },
     gal:  { n: "Adventures of Galthen", w: "Adventures_of_Galthen_Quest/Spoiler", lvl: "rec. 250", start: "Sealed ruins in Tiquanda (bring 5 nails)", opens: "Iksupan" },
     fos:  { n: "Feaster of Souls", w: "Feaster_of_Souls_Quest/Spoiler", lvl: "250", start: "", opens: "Venore and Port Hope Flimsies", pre: "Needs Lion's Rock, Sea of Light, Shattered Isles (Ramoa), Blood Brothers 4" },
-    dc:   { n: "The Dream Courts", w: "The_Dream_Courts_Quest/Spoiler", lvl: "250", start: "Myzzi, north-east of Edron", opens: "Summer and Winter Court, Powerful Vibrancy", pre: "Long chain; see the card above", x: "started" }
+    dc:   { n: "The Dream Courts", w: "The_Dream_Courts_Quest/Spoiler", lvl: "250", start: "Myzzi, north-east of Edron", opens: "Summer and Winter Court, Powerful Vibrancy", pre: "Long chain; see the card above", x: "started", vs: "started" }
   };
   var QORDER = ["dd", "bb", "thth", "btl", "cob", "gv1", "hod", "fk", "monk", "td", "tm", "isy", "bbro", "exp", "rv", "dt", "lb", "ap", "lbro", "wtt", "gv2", "sl", "lion", "gal", "fos", "dc", "shard", "kil", "stag", "nrw", "tusk", "ape", "nf", "wote", "inq"];
   var done = load("veritass-hub-quests", null);
@@ -2068,6 +2156,8 @@ jobs:
   if (!done.m13) { done.v.btl = true; done.m13 = true; save("veritass-hub-quests", done); }
   // Oct 17: Xee Ru finished Between the Lines too
   if (!done.m17q) { done.x.btl = true; done.m17q = true; save("veritass-hub-quests", done); }
+  // Oct 24 quest log: The Way of the Monk and The Lost Brother done for Veritass
+  if (!done.m24q) { done.v.monk = true; done.v.lbro = true; done.m24q = true; save("veritass-hub-quests", done); }
 
   // Access per spot: q quests, k kind (open|level|event|nc), t tag text, h how, u unverified
   var OPEN = function (h, u) { return { q: [], k: "open", t: "Open", h: h, u: u }; };
@@ -2341,7 +2431,8 @@ jobs:
     ["2026-10-20", 328, null, "TibiaData"],
     ["2026-10-21", 329, 586819213, "Screenshot"],
     ["2026-10-22", 331, 595630584, "Screenshot"],
-    ["2026-10-23", 333, null, "TibiaData"]
+    ["2026-10-23", 333, null, "TibiaData"],
+    ["2026-10-24", 333, 609735284, "Screenshot"]
   ];
   var DEATHS = [];
   function day(s) { return Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10)) / 864e5; }
@@ -2357,7 +2448,7 @@ jobs:
     function mk(tag, a, p) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; }
     var g = mk("g", { "class": "grid" }), ax = mk("g", { "class": "axis" });
     [300, 305, 310, 315, 320, 325, 330, 335].forEach(function (v) { mk("line", { x1: L, x2: W - R, y1: Y(v), y2: Y(v) }, g); var t = mk("text", { x: L - 8, y: Y(v) + 4, "text-anchor": "end" }, ax); t.textContent = v; });
-    (W < 520 ? ["2026-09-28", "2026-10-08", "2026-10-17", "2026-10-23"] : ["2026-09-28", "2026-10-03", "2026-10-08", "2026-10-13", "2026-10-17", "2026-10-23"]).forEach(function (s) { var t = mk("text", { x: X(s), y: H - 10, "text-anchor": "middle" }, ax); t.textContent = fmtDate(s); });
+    (W < 520 ? ["2026-09-28", "2026-10-08", "2026-10-17", "2026-10-24"] : ["2026-09-28", "2026-10-03", "2026-10-08", "2026-10-13", "2026-10-18", "2026-10-24"]).forEach(function (s) { var t = mk("text", { x: X(s), y: H - 10, "text-anchor": "middle" }, ax); t.textContent = fmtDate(s); });
     var pts = LV.map(function (r) { return [X(r[0]), Y(r[1])]; });
     mk("path", { "class": "area", d: "M" + pts[0][0] + " " + Y(y0) + " L" + pts.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L") + " L" + pts[pts.length - 1][0] + " " + Y(y0) + " Z" });
     mk("path", { "class": "line", d: "M" + pts.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L") });
@@ -2388,7 +2479,7 @@ jobs:
   function projRender() {
     var x = Math.max(0, +document.getElementById("pExp").value || 0), rate = Math.max(1, +document.getElementById("pRate").value || 1), t = Math.max(2, Math.min(2000, +document.getElementById("pTarget").value || 350));
     var cur = levelFor(x), need = Math.max(0, expFor(t) - x), days = need / rate;
-    var d = new Date(Date.UTC(2026, 9, 17) + Math.ceil(days) * 864e5);
+    var d = new Date(Date.now() + Math.ceil(days) * 864e5);
     var into = expFor(cur + 1) > expFor(cur) ? (x - expFor(cur)) / (expFor(cur + 1) - expFor(cur)) : 0;
     document.getElementById("pOut").innerHTML = [[cur + " · " + Math.floor(into * 100) + "%", "Level now"], [n(need), "Exp to " + t], [need ? days.toFixed(1) : "0", "Days at this pace"], [need ? d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }) : "reached", "Around"]]
       .map(function (v) { return "<div><b>" + v[0] + "</b><span>" + v[1] + "</span></div>"; }).join("");
@@ -2396,32 +2487,87 @@ jobs:
   ["pExp", "pRate", "pTarget"].forEach(function (id) { document.getElementById(id).addEventListener("input", projRender); });
   projRender();
 
-  // ---------- scroll spy ----------
+  // ---------- tabs, folding, navigation ----------
+  var panes = Array.prototype.slice.call(document.querySelectorAll(".pane"));
+  var TABNAME = { now: "Character", build: "Gear & build", hunt: "Hunting", progress: "Progress", ref: "Reference" };
+  var OPEN = { next: 1, gear: 1, solo: 1, hunts: 1, levels: 1, log: 1 };
+  var foldState = load("veritass-hub-fold", {});
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function setFold(sec, folded, keep) {
+    sec.classList.toggle("folded", folded);
+    var b = sec.querySelector(".fold-btn");
+    if (b) { b.setAttribute("aria-expanded", folded ? "false" : "true"); b.lastChild.nodeValue = folded ? "Show" : "Hide"; }
+    if (keep) { foldState[sec.id] = folded ? 1 : 0; save("veritass-hub-fold", foldState); }
+  }
+  document.querySelectorAll(".pane section[id]").forEach(function (sec) {
+    var head = sec.querySelector(":scope > .sec-head"); if (!head) return;
+    var b = document.createElement("button"); b.type = "button"; b.className = "fold-btn"; b.setAttribute("aria-controls", sec.id); b.appendChild(document.createTextNode("Hide"));
+    head.appendChild(b);
+    b.addEventListener("click", function () { setFold(sec, !sec.classList.contains("folded"), true); });
+    var st = foldState[sec.id];
+    setFold(sec, st == null ? !OPEN[sec.id] : st === 1, false);
+  });
+  panes.forEach(function (pn) {
+    var bar = document.createElement("div"); bar.className = "pane-bar";
+    bar.innerHTML = '<span class="crumb">' + TABNAME[pn.getAttribute("data-tab")] + '</span><span class="btns"><button type="button" class="btn" data-all="0">Expand all</button><button type="button" class="btn" data-all="1">Collapse all</button></span>';
+    pn.insertBefore(bar, pn.firstChild);
+    bar.addEventListener("click", function (e) { var t = e.target.closest("button[data-all]"); if (!t) return; var f = t.getAttribute("data-all") === "1"; pn.querySelectorAll("section[id]").forEach(function (sec) { setFold(sec, f, true); }); });
+  });
+  var curTab = null;
+  function showTab(name, top) {
+    if (!TABNAME[name]) name = "now";
+    panes.forEach(function (pn) { pn.hidden = pn.getAttribute("data-tab") !== name; });
+    document.querySelectorAll("#idx > li").forEach(function (li) { var on = li.getAttribute("data-tab") === name; li.classList.toggle("cur", on); var a = li.querySelector("a.ch"); a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    var changed = curTab !== name; curTab = name; save("veritass-hub-tab", name);
+    if (changed && name === "progress") { try { chart(); } catch (e) {} }
+    if (top) window.scrollTo(0, 0);
+    if (window.innerWidth < 1100) { var a = document.querySelector('#idx > li[data-tab="' + name + '"] > a.ch'); try { a.scrollIntoView({ block: "nearest", inline: "center" }); } catch (e) {} }
+    spy();
+  }
+  function go(id, flash) {
+    var el = document.getElementById(id); if (!el) return false;
+    if (el.classList.contains("pane")) { showTab(el.getAttribute("data-tab"), true); return true; }
+    var pn = el.closest(".pane"); if (pn && pn.hidden) showTab(pn.getAttribute("data-tab"), false);
+    var sec = el.matches("section[id]") ? el : el.closest("section[id]");
+    if (sec && sec.classList.contains("folded")) setFold(sec, false, true);
+    for (var d = el.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
+    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    if (flash && sec) { sec.classList.remove("flash"); void sec.offsetWidth; sec.classList.add("flash"); }
+    return true;
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest('a[href^="#"]'); if (!a) return;
+    var id = a.getAttribute("href").slice(1); if (!id || !document.getElementById(id)) return;
+    e.preventDefault(); go(id, false);
+    try { history.replaceState(null, "", "#" + id); } catch (er) {}
+  });
+
+  // ---------- scroll spy (active tab only) ----------
   var links = {};
-  document.querySelectorAll(".side a[href^='#']").forEach(function (a) { var id = a.getAttribute("href").slice(1); (links[id] = links[id] || []).push(a); });
-  var chapterOf = {};
-  document.querySelectorAll("#idx > li").forEach(function (li) { var ch = li.querySelector("a.ch").getAttribute("href").slice(1); chapterOf[ch] = ch; li.querySelectorAll(".sub a").forEach(function (a) { chapterOf[a.getAttribute("href").slice(1)] = ch; }); });
-  var targets = Object.keys(chapterOf).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  document.querySelectorAll(".side .sub a[href^='#']").forEach(function (a) { var id = a.getAttribute("href").slice(1); (links[id] = links[id] || []).push(a); });
   function spy() {
-    var y = window.innerHeight * 0.3, cur = targets[0];
-    targets.forEach(function (el) { if (el.getBoundingClientRect().top <= y) cur = el; });
-    if (!cur) return;
-    var id = cur.id, ch = chapterOf[id];
-    document.querySelectorAll(".side a.on").forEach(function (a) { a.classList.remove("on"); });
-    (links[id] || []).forEach(function (a) { a.classList.add("on"); });
-    (links[ch] || []).forEach(function (a) { a.classList.add("on"); if (a.classList.contains("ch") && window.innerWidth < 1100) { try { a.scrollIntoView({ block: "nearest", inline: "center" }); } catch (e) {} } });
+    var pn = document.querySelector(".pane:not([hidden])"); if (!pn) return;
+    var y = window.innerHeight * 0.3, cur = null;
+    Object.keys(links).forEach(function (id) { var el = document.getElementById(id); if (!el || !pn.contains(el)) return; if (!cur) cur = el; if (el.getBoundingClientRect().top <= y) cur = el; });
+    document.querySelectorAll(".side .sub a.on").forEach(function (a) { a.classList.remove("on"); });
+    if (cur) (links[cur.id] || []).forEach(function (a) { a.classList.add("on"); });
   }
   var spyT = 0;
   window.addEventListener("scroll", function () { if (spyT) return; spyT = setTimeout(function () { spyT = 0; spy(); }, 80); }, { passive: true });
-  spy();
+  (function () {
+    var h = location.hash.slice(1);
+    if (h && document.getElementById(h)) { var el = document.getElementById(h), pn = el.closest(".pane") || el; showTab(pn.getAttribute("data-tab") || "now", false); setTimeout(function () { go(h, false); }, 0); }
+    else showTab(load("veritass-hub-tab", "now"), false);
+  })();
 
   // ---------- search ----------
   var q = document.getElementById("q"), qres = document.getElementById("qres");
   var secs = Array.prototype.map.call(document.querySelectorAll("main section[id], main header[id]"), function (s) {
     var h = s.querySelector("h1, h2");
     var parts = [], w = document.createTreeWalker(s, NodeFilter.SHOW_TEXT), t;
-    while ((t = w.nextNode())) { if (t.parentNode && t.parentNode.closest && t.parentNode.closest("svg, script, style")) continue; parts.push(t.nodeValue); }
-    return { id: s.id, title: h ? h.textContent.trim() : s.id, text: parts.join(" ").replace(/\s+/g, " ").trim() };
+    while ((t = w.nextNode())) { if (t.parentNode && t.parentNode.closest && t.parentNode.closest("svg, script, style, .fold-btn")) continue; parts.push(t.nodeValue); }
+    var pn = s.closest(".pane");
+    return { id: s.id, title: h ? h.textContent.trim() : s.id, tab: pn ? TABNAME[pn.getAttribute("data-tab")] : "", text: parts.join(" ").replace(/\s+/g, " ").trim() };
   });
   function snippet(t, i, len) { var a = Math.max(0, i - 40), b = Math.min(t.length, i + len + 60); return (a ? "…" : "") + esc(t.slice(a, i)) + "<mark>" + esc(t.slice(i, i + len)) + "</mark>" + esc(t.slice(i + len, b)) + (b < t.length ? "…" : ""); }
   function search() {
@@ -2430,16 +2576,15 @@ jobs:
     var hits = [];
     secs.forEach(function (s) { var low = s.text.toLowerCase(), i = low.indexOf(v), c = 0, j = i; while (j >= 0) { c++; j = low.indexOf(v, j + v.length); } if (i >= 0) hits.push({ s: s, i: i, c: c, t: s.title.toLowerCase().indexOf(v) >= 0 }); });
     hits.sort(function (a, b) { return (b.t - a.t) || (b.c - a.c); });
-    qres.innerHTML = hits.length ? hits.slice(0, 8).map(function (h) { return '<li><button type="button" data-go="' + h.s.id + '"><b>' + esc(h.s.title) + ' <span class="muted">· ' + h.c + "×</span></b><span>" + snippet(h.s.text, h.i, v.length) + "</span></button></li>"; }).join("") : '<li class="none">Nothing found for "' + esc(q.value.trim()) + '".</li>';
+    qres.innerHTML = hits.length ? hits.slice(0, 8).map(function (h) { return '<li><button type="button" data-go="' + h.s.id + '"><b>' + esc(h.s.title) + ' <span class="muted">· ' + esc(h.s.tab) + " · " + h.c + "×</span></b><span>" + snippet(h.s.text, h.i, v.length) + "</span></button></li>"; }).join("") : '<li class="none">Nothing found for "' + esc(q.value.trim()) + '".</li>';
     qres.hidden = false;
   }
   q.addEventListener("input", search);
   q.addEventListener("keydown", function (e) { if (e.key === "Enter") { var b = qres.querySelector("button"); if (b) b.click(); } if (e.key === "Escape") { q.value = ""; search(); } });
   qres.addEventListener("click", function (e) {
     var b = e.target.closest("button[data-go]"); if (!b) return;
-    var el = document.getElementById(b.getAttribute("data-go"));
     qres.hidden = true;
-    if (el) { el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); }
+    go(b.getAttribute("data-go"), true);
   });
   document.addEventListener("click", function (e) { if (!e.target.closest(".search")) qres.hidden = true; });
   q.addEventListener("focus", function () { if (q.value.trim().length >= 2) search(); });
