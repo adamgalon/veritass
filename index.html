@@ -509,6 +509,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <h2>Do next</h2>
   </div>
   <ol class="todo">
+    <li><div><p><b>Hunt crusaders, headwalkers and Roshamuul in the Holy preset.</b> Holy damage is as good or better there, you keep Gift of Life and 170 more HP, and Physical's mitigation is worth only about 0.1%. Keep Physical for bluebeaks and asuras. See <a href="#preset-pick">which preset where</a>.</p></div></li>
     <li><div><p><b>Spend the new Wheel points in all three presets.</b> Level 337 gives 308. On Oct 24 at 16:07 (level 335) Holy and Boss had 2 points left and Physical 1, and two more have come since. Put them on the slice each preset is filling. Temple only, and each preset has to be loaded and applied on its own. See the <a href="#wheel">Wheel</a>.</p></div></li>
     <li><div><p><b>Gem for the Holy preset.</b> Holy has Vessel Resonance top-left and bottom-right, but only the top-left gem works (+220 HP): the bottom-right socket is empty. Physical's bottom-left gem gives just +100 HP and ice +1%; a better lesser gem of that colour there helps every Book World hunt. See <a href="#gems">gems</a>.</p></div></li>
     <li><div><p><b>Put a boss in Boss Slot 1.</b> It was empty on Oct 24, so its loot bonus is wasted. Pick the boss you'll kill most in the next weeks. You have 240 of 250 Boss Points: 10 more lift the equipment loot bonus from 49% to 50%. See the <a href="#bestiary">Bosstiary</a>.</p></div></li>
@@ -988,6 +989,21 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
       </tbody>
     </table>
   </div>
+  <div class="card" id="preset-pick">
+    <h3>Which preset where <span class="tag">TibiaWiki modifiers, your screenshots</span></h3>
+    <div class="scroll" style="margin-top:8px">
+      <table class="t-wide">
+        <thead><tr><th>Spot</th><th>Physical · holy taken</th><th>What hits you</th><th>Pick</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Book World: crusaders + headwalkers</td><td>Crusader 90% · 90%<br>Headwalker 100% · 105%</td><td><span class="el phys">physical</span> melee up to 330 and 250 (crusader); <span class="el death">death</span> up to 260, <span class="el fire">fire</span> up to 270, life drain 220 (headwalker)</td><td><b>Holy</b></td><td class="small">Holy damage is equal or better on both, Divine Barrage gets +8% base damage, and you keep +170 HP, +75 mana, +200 capacity and Gift of Life. Cast Divine Barrage instead of Ethereal Barrage here.</td></tr>
+          <tr><td class="name">Book World: lion hydras + bluebeaks</td><td>Lion hydra 100% · 105%<br>Bluebeak holy 90%</td><td><span class="el fire">fire</span> up to 280, <span class="el holy">holy</span> up to 290</td><td><b>Physical</b></td><td class="small">Bluebeaks resist holy, so Ethereal Barrage with its +10% life leech augment is the better barrage.</td></tr>
+          <tr><td class="name">Roshamuul (Lower and West)</td><td>Frazzlemaw 95% · 105%<br>Guzzlemaw · 105%<br>Silencer 95% · 125%</td><td><span class="el phys">physical</span> up to 450–500, life drain up to 600 (Frazzlemaw) and 800 (Guzzlemaw), Silencer 350 + mana drain + magic level −60%</td><td><b>Holy</b></td><td class="small">Holy beats physical on every creature there, and the big risk is life drain spikes: Gift of Life and the extra HP matter more than anything Physical gives. Mitigation doesn't reduce life drain at all. TibiaPal still lists Diamond Arrows + Ethereal for Roshamuul West.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small"><b>Physical's 7.87% mitigation is smaller than it looks.</b> It multiplies your base mitigation instead of adding to it: your Skills window showed 1.12% in Holy (Oct 24, 02:33) and 1.2% in Physical (16:07), so it's worth about 0.1% less damage. Physical's real gains are Ethereal Barrage's +10% life leech, mana leech +0.25% and Divine Empowerment (+8% damage for 5 s every 32 s while you stand in its 3×3 field, 500 mana).</p>
+    <p class="small muted">Your own numbers so far: Oct 24 duo with Physical on the 16:07 screenshot, 2.20kk raw/h, 1.97kk damage/h; Oct 25 solo with Holy (HP 4,051 on the level-up shot), 2.20kk raw/h, 2.61kk damage/h, +57k. Solo and duo aren't directly comparable, so for a clean test do 1 h of each preset on the same spawn and send both analysers.</p>
+  </div>
   <p class="small muted">Also saved: an empty "Test Test" preset (306 points unspent), safe to delete. All presets: damage and healing +4 from revelation, +1 from vessels.</p>
   <p class="small"><b>Your Wheel on Oct 24, 02:33</b> (Holy, 0 of 304 points left): dedication HP +350, mana +225, capacity +200, mitigation 0.30%; conviction +1 distance, Divine Barrage augment I, Vessel Resonance top-left and bottom-right; vessels HP +220, damage and healing +1; revelation damage and healing +4, Gift of Life stage 1 (Avatar of Light, Divine Empowerment, Divine Grenade locked). 304 = 283 from levels + 21 extra, 10 of them from The Way of the Monk.</p>
   <p class="small muted">All three also give +1 distance, one Vessel Resonance and +4 damage and healing. HP and capacity in the table are at 285 points. The Oct 17 Wheel screen shows HP +320: the 10 points since 316 went into the last Holy slice, now 60/100. It also confirms +1 distance, Divine Barrage augment I, Vessel Resonance top-left, +4 damage and healing, and Gift of Life stage 1. The planner codes below are the 261-point builds; put every extra point on the last slice of each.</p>
@@ -1158,23 +1174,28 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
 </div>
 <section id="solo">
   <div class="sec-head">
-    <div class="eyebrow">Spots you can reach alone today · TibiaPal paladin numbers (from before the 2026 rebalance) · creature data from TibiaWiki</div>
+    <div class="eyebrow">Spots you can reach alone at 337 (Oct 25) · TibiaPal paladin numbers (from before the 2026 rebalance) · creature data from TibiaWiki</div>
     <h2>Solo plan</h2>
   </div>
-  <p class="lede">TibiaPal's numbers come from experienced players with big lures, before the 2026 rebalance. Your solo Burster hunt made 2.43kk raw per hour where TibiaPal lists 3.3kk, so plan on roughly three quarters of the listed exp until you've timed a spot yourself.</p>
+  <p class="lede"><b>Order to try at 337:</b> keep Book World (crusaders and headwalkers) as the solo base, test Ripper Spectres next, and try Roshamuul West only on a good day or as a duo. Do the Asura Palace quest for Asura Mirror. TibiaPal's numbers come from experienced players with big lures, before the 2026 rebalance. Your solo Burster hunt made 2.43kk raw per hour where TibiaPal lists 3.3kk, so plan on roughly three quarters of the listed exp until you've timed a spot yourself.</p>
   <div class="note warn"><b>Lower Spike is off the list.</b> TibiaPal's paladin table gives it 3.2kk raw and 1.5kk loot per hour (level 275+, Diamond Arrows and Ethereal, no video or source). Your Oct 22 test made 330k raw and lost 35k per hour, about a tenth of the exp. Treat every TibiaPal row as untested until you've timed it.</div>
   <div class="scroll">
     <table class="t-wide">
-      <thead><tr><th>Spot</th><th class="n">Raw exp/h</th><th class="n">≈ ¾ for you</th><th class="n">Loot/h</th><th>Setup</th><th>Why</th></tr></thead>
+      <thead><tr><th>Spot</th><th class="n">Raw exp/h</th><th class="n">≈ ¾ for you</th><th class="n">Loot/h</th><th>Setup · Wheel</th><th>Why</th></tr></thead>
       <tbody>
-        <tr><th colspan="6">For exp</th></tr>
-        <tr><td class="name">Book World IV</td><td class="n">4.2kk</td><td class="n">~3.1kk</td><td class="n">400k</td><td>Diamond Arrows · Ethereal</td><td class="small">Best open exp. Between the Lines is done. Bluebeaks resist holy (90%), so stay physical. Your duos: 1.74kk raw each per hour on Oct 21, 2.71kk on Oct 22. <b>Solo on Oct 25: 2.20kk raw per hour, +57k in 1:40 h.</b></td></tr>
-        <tr><td class="name">Book World III</td><td class="n">3.9kk</td><td class="n">~2.9kk</td><td class="n">400k</td><td>Diamond Arrows · Ethereal</td><td class="small">Same access, a bit less exp.</td></tr>
-        <tr><td class="name">Werehyaenas South</td><td class="n">3.1kk</td><td class="n">~2.3kk</td><td class="n">300k</td><td>Diamond Arrows · Divine</td><td class="small">Made for your Holy build: holy 125%, physical 100%. Fire 50% and earth 60%, so no Firestorm Arrows. Hyaena Lairs; TibiaWiki lists no access quest. Each kill counts toward Grimvale's 300.</td></tr>
-        <tr><td class="name">Asura Palace</td><td class="n">3.1kk</td><td class="n">~2.3kk</td><td class="n">100k</td><td>Diamond Arrows · Ethereal</td><td class="small">The safest. No quest. Holy is only 70% on two of the three asuras. See the <a href="#asura">guide</a>.</td></tr>
+        <tr><th colspan="6">Proven by you</th></tr>
+        <tr><td class="name">Book World: crusaders + headwalkers</td><td class="n">4.2kk <span class="muted small">(Ch. IV)</span></td><td class="n"><b>2.20kk</b> <span class="muted small">your solo</span></td><td class="n">580k <span class="muted small">yours</span></td><td>Diamond Arrows · Divine Barrage · <b>Holy</b></td><td class="small">Your Oct 25 solo: 2.20kk raw per hour and +57k in 1:40 h, with no exp shared. Crusaders take physical and holy equally (90%), headwalkers take holy better (105% vs 100%), so the Holy preset loses nothing here. See <a href="#wheel">which preset</a>.</td></tr>
+        <tr><th colspan="6">Best next tries for exp</th></tr>
+        <tr><td class="name">Ripper Spectres (Haunted Nexus)</td><td class="n">4.1kk</td><td class="n">~3.1kk</td><td class="n">500k</td><td>Firestorm Arrows · Divine Barrage · <b>Holy</b></td><td class="small">Fire 120%, holy 100%, but physical only 30%, so leave the Diamond Arrows home. Hits: 370 melee, 340 physical wave, 390 earth bomb, 460 life drain. The hunt table lists it as open (Haunted Cellar under the abandoned house); you haven't been there yet.</td></tr>
+        <tr><td class="name">Roshamuul West</td><td class="n">5.2kk</td><td class="n">~3.9kk</td><td class="n">600k</td><td>Diamond Arrows · Ethereal on TibiaPal · <b>Holy</b> for safety</td><td class="small">The best open exp on paper, and the most dangerous: Guzzlemaws up to 500 physical and 800 life drain, Frazzlemaws 450 and a 600 beam, Silencers drain mana and cut your magic level. Holy is 105–125% on all three. Go with Gift of Life ready, Garlic Necklace and Bone Fiddle; leave if you lose a lure. Better as a duo first.</td></tr>
+        <tr><td class="name">Book World: lion hydras + bluebeaks</td><td class="n">3.9–4.2kk</td><td class="n">~3.0kk</td><td class="n">400k</td><td>Diamond Arrows · Ethereal · <b>Physical</b></td><td class="small">Bluebeaks resist holy (90%); lion hydras take holy 105% and physical 100%, and hit fire up to 280 and holy up to 290. Your Oct 21 duo here made 1.74kk raw each.</td></tr>
+        <tr><td class="name">Werehyaenas South</td><td class="n">3.1kk</td><td class="n">~2.3kk</td><td class="n">300k</td><td>Diamond Arrows · Divine · <b>Holy</b></td><td class="small">Made for your Holy build: holy 125%, physical 100%. Fire 50% and earth 60%, so no Firestorm Arrows. Hyaena Lairs; TibiaWiki lists no access quest. Each kill counts toward Grimvale's 300.</td></tr>
+        <tr><td class="name">Asura Palace</td><td class="n">3.1kk</td><td class="n">~2.3kk</td><td class="n">100k</td><td>Diamond Arrows · Ethereal · <b>Physical</b></td><td class="small">The safest. No quest. Holy is only 70% on two of the three asuras. See the <a href="#asura">guide</a>.</td></tr>
         <tr><th colspan="6">For money</th></tr>
         <tr><td class="name">Wote 8 Drakens</td><td class="n">3.0kk</td><td class="n">~2.3kk</td><td class="n">1.2kk</td><td>Diamond Arrows · Ethereal</td><td class="small">Inside the Wrath of the Emperor areas, which you have. Not tested by you yet.</td></tr>
         <tr><td class="name">Draken Walls</td><td class="n">2.8kk</td><td class="n">~2.1kk</td><td class="n">750k</td><td>Diamond Arrows · Ethereal</td><td class="small">Around Razachai. Same quests. Not tested by you yet.</td></tr>
+        <tr><th colspan="6">One quest away</th></tr>
+        <tr><td class="name">Asura Mirror</td><td class="n">5.3kk</td><td class="n">~4.0kk</td><td class="n">600k</td><td>Diamond Arrows · Ethereal</td><td class="small">Needs only the Asura Palace quest now (The Lost Brother is done). True asuras give more exp since Oct 20.</td></tr>
       </tbody>
     </table>
   </div>
@@ -1185,7 +1206,6 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
         <li><b>Lower Roshamuul:</b> Frazzlemaws hit up to 450 in melee and berserk plus a 600 life drain beam, and Silencers reach you first. It's a duo spot: your Oct 11 run with Xee Ru made +390k.</li>
         <li><b>Burster Spectres:</b> your solo hunt lost 414k per hour, and the bestiary is done.</li>
         <li><b>Lower Spike:</b> your Oct 22 test made 330k raw per hour and lost 35k per hour.</li>
-        <li><b>Ripper Spectres:</b> they take only 30% physical, so Firestorm Arrows are a must, and the access isn't checked yet.</li>
       </ul>
     </div>
     <div class="card">
