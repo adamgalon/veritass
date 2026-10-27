@@ -383,7 +383,18 @@ details.fold-tbl { border: 1px solid var(--line); border-radius: 10px; padding: 
 details.fold-tbl > summary { font-size: 0.98rem; }
 details.fold-tbl[open] { display: grid; gap: 12px; }
 .scroll.tall { max-height: 72vh; overflow: auto; }
-.scroll.tall thead th { position: sticky; top: 0; z-index: 1; background: var(--surface); }
+.det-btn { all: unset; cursor: pointer; font-size: 0.75rem; font-weight: 700; color: var(--gold); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; margin-left: 4px; background: var(--surface); }
+.det-btn:hover, .det-btn:focus-visible { border-color: var(--gold); outline: none; }
+tr.det > td { background: var(--sunk); padding: 12px 14px; }
+tr.det .scroll { margin-bottom: 8px; }
+table.crt { font-size: 0.84rem; }
+table.crt td.m { text-align: center; white-space: nowrap; font-size: 0.8rem; }
+table.crt td.wk { color: var(--good); font-weight: 700; }
+table.crt td.res { color: var(--warn, #b7791f); }
+table.crt td.imm { color: var(--bad); font-weight: 700; }
+table.crt td.neu { color: var(--muted); }
+.scroll.tall > table > thead th { position: sticky; top: 0; z-index: 1; background: var(--surface); }
+.det-in { position: sticky; left: 0; max-width: min(900px, calc(100vw - 64px)); display: grid; gap: 4px; }
 @media (min-width: 1100px) {
   .idx > li:not(.cur) > .sub { display: none; }
   .sec-head { grid-template-columns: minmax(0, 1fr) auto; }
@@ -408,13 +419,13 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <li data-tab="build"><a class="ch" href="#tab-build">Gear &amp; build</a>
       <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#upgrades">Upgrades</a></li><li><a href="#market">Market &amp; selling</a></li><li><a href="#spells">Spells</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li></ul></li>
     <li data-tab="hunt"><a class="ch" href="#tab-hunt">Hunting</a>
-      <ul class="sub"><li><a href="#solo">Solo plan</a></li><li><a href="#loadout">Loadout by spot</a></li><li><a href="#hunts">Where to hunt</a></li><li><a href="#asura">Asura Palace</a></li><li><a href="#burster">Burster Spectres</a></li><li><a href="#roshamuul">Roshamuul</a></li><li><a href="#rosw">Roshamuul West</a></li><li><a href="#duo">Duo with Xee Ru</a></li></ul></li>
+      <ul class="sub"><li><a href="#boost">More exp per hour</a></li><li><a href="#solo">Solo plan</a></li><li><a href="#loadout">Loadout by spot</a></li><li><a href="#hunts">Where to hunt</a></li><li><a href="#asura">Asura Palace</a></li><li><a href="#burster">Burster Spectres</a></li><li><a href="#roshamuul">Roshamuul</a></li><li><a href="#rosw">Roshamuul West</a></li><li><a href="#duo">Duo with Xee Ru</a></li></ul></li>
     <li data-tab="progress"><a class="ch" href="#tab-progress">Progress</a>
       <ul class="sub"><li><a href="#levels">Levels</a></li><li><a href="#log">Hunt log</a></li><li><a href="#bestiary">Bestiary</a></li><li><a href="#quests">Quests</a></li><li><a href="#soloq">Solo quests</a></li><li><a href="#timeline">Timeline</a></li></ul></li>
     <li data-tab="ref"><a class="ch" href="#tab-ref">Reference</a>
       <ul class="sub"><li><a href="#account">Account</a></li><li><a href="#training">Training</a></li><li><a href="#changes">2026 changes</a></li><li><a href="#fresh">Keeping it fresh</a></li><li><a href="#sources">Sources</a></li></ul></li>
   </ul>
-  <div class="side-foot"><span>Data as of Oct 26, 2026</span><span>Write "update Veritass" in chat to refresh</span></div>
+  <div class="side-foot"><span>Data as of Oct 27, 2026</span><span>Write "update Veritass" in chat to refresh</span></div>
 </aside>
 
 <main class="main">
@@ -436,7 +447,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
   </div>
   <div class="status">
     <span class="pill good">The Way of the Monk done · +10 Wheel points</span>
-    <span class="pill good">Shares exp with Xee Ru (267)</span>
+    <span class="pill good">Shares exp with Xee Ru (270)</span>
     <span class="pill gold">Wheel: 306 points · Holy, Physical and Boss presets</span>
     <span class="pill gold">Gold 13,603,243 (Oct 24, 16:07)</span>
     <span class="pill">XP Boost on · stamina 40:47</span>
@@ -514,7 +525,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <li><div><p><b>Gem for the Holy preset.</b> Holy has Vessel Resonance top-left and bottom-right, but only the top-left gem works (+220 HP): the bottom-right socket is empty. Physical's bottom-left gem gives just +100 HP and ice +1%; a better lesser gem of that colour there helps every Book World hunt. See <a href="#gems">gems</a>.</p></div></li>
     <li><div><p><b>Put a boss in Boss Slot 1.</b> It was empty on Oct 24, so its loot bonus is wasted. Pick the boss you'll kill most in the next weeks. You have 240 of 250 Boss Points: 10 more lift the equipment loot bonus from 49% to 50%. See the <a href="#bestiary">Bosstiary</a>.</p></div></li>
     <li><div><p><b>Move your charms to Book World.</b> Crusader and Headwalker bestiaries are done (Oct 24), so both now take charms. Low Blow (+4% crit) still sits on Frazzlemaw: put it on Crusader, the one you kill most, and Vampiric Embrace (+1.6% life leech) on Headwalker, or both on Crusader (one major and one minor fit per creature). You have 148 charm points unspent; the cheapest new major charm costs 240. See <a href="#systems">charms</a>.</p></div></li>
-    <li><div><p><b>Asura Mirror is one quest away.</b> The Lost Brother is done in your log, so the Asura Palace quest is all that's left for Asura Mirror: 5.3kk raw and 600k loot on TibiaPal at level 250, your best open exp spot after that. Xee Ru would need both quests. See <a href="#asura">Asura Palace</a>.</p></div></li>
+    <li><div><p><b>Try Asura Mirror now.</b> TibiaWiki's Asura Vaults page lists only The Lost Brother (done) for the mirror, and The Lament, which its lower floors need, is in your quest log. TibiaPal: 5.3kk raw and 600k loot at level 250. Earlier this page also asked for the Asura Palace quest; if the mirror doesn't let you through, that's the missing piece. Xee Ru needs The Lost Brother. See <a href="#asura">Asura Palace</a>.</p></div></li>
     <li><div><p><b>Eat, and keep 7/7 blessings.</b> At 341 that's 279,075 gp: five regular blessings at 36,575 and Blood and Heart of the Mountain at 48,100. Henricus sells the five regular ones in one go (you have The Inquisition) for about 201,000.</p></div></li>
     <li><div><p><b>Sell the old pieces:</b> Ghost Chestplate and Bow of Destruction, about 5–6kk together, plus Prismatic Legs (~26k). Fabulous Legs are already sold. Selling to an existing buy offer costs no fee; creating your own offer costs 2.5%.</p></div></li>
     <li><div><p><b>Last upgrades to imbuements:</b> when the boots' Basic Vibrancy (15%) runs out, Intricate (25%) costs ~74k. Put Epiphany on the Casque, or keep wearing the Falcon Coif while it has it.</p></div></li>
@@ -1176,12 +1187,95 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
   <h2 class="ch-t">Hunting</h2>
   <p>A solo plan for 341, every spot with its access, guides for the spots you use, and the duo with Xee Ru.</p>
 </div>
+<section id="boost">
+  <div class="sec-head">
+    <div class="eyebrow">TibiaWiki BR, TibiaQA, TibiaRoute and tibia.com via TibiaData · checked Oct 27</div>
+    <h2>More exp and money per hour</h2>
+  </div>
+  <p class="lede">Everything that changes your exp or profit per hour besides the spot itself, with what it means for you.</p>
+  <div class="grid3">
+    <div class="card">
+      <h3>XP Boost (Store)</h3>
+      <ul class="small">
+        <li>+50% exp for 1 hour of hunting time (it only runs while you have logout block).</li>
+        <li>Up to 5 a day, each dearer: 30, 45, 90, 180, 360 Tibia Coins.</li>
+        <li><b>For you:</b> the first two (75 coins) cover a normal 2-hour hunt; your Oct 26 duo shows the effect: XP Gain Rate 225% = stamina 150% × 1.5.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Stamina</h3>
+      <ul class="small">
+        <li>Premium: +50% exp during the first 3 hours (42:00 → 39:00, the green part).</li>
+        <li>Full exp until 14:00 left; below that exp halves and creatures drop no loot.</li>
+        <li>Offline regen starts after 10 minutes: 1 minute per 3 offline below 39 h, 1 per 6 above. Refilling the 3 green hours takes 18 h 10 min offline.</li>
+        <li>With a daily-reward streak of 4+ days you also regenerate online in Resting Areas.</li>
+        <li><b>For you:</b> you've been at 39:55–41:57, so you hunt mostly in green. Log off at least 10 minutes between sessions.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Boosted creature</h3>
+      <ul class="small">
+        <li>Double exp, double loot and double respawn speed until server save, then 30 days on cooldown (TibiaQA, 2019–2021 answer).</li>
+        <li><b>For you:</b> check <a href="#events">Boosted</a> each day. If it's Frazzlemaw, Guzzlemaw, Silencer, Crusader, Headwalker or an asura, that's the day to hunt that spawn.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Raw exp and parties</h3>
+      <ul class="small">
+        <li>Raw exp leaves out premium/stamina, XP Boost and prey bonuses (TibiaQA, 2024).</li>
+        <li>In a party the shared bonus (35% for two vocations) also lands outside raw, so a duo's raw exp is about half of what the kills are worth.</li>
+        <li><b>For you:</b> your 51% on Oct 26 was the normal duo share. Compare a duo spot by the party's total, not your raw alone.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Hunting tasks</h3>
+      <ul class="small">
+        <li>In the Prey window: up to 3 tasks between server saves. Hard creatures: 400 or 800 kills for 160–914 task points by star rating; the 800 quota needs the Bestiary entry done.</li>
+        <li>Spend points with Walter Jaeger in Thais; the Hunting Task Shop also sells Wheel points (see <a href="#wheel">Wheel</a>).</li>
+        <li><b>For you:</b> Crusader and Headwalker are done, so the 800-kill quota is open: one Book World hunt (~800 kills an hour) can finish a task. TibiaWiki marks this page as possibly outdated.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Weapon proficiency</h3>
+      <ul class="small">
+        <li>Progress per kill by Bestiary difficulty: 1 (harmless) to 175 (challenging); bosses up to 1,000. Levels 1–7 need 1,750 to 20,000,000 progress (TibiaRoute, Jun 2025).</li>
+        <li>Proficiency Catalyst +25,000, Greater +100,000.</li>
+        <li><b>For you:</b> you looted a Proficiency Catalyst on Oct 26: use it on the Bow of Cataclysm. Book World and Roshamuul creatures are "hard" in the Bestiary, so they level the bow fast.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Which arrows</h3>
+      <ul class="small">
+        <li>Diamond Arrow: 37 attack, 21-square area, 130 gp. Storm arrows: 13 squares; Shatterstorm 27 (physical), Firestorm, Froststorm, Thunderstorm and Terrastorm 21.</li>
+        <li><b>Rule of thumb:</b> 37 × physical% vs 21 × element%. Switch to a storm arrow only when physical is cut below about 55%: Rippers (30%), Gazers (15%), Bursters (immune). The Details on each spot do this sum for you.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Supplies</h3>
+      <ul class="small">
+        <li>Ethereal Barrage costs 135 mana, Divine Barrage 175: on a 4 s cooldown that's 600 mana a minute less with Ethereal.</li>
+        <li>Your supplies: 549k/h solo in Book World, 607k/h in the Roshamuul West duo, plus ~185k/h of imbuements.</li>
+        <li>Bullseye Potions add ~4k/h for about 4% damage; skip them where melee hurts (Roshamuul).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Long-term multipliers</h3>
+      <ul class="small">
+        <li><b>Charms:</b> 148 points unspent; the next major charm costs 240.</li>
+        <li><b>Boss slot:</b> 240/250 Boss Points; slot 1 empty.</li>
+        <li><b>Wheel:</b> 312 points at 341, and unspent points in all three presets.</li>
+        <li><b>Prey:</b> XP prey on the creature that gives the most exp in the spot (Guzzlemaw 6,050, Silencer 5,100, Crusader 3,300).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section id="solo">
   <div class="sec-head">
-    <div class="eyebrow">Spots you can reach alone at 341 (Oct 26) · TibiaPal paladin numbers (from before the 2026 rebalance) · creature data from TibiaWiki</div>
+    <div class="eyebrow">Spots you can reach alone at 341 (Oct 26) · TibiaPal paladin numbers (current, post-rebalance list) · creature data from TibiaWiki</div>
     <h2>Solo plan</h2>
   </div>
-  <p class="lede"><b>Order to try at 341:</b> keep Book World (crusaders and headwalkers) as the solo base, test Ripper Spectres next, and try Roshamuul West only on a good day or as a duo. Do the Asura Palace quest for Asura Mirror. TibiaPal's numbers come from experienced players with big lures, before the 2026 rebalance. Your solo Burster hunt made 2.43kk raw per hour where TibiaPal lists 3.3kk, so plan on roughly three quarters of the listed exp until you've timed a spot yourself.</p>
+  <p class="lede"><b>Order to try at 341:</b> keep Book World (crusaders and headwalkers) as the solo base, test Ripper Spectres next, and try Roshamuul West only on a good day or as a duo. Try Asura Mirror: The Lost Brother should be enough. TibiaPal's numbers come from experienced players with big lures. Your solo Burster hunt made 2.43kk raw per hour where TibiaPal lists 3.3kk, so plan on roughly three quarters of the listed exp until you've timed a spot yourself.</p>
   <div class="note warn"><b>Lower Spike is off the list.</b> TibiaPal's paladin table gives it 3.2kk raw and 1.5kk loot per hour (level 275+, Diamond Arrows and Ethereal, no video or source). Your Oct 22 test made 330k raw and lost 35k per hour, about a tenth of the exp. Treat every TibiaPal row as untested until you've timed it.</div>
   <div class="scroll">
     <table class="t-wide">
@@ -1198,8 +1292,8 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
         <tr><th colspan="6">For money</th></tr>
         <tr><td class="name">Wote 8 Drakens</td><td class="n">3.0kk</td><td class="n">~2.3kk</td><td class="n">1.2kk</td><td>Diamond Arrows · Ethereal</td><td class="small">Inside the Wrath of the Emperor areas, which you have. Not tested by you yet.</td></tr>
         <tr><td class="name">Draken Walls</td><td class="n">2.8kk</td><td class="n">~2.1kk</td><td class="n">750k</td><td>Diamond Arrows · Ethereal</td><td class="small">Around Razachai. Same quests. Not tested by you yet.</td></tr>
-        <tr><th colspan="6">One quest away</th></tr>
-        <tr><td class="name">Asura Mirror</td><td class="n">5.3kk</td><td class="n">~4.0kk</td><td class="n">600k</td><td>Diamond Arrows · Ethereal</td><td class="small">Needs only the Asura Palace quest now (The Lost Brother is done). True asuras give more exp since Oct 20.</td></tr>
+        <tr><th colspan="6">Probably open now</th></tr>
+        <tr><td class="name">Asura Mirror</td><td class="n">5.3kk</td><td class="n">~4.0kk</td><td class="n">600k</td><td>Diamond Arrows · Ethereal</td><td class="small">TibiaWiki: The Lost Brother (done) opens the mirror; lower floors need The Lament, which is in your log. True asuras give more exp since Oct 20. <a href="https://youtu.be/MaCKF33Ldvk">TibiaPal video</a>.</td></tr>
       </tbody>
     </table>
   </div>
@@ -1215,7 +1309,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <div class="card">
       <h3>Next solo unlocks</h3>
       <ul class="small">
-        <li><b>Asura Mirror, 5.3kk:</b> the Asura Palace quest and The Lost Brother, both started at the palace. True asura exp went up on Oct 20. Within the Tides then adds Nagas (5.0kk).</li>
+        <li><b>Asura Mirror, 5.3kk:</b> probably open already: TibiaWiki lists only The Lost Brother for the mirror. True asura exp went up on Oct 20. Within the Tides then adds Nagas (5.0kk).</li>
         <li><b>Warzones 4–6, up to 4.3kk:</b> Dangerous Depths, already started.</li>
         <li><b>Iksupan, 4.7kk:</b> Adventures of Galthen.</li>
         <li><b>Venore Flimsies, 6.0kk:</b> Feaster of Souls, a long chain.</li>
@@ -1258,14 +1352,14 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
 
 <section id="hunts">
   <div class="sec-head">
-    <div class="eyebrow">TibiaPal paladin numbers (marked as data from before the 2026 rebalance; re-checked Oct 24, unchanged) · access from TibiaWiki</div>
+    <div class="eyebrow">TibiaPal paladin numbers (its current list, tested with the 2026 barrages and storm arrows; read Oct 27) · creatures and access from TibiaWiki · press Details on a spot · access from TibiaWiki</div>
     <h2>Where to hunt</h2>
   </div>
   <div class="grid3">
     <div class="card"><div class="eyebrow">Safest solo, open now</div><h3>Asura Palace</h3><p class="small">Open, no quest. 3.1kk raw on TibiaPal. Physical setup. See the <a href="#asura">guide</a>.</p></div>
     <div class="card"><div class="eyebrow">Best exp, open now</div><h3>Book World IV · Roshamuul West</h3><p class="small">4.2kk and 5.2kk raw on TibiaPal. Book World is the solo pick; take Xee Ru to Roshamuul. See the <a href="#solo">solo plan</a>.</p></div>
     <div class="card"><div class="eyebrow">Best money on TibiaPal, open now</div><h3>Wote 8 · Draken Walls</h3><p class="small">1.2kk and 750k loot per hour on TibiaPal, not yet tested by you. TibiaPal's Lower Spike (1.5kk) failed your Oct 22 test.</p></div>
-    <div class="card"><div class="eyebrow">One quest away</div><h3>Warzones 4–6</h3><p class="small">Dangerous Depths, started in your quest log. Up to 4.3kk exp, 1.2kk loot.</p></div>
+    <div class="card"><div class="eyebrow">Probably open now</div><h3>Asura Mirror</h3><p class="small">5.3kk raw, 600k on TibiaPal. TibiaWiki lists only The Lost Brother (done) for the mirror. Warzones 4–6 (up to 4.3kk) are one task grind away.</p></div>
   </div>
   <div class="controls" role="group" aria-label="Hunt table controls">
     <div><span class="ctl-label">Show</span>
@@ -1287,31 +1381,47 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <input type="search" id="hQ" placeholder="Search spot or quest" aria-label="Search hunting spots">
     <span class="count" id="hCount"></span>
   </div>
-  <div class="note" id="hDuoNote" hidden><b>Party with Xee Ru:</b> spots both of you can enter, going by the quests ticked for each of you in the <a href="#quests">quest checklist</a>, up to level 300 so Xee Ru (267) keeps up. Exp is TibiaPal's solo paladin number; in a party each of you gets the total × 1.35 ÷ 2 (two vocations). Rows with "Duo" notes have your own results or element data for both of you. Tick Xee Ru's finished quests in the checklist to unlock more rows (Zao, Banuta, Oskayaat).</div>
+  <div class="note" id="hDuoNote" hidden><b>Party with Xee Ru:</b> spots both of you can enter, going by the quests ticked for each of you in the <a href="#quests">quest checklist</a>, up to level 300 so Xee Ru (270) keeps up. Exp is TibiaPal's solo paladin number; in a party each of you gets the total × 1.35 ÷ 2 (two vocations). Rows with "Duo" notes have your own results or element data for both of you. Tick Xee Ru's finished quests in the checklist to unlock more rows (Zao, Banuta, Oskayaat).</div>
   <div class="scroll tall">
     <table class="t-wide">
       <thead><tr><th>Spot</th><th class="n">Lvl</th><th class="n">Raw exp/h</th><th class="n">Loot/h</th><th>Setup</th><th>Access</th></tr></thead>
       <tbody id="hRows"></tbody>
     </table>
   </div>
-  <p class="small muted">Numbers come from experienced players with big lures and predate the 2026 rebalance, so expect less at first. Remember the ~185k per hour of imbuement upkeep when comparing loot. Loot uses market prices on established worlds; negative loot means the spot loses money. Gold drops were cut on several spawns on Sep 1, 2026. "Open to you" uses the quests ticked for Veritass in the <a href="#quests">quest checklist</a>. <i>Italic</i> access notes mean TibiaWiki lists no requirement but doesn't say "open" outright. Setup: "Ethereal" is the physical barrage setup, "Divine" the holy one.</p>
+  <p class="small muted">Numbers come from experienced players with big lures, so expect less at first. They are TibiaPal's current list: its setups use the new barrages and storm arrows from the 2026 rebalance; the old pre-rebalance list is on tibiapal.com/hunting-old. Remember the ~185k per hour of imbuement upkeep when comparing loot. Loot uses market prices on established worlds; negative loot means the spot loses money. Gold drops were cut on several spawns on Sep 1, 2026. "Open to you" uses the quests ticked for Veritass in the <a href="#quests">quest checklist</a>. <i>Italic</i> access notes mean TibiaWiki lists no requirement but doesn't say "open" outright. Setup: "Ethereal" is the physical barrage setup, "Divine" the holy one.</p>
   <details>
-  <summary>Goals for later, 500+</summary>
+  <summary>Goals for later, 500+ (TibiaPal's current paladin list, 27 spots)</summary>
   <div class="scroll">
     <table class="t-mid">
-      <thead><tr><th class="n">Level</th><th>Spot</th><th class="n">Raw exp/h</th><th class="n">Loot/h</th></tr></thead>
+      <thead><tr><th class="n">Level</th><th>Spot</th><th class="n">Raw exp/h</th><th class="n">Loot/h</th><th>Setup</th><th>TibiaPal video</th></tr></thead>
       <tbody>
-        <tr><td class="n">500+</td><td class="name">Venore Flimsies −1 and −2</td><td class="n">8.5kk</td><td class="n">1.5kk</td></tr>
-        <tr><td class="n">500+</td><td class="name">Port Hope Flimsies −1 and −2</td><td class="n">8.0kk</td><td class="n">1.0kk</td></tr>
-        <tr><td class="n">500+</td><td class="name">Upper Roshamuul (South)</td><td class="n">7.5kk</td><td class="n">1.5kk</td></tr>
-        <tr><td class="n">500+</td><td class="name">Falcon's Eagle</td><td class="n">7.0kk</td><td class="n">1.8kk</td></tr>
-        <tr><td class="n">500+</td><td class="name">Oramond Mountain Hideout −1/−2</td><td class="n">5.8kk</td><td class="n">1.2kk</td></tr>
-        <tr><td class="n">500+</td><td class="name">Warzone 2</td><td class="n">5.2kk</td><td class="n">1.3kk</td></tr>
-        <tr><td class="n">600+</td><td class="name">Upper Roshamuul (North + South)</td><td class="n">9.0kk</td><td class="n">1.8kk</td></tr>
-        <tr><td class="n">600+</td><td class="name">Norcferatu Dungeons West</td><td class="n">9.0kk</td><td class="n">800k</td></tr>
-        <tr><td class="n">600+</td><td class="name">Norcferatu Fortress</td><td class="n">8.8kk</td><td class="n">1.1kk</td></tr>
-        <tr><td class="n">600+</td><td class="name">Azzilon Castle</td><td class="n">8.6kk</td><td class="n">800k</td></tr>
-        <tr><td class="n">600+</td><td class="name">Cobra Bastion</td><td class="n">7.5kk</td><td class="n">800k</td></tr>
+        <tr><td class="n">500+</td><td class="name">Venore Flimsies −1 and −2</td><td class="n">8.5kk</td><td class="n">1.5kk</td><td>Firestorm · Divine</td><td><a href="https://youtu.be/OVlTW4Gc0hg">video</a></td></tr>
+        <tr><td class="n">500+</td><td class="name">Port Hope Flimsies −1 and −2</td><td class="n">8.0kk</td><td class="n">1.0kk</td><td>Firestorm · Divine</td><td><a href="https://youtu.be/ruQcJFkM3ZQ">video</a></td></tr>
+        <tr><td class="n">500+</td><td class="name">Upper Roshamuul (South only)</td><td class="n">7.5kk</td><td class="n">1.5kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Falcon's Eagle</td><td class="n">7.0kk</td><td class="n">1.8kk</td><td>Diamond · Divine</td><td><a href="https://youtu.be/2WewIlsDfZg">video</a></td></tr>
+        <tr><td class="n">500+</td><td class="name">Oramond Mountain Hideout −1/−2</td><td class="n">5.8kk</td><td class="n">1.2kk</td><td>Diamond · Divine</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Warzone 2</td><td class="n">5.2kk</td><td class="n">1.3kk</td><td>Diamond · Divine</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Warzone 3</td><td class="n">5.0kk</td><td class="n">1.5kk</td><td>Diamond · Divine</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Issavi Ogres</td><td class="n">4.6kk</td><td class="n">1.2kk</td><td>Diamond · Divine</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Girtablilu</td><td class="n">4.4kk</td><td class="n">1.5kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Warzone 1</td><td class="n">4.3kk</td><td class="n">1.2kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Bashmu</td><td class="n">4.1kk</td><td class="n">1.7kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">500+</td><td class="name">Carnisylvans</td><td class="n">3.8kk</td><td class="n">1.8kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Upper Roshamuul (North + South)</td><td class="n">9.0kk</td><td class="n">1.8kk</td><td>Diamond · Ethereal</td><td><a href="https://youtu.be/KcPrLCoN7Aw">video</a></td></tr>
+        <tr><td class="n">600+</td><td class="name">Norcferatu Fortress</td><td class="n">8.6kk</td><td class="n">1.1kk</td><td>Diamond · Ethereal</td><td><a href="https://youtu.be/rlWvWq8b85w">video</a></td></tr>
+        <tr><td class="n">600+</td><td class="name">Azzilon Castle</td><td class="n">8.6kk</td><td class="n">800k</td><td>Diamond · Ethereal</td><td><a href="https://youtu.be/RRPgs3I6IV0">video</a></td></tr>
+        <tr><td class="n">600+</td><td class="name">Nimmersatt's Bottom Floor (−7)</td><td class="n">8.5kk</td><td class="n">1.0kk</td><td>Diamond · Ethereal</td><td><a href="https://youtu.be/UUKviUBRSlw">video</a></td></tr>
+        <tr><td class="n">600+</td><td class="name">Norcferatu Dungeons West</td><td class="n">8.5kk</td><td class="n">800k</td><td>Diamond · Ethereal</td><td><a href="https://youtu.be/8eVtHuNek_g">video</a></td></tr>
+        <tr><td class="n">600+</td><td class="name">Cobra Bastion</td><td class="n">7.5kk</td><td class="n">800k</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Cobras −1</td><td class="n">7.0kk</td><td class="n">700k</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Issavi Sphinx & Crypt Wardens</td><td class="n">6.5kk</td><td class="n">1.0kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Issavi Surface</td><td class="n">6.5kk</td><td class="n">800k</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Issavi Puzzle</td><td class="n">6.0kk</td><td class="n">500k</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Azzilon Walls</td><td class="n">5.5kk</td><td class="n">700k</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Usurpers</td><td class="n">5.5kk</td><td class="n">800k</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Issavi Sewers</td><td class="n">5.5kk</td><td class="n">350k</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Deep Desert</td><td class="n">5.1kk</td><td class="n">1.8kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
+        <tr><td class="n">600+</td><td class="name">Floating Savants (MoTA)</td><td class="n">4.6kk</td><td class="n">1.2kk</td><td>Diamond · Ethereal</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -1323,7 +1433,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <div class="eyebrow">Spot guide · creature data from TibiaWiki</div>
     <h2>Asura Palace</h2>
   </div>
-  <p class="lede">Open to you with no access quest, in Tiquanda. TibiaPal lists it at 3.1kk raw exp per hour for paladins (data from before the 2026 rebalance). It's also the safest high-exp spot you can reach solo.</p>
+  <p class="lede">Open to you with no access quest, in Tiquanda. TibiaPal lists it at 3.1kk raw exp per hour for paladins. It's also the safest high-exp spot you can reach solo.</p>
   <div class="scroll">
     <table class="t-wide">
       <thead><tr><th>Creature</th><th class="n">HP</th><th class="n">Exp</th><th class="n">Physical</th><th class="n">Holy</th><th>Immune</th><th>Hits with</th></tr></thead>
@@ -1348,12 +1458,12 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
       <ul class="small">
         <li>Frost Flower asuras are ice-immune: Xee Ru should use earth there (110% on Midnight and Frost Flower).</li>
         <li>Ice still works on Dawnfire asuras (110%).</li>
-        <li>At 341 and 267 you share exp (up to 341 / 1.5 = 227 is fine).</li>
+        <li>At 341 and 270 you share exp (up to 341 / 1.5 = 227 is fine).</li>
       </ul>
     </div>
     <div class="card">
       <h3>Next step up</h3>
-      <p class="small"><b>Asura Mirror</b> (Asura Vaults, 5.3kk raw on TibiaPal) needs the Asura Palace quest and The Lost Brother, level 250. Xee Ru is 267. Since Oct 20 its True asuras give more exp (Dawnfire 8,100, Midnight 8,200) and about 10–14% less gold.</p>
+      <p class="small"><b>Asura Mirror</b> (Asura Vaults, 5.3kk raw on TibiaPal, level 250): TibiaWiki lists The Lost Brother for the mirror and The Lament (The Secret Library) for the lower floors. Xee Ru is 270. Since Oct 20 its True asuras give more exp (Dawnfire 8,100, Midnight 8,200) and about 10–14% less gold.</p>
     </div>
   </div>
 </section>
@@ -1438,12 +1548,12 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
 
 <section id="rosw">
   <div class="sec-head">
-    <div class="eyebrow">Spot guide · TibiaPal (pre-rebalance) · creature data TibiaWiki, Oct 25 · Kusnier's video from Oct 6, 2026</div>
+    <div class="eyebrow">Spot guide · TibiaPal (current list) · creature data TibiaWiki, Oct 25 · Kusnier's video from Oct 6, 2026</div>
     <h2>Roshamuul West</h2>
   </div>
   <p class="lede">The best exp you can reach today: TibiaPal lists <b>5.2kk raw and 600k loot per hour</b> for paladins 250+ with Diamond Arrows and Ethereal Barrage. Expect about 3.9kk at first (three quarters, like your other spots). It's also the hardest-hitting place on your list, so go in with a plan.</p>
   <div class="grid3">
-    <div class="card"><div class="eyebrow">TibiaPal, paladin 250+</div><h3>5.2kk raw · 600k loot</h3><p class="small">Diamond Arrows + Ethereal Barrage. TibiaRoute's 550+ route: 5.5–8kk. Neither has been re-tested since the rebalance.</p></div>
+    <div class="card"><div class="eyebrow">TibiaPal, paladin 250+</div><h3>5.2kk raw · 600k loot</h3><p class="small">Diamond Arrows + Ethereal Barrage. TibiaRoute's 550+ route: 5.5–8kk. TibiaPal's old pre-rebalance list had 5.2kk / 1.0kk at 450+.</p></div>
     <div class="card"><div class="eyebrow">Access</div><h3>Open</h3><p class="small">Ship from Thais (210 gp, 200 with The Postman Missions). No quest on the hunt table.</p></div>
     <div class="card"><div class="eyebrow">Watch first</div><h3>Kusnier, Oct 6, 2026</h3><p class="small"><a href="https://youtu.be/G30dO4v70JQ">Roshamuul West (Advanced), 250+ Paladin</a>: recorded after the rebalance. Chapters: results and trapping 0:00, requirements, Wheel, charms and rotation 4:02, <b>route 4:37</b>, hunt 6:42. Played at 2× speed. I can't watch videos, so the route isn't written here.</p></div>
   </div>
@@ -1484,7 +1594,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
       <h3>Your first trip, Oct 26</h3>
       <ul class="small">
         <li><b>2:15 h duo with Xee Ru</b>, with XP Boost and two prey slots (XP on Guzzlemaw, defense on Silencer): 2.15kk raw per hour for you (5.16kk with bonuses), but <b>−704k</b> on your analyser (−311k/h): loot 669k, supplies 1.37kk.</li>
-        <li>The party killed about 900 monsters per hour, worth 4.24kk raw per hour at full value: about 80% of TibiaPal's solo 5.2kk. You got 51% of that value as raw exp.</li>
+        <li>The party killed about 900 monsters per hour, worth 4.24kk raw per hour at full value: about 80% of TibiaPal's solo 5.2kk. You got 51% of that value as raw exp, which is normal for a duo: raw exp leaves out the 35% party bonus, so each of you gets about half the kills' value (see <a href="#boost">more exp per hour</a>).</li>
         <li>Supplies of 607k/h are the problem. Send the Party Hunt window next time, so we can see whether the duo as a whole made money.</li>
         <li>Four levels in one day: 338 at 01:14, 339 at 12:04, 340 at 12:49, 341 at 13:34.</li>
         <li>Supplies: Diamond Arrows, Superior Mana and Ultimate Spirit Potions; see the <a href="#roshamuul">Roshamuul guide</a> for prices and spell rotation.</li>
@@ -1508,8 +1618,8 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
       <label class="eyebrow" for="lvV">Veritass level</label>
       <input type="number" id="lvV" min="1" value="341">
       <label class="eyebrow" for="lvX">Xee Ru level</label>
-      <input type="number" id="lvX" min="1" value="267">
-      <p class="small muted">Veritass 341 (Oct 26 screenshot) and Xee Ru 267 (TibiaData, Oct 26). Change them to plan ahead.</p>
+      <input type="number" id="lvX" min="1" value="270">
+      <p class="small muted">Veritass 341 (Oct 26 screenshot) and Xee Ru 270 (TibiaData, Oct 27). Change them to plan ahead.</p>
     </div>
     <div class="card">
       <h3>Rules</h3>
@@ -1544,7 +1654,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
   <div class="grid3">
     <div class="card"><div class="eyebrow">Best element fit</div><h3>Werehyaenas</h3><p class="small">Ice 120% and holy 125%: both of your damage types are strong. Open, north of Darashia. Also counts toward Grimvale's 300 kills.</p></div>
     <div class="card"><div class="eyebrow">Most exp</div><h3>Book World IV · Warzone 5</h3><p class="small">4.2kk and 4.3kk. Book World IV is open to both of you (Between the Lines done). Warzone 5 still needs Dangerous Depths, which both of you have started.</p><p class="small">Your best duo so far, Oct 22: crusaders and headwalkers, 2.71kk raw each per hour and +750,843 for the party in 1:57 h. Oct 21 on lion hydras and bluebeaks: 1.74kk and +277,119 in 56 min.</p></div>
-    <div class="card"><div class="eyebrow">Open now: Xee Ru is 267</div><h3>Asura Mirror · Catacombs</h3><p class="small">5.3kk and 5.0kk, both level 250 spots (quests still apply).</p></div>
+    <div class="card"><div class="eyebrow">Open now: Xee Ru is 270</div><h3>Asura Mirror · Catacombs</h3><p class="small">5.3kk and 5.0kk, both level 250 spots (quests still apply).</p></div>
   </div>
   <p class="small">Every spot in the <a href="#hunts">hunt table</a> marked <span class="pill">Druid-friendly</span> is also on TibiaPal's solo druid list, so Xee Ru is comfortable there. Gazer Spectres (ice 130%) killed Xee Ru at 206 on Oct 5: keep magic shield up. Lower Roshamuul has an ED+RP route on TibiaRoute (3–3.3kk); your Oct 11 duo there made +390k in 2 h. All spots both of you can enter are in the <a href="#hunts">hunt table</a> under "Party with Xee Ru".</p>
 </section>
@@ -1613,12 +1723,12 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <table class="t-wide">
       <thead><tr><th>Date</th><th>Hunt</th><th class="n">Time</th><th class="n">Loot</th><th class="n">Supplies</th><th class="n">Balance</th><th class="n">Per hour</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td class="n">Oct 26<br><span class="muted small">11:55–14:10</span></td><td><span class="name">Duo with Xee Ru, Roshamuul West</span><span class="how">XP Boost on (+50%), prey: XP on Guzzlemaw, defense on Silencer · 904 frazzlemaws, 418 guzzlemaws, 723 silencers · raw 4,868,127 (2.15kk/h), 11,664,400 with bonuses (5.16kk/h) · damage 2.97kk/h, healing 375k/h · loot: 1,649 platinum coins, 5 stealth rings, 7 haunted blades, 5 traditional sai, 4 glorious axes, 2 assassin daggers, 2 diamond sceptres, 2 shadow sceptres, a nightmare blade, a titan axe, 3 gold ingots, 4 clusters of solace, 4 violet crystal shards, 15 red crystal fragments, 39 brown crystal splinters, 7 iron ore, 33 frazzle skins, 30 frazzle tongues, 27 silencer claws, 17 resonating chambers, a proficiency catalyst, a basic blockade scroll</span></td><td class="n">2:15</td><td class="n">668,600</td><td class="n">1,372,570</td><td class="n loot neg">−703,970</td><td class="n loot neg">−311k</td><td class="small">Shared exp with Xee Ru: the kills are worth 9.60kk raw at full value and you got 4.87kk (51%). The XP Gain Rate of 225% on your level-up shots is your stamina bonus (150%) times the XP Boost (×1.5). Levels 339, 340 and 341 during this hunt. Keep one stealth ring for The Postman Missions.</td></tr>
+        <tr><td class="n">Oct 26<br><span class="muted small">11:55–14:10</span></td><td><span class="name">Duo with Xee Ru, Roshamuul West</span><span class="how">XP Boost on (+50%), prey: XP on Guzzlemaw, defense on Silencer · 904 frazzlemaws, 418 guzzlemaws, 723 silencers · raw 4,868,127 (2.15kk/h), 11,664,400 with bonuses (5.16kk/h) · damage 2.97kk/h, healing 375k/h · loot: 1,649 platinum coins, 5 stealth rings, 7 haunted blades, 5 traditional sai, 4 glorious axes, 2 assassin daggers, 2 diamond sceptres, 2 shadow sceptres, a nightmare blade, a titan axe, 3 gold ingots, 4 clusters of solace, 4 violet crystal shards, 15 red crystal fragments, 39 brown crystal splinters, 7 iron ore, 33 frazzle skins, 30 frazzle tongues, 27 silencer claws, 17 resonating chambers, a proficiency catalyst, a basic blockade scroll</span></td><td class="n">2:15</td><td class="n">668,600</td><td class="n">1,372,570</td><td class="n loot neg">−703,970</td><td class="n loot neg">−311k</td><td class="small">Shared exp with Xee Ru: the kills are worth 9.60kk raw at full value and you got 4.87kk (51%), the normal duo share of raw exp (the party bonus isn't counted in raw). The XP Gain Rate of 225% on your level-up shots is your stamina bonus (150%) times the XP Boost (×1.5). Levels 339, 340 and 341 during this hunt. Keep one stealth ring for The Postman Missions.</td></tr>
         <tr><td class="n">Oct 25<br><span class="muted small">11:22–13:03</span></td><td><span class="name">Book World, solo</span><span class="how">688 crusaders, 637 headwalkers · raw 3,695,014 (2.20kk/h), 5,542,502 with bonuses (3.30kk/h) · damage 2.61kk/h, healing 719k/h · loot: 5,351 platinum coins (535k, 55%), 50 giant shimmering pearls, 8 black pearls, 97 small topazes, 22 knight axes, 8 ancient shields, 4 warrior helmets, 101 torn pages, 27 cookbooks, 29 books with an hourglass, 4 blank imbuement scrolls</span></td><td class="n">1:40</td><td class="n">972,204</td><td class="n">914,746</td><td class="n loot">+57,458</td><td class="n loot">+34k</td><td class="small">Solo: the kills are worth 3.70kk raw at full value (crusader 3,300, headwalker 2,250), and you got 3.70kk. Same raw per hour as Saturday's duo with half the kills, and in profit. Level 337 at 12:24.</td></tr>
         <tr><td class="n">Oct 24<br><span class="muted small">13:40–16:13</span></td><td><span class="name">Duo with Xee Ru, Book World</span><span class="how">1,443 crusaders, 1,385 headwalkers, Sir Leonard · raw 5,600,393 (2.20kk/h), 9,627,544 with bonuses (3.78kk/h) · damage 1.97kk/h, healing 556k/h · Physical preset · loot: 6,256 platinum coins (626k, 64% of it), 47 giant shimmering pearls, 15 black pearls, 82 small topazes, 29 knight axes, 7 ancient shields, 2 warrior helmets, 119 torn pages, 24 cookbooks, 17 books with an hourglass, a blank imbuement scroll</span></td><td class="n">2:32</td><td class="n">971,060</td><td class="n">1,206,838</td><td class="n loot neg">−235,778</td><td class="n loot neg">−93k</td><td class="small">Party Hunt (1:48 h, started later): loot 1,935,426, supplies 1,399,634, balance +535,792 (~298k/h). Settle the split from the Party Hunt window. Raw per hour was 2.20kk vs 2.71kk on Oct 22, with about the same kill count over 32 more minutes.</td></tr>
         <tr><td class="n">Oct 22<br><span class="muted small">~12:03–14:03</span></td><td><span class="name">Duo with Xee Ru, Book World</span><span class="how">1,478 crusaders, 1,408 headwalkers, Sir Leonard twice · raw 5,433,825 (2.71kk/h), 8,150,040 with bonuses (4.06kk/h) · damage 1.86kk/h, healing 565k/h</span></td><td class="n">2:00</td><td class="n">1,050,186</td><td class="n">997,088</td><td class="n loot">+53,098</td><td class="n loot">+27k</td><td class="small">From your 14:03 screenshot. Party Hunt (1:57 h): loot 2,219,804, supplies 1,468,961, balance +750,843. An even split is about 375k each, so Xee Ru owes you roughly 322k; the Party Hunt window shows the exact transfer.</td></tr>
         <tr><td class="n">Oct 22<br><span class="muted small">00:19–01:21</span></td><td><span class="name">Lower Spike, solo test</span><span class="how">210 kills: 50 lost bashers, 32 drillworms, 29 vulcongras, 23 lost hushers, 20 lost throwers, 17 wyrms, 15 behemoths, 9 dragon lords, 7 massive earth elementals, 5 enslaved dwarves, 3 nightmare scions · raw 344,070 (330k/h), 516,090 with bonuses · damage 934k/h, healing 181k/h</span></td><td class="n">1:02</td><td class="n">76,261</td><td class="n">112,434</td><td class="n loot neg">−36,173</td><td class="n loot neg">−35k</td><td class="small">Solo: the kills add up to the full raw exp. TibiaPal lists 3.2kk raw and 1.5kk loot; this made about a tenth of both.</td></tr>
-        <tr><td class="n">Oct 21<br><span class="muted small">13:25–14:35</span></td><td><span class="name">Duo with Xee Ru, Book World</span><span class="how">693 lion hydras, 595 bluebeaks, 5 bramble wyrmlings, 2 hawk hoppers · raw 2,040,819 (1.74kk/h), 3,975,929 with bonuses (3.39kk/h) · damage 1.18kk/h, healing 124k/h</span></td><td class="n">1:10</td><td class="n">324,866</td><td class="n">281,196</td><td class="n loot">+43,670</td><td class="n loot">+37k</td><td class="small">Veritass's analyser. Party Hunt (0:56 h, started later): loot 806,794, supplies 529,675, balance +277,119; most of the loot sits with Xee Ru, so settle the split from the Party Hunt window. Solo, these kills are worth about 3.2kk raw; you got 64% of that, which fits a shared-exp duo (67.5% each). 1,904 platinum coins were 59% of the loot.</td></tr>
+        <tr><td class="n">Oct 21<br><span class="muted small">13:25–14:35</span></td><td><span class="name">Duo with Xee Ru, Book World</span><span class="how">693 lion hydras, 595 bluebeaks, 5 bramble wyrmlings, 2 hawk hoppers · raw 2,040,819 (1.74kk/h), 3,975,929 with bonuses (3.39kk/h) · damage 1.18kk/h, healing 124k/h</span></td><td class="n">1:10</td><td class="n">324,866</td><td class="n">281,196</td><td class="n loot">+43,670</td><td class="n loot">+37k</td><td class="small">Veritass's analyser. Party Hunt (0:56 h, started later): loot 806,794, supplies 529,675, balance +277,119; most of the loot sits with Xee Ru, so settle the split from the Party Hunt window. Solo, these kills are worth about 3.2kk raw; you got 64% of that, more than a duo's usual half, probably because the Party Hunt started later and part of the hunt wasn't shared. 1,904 platinum coins were 59% of the loot.</td></tr>
         <tr><td class="n">Oct 15<br><span class="muted small">14:04–15:31</span></td><td><span class="name">Duo with Xee Ru, Burster Spectres</span><span class="how">816 kills · raw 3,305,318 (2.27kk/h), 4,957,976 with bonuses · damage 1.90kk/h, healing 767k/h</span></td><td class="n">1:27</td><td class="n">462,950</td><td class="n">898,590</td><td class="n loot neg">−435,640</td><td class="n loot neg">−300k</td><td class="small">Veritass's analyser. Party Hunt (2:03 h): loot 1,035,473, supplies 1,565,553, balance −530,080. Veritass −432,988, Xee Ru −97,092: Xee Ru sends Veritass 167,948. 6 Hexagonal Rubies were 39% of the loot.</td></tr>
         <tr><td class="n">Oct 14<br><span class="muted small">11:31–14:02</span></td><td><span class="name">Burster Spectres</span><span class="how">1,361 kills + 1 mummy · 9,117,676 exp with bonuses (3.63kk/h) · damage 1.88kk/h, healing 898k/h</span></td><td class="n">2:30</td><td class="n">658,050</td><td class="n">1,693,441</td><td class="n loot neg">−1,035,391</td><td class="n loot neg">−414k</td><td class="small">No deaths. About 6.08kk raw (2.43kk/h); 4,470 per kill suggests part of it was shared. Loot matched NPC prices to the coin.</td></tr>
         <tr><td class="n">Oct 11<br><span class="muted small">18:04–20:05</span></td><td><span class="name">Duo with Xee Ru, Roshamuul</span><span class="how">Veritass leader · frazzlemaws and silencers</span></td><td class="n">2:00</td><td class="n">2,106,847</td><td class="n">1,717,280</td><td class="n loot">+389,567</td><td class="n loot">+194k</td><td class="small">No deaths. Xee Ru sent Veritass 1,783 gp; both ended at about 194,784.</td></tr>
@@ -1693,7 +1803,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
       <table class="t-wide">
         <thead><tr><th>Quest</th><th>What it gives you</th><th>Solo?</th><th>Your status · what you need</th></tr></thead>
         <tbody>
-          <tr><td class="name">1. Asura Palace Quest</td><td><b>Asura Mirror (5.3kk raw on TibiaPal)</b>, together with The Lost Brother you already have. Trade with Tarun.</td><td><span class="pill good">Solo</span> <span class="small muted">"1 jogador", short</span></td><td class="small">Not started. Rec. 250+. Start with Tarun in the Kha'zeel Mountains (Port Hope); bring a Dwarven Ring against drunkenness.</td></tr>
+          <tr><td class="name">1. Asura Palace Quest</td><td>A Red Gem and trade with Tarun. TibiaWiki's Asura Vaults page says The Lost Brother alone opens Asura Mirror, so do this only if the mirror refuses you.</td><td><span class="pill good">Solo</span> <span class="small muted">"1 jogador", short</span></td><td class="small">Not started. Rec. 250+. Start with Tarun in the Kha'zeel Mountains (Port Hope); bring a Dwarven Ring against drunkenness.</td></tr>
           <tr><td class="name">2. Adventures of Galthen</td><td><b>Iksupan</b> (Occupied Sanctuary 4.7kk, Last Stand 4.4kk raw / 900k on TibiaPal)</td><td><span class="pill gold">Solo except boss</span> <span class="small muted">only one boss, Yselda; soloable but you may miss the tulip for the follow-up</span></td><td class="small">Not started. Start at the sealed ruins in Tiquanda; bring 5 nails. Skeletons and carnisylvans are the hard parts, you can run past them.</td></tr>
           <tr><td class="name">3. A Pirate's Tail</td><td>Rascacoon and The Wreckoning (Pirats 1.9kk / 600k), Krakoloss mount, a familiar figurine, daily bosses, boat Rascacoon–Venore</td><td><span class="pill gold">Solo except boss</span> <span class="small muted">"1 jogador (5 para os bosses)"</span></td><td class="small">Started (in your log). Level 200. Bring Rope, Shovel, Pick, a Greenish Flintstone and a Magical Water Orb for the raids.</td></tr>
           <tr><td class="name">4. Blood Brothers, missions 1–4</td><td><b>Vengoth</b>, which Grimvale (The Curse Spreads), Feaster of Souls, Grave Danger and Bloody Tusks all need</td><td><span class="pill good">Solo</span> <span class="small muted">up to mission 4; the castle (5–10) needs 4 players, one female</span></td><td class="small">Not started. Julius in Yalahar's Trade Quarter. Bring Holy Water, Bulb of Garlic and Flour: TibiaWiki says two of each unless you finished The Inquisition's mission 3, which you have, so check how many Julius asks for.</td></tr>
@@ -1705,7 +1815,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
         </tbody>
       </table>
     </div>
-    <p class="small"><b>Order I'd follow:</b> Asura Palace (one short trip, opens your best spot), then Blood Brothers 1–4 (one trip opens four other chains), then Grimvale and Galthen. A Pirate's Tail and the Postman fit around hunts.</p>
+    <p class="small"><b>Order I'd follow:</b> first try the Asura Mirror (probably open already), then Blood Brothers 1–4 (one trip opens four other chains), then Grimvale and Galthen; Asura Palace only if the mirror refuses you. A Pirate's Tail and the Postman fit around hunts.</p>
     <p class="small muted"><b>Need a team, so do them with Xee Ru or more:</b> Shadows of Yalahar (2 characters, one blocks), Forgotten Knowledge bosses (team of 5), Kilmaresh (Urmahlullu, team of 5), Grave Danger (several bosses; also needs Blood Brothers, The White Raven Monastery completed and Kilmaresh started), Too Hot to Handle (final boss). The Secret Library's page couldn't be read today, so it isn't in either list.</p>
   </div>
   <div class="grid2">
@@ -1810,6 +1920,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <li><span class="when">Oct 25 · 11:22–13:03</span>Book World solo: 2.20kk raw per hour, +57,458. Level 337 at 12:24 (626,621,564 exp). TibiaData: Xee Ru 267.</li>
     <li><span class="when">Oct 26 · 00:11</span>Sir Leonard killed again in Book World. Level 338 at 01:14.</li>
     <li><span class="when">Oct 26 · 11:55–14:10</span>First Roshamuul West hunt, duo with Xee Ru, with XP Boost and prey on Guzzlemaw (XP) and Silencer (defense): 2.15kk raw per hour, −703,970. Levels 339 (12:04), 340 (12:49) and 341 (13:34, 649,332,213 exp).</li>
+    <li><span class="when">Oct 27</span>TibiaData: Veritass 341, Xee Ru 270. Page update: creature tables and Details for 64 hunting spots, a "More exp per hour" section, and two corrections: TibiaPal's list is post-rebalance, and Asura Mirror probably needs only The Lost Brother.</li>
   </ul>
 </section>
 
@@ -2027,7 +2138,7 @@ details.fold-tbl[open] { display: grid; gap: 12px; }
     <h3>Recent tibia.com news that affects you</h3>
     <ul class="small">
       <li><b>Oct 26:</b> no new tibia.com news since Oct 20.</li>
-      <li><b>Oct 25 check:</b> TibiaPal still hasn't re-tested any hunting place since the rebalance; every number on this page from TibiaPal is pre-rebalance.</li>
+      <li><b>Oct 27 correction:</b> TibiaPal's current hunting list <i>is</i> post-rebalance: its paladin setups use Divine/Ethereal Barrage and storm arrows, which only exist since June 16, and its old numbers moved to tibiapal.com/hunting-old (Asura Mirror, for example, was 4.5kk at 350+ there and is 5.3kk at 250+ now). I said otherwise on Oct 25.</li>
       <li><b>Oct 19:</b> Sedron started a "Tibia Systems" video series on YouTube; the first episode explains the 2026 vocation rebalance.</li>
       <li><b>Oct 20:</b> True asuras (Asura Vaults, Citadel, Forbidden Gardens): more exp, about 10–14% less gold. Norcferatu Dungeons exp down; Bulltaur gold −10%. Overpower and Overflux charms are no longer affected by Aura of Exposed Weakness. Between the Lines: lost deer fur brushes can be remade.</li>
       <li><b>Oct 20:</b> three new worlds open Oct 28 (Quirina, Nebulera, Farsabra).</li>
@@ -2096,7 +2207,7 @@ jobs:
     <li>tibia.com news via TibiaData: <a href="https://www.tibia.com/news/?subtopic=newsarchive&amp;id=9024">Balancing, Fixes and Changes (Oct 20)</a>, <a href="https://www.tibia.com/news/?subtopic=newsarchive&amp;id=9002">New Optional and Open PvP Game Worlds (Oct 20)</a>, Orcsoberfest (Oct 7), Annual Autumn Vintage (Oct 1), Market Fee and Exercise Weapons (Oct 1), Fixes and Changes (Oct 6, 13), Game World Merge Announcement (Sep 21)</li>
     <li><a href="https://guildstats.eu/character?nick=Veritass">GuildStats</a>: level 328, base HP 3,385 and mana 4,890, shared exp range 218–493 (Oct 20)</li>
     <li>Strojny, <a href="https://www.youtube.com/watch?v=FhcnXS31BvA">START PROFITING FROM LAZY TIBIANS! (Must Have Quests pt. 2)</a> (YouTube, Oct 20, 2026): quest list only; details from TibiaWiki BR (Djinn War, Postman Missions, Sweaty Cyclops, Pilgrimage of Ashes, To Outfox a Fox, Opticording Sphere, Shadows of Yalahar, Hidden City of Beregar, Secret Service, Thieves Guild, Hot Cuisine) and TibiaWiki (Rashid, Koshei the Deathless, Wheel of Destiny)</li>
-    <li><a href="https://tibiapal.com/hunting">TibiaPal hunting places</a> (marked as data from before the 2026 rebalance; its paladin Lower Spike row, 3.2kk / 1.5kk, failed your Oct 22 test), <a href="https://tibiapal.com/equipment">equipment</a>, <a href="https://tibiapal.com/wheels#Paladin">Wheel builds</a> and <a href="https://tibiapal.com/wheel-planner">planner</a></li>
+    <li><a href="https://tibiapal.com/hunting">TibiaPal hunting places</a> (current post-rebalance list, video links on some rows; its paladin Lower Spike row, 3.2kk / 1.5kk, failed your Oct 22 test), <a href="https://tibiapal.com/equipment">equipment</a>, <a href="https://tibiapal.com/wheels#Paladin">Wheel builds</a> and <a href="https://tibiapal.com/wheel-planner">planner</a></li>
     <li><a href="https://www.tibiamarket.top/">Tibia Market Tracker</a> API: Refugia prices (data from Sep 14) for gear and all imbuement materials, read Oct 17</li>
     <li><a href="https://tibia.fandom.com/wiki/Imbuing">TibiaWiki: Imbuing</a> (materials, fees), <a href="https://tibia.fandom.com/wiki/Blessings">Blessings</a> (price formula), <a href="https://tibia.fandom.com/wiki/Rashid">Rashid</a>, <a href="https://tibia.fandom.com/wiki/Events">Events</a></li>
     <li><a href="https://www.tibiawiki.com.br/">TibiaWiki BR</a>: Midnight, Dawnfire and Frost Flower Asura, Burster Spectre, Frazzlemaw, Silencer, Lion Hydra, Bluebeak, Headwalker, Werehyaena, Werehyaena Shaman, Dawnfire Asura, the four drakens, Lost Basher, Lost Husher, Lost Thrower, Drillworm, Vulcongra, Behemoth, Wyrm, Dragon Lord, Massive Earth Elemental, Book World, The Spike, Greater Garlic Necklace, Prismatic Ring, Enchanted Sleep Shawl, Guzzlemaw, Frazzlemaw, Silencer, Lower Roshamuul; item pages for Unerring, Falcon set, Hellstalker Visor, Inferniarch and Falcon Bow, Bow of Cataclysm, Stoic Iks Boots, Stag set, Gnome Armor, Eldritch Breeches, Foxtail Amulet; Imbuements</li>
@@ -2110,7 +2221,7 @@ jobs:
 </div>
 
 <footer class="small muted">
-  <p>Level, exp, HP, mana, capacity, Wheel, charms, Bosstiary and the full quest log from your Oct 24 screenshots (02:33–02:41); gear and imbuement timers from your Oct 24 Looks; main-set hunting skills and protections from Oct 22 (14:03). Levels checked on TibiaData Oct 24. Gold from the Oct 24 Cyclopedia. Market prices from the Tibia Market tracker (Refugia data from Sep 14) move daily; check in game before buying. Events as of Oct 24, 2026.</p>
+  <p>Level, exp, HP, mana, capacity, Wheel, charms, Bosstiary and the full quest log from your Oct 24 screenshots (02:33–02:41); gear and imbuement timers from your Oct 24 Looks; main-set hunting skills and protections from Oct 22 (14:03). Levels checked on TibiaData Oct 27. Hunting-spot creatures from TibiaWiki BR area pages and tibia.com's creature library (via TibiaData), Oct 27. Gold from the Oct 24 Cyclopedia. Market prices from the Tibia Market tracker (Refugia data from Sep 14) move daily; check in game before buying. Events as of Oct 24, 2026.</p>
 </footer>
 
 </main>
@@ -2309,9 +2420,10 @@ jobs:
     wtt:  { n: "Within the Tides", w: "Within_the_Tides_Quest/Spoiler", lvl: "rec. 150", start: "North-east Tiquanda", opens: "Nagas, Marapur Turtles", pre: "Needs The Lost Brother and a Helmet of the Deep or Depth Galea" },
     gal:  { n: "Adventures of Galthen", w: "Adventures_of_Galthen_Quest/Spoiler", lvl: "rec. 250", start: "Sealed ruins in Tiquanda (bring 5 nails)", opens: "Iksupan" },
     fos:  { n: "Feaster of Souls", w: "Feaster_of_Souls_Quest/Spoiler", lvl: "250", start: "", opens: "Venore and Port Hope Flimsies", pre: "Needs Lion's Rock, Sea of Light, Shattered Isles (Ramoa), Blood Brothers 4" },
+    pt:   { n: "A Pirate's Tail", w: "https://www.tibiawiki.com.br/wiki/A_Pirate%27s_Tail_Quest", lvl: "200", start: "Eustacio (raids against pirats)", opens: "Rascacoon, The Wreckoning (after Tentugly's Head), Krakoloss mount, daily bosses", pre: "Solo except bosses (up to 5)", vs: "started" },
     dc:   { n: "The Dream Courts", w: "The_Dream_Courts_Quest/Spoiler", lvl: "250", start: "Myzzi, north-east of Edron", opens: "Summer and Winter Court, Powerful Vibrancy", pre: "Long chain; see the card above", x: "started", vs: "started" }
   };
-  var QORDER = ["dd", "bb", "thth", "btl", "cob", "gv1", "hod", "fk", "monk", "td", "tm", "isy", "bbro", "exp", "rv", "dt", "lb", "ap", "lbro", "wtt", "gv2", "sl", "lion", "gal", "fos", "dc", "shard", "kil", "stag", "nrw", "tusk", "ape", "nf", "wote", "inq"];
+  var QORDER = ["dd", "bb", "thth", "btl", "cob", "gv1", "hod", "fk", "monk", "td", "tm", "isy", "bbro", "exp", "rv", "dt", "lb", "ap", "lbro", "wtt", "gv2", "sl", "lion", "gal", "fos", "dc", "shard", "kil", "stag", "nrw", "tusk", "pt", "ape", "nf", "wote", "inq"];
   var done = load("veritass-hub-quests", null);
   if (!done || !done.v || !done.x) done = { v: { ape: true, nf: true, wote: true, inq: true, btl: true }, x: { btl: true } };
   // Oct 13 quest log: Between the Lines completed for Veritass
@@ -2328,7 +2440,7 @@ jobs:
     orw: { q: [], k: "event", t: "Raid", h: "Rathleton. Only while the raid is running." },
     ori: OPEN("Same Oramond spawn while no raid runs."),
     glo: OPEN("Rathleton. TibiaWiki has no page for this spot.", true),
-    pir: OPEN("The Wreckoning, north of Kilmaresh (ship to Issavi).", true),
+    pir: { q: ["pt"], h: "The Wreckoning, north of Kilmaresh: Rascacoon via Eustacio, then Captain Jack Rat after one Tentugly's Head kill." },
     nc:  { q: [], k: "nc", t: "Not checked", h: "Access not checked." },
     brim:{ q: ["nf", "wote"], h: "Beneath Razachai." },
     deep:{ q: ["lb"], k: "event", t: "World change", h: "Fiehonja. Also needs the Deeplings world change at stage 2 or 3." },
@@ -2345,15 +2457,15 @@ jobs:
     ban6:{ q: ["ape"], h: "Deeper Banuta." },
     med: OPEN("South-west Tiquanda. Hole north of the tower, then a tunnel."),
     sea: { q: ["tm"], h: "Seacrest Grounds, west of Rathleton. Opens in parts." },
-    wz:  { q: ["dd"], h: "15 faction points, then a Fragile Lava Funnel gives 8 h per entry." },
+    wz:  { q: ["dd"], h: "10 task points with Bigfoot's Burden rank IV (otherwise 15), then a Fragile Lava Funnel gives 8 h per entry." },
     lrosh: OPEN("Ship from Thais (210 gp). Right after the ramp from the camp."),
-    mir: { q: ["ap", "lbro"], k: "level", t: "Lvl 250", h: "Asura Vaults. Use the mirror on the palace ground floor." },
+    mir: { q: ["lbro"], k: "level", t: "Lvl 250", h: "Asura Vaults: the mirror on the palace ground floor. TibiaWiki: The Lost Brother opens the mirror; the lower floors need The Lament (The Secret Library) started." },
     rosw:OPEN("Ship from Thais. Opened for the server by the Roshamuul world change.", true),
     cat: { q: ["rv"], h: "Oramond Dungeon. Monsters change every 14 days with the vote." },
     sew: { q: ["dt"], h: "Via the Rathleton Sewers under Lower Rathleton." },
     w8:  { q: ["nf", "wote"], h: "Zao, inside the Wrath of the Emperor areas." },
     gaz: OPEN("Haunted Temple, north of Port Hope. Portals and Buried Cathedral need The Dream Courts.", true),
-    carn:{ q: [], k: "level", t: "Lvl 250", h: "Under northern Tiquanda." },
+    carn:{ q: [], k: "level", t: "Lvl 250", h: "Under northern Tiquanda. Andrew Lyze opens the door near Banuta once a Dream Courts mission is started." },
     spike:{ q: [], k: "level", t: "Lvl 80+", h: "Last 3 floors of The Spike (Kazordoon). Level gate only." },
     vfl: { q: ["fos"], k: "level", t: "Lvl 250", h: "Brain Grounds: invisible teleport north of the Jakundaf Desert." },
     pfl: { q: ["fos"], k: "level", t: "Lvl 250", h: "Netherworld: invisible teleport east of Banuta." },
@@ -2362,7 +2474,9 @@ jobs:
     turt:{ q: ["lbro", "wtt"], h: "Marapur islands. Naga boats move you between areas." },
     iks: { q: ["gal"], h: "Iksupan, Tiquanda." },
     osk: { q: ["gv1", "gv2"], h: "Oskayaat. Get ferryman Tonar's ocarina back and he sails you there." },
-    rip: OPEN("Haunted Cellar under the abandoned house in the Outlaw Camp (Venore).", true),
+    rip: OPEN("Haunted Nexus (Cellar), Plains of Havoc north-west of Venore. Talk to the Stricken Soul there first (The Dream Courts).", true),
+    bc:  { q: ["dc"], h: "Through the Haunted Cellar once the three Haunted Houses are linked (a Dream Courts mission)." },
+    dth: { q: ["sl"], h: "Opened by The Secret Library." },
     fury:{ q: ["dt"], h: "North of Rathleton, opened during Dark Trails. The Xee Ru page lists it as Fury Gate only; check in game." },
     nmi: { q: [], k: "event", t: "Event", h: "Only during the Nightmare Isles mini world change." }
   };
@@ -2386,7 +2500,7 @@ jobs:
     ["Werehyaenas South", 200, 3.1, 300, "Diamond · Divine", "hya", "", "Ice 120%, holy 125%: best duo fit"],
     ["Asura Palace", 200, 3.1, 100, "Diamond · Ethereal", "asu", "", "Holy only 70% on Midnight and Frost Flower"],
     ["Crumbling Caverns", 200, 2.9, 300, "Diamond · Ethereal", "cc", "d", ""],
-    ["Draken Walls", 200, 2.8, 750, "Diamond · Ethereal", "drk", "md", "Ice 105–110%"],
+    ["Draken Walls", 200, 2.8, 700, "Diamond · Ethereal", "drk", "md", "Ice 105–110%"],
     ["Werelions −2", 200, 2.8, 300, "Diamond · Ethereal", "wl", "", ""],
     ["Diremaw Task Area", 200, 2.7, 600, "Diamond · Ethereal", "dire", "md", "TibiaRoute: 2kk / 500k"],
     ["Deeper Banuta −8", 200, 2.6, 300, "Diamond · Ethereal", "ban8", "m", "TibiaRoute: 2.8kk / 943k"],
@@ -2426,8 +2540,16 @@ jobs:
     ["Nightmare Isles", 300, 3.3, 300, "Diamond · Ethereal", "nmi", "", "Gold drops cut on Sep 1"],
     ["Burster Spectres", 300, 3.3, 100, "Firestorm · Divine", "nc", "", "Immune to physical. Your 2 hunts: ~2.4kk raw/h, −372k/h; bestiary done. Buried Cathedral or Haunted Nexus. Ice 30%: poor for Xee"],
     ["Marapur Turtles", 300, 2.6, 1200, "Diamond · Ethereal", "turt", "m", "TibiaRoute: 2.4–2.8kk / 1.3kk"],
-    ["Port Hope Flimsies −1", 400, 6.0, 700, "Firestorm · Divine", "pfl", "", ""]
+    ["Port Hope Flimsies −1", 400, 6.4, 400, "Firestorm · Divine", "pfl", "", ""],
+    ["Buried Cathedral −8", 400, 5.1, 600, "Firestorm · Divine", "bc", "", ""],
+    ["Rosha Shockheads & Bones", 400, 5.7, 1000, "Diamond · Ethereal", "nc", "m", ""],
+    ["Otherworld", 400, 4.3, 1600, "Diamond · Ethereal", "nc", "m", ""],
+    ["Crypt Warriors", 400, 6.0, 200, "Diamond · Divine", "nc", "", ""],
+    ["Deathlings", 400, 4.9, 500, "Diamond · Ethereal", "dth", "", ""]
   ];
+  // spot details: creatures from TibiaWiki BR area pages (Oct 27), official weak/strong from tibia.com via TibiaData, exact % from TibiaWiki
+  var CR = {"Arachnophobica": {"hp": 5000, "xp": 4700, "i": [], "s": ["death", "energy"], "w": ["holy"], "np": 1}, "Barkless Devotee": {"hp": 2800, "xp": 2200, "i": [], "s": ["death", "energy", "fire", "ice"], "w": [], "np": 1}, "Barkless Fanatic": {"hp": 3200, "xp": 2500, "i": [], "s": ["death", "energy", "fire", "ice"], "w": [], "np": 1}, "Behemoth": {"hp": 4000, "xp": 2500, "i": [], "s": ["earth", "energy", "fire", "holy", "physical"], "w": ["death", "ice"], "np": 1}, "Bluebeak": {"hp": 2430, "xp": 2330, "i": [], "s": ["holy"], "w": ["energy", "fire"], "np": 1}, "Bramble Wyrmling": {"hp": 2350, "xp": 2350, "i": [], "s": ["earth", "holy", "physical"], "w": ["death", "fire"], "np": 1}, "Brimstone Bug": {"hp": 1300, "xp": 900, "i": ["death", "earth"], "s": [], "w": ["energy", "fire", "holy", "ice", "physical"]}, "Burster Spectre": {"hp": 6500, "xp": 6000, "i": ["physical"], "s": ["ice"], "w": ["fire"], "p": {"phys": 0, "ice": 30}, "np": 1}, "Cave Devourer": {"hp": 4500, "xp": 3380, "i": [], "s": [], "w": ["fire"]}, "Chasm Spawn": {"hp": 4500, "xp": 3600, "i": [], "s": [], "w": ["fire"], "np": 1}, "Cinder Wyrmling": {"hp": 2350, "xp": 2350, "i": [], "s": ["fire", "holy", "physical"], "w": ["earth", "ice"], "np": 1}, "Crazed Summer Rearguard": {"hp": 5300, "xp": 4700, "i": [], "s": ["fire", "holy"], "w": ["ice", "physical"], "np": 1}, "Crazed Summer Vanguard": {"hp": 5500, "xp": 5000, "i": [], "s": ["fire", "holy"], "w": ["ice"], "p": {"phys": 100, "holy": 80, "fire": 50, "energy": 100, "ice": 130, "earth": 100, "death": 100}, "h": "melee 400; fire 240–300 (chain, beam, berserk, ball)", "np": 1}, "Crazed Winter Rearguard": {"hp": 5200, "xp": 4700, "i": [], "s": ["death", "ice"], "w": ["earth", "energy", "fire"], "np": 1}, "Crazed Winter Vanguard": {"hp": 5800, "xp": 5400, "i": [], "s": ["death", "ice"], "w": ["earth", "energy", "fire"], "np": 1}, "Crusader": {"hp": 3400, "xp": 3300, "i": [], "s": ["energy", "fire", "holy", "physical"], "w": ["earth", "ice"], "p": {"phys": 90, "holy": 90, "fire": 95, "energy": 90, "ice": 110, "earth": 105, "death": 100}, "h": "physical melee 330, Exori Hur 250; death strike 220, death ball 230", "np": 1}, "Cursed Ape": {"hp": 1700, "xp": 2000, "i": [], "s": ["death", "earth", "energy", "fire"], "w": ["holy", "ice"], "np": 1}, "Dawnfire Asura": {"hp": 2900, "xp": 3610, "i": ["fire"], "s": ["death"], "w": ["energy", "holy", "ice", "physical"], "np": 1}, "Deepworm": {"hp": 3500, "xp": 2520, "i": [], "s": ["earth"], "w": ["fire"]}, "Diremaw": {"hp": 3600, "xp": 2770, "i": [], "s": ["earth"], "w": ["ice"]}, "Dragon Lord": {"hp": 1900, "xp": 2100, "i": ["fire"], "s": ["earth", "energy"], "w": ["ice"], "np": 1}, "Draken Abomination": {"hp": 6250, "xp": 4500, "i": ["death", "earth", "fire"], "s": ["ice"], "w": ["energy", "holy"]}, "Draken Elite": {"hp": 5550, "xp": 4750, "i": ["earth", "fire"], "s": ["death", "energy", "holy"], "w": []}, "Draken Spellweaver": {"hp": 5000, "xp": 3100, "i": ["earth", "fire"], "s": ["death"], "w": ["energy", "holy", "ice", "physical"]}, "Draken Warmaster": {"hp": 4150, "xp": 2400, "i": ["earth", "fire"], "s": ["death", "energy", "holy"], "w": ["ice"]}, "Drillworm": {"hp": 1500, "xp": 1200, "i": ["earth"], "s": ["death", "energy", "holy", "ice"], "w": ["fire"], "np": 1}, "Elder Wyrm": {"hp": 2700, "xp": 2500, "i": ["energy"], "s": ["earth", "fire"], "w": [], "np": 1}, "Feversleep": {"hp": 5900, "xp": 5060, "i": ["earth"], "s": ["death", "fire", "ice", "physical"], "w": ["energy", "holy"], "np": 1}, "Flimsy Lost Soul": {"hp": 4000, "xp": 4500, "i": ["death"], "s": ["earth", "energy", "physical"], "w": ["holy"], "np": 1}, "Frazzlemaw": {"hp": 4100, "xp": 3740, "i": [], "s": ["death", "earth", "energy", "fire", "ice", "physical"], "w": ["holy"], "p": {"phys": 95, "holy": 105, "fire": 90, "energy": 85, "ice": 95, "earth": 80, "death": 90}, "h": "physical melee and berserk 450; life drain beam 600; bleeding; paralyses", "np": 1}, "Freakish Lost Soul": {"hp": 7000, "xp": 7020, "i": ["death"], "s": ["earth", "energy", "physical"], "w": ["holy"], "np": 1}, "Frost Flower Asura": {"hp": 3500, "xp": 4200, "i": ["ice"], "s": ["death", "holy"], "w": ["earth", "fire", "physical"], "p": {"holy": 70}, "np": 1}, "Fury": {"hp": 4100, "xp": 4000, "i": ["fire"], "s": ["holy", "ice"], "w": ["death", "earth", "energy", "physical"], "np": 1}, "Gazer Spectre": {"hp": 4500, "xp": 4200, "i": [], "s": ["fire", "physical"], "w": ["ice"], "p": {"phys": 15, "holy": 100, "fire": 30, "energy": 100, "ice": 130, "earth": 100, "death": 100}, "h": "melee 380; fire 350; life drain 430", "np": 1}, "Grim Reaper": {"hp": 3900, "xp": 5500, "i": [], "s": ["death", "earth", "ice", "physical"], "w": ["energy", "fire", "holy"], "np": 1}, "Guzzlemaw": {"hp": 6400, "xp": 6050, "i": [], "s": ["death", "earth", "energy", "fire", "ice", "physical"], "w": ["holy"], "p": {"phys": 95, "holy": 105, "fire": 90, "energy": 85, "ice": 95, "earth": 80, "death": 90}, "h": "physical melee 500, Blood Berserk 400–500; life drain wave 650–800; bleeding; paralyses", "np": 1}, "Hawk Hopper": {"hp": 2180, "xp": 2250, "i": [], "s": ["earth", "energy"], "w": ["death", "fire", "physical"], "np": 1}, "Headwalker": {"hp": 2460, "xp": 2250, "i": [], "s": ["energy"], "w": ["death", "earth", "holy", "ice"], "p": {"phys": 100, "holy": 105, "fire": 100, "energy": 85, "ice": 105, "earth": 105, "death": 110}, "h": "fire melee 250 and wave 270; death strike 260; life drain 220", "np": 1}, "Hellspawn": {"hp": 3500, "xp": 2550, "i": [], "s": ["earth", "energy", "fire", "holy", "physical"], "w": ["death", "ice"], "np": 1}, "High Voltage Elemental": {"hp": 1500, "xp": 1500, "i": ["energy", "ice"], "s": ["death", "holy", "physical"], "w": ["earth"], "np": 1}, "Humongous Fungus": {"hp": 3400, "xp": 2900, "i": ["earth"], "s": ["death", "energy", "holy", "ice"], "w": ["fire"], "np": 1}, "Iks Aucar": {"hp": 1520, "xp": 1240, "i": [], "s": ["fire", "physical"], "w": ["death", "energy", "ice"], "np": 1}, "Iks Chuka": {"hp": 1240, "xp": 1310, "i": [], "s": ["death", "fire"], "w": ["energy", "holy"], "np": 1}, "Iks Pututu": {"hp": 1310, "xp": 1390, "i": [], "s": ["earth", "fire"], "w": ["physical"], "np": 1}, "Insane Siren": {"hp": 6500, "xp": 6000, "i": [], "s": ["fire", "holy"], "w": ["ice", "physical"], "np": 1}, "Lion Hydra": {"hp": 2760, "xp": 2600, "i": [], "s": [], "w": ["death", "earth", "holy"], "p": {"phys": 100, "holy": 105, "fire": 100, "energy": 100, "ice": 100, "earth": 105, "death": 110}, "h": "fire up to 280, holy explosion 290, melee 200", "np": 1}, "Lizard Chosen": {"hp": 3050, "xp": 2530, "i": ["earth"], "s": ["energy", "fire", "ice"], "w": []}, "Lizard Dragon Priest": {"hp": 1450, "xp": 1320, "i": ["earth"], "s": ["fire"], "w": []}, "Lizard High Guard": {"hp": 1800, "xp": 1450, "i": ["earth"], "s": ["fire"], "w": ["ice"]}, "Lizard Legionnaire": {"hp": 1400, "xp": 1100, "i": ["earth"], "s": ["fire"], "w": ["ice"]}, "Lizard Zaogun": {"hp": 2955, "xp": 1700, "i": ["earth"], "s": ["death", "energy", "fire", "ice", "physical"], "w": []}, "Lost Basher": {"hp": 2600, "xp": 2300, "i": ["earth"], "s": ["death", "energy", "fire"], "w": [], "np": 1}, "Lost Husher": {"hp": 1600, "xp": 1800, "i": ["earth"], "s": ["death", "energy", "fire", "physical"], "w": ["holy", "ice"], "np": 1}, "Lost Thrower": {"hp": 1700, "xp": 1500, "i": ["earth"], "s": ["death", "energy", "fire", "physical"], "w": ["ice"], "np": 1}, "Lumbering Carnivor": {"hp": 2600, "xp": 1452, "i": [], "s": ["physical"], "w": ["fire"], "np": 1}, "Makara": {"hp": 5050, "xp": 5180, "i": [], "s": ["fire", "ice"], "w": ["death", "earth", "energy", "physical"], "np": 1}, "Massive Earth Elemental": {"hp": 1330, "xp": 1100, "i": ["earth"], "s": ["death", "energy", "holy", "ice", "physical"], "w": ["fire"], "np": 1}, "Mean Lost Soul": {"hp": 5000, "xp": 5580, "i": ["death"], "s": ["earth", "energy", "physical"], "w": ["holy"], "np": 1}, "Medusa": {"hp": 4500, "xp": 4050, "i": ["earth"], "s": ["ice"], "w": ["energy", "fire"], "np": 1}, "Menacing Carnivor": {"hp": 3500, "xp": 2112, "i": [], "s": ["physical"], "w": ["ice"], "np": 1}, "Midnight Asura": {"hp": 3100, "xp": 3700, "i": ["death"], "s": ["fire", "holy", "ice"], "w": ["earth", "energy"], "p": {"holy": 70}, "np": 1}, "Naga Archer": {"hp": 4640, "xp": 4640, "i": [], "s": ["death", "fire", "ice"], "w": ["earth", "energy", "holy", "physical"], "np": 1}, "Naga Warrior": {"hp": 5530, "xp": 5480, "i": [], "s": ["death", "fire", "ice", "physical"], "w": ["earth", "energy", "holy"], "np": 1}, "Nibblemaw": {"hp": 2900, "xp": 2700, "i": [], "s": ["death", "earth", "physical"], "w": ["energy", "holy"], "np": 1}, "Nightmare Scion": {"hp": 1400, "xp": 1350, "i": ["death", "earth"], "s": ["energy", "fire", "ice"], "w": ["holy"]}, "Pirat Bombardier": {"hp": 2300, "xp": 1700, "i": [], "s": ["energy"], "w": ["earth", "physical"]}, "Pirat Cutthroat": {"hp": 2600, "xp": 1800, "i": [], "s": ["energy", "physical"], "w": ["earth"]}, "Pirat Mate": {"hp": 3200, "xp": 2400, "i": [], "s": ["energy"], "w": ["earth"]}, "Pirat Scoundrel": {"hp": 2200, "xp": 1600, "i": [], "s": ["energy", "physical"], "w": ["earth"]}, "Ripper Spectre": {"hp": 3800, "xp": 3500, "i": [], "s": ["earth", "physical"], "w": ["energy", "fire"], "p": {"phys": 30, "holy": 100, "fire": 120, "energy": 110, "ice": 100, "earth": 80, "death": 100}, "h": "melee 370, physical wave 340; earth bomb 390; life drain 460", "np": 1}, "Sea Serpent": {"hp": 1950, "xp": 2300, "i": ["ice"], "s": ["death", "fire"], "w": ["energy", "physical"], "np": 1}, "Seacrest Serpent": {"hp": 3000, "xp": 2900, "i": ["ice"], "s": ["death", "earth", "fire", "physical"], "w": [], "np": 1}, "Serpent Spawn": {"hp": 3000, "xp": 3050, "i": ["earth"], "s": ["ice"], "w": ["energy", "fire"], "np": 1}, "Shell Drake": {"hp": 2800, "xp": 2900, "i": [], "s": ["fire", "physical"], "w": ["earth", "holy", "ice"], "np": 1}, "Shock Head": {"hp": 4200, "xp": 2300, "i": ["earth", "fire"], "s": ["death", "energy", "ice", "physical"], "w": [], "p": {"phys": 90, "holy": 100, "earth": 0, "fire": 0}, "h": "tar wave up to 606", "np": 1}, "Silencer": {"hp": 5400, "xp": 5100, "i": ["earth"], "s": ["death", "energy", "fire", "ice", "physical"], "w": ["holy"], "p": {"phys": 95, "holy": 125, "fire": 70, "energy": 85, "ice": 85, "earth": 0, "death": 35}, "h": "melee 350 + poison; mana drain 150; Electric Ball −60% magic level"}, "Soul-broken Harbinger": {"hp": 6300, "xp": 5800, "i": [], "s": ["death", "ice"], "w": ["energy", "fire"], "np": 1}, "Spiky Carnivor": {"hp": 2800, "xp": 1650, "i": [], "s": ["physical"], "w": ["fire"], "np": 1}, "Terrorsleep": {"hp": 7200, "xp": 7240, "i": ["earth"], "s": ["death", "fire", "ice", "physical"], "w": ["energy", "holy"], "np": 1}, "Thanatursus": {"hp": 7200, "xp": 6300, "i": [], "s": ["energy", "holy", "physical"], "w": ["death"], "np": 1}, "True Dawnfire Asura": {"hp": 8500, "xp": 8100, "i": ["fire"], "s": ["death"], "w": ["energy", "holy", "ice", "physical"], "np": 1}, "True Frost Flower Asura": {"hp": 4000, "xp": 7069, "i": ["ice"], "s": ["death", "holy"], "w": ["earth", "energy", "fire"], "np": 1}, "True Midnight Asura": {"hp": 9000, "xp": 8200, "i": ["death"], "s": ["fire", "holy", "ice"], "w": ["earth", "energy"], "np": 1}, "Tunnel Tyrant": {"hp": 5200, "xp": 4420, "i": [], "s": ["energy"], "w": ["ice"]}, "Two-Headed Turtle": {"hp": 5010, "xp": 3310, "i": ["agony"], "s": ["energy", "fire", "ice"], "w": ["death", "earth"], "np": 1}, "Vulcongra": {"hp": 1600, "xp": 1100, "i": ["earth", "fire"], "s": ["death"], "w": ["ice"], "np": 1}, "Werecrocodile": {"hp": 5280, "xp": 4140, "i": [], "s": ["death", "earth", "fire", "physical"], "w": ["energy", "holy", "ice"], "np": 1}, "Werehyaena": {"hp": 2700, "xp": 2200, "i": [], "s": ["earth", "fire"], "w": ["holy", "ice"], "p": {"phys": 100, "holy": 125, "fire": 50, "ice": 120, "earth": 60}, "np": 1}, "Werehyaena Shaman": {"hp": 2500, "xp": 2200, "i": [], "s": ["earth", "fire", "holy"], "w": ["death", "ice"], "p": {"holy": 95, "ice": 120}, "np": 1}, "Werelion": {"hp": 2800, "xp": 2200, "i": [], "s": ["death", "earth", "fire"], "w": ["ice"], "np": 1}, "Werelioness": {"hp": 3000, "xp": 2300, "i": [], "s": ["death", "earth", "fire"], "w": ["holy", "ice"], "np": 1}, "Weretiger": {"hp": 5000, "xp": 3920, "i": [], "s": ["energy", "holy", "ice"], "w": ["earth", "fire", "physical"], "np": 1}, "White Lion": {"hp": 2700, "xp": 2300, "i": [], "s": ["death", "earth", "fire"], "w": ["ice"], "np": 1}, "White Weretiger": {"hp": 6100, "xp": 5200, "i": [], "s": ["energy", "holy", "ice"], "w": ["earth", "fire", "physical"], "np": 1}, "Wyrm": {"hp": 1825, "xp": 1550, "i": ["energy"], "s": ["earth", "fire"], "w": ["death", "ice"], "np": 1}};
+  var SX = {"Yalahar Grim Reapers (Firestorm)": {"c": ["Grim Reaper"], "u": 1, "tip": "Grim Reapers resist physical and take fire, energy and holy well: the Firestorm + Divine version suits your Holy preset. TibiaPal shows it losing money."}, "Yalahar Grim Reapers": {"c": ["Grim Reaper"], "u": 1, "tip": "Exp spot that loses money. Grim Reapers resist physical; holy and fire hit better."}, "Drefia Grim Reapers": {"c": ["Grim Reaper"], "u": 1, "tip": "Same creature as Yalahar; loses money on TibiaPal."}, "Oramond Wildlife Raid (inactive)": {"c": [], "tip": "Creatures depend on the Oramond raid; TibiaWiki's page wasn't read."}, "Oramond Wildlife Raid (active)": {"c": [], "tip": "Only while the raid runs. Creatures depend on the raid."}, "Oramond Golem Raid (active)": {"c": [], "tip": "Only while the raid runs."}, "Glooth Tower": {"c": [], "tip": "TibiaWiki has no page for this spot."}, "Pirats Wreckoning": {"c": ["Pirat Bombardier", "Pirat Cutthroat", "Pirat Mate", "Pirat Scoundrel"], "v": "Verified on TibiaWiki BR area page", "acc": "Needs A Pirate's Tail (Rascacoon via Eustacio) and one kill of the boss Tentugly's Head before Captain Jack Rat sails you there.", "tip": "All four are weak to earth and resist energy; Cutthroats and Scoundrels resist physical. Bosses: Ratmiral Blackwhiskers (Archfoe), 1st Mate Ratticus, Mister Catkiller."}, "Elder Wyrms Drefia": {"c": ["Elder Wyrm", "Wyrm"], "u": 1, "tip": "Energy-immune, resist earth and fire; physical neutral. Diamond + Ethereal."}, "Otherworld Kazordoon (Dwarf Bridge)": {"c": [], "tip": "Creature list not read."}, "Otherworld Edron": {"c": [], "tip": "Creature list not read."}, "Brimstone Bugs (WotE)": {"c": ["Brimstone Bug"], "v": "Below Razachai on TibiaWiki", "tip": "Weak to physical, holy, ice, fire and energy; immune to death and earth. Low exp, good loot."}, "Deeplings Library": {"c": [], "tip": "Needs Liquid Black and the Deeplings world change at stage 2 or 3."}, "Lizard City": {"c": ["Lizard High Guard", "Lizard Legionnaire", "Lizard Zaogun", "Lizard Dragon Priest"], "u": 1, "tip": "All lizards here are earth-immune and resist fire; High Guards and Legionnaires are weak to ice. Physical is fine except on Zaoguns, which resist almost everything."}, "Book World: Chapter II": {"c": ["Crusader", "Headwalker", "Lion Hydra", "Bluebeak", "Bramble Wyrmling", "Hawk Hopper"], "v": "Book World creatures on TibiaWiki (not split by chapter)", "bw": 1, "you": "Oct 21 duo (lion hydras, bluebeaks) 1.74kk raw each; Oct 22 duo (crusaders, headwalkers) 2.71kk, party +385k/h; Oct 24 duo 2.20kk; Oct 25 solo 2.20kk and +34k/h. Sir Leonard several times.", "tip": "Crusaders take physical and holy equally (90%); headwalkers and lion hydras take holy 105%; bluebeaks resist holy. Sharpshooter + Ethereal Barrage works on all of them; see <a href=\"#preset-pick\">which preset where</a>. Boss: Sir Leonard."}, "Book World: Chapter III": {"c": ["Crusader", "Headwalker", "Lion Hydra", "Bluebeak", "Bramble Wyrmling", "Hawk Hopper"], "v": "Book World creatures on TibiaWiki (not split by chapter)", "bw": 1, "vid": "https://youtu.be/y0X5rZjP_20", "you": "Oct 21 duo (lion hydras, bluebeaks) 1.74kk raw each; Oct 22 duo (crusaders, headwalkers) 2.71kk, party +385k/h; Oct 24 duo 2.20kk; Oct 25 solo 2.20kk and +34k/h. Sir Leonard several times.", "tip": "Crusaders take physical and holy equally (90%); headwalkers and lion hydras take holy 105%; bluebeaks resist holy. Sharpshooter + Ethereal Barrage works on all of them; see <a href=\"#preset-pick\">which preset where</a>. Boss: Sir Leonard."}, "Book World: Chapter IV": {"c": ["Crusader", "Headwalker", "Lion Hydra", "Bluebeak", "Bramble Wyrmling", "Hawk Hopper"], "v": "Book World creatures on TibiaWiki (not split by chapter)", "bw": 1, "vid": "https://youtu.be/50DJaY-eX3c", "you": "Oct 21 duo (lion hydras, bluebeaks) 1.74kk raw each; Oct 22 duo (crusaders, headwalkers) 2.71kk, party +385k/h; Oct 24 duo 2.20kk; Oct 25 solo 2.20kk and +34k/h. Sir Leonard several times.", "tip": "Crusaders take physical and holy equally (90%); headwalkers and lion hydras take holy 105%; bluebeaks resist holy. Sharpshooter + Ethereal Barrage works on all of them; see <a href=\"#preset-pick\">which preset where</a>. Boss: Sir Leonard."}, "Werelions −1": {"c": ["Werelion", "Werelioness", "White Lion"], "v": "Verified on TibiaWiki BR area page", "acc": "Lion's Rock (three sacrifices) plus An Ancient Feud started with Domizian, and the Hyaena Lairs shrine mission active to pass the door.", "tip": "All weak to ice; resist death, earth and fire. Werelionesses also take holy well. Bosses: Katex Blood Tongue, Srezz Yellow Eyes, Utua Stone Sting, Yirkas Blue Scales. A Red Silk Flower (rare boss drop) on a White Lion gives the White Lion mount."}, "Werelions −2": {"c": ["Werelion", "Werelioness", "White Lion"], "v": "Verified on TibiaWiki BR area page", "acc": "Same access as −1.", "tip": "Same creatures, a bit less exp on TibiaPal."}, "Candia Nibblemaws": {"c": ["Nibblemaw"], "u": 1, "tip": "Nibblemaws resist physical and take holy and energy well: the Holy preset with Divine Barrage fits."}, "Werehyaenas South": {"c": ["Werehyaena", "Werehyaena Shaman"], "v": "Verified on TibiaWiki BR area page", "tip": "Holy 125% on Werehyaenas (Shamans 95%), fire 50%: Holy preset, Divine Barrage, no Firestorm Arrows. Every kill counts toward Grimvale's 300."}, "Werehyaenas North": {"c": ["Werehyaena", "Werehyaena Shaman"], "v": "Verified on TibiaWiki BR area page", "tip": "Same creatures as South."}, "Asura Palace": {"c": ["Dawnfire Asura", "Midnight Asura", "Frost Flower Asura", "Hellspawn"], "v": "Verified on TibiaWiki BR area page", "tip": "Physical works on all three asuras (holy only 70% on Midnight and Frost Flower): Physical preset, Diamond + Ethereal. Bosses: The Flaming Orchid, The Moonlight Aster, The Winter Bloom (you have one kill each)."}, "Crumbling Caverns": {"c": ["Cinder Wyrmling", "Shell Drake"], "v": "Verified on TibiaWiki BR area page", "tip": "Both resist physical and fire and are weak to ice and earth; Shell Drakes also take holy well. Your Bestiary: Cinder Wyrmling 1,920, Shell Drake 1,808 of 2,500."}, "Draken Walls": {"c": ["Draken Spellweaver", "Draken Warmaster", "Lizard High Guard", "Lizard Legionnaire"], "v": "In Razachai on TibiaWiki", "tip": "Spellweavers are weak to physical, holy, ice and energy; Warmasters resist holy. Diamond + Ethereal, Physical preset. TibiaPal now lists 700k loot."}, "Diremaw Task Area": {"c": ["Diremaw", "Deepworm"], "v": "Deep Hub Magma Dungeon on TibiaWiki", "tip": "Diremaws are weak to ice, Deepworms to fire; physical neutral. The daily Diremaw task earns warzone points."}, "Deeper Banuta −8": {"c": [], "tip": "TibiaWiki's Deeper Banuta page couldn't be read."}, "Deeper Banuta −6": {"c": [], "tip": "TibiaWiki's Deeper Banuta page couldn't be read."}, "Medusa Tower": {"c": ["Medusa", "Serpent Spawn", "Behemoth"], "v": "Verified on TibiaWiki BR area page", "acc": "Bring a shovel to enter the tower.", "tip": "Medusas (floors +3 to +5) and Serpent Spawns are earth-immune and weak to fire and energy; Behemoths resist almost everything except death and ice. Boss: Gorga."}, "Barkless Elves": {"c": ["Barkless Devotee", "Barkless Fanatic"], "u": 1, "tip": "Resist death, energy, fire and ice; physical and holy neutral. Loses money on TibiaPal."}, "Seacrest Serpents": {"c": ["Seacrest Serpent", "Sea Serpent"], "v": "Verified on TibiaWiki BR area page", "acc": "Twenty Miles Beneath the Sea and a Helmet of the Deep.", "tip": "Seacrest Serpents are ice-immune and resist physical. After 2,000 kills a world change replaces them with Renegade Quaras."}, "Warzone 4": {"c": ["Chasm Spawn", "Drillworm", "Elder Wyrm", "Deepworm", "Diremaw"], "v": "Deep Hub Magma Dungeon on TibiaWiki (respawn list)", "acc": "10 task points from Gnomus with Bigfoot's Burden rank IV, otherwise 15.", "tip": "Boss: The Baron from Below (350,000 HP, 300,000 exp)."}, "Warzone 5": {"c": ["Cave Devourer", "Tunnel Tyrant", "High Voltage Elemental", "Deepworm", "Diremaw"], "v": "Deep Hub Crystal Dungeon on TibiaWiki", "acc": "10 task points from Klom Stonecutter with Bigfoot's Burden rank IV, otherwise 15.", "tip": "Boss: The Count of the Core (300,000 exp).", "vid": "https://youtu.be/w7h1jjiwpRo"}, "Warzone 6": {"c": ["Humongous Fungus", "Deepworm", "Diremaw"], "v": "Deep Hub Fungus Dungeon on TibiaWiki", "acc": "10 task points from Lardoc Bashsmite with rank IV, otherwise 15.", "tip": "Humongous Fungi are earth-immune and weak to fire. Boss: The Duke of the Depths (300,000 exp)."}, "Lower Roshamuul": {"c": ["Frazzlemaw", "Silencer", "Shock Head"], "v": "This page's Roshamuul guide and inTibia", "tip": "See the <a href=\"#roshamuul\">Roshamuul guide</a>. Holy preset for Gift of Life; Sharpshooter + Ethereal.", "you": "Oct 10–11 duos: +442k and +390k in about 2 h each."}, "Asura Mirror": {"c": ["True Dawnfire Asura", "True Midnight Asura", "True Frost Flower Asura", "Dawnfire Asura", "Midnight Asura", "Frost Flower Asura"], "v": "Asura Vaults on TibiaWiki", "acc": "TibiaWiki: The Lost Brother opens the mirror; the lower floors need The Lament (The Secret Library) started, and The Lament is in your quest log.", "tip": "True asuras: 8,100–8,200 exp since Oct 20, less gold. True Dawnfire is weak to physical; the others are neutral to it and resist holy. Bosses: The Blazing Rose, The Diamond Blossom, The Lily of Night.", "vid": "https://youtu.be/MaCKF33Ldvk"}, "Roshamuul West": {"c": ["Guzzlemaw", "Frazzlemaw", "Silencer"], "v": "Your Oct 26 kill list", "tip": "See the <a href=\"#rosw\">Roshamuul West guide</a>.", "vid": "https://youtu.be/G30dO4v70JQ", "you": "Oct 26 duo with Xee Ru, XP Boost on: 2.15kk raw per hour, −311k per hour on your analyser."}, "Oramond Catacombs": {"c": [], "tip": "The monsters change every 14 days with the Rathleton vote."}, "Oramond Catacombs (no Fatal Hold)": {"c": [], "tip": "The monsters change every 14 days with the Rathleton vote."}, "Oramond Abandoned Sewers": {"c": [], "tip": "Creature list not read."}, "Wote 8 Drakens": {"c": ["Draken Abomination", "Draken Elite", "Draken Spellweaver", "Draken Warmaster", "Lizard Chosen"], "v": "Below Razachai on TibiaWiki (floor not confirmed)", "tip": "All drakens are earth- and fire-immune. Abominations are weak to holy and energy, Spellweavers to physical and holy, Elites have no weakness."}, "Gazer Spectres": {"c": ["Gazer Spectre", "Thanatursus"], "v": "Haunted Nexus (Temple) on TibiaWiki", "acc": "Talk to the Stricken Soul in the Plains of Havoc (The Dream Courts) to open the three Haunted Houses. The Temple's cracked floors hurt and teleport you.", "tip": "Gazer Spectres take only 15% physical and 30% fire but 130% ice: Froststorm Arrows, never Diamond. Thanatursus resist physical and holy, weak only to death."}, "Carnivora's Rocks": {"c": ["Lumbering Carnivor", "Spiky Carnivor", "Menacing Carnivor"], "v": "Verified on TibiaWiki BR area page", "acc": "Ask Andrew Lyze to open the door near Banuta; needs a Dream Courts mission started.", "tip": "They resist and reflect physical damage: Firestorm Arrows (Lumbering and Spiky are weak to fire). Floor −3 Menacing Carnivors hit hard."}, "Lower Spike": {"c": ["Lost Basher", "Drillworm", "Vulcongra", "Lost Husher", "Lost Thrower", "Wyrm", "Behemoth", "Dragon Lord", "Massive Earth Elemental", "Nightmare Scion"], "v": "Your Oct 22 kill list", "tip": "Almost everything is earth-immune. Your test: 330k raw and −35k per hour.", "you": "Oct 22 solo test: 330k raw/h, −35k/h."}, "Venore Flimsies −1": {"c": ["Flimsy Lost Soul", "Mean Lost Soul", "Freakish Lost Soul"], "v": "Brain Grounds on TibiaWiki", "acc": "Feaster of Souls.", "tip": "Death-immune, resist physical, earth and energy, weak to holy: Holy preset, Divine Barrage, Firestorm Arrows. Boss: Brain Head.", "vid": "https://youtu.be/Z9D71LbJjKc"}, "Port Hope Flimsies −1": {"c": ["Flimsy Lost Soul", "Mean Lost Soul", "Freakish Lost Soul"], "v": "Netherworld on TibiaWiki", "acc": "A Burial Shroud from Feaster of Souls.", "tip": "Same lost souls. Bosses: Irgix the Flimsy, Unaz the Mean, Vok the Freakish. TibiaPal now lists 6.4kk raw / 400k for −1 only.", "vid": "https://youtu.be/e1gjH-CgCmA?t=1412"}, "Summer Court": {"c": ["Crazed Summer Vanguard", "Crazed Summer Rearguard", "Insane Siren"], "u": 1, "v": "Crazed Summer Vanguard confirmed in the Summer Court", "tip": "All weak to ice and resist fire and holy (Vanguard: ice 130%, fire 50%, holy 80%). Rearguards and Sirens are weak to physical: Physical preset."}, "Winter Court": {"c": ["Crazed Winter Vanguard", "Crazed Winter Rearguard", "Soul-broken Harbinger"], "u": 1, "tip": "All resist ice and death and are weak to fire and energy."}, "Nagas (Marapur)": {"c": ["Naga Archer", "Naga Warrior", "Makara"], "v": "Temple of the Moon Goddess on TibiaWiki", "tip": "All weak to earth and energy; Archers and Makaras weak to physical, Warriors resist it; Archers and Warriors also take holy well. Rare: Sea Horse Figurine (Makara), Relic Sword."}, "Iksupan Occupied Sanctuary": {"c": ["Iks Aucar", "Iks Chuka", "Iks Pututu", "Cursed Ape"], "v": "Iksupan on TibiaWiki (not split by area)", "acc": "Adventures of Galthen; teleport at a stone inscription south-east of Port Hope.", "tip": "Mixed weaknesses; Iks Pututu is weak to physical. Boss: Ahau."}, "Iksupan Last Stand": {"c": ["Iks Aucar", "Iks Chuka", "Iks Pututu", "Cursed Ape"], "v": "Iksupan on TibiaWiki (not split by area)", "acc": "Adventures of Galthen.", "tip": "TibiaPal's money version of Iksupan (900k loot)."}, "Weretigers −2": {"c": ["Weretiger", "White Weretiger"], "u": 1, "tip": "Weak to physical, earth and fire; resist holy, energy and ice: Physical preset, Diamond + Ethereal."}, "Werecrocodiles −1": {"c": ["Werecrocodile"], "u": 1, "tip": "Resist physical; weak to holy, energy and ice: Holy preset with Divine Barrage, as TibiaPal's Diamond + Divine setup suggests."}, "Ripper Spectres (Haunted House)": {"c": ["Ripper Spectre", "Arachnophobica"], "v": "Haunted Nexus (Cellar) on TibiaWiki", "acc": "Talk to the Stricken Soul in the Plains of Havoc (north-west of Venore) to open the Haunted Houses; related to The Dream Courts.", "tip": "Rippers take 30% physical, 120% fire: Firestorm Arrows. Arachnophobicas are weak to holy. Rippers' poison damage is reflected back with at least 50% more force."}, "Roshamuul Mines (Terrorsleeps)": {"c": ["Terrorsleep", "Feversleep"], "v": "Roshamuul Mines on TibiaWiki", "tip": "Very dense spawn. Both are earth-immune, resist physical, weak to holy and energy, and they lower your skills and magic level."}, "Oramond Fury Dungeon": {"c": ["Fury"], "u": 1, "tip": "Furies are fire-immune and weak to physical, death, earth and energy."}, "Nightmare Isles": {"c": [], "tip": "Only during the mini world change."}, "Burster Spectres": {"c": ["Burster Spectre"], "v": "Buried Cathedral on TibiaWiki (it also has Ripper and Gazer Spectres and Arachnophobicas)", "tip": "Bursters are immune to physical and weak to fire: Firestorm Arrows. Boss: Faceless Bane.", "you": "Oct 14 solo 2.43kk raw/h, −414k/h; Oct 15 duo 2.27kk, −300k/h. Bestiary done."}, "Marapur Turtles": {"c": ["Two-Headed Turtle"], "u": 1, "tip": "Weak to death and earth; resist energy, fire and ice. Money spot."}, "Buried Cathedral −8": {"c": ["Burster Spectre", "Gazer Spectre", "Ripper Spectre", "Arachnophobica"], "v": "Buried Cathedral on TibiaWiki", "acc": "Enter through the Haunted Cellar once the Haunted Houses are linked (The Dream Courts). TibiaWiki warns it's very hard for an inexperienced solo player.", "tip": "Fire beats every spectre except Gazers: Firestorm Arrows + Divine."}, "Rosha Shockheads & Bones": {"c": ["Shock Head"], "u": 1, "tip": "TibiaPal 400+. Shock Heads are earth- and fire-immune with a 606 tar wave."}, "Otherworld": {"c": [], "tip": "TibiaPal 400+ money spot (1.6kk). Creature list not read."}, "Crypt Warriors": {"c": [], "tip": "TibiaPal 400+, 6.0kk raw. Creature list not read."}, "Deathlings": {"c": [], "tip": "TibiaPal 400+. Opened by The Secret Library."}};
   // duo notes for the "Party with Xee Ru" tab: your own results or verified element data for both
   var BWDUO = "Your Book World duos (chapter not recorded): Oct 22 crusaders and headwalkers, 2.71kk raw each per hour and +385k/h for the party; Oct 21 lion hydras and bluebeaks, 1.74kk and +297k/h. Ice and earth 100–105% on Lion Hydras, Bluebeaks and Headwalkers.";
   var DUO = {
@@ -2455,6 +2577,30 @@ jobs:
     if (a.q.length) h += '<span class="who">Veritass ' + mark(has("v", a)) + " · Xee Ru " + mark(has("x", a)) + "</span>";
     return h;
   }
+  var EL = [["phys", "physical", "Phys"], ["holy", "holy", "Holy"], ["fire", "fire", "Fire"], ["ice", "ice", "Ice"], ["energy", "energy", "Energy"], ["earth", "earth", "Earth"]];
+  function crMod(c, e) { var cr = CR[c]; if (!cr) return null; if (cr.p && cr.p[e[0]] != null) return { v: cr.p[e[0]], x: 1 }; if (cr.i.indexOf(e[1]) >= 0) return { v: 0 }; if (cr.s.indexOf(e[1]) >= 0) return { v: 80 }; if (cr.w.indexOf(e[1]) >= 0) return { v: 115 }; return { v: 100 }; }
+  function modCell(m) { if (!m) return "<td>?</td>"; var cls = m.v === 0 ? "imm" : m.v < 100 ? "res" : m.v > 100 ? "wk" : "neu"; var t = m.x ? m.v + "%" : m.v === 0 ? "immune" : m.v < 100 ? "resists" : m.v > 100 ? "weak" : "–"; return '<td class="m ' + cls + '">' + t + "</td>"; }
+  var ARROWS = [["Diamond", "phys", 37], ["Shatterstorm", "phys", 27], ["Firestorm", "fire", 21], ["Froststorm", "ice", 21], ["Thunderstorm", "energy", 21], ["Terrastorm", "earth", 21]];
+  var openDet = {};
+  function nf(v) { return Math.round(v).toLocaleString("en-US"); }
+  function detHTML(d) {
+    var x = SX[d[0]]; if (!x) return "";
+    var h = "";
+    if (x.c && x.c.length) {
+      h += '<div class="scroll"><table class="crt"><thead><tr><th>Creature</th><th class="n">HP</th><th class="n">Exp</th>' + EL.map(function (e) { return "<th>" + e[2] + "</th>"; }).join("") + "<th>Hits you</th></tr></thead><tbody>";
+      x.c.forEach(function (c) { var cr = CR[c] || {}; h += '<tr><td class="name">' + esc(c) + '</td><td class="n">' + (cr.hp ? nf(cr.hp) : "?") + '</td><td class="n">' + (cr.xp ? nf(cr.xp) : "?") + "</td>" + EL.map(function (e) { return modCell(crMod(c, e)); }).join("") + '<td class="small">' + esc(cr.h || "") + "</td></tr>"; });
+      h += "</tbody></table></div>";
+      var sc = ARROWS.map(function (a) { var t = 0, k = 0; x.c.forEach(function (c, i) { var m = crMod(c, [a[1], a[1] === "phys" ? "physical" : a[1]]), wt = i === 0 ? 2 : 1; if (m) { t += m.v * wt; k += wt; } }); return [a[0], k ? Math.round(a[2] * t / k / 100) : 0]; }).sort(function (a, b) { return b[1] - a[1]; });
+      var hb = function (key, word) { var t = 0, k = 0; x.c.forEach(function (c, i) { var m = crMod(c, [key, word]), wt = i === 0 ? 2 : 1; if (m) { t += m.v * wt; k += wt; } }); return k ? Math.round(t / k) : 0; };
+      h += '<p class="small"><b>Arrow value</b> (attack × average modifier): ' + sc.map(function (a, i) { return (i === 0 ? "<b>" : "") + a[0] + " " + a[1] + (i === 0 ? "</b>" : ""); }).join(" · ") + '. <b>Barrages:</b> Ethereal hits physical at ~' + hb("phys", "physical") + "%, Divine hits holy at ~" + hb("holy", "holy") + '%. <span class="muted">The first creature counts double. Exact % where TibiaWiki gives them; otherwise tibia.com\'s weak / resists label counted as 115% / 80%, which is rough: \"resists\" can mean 95% or 15% (Gazer Spectres), so where this disagrees with TibiaPal\'s setup, trust TibiaPal.</span></p>';
+    }
+    if (x.acc) h += '<p class="small"><b>Access:</b> ' + esc(x.acc) + "</p>";
+    if (x.tip) h += '<p class="small"><b>Notes:</b> ' + x.tip + "</p>";
+    if (x.you) h += '<p class="small"><b>Your results:</b> ' + esc(x.you) + "</p>";
+    if (x.vid) h += '<p class="small"><b>Video on TibiaPal:</b> <a href="' + x.vid + '">' + esc(x.vid) + "</a></p>";
+    h += '<p class="small muted">' + (x.u ? "Creature list from the spot's name; TibiaWiki's area page wasn't read, so check your kill list." : x.v ? "Creatures: " + esc(x.v) + "." : "") + " Weak / resists: tibia.com creature library (TibiaData), Oct 27.</p>";
+    return h;
+  }
   function band(l) { return l < 180 ? "Level 120–150+" : l < 200 ? "Level 180+ · raids" : l < 230 ? "Level 200+" : l < 250 ? "Level 230+" : l < 275 ? "Level 250+" : l < 300 ? "Level 275+" : l < 400 ? "Level 300+" : "Level 400+"; }
   function huntRender() {
     var q = document.getElementById("hQ").value.trim().toLowerCase();
@@ -2479,12 +2625,15 @@ jobs:
       if (a.q.length && has("v", a)) chips += ' <span class="pill gold">You have it</span>';
       var eW = Math.round(d[2] / maxE * 100), lW = Math.max(0, Math.round(d[3] / maxL * 100));
       if (hs.show === "duo" && DUO[d[0]]) chips += ' <span class="pill warn">Duo note</span>';
+      var hasD = !!SX[d[0]], key = d[0];
+      chips += hasD ? ' <button type="button" class="det-btn" data-k="' + esc(key) + '" aria-expanded="' + (openDet[key] ? "true" : "false") + '">' + (openDet[key] ? "Hide details" : "Details") + "</button>" : "";
       html += '<tr><td><span class="name">' + esc(d[0]) + "</span>" + chips + (d[7] ? '<span class="how">' + esc(d[7]) + "</span>" : "") + (hs.show === "duo" && DUO[d[0]] ? '<span class="how"><b>Duo:</b> ' + esc(DUO[d[0]]) + "</span>" : "") + "</td>" +
         '<td class="n">' + d[1] + "+</td>" +
         '<td class="n exp">' + d[2].toFixed(Math.round(d[2] * 100) % 10 ? 2 : 1) + 'kk<span class="bar" style="width:' + eW + '%"></span></td>' +
         '<td class="n loot' + (d[3] < 0 ? " neg" : "") + '">' + fmtLoot(d[3]) + (d[3] > 0 ? '<span class="bar" style="width:' + lW + '%"></span>' : "") + "</td>" +
         '<td class="setup">' + esc(d[4]) + "</td>" +
         '<td class="acc">' + accCell(a) + "</td></tr>";
+      if (hasD && openDet[key]) html += '<tr class="det"><td colspan="6"><div class="det-in">' + detHTML(d) + "</div></td></tr>";
     });
     document.getElementById("hRows").innerHTML = html || '<tr><td colspan="6">No spots match. Clear the search or pick "All".</td></tr>';
     document.getElementById("hCount").textContent = list.length + " spots";
@@ -2494,6 +2643,7 @@ jobs:
   }
   [["hShow", "show"], ["hSort", "sort"]].forEach(function (p) { document.querySelectorAll("#" + p[0] + " button").forEach(function (b) { b.addEventListener("click", function () { hs[p[1]] = b.getAttribute("data-v"); huntRender(); }); }); });
   document.getElementById("hQ").addEventListener("input", huntRender);
+  document.getElementById("hRows").addEventListener("click", function (e) { var b = e.target.closest(".det-btn"); if (!b) return; var k = b.getAttribute("data-k"); openDet[k] = !openDet[k]; huntRender(); });
 
   function questRender() {
     document.getElementById("qRows").innerHTML = QORDER.map(function (id) {
