@@ -198,6 +198,10 @@ svg.wheel { width: 100%; height: auto; max-width: 540px; margin: 0 auto; display
 .slice:hover, .slice.active { stroke: var(--gold); stroke-width: 3; }
 .lbl { font: 700 13px var(--font-body); fill: var(--muted); pointer-events: none; text-anchor: middle; dominant-baseline: central; }
 .lbl.pick { fill: var(--on-dom); font-size: 16px; }
+.slice.next { stroke: var(--gold); stroke-width: 3; stroke-dasharray: 7 5; }
+.lbl.nextlbl { fill: var(--gold); font-size: 18px; }
+.dnum.nextnum { background: var(--gold-soft); color: var(--ink); border: 1px dashed var(--gold); }
+.wsteps ol.plan-steps > li { border-style: dashed; }
 .corner { font: 700 14px var(--font-display); text-anchor: middle; }
 .corner-sub { font: 500 11px var(--font-body); fill: var(--muted); text-anchor: middle; }
 .hub { fill: var(--sunk); stroke: var(--line); }
@@ -522,6 +526,7 @@ table.crt td.neu { color: var(--muted); }
   </div>
   <ol class="todo">
     <li><div><p><b>Use Sharpshooter + Ethereal Barrage.</b> Divine Barrage scales with magic level (yours 36) and was cut on July 7; Ethereal scales with distance (about 175 with Sharpshooter) and wasn't. Book World: Physical preset. Roshamuul: Holy preset for Gift of Life, still casting Ethereal. Do the 15-minute barrage test once. See <a href="#preset-pick">which preset where</a>.</p></div></li>
+    <li><div><p><b>Re-spec the Holy preset (free, in a temple).</b> Take 69 points out of the top-left middle 3rd-ring slice (keep 25 for Gift of Life) and put 50 in the bottom-right inner slice and 19 in the bottom-right slice by the right edge. Same 319 points, +62 HP with the bottom-right gem, ice +1%, mitigation 1.42%, and the road to Divine Barrage II. Step by step in the <a href="#wheel">Wheel</a>.</p></div></li>
     <li><div><p><b>Put a boss in Boss Slot 1.</b> It was empty on Oct 24, so its loot bonus is wasted. Pick the boss you'll kill most in the next weeks. You have 240 of 250 Boss Points: 10 more lift the equipment loot bonus from 49% to 50%. See the <a href="#bestiary">Bosstiary</a>.</p></div></li>
     <li><div><p><b>Move your charms to Book World.</b> Crusader and Headwalker bestiaries are done (Oct 24), so both now take charms. Low Blow (+4% crit) still sits on Frazzlemaw: put it on Crusader, the one you kill most, and Vampiric Embrace (+1.6% life leech) on Headwalker, or both on Crusader (one major and one minor fit per creature). You have 148 charm points unspent; the cheapest new major charm costs 240. See <a href="#systems">charms</a>.</p></div></li>
     <li><div><p><b>Try Asura Mirror now.</b> TibiaWiki's Asura Vaults page lists only The Lost Brother (done) for the mirror, and The Lament, which its lower floors need, is in your quest log. TibiaPal: 5.3kk raw and 600k loot at level 250. Earlier this page also asked for the Asura Palace quest; if the mirror doesn't let you through, that's the missing piece. Xee Ru needs The Lost Brother. See <a href="#asura">Asura Palace</a>.</p></div></li>
@@ -958,10 +963,10 @@ table.crt td.neu { color: var(--muted); }
     <div class="eyebrow">319 points at 347, all placed · three presets read Oct 29 · respec is free, temple only</div>
     <h2>Wheel of Destiny</h2>
   </div>
-  <p class="lede"><b>Keep Holy as the main build.</b> It saves you from one killing blow per 30 h of battle, gives the most HP and mana, and buffs Divine Barrage, which you cast in every spawn. Save Physical as a second preset for Diamond Arrow spawns. Boss comes later, once crit gear is in.</p>
+  <p class="lede"><b>Three presets, three jobs.</b> <b>Physical</b> for Diamond Arrow + Ethereal Barrage spots (Book World, Asura Mirror). <b>Holy</b> where you might die (Roshamuul) and for Firestorm + Divine Barrage spots (Flimsies, Ripper Spectres): it's the only one with Gift of Life. <b>Boss</b> for bosses. Pick a preset below: solid slices are what you have now, gold dashed slices are where the next points go.</p>
   <div class="tabs" role="tablist" aria-label="Wheel presets">
-    <button class="tab" role="tab" type="button" data-p="holy" aria-selected="true"><span class="dot" style="background:var(--tl)"></span>Holy <span class="rec">current</span></button>
-    <button class="tab" role="tab" type="button" data-p="physical" aria-selected="false"><span class="dot" style="background:var(--bl)"></span>Physical</button>
+    <button class="tab" role="tab" type="button" data-p="holy" aria-selected="true"><span class="dot" style="background:var(--tl)"></span>Holy <span class="rec">re-spec now</span></button>
+    <button class="tab" role="tab" type="button" data-p="physical" aria-selected="false"><span class="dot" style="background:var(--bl)"></span>Physical <span class="rec">hunting</span></button>
     <button class="tab" role="tab" type="button" data-p="boss" aria-selected="false"><span class="dot" style="background:var(--br)"></span>Boss</button>
   </div>
   <div class="wheel-main">
@@ -971,21 +976,6 @@ table.crt td.neu { color: var(--muted); }
       <div class="detail" id="wDetail" aria-live="polite"></div>
     </div>
     <div class="wsteps" id="wSteps"></div>
-  </div>
-  <div class="scroll">
-    <table class="t-mid">
-      <thead><tr><th></th><th>Holy <span class="pill good">main</span></th><th>Physical</th><th>Boss</th></tr></thead>
-      <tbody>
-        <tr><td class="name">Revelation, stage 1</td><td>Gift of Life</td><td>Divine Empowerment</td><td>Avatar of Light</td></tr>
-        <tr><td class="name">Augment</td><td>Divine Barrage +8%</td><td>Ethereal Barrage +10% life leech</td><td>Divine Barrage +8%</td></tr>
-        <tr><td class="name">Hit points</td><td class="n">+320</td><td class="n">+270</td><td class="n">+100</td></tr>
-        <tr><td class="name">Mana</td><td class="n">+225</td><td class="n">+150</td><td class="n">0</td></tr>
-        <tr><td class="name">Capacity</td><td class="n">+200</td><td class="n">0</td><td class="n">+640</td></tr>
-        <tr><td class="name">Mitigation</td><td class="n">0%</td><td class="n">+7.5%</td><td class="n">+5.62%</td></tr>
-        <tr><td class="name">Gem vessel</td><td>Top-left</td><td>Bottom-left</td><td>Bottom-right</td></tr>
-        <tr><td class="name">Use for</td><td>Everyday, holy spawns, learning the character</td><td>Diamond + Ethereal spawns, once you can stand still in the field</td><td>Bosses, after crit gear</td></tr>
-      </tbody>
-    </table>
   </div>
   <div class="scroll">
     <table class="t-mid">
@@ -1019,19 +1009,35 @@ table.crt td.neu { color: var(--muted); }
     <p class="small"><b>Physical's 8.92% mitigation is smaller than it looks.</b> Since the rebalance, dedication slices give 0.075% per point and gems a 20–30% mitigation multiplier, but both multiply your base mitigation, which is low with a bow: your Skills window showed 1.12% in Holy and 1.2% in Physical, about 0.1% less damage. Mitigation gems aren't worth a socket for you; take HP.</p>
     <p class="small muted">Your numbers so far: Oct 24 duo with Physical on the 16:07 screenshot, 2.20kk raw/h, 1.97kk damage/h; Oct 25 solo with Holy (HP 4,051 on the level-up shot), 2.20kk raw/h, 2.61kk damage/h, +57k. I don't know which barrage you cast in each.</p>
   </div>
-  <p class="small muted">Also saved: an empty "Test Test" preset (306 points unspent), safe to delete. All presets: damage and healing +4 from revelation, +1 from vessels.</p>
-  <p class="small"><b>Your Wheel on Oct 24, 02:33</b> (Holy, 0 of 304 points left): dedication HP +350, mana +225, capacity +200, mitigation 0.30%; conviction +1 distance, Divine Barrage augment I, Vessel Resonance top-left and bottom-right; vessels HP +220, damage and healing +1; revelation damage and healing +4, Gift of Life stage 1 (Avatar of Light, Divine Empowerment, Divine Grenade locked). 304 = 283 from levels + 21 extra, 10 of them from The Way of the Monk.</p>
-  <p class="small muted">All three also give +1 distance, one Vessel Resonance and +4 damage and healing. HP and capacity in the table are at 285 points. The Oct 17 Wheel screen shows HP +320: the 10 points since 316 went into the last Holy slice, now 60/100. It also confirms +1 distance, Divine Barrage augment I, Vessel Resonance top-left, +4 damage and healing, and Gift of Life stage 1. The planner codes below are the 261-point builds; put every extra point on the last slice of each.</p>
+  <div class="card" id="wheel-how">
+    <h3>How the Wheel is built <span class="tag">read from TibiaPal's planner, Oct 30</span></h3>
+    <div class="grid2" style="margin-top:6px">
+      <ul class="small">
+        <li><b>Four domains</b>, one per corner: top-left Gift of Life, bottom-left Divine Empowerment, bottom-right Avatar of Light, top-right Divine Grenade.</li>
+        <li><b>Each domain has 9 slices, 1,000 points:</b> inner ring 1 × 50, 2nd ring 2 × 75, 3rd ring 3 × 100, 4th ring 2 × 150, outer ring 1 × 200.</li>
+        <li><b>Every point</b> gives its slice's dedication perk right away (HP, mana, capacity or mitigation). The slice's <b>conviction perk</b> (distance, augment, leech, Vessel Resonance) only comes when the slice is <b>full</b>.</li>
+        <li><b>Revelation</b> (the corner skill): stage 1 at 250 points in that domain, stage 2 at 500.</li>
+      </ul>
+      <ul class="small">
+        <li><b>Opening order:</b> the four inner slices are always open. Any other slice opens once a slice touching it is full, inward or sideways, even across a domain border.</li>
+        <li><b>Points:</b> one per level from 51, plus your 22 extra (10 from The Way of the Monk). So points = level − 28: 319 at 347, 375 at 403, 450 at 478, 500 at 528.</li>
+        <li><b>Each preset has its own allocation</b> of the same 319 points; switching presets costs nothing, in a temple.</li>
+        <li><b>Gems</b> only work in a domain that has a Vessel Resonance; VR I turns on a gem's first mod, VR II the second, VR III the third (greater gems).</li>
+      </ul>
+    </div>
+  </div>
   <div class="grid3" id="wCodes"></div>
   <div class="grid2">
     <div class="card">
-      <h3>Set it up in game</h3>
+      <h3>How to move points in game</h3>
       <ol class="small">
         <li>Go to a temple. Changing points is free there and only there.</li>
-        <li>Open the Wheel and right-click a slice to fill or empty it. Alt, Shift, Ctrl or Ctrl+Shift change the step size.</li>
-        <li>Fill in the numbered order. A slice opens only after the one toward the centre is full.</li>
-        <li>Press Apply, then save each build under its own name in the preset menu.</li>
-        <li>Each preset turns on only its own domain's gem vessel. Put a lesser gem of that colour in it, ideally Hit Points.</li>
+        <li>Open the Wheel of Destiny and pick the preset in <b>Manage Presets</b> (Holy – Gift Of Life, Physical – Divine Em…, Boss – Avatar Of Light).</li>
+        <li><b>Right-click</b> a slice to fill it or empty it. Holding Alt, Shift, Ctrl or Ctrl+Shift changes how many points one click moves (the game's own hint).</li>
+        <li>Empty from the outside in: a slice can't be emptied while a fuller slice further out depends on it.</li>
+        <li>Check the right-hand panel against the totals on this page, then press <b>Apply</b>.</li>
+        <li><b>Shortcut:</b> Manage Presets has <b>Import</b>; the codes below are tibia.com planner codes, which should import directly. If one doesn't, copy the slices from the picture.</li>
+        <li>The empty "Test Test" preset (319 unspent) is safe to delete.</li>
       </ol>
     </div>
     <div class="card">
@@ -1040,7 +1046,7 @@ table.crt td.neu { color: var(--muted); }
         <li><b>The Way of the Monk Quest</b> (275+, Premium): 10 promotion points. <span class="pill good">Done Oct 23</span></li>
         <li><b>Hunting Task Shop:</b> up to 50 points, each pricier (100, 200, 400, 700 task points…). You had 3,100 task points.</li>
         <li><b>Gem mods at grade IV:</b> +1 point each. <b>Promotion Scrolls</b> from Bakragore: up to 50, endgame.</li>
-        <li>Milestones: 550 points for a stage 2 revelation, 575 for Positional Tactics and Ballistic Mastery, 625 for the first outer conviction perk.</li>
+        <li>Milestones: 500 points in one domain for a stage 2 revelation, 575 for an outer-ring perk like Positional Tactics or Ballistic Mastery (TibiaPal's 575 builds).</li>
       </ul>
     </div>
   </div>
@@ -2417,15 +2423,34 @@ jobs:
       ["BR4a","BR",4,282,315,150,"Mana","LL"],["BR4b","BR",4,315,348,150,"Mana","VR"],["BR5","BR",5,282,348,200,"Hit Points + Mana","BM"]
     ];
     var P = {
-      holy: { label: "Holy", color: "var(--tl)", code: "P0Y2AAAxUQkeJtxIAN_EcCAA", where: "Top-left domain · Gift of Life",
-        fills: [["TL1",50,"Top-left, inner ring","Capacity +200 · Vessel Resonance"],["TL2b",75,"Top-left, 2nd ring, slice by the left edge","Mana +225 · +1 distance"],["TL3c",100,"Top-left, 3rd ring, slice by the left edge","HP +200 · Divine Barrage augment I"],["TL3b",60,"Top-left, 3rd ring, middle slice","HP +120. The first 25 points unlock Gift of Life"]],
-        totals: [["+320","Hit points"],["+225","Mana"],["+200","Capacity"],["0%","Mitigation"]] },
-      physical: { label: "Physical", color: "var(--bl)", code: "P0Y2DAACpGYMobTKYA8X8kAAA", where: "Bottom-left domain · Divine Empowerment",
-        fills: [["BL1",50,"Bottom-left, inner ring","Mana +150 · Ethereal Barrage augment I"],["BL2b",75,"Bottom-left, 2nd ring, slice by the bottom edge","HP +150 · Vessel Resonance"],["BL3c",100,"Bottom-left, 3rd ring, slice by the bottom edge","Mitigation +7.5% · +1 distance"],["BL2a",60,"Bottom-left, 2nd ring, slice by the left edge","HP +120. The first 25 points unlock Divine Empowerment"]],
-        totals: [["+270","Hit points"],["+150","Mana"],["0","Capacity"],["+7.5%","Mitigation"]] },
-      boss: { label: "Boss", color: "var(--br)", code: "P0Y2DAAoy8VUBUCpT7HwkAAA", where: "Bottom-right domain · Avatar of Light",
-        fills: [["BR1",50,"Bottom-right, inner ring","HP +100 · Vessel Resonance"],["BR2b",75,"Bottom-right, 2nd ring, slice by the right edge","Mitigation +5.62% · +1 distance"],["BR3b",100,"Bottom-right, 3rd ring, middle slice","Capacity +400 · Divine Barrage augment I"],["BR3c",60,"Bottom-right, 3rd ring, slice by the right edge","Capacity +240. The first 25 points unlock Avatar of Light"]],
-        totals: [["+100","Hit points"],["0","Mana"],["+640","Capacity"],["+5.62%","Mitigation"]] }
+      holy: { label: "Holy", color: "var(--tl)", where: "Top-left domain · Gift of Life", pts: 319,
+        fills: [["TL1",50,"Top-left, inner ring","Capacity +200 · Vessel Resonance top-left"],["TL2b",75,"Top-left, 2nd ring, slice by the left edge","Mana +225 · +1 distance"],["TL3c",100,"Top-left, 3rd ring, slice by the left edge","HP +200 · Divine Barrage augment I"],["TL3b",94,"Top-left, 3rd ring, middle slice","HP +188, 6 short of its Strong Ethereal Spear augment, which you don't use"]],
+        totals: [["+388","Hit points"],["+225","Mana"],["+200","Capacity"],["0%","Mitigation"]],
+        plan: [["TL3b",25,"Now, in a temple","Take 69 points out of this slice, keep 25: Gift of Life still needs 250 in the top-left domain"],
+               ["BR1",50,"Now","HP +100 and Vessel Resonance bottom-right, so the bottom-right gem (HP +100, ice +1%) works in Holy too"],
+               ["BR2b",19,"Now","Mitigation +1.42% (0.075% per point)"],
+               ["BR2b",75,"Level 403","+1 distance (2 in total), mitigation 5.62%"],
+               ["BR3b",100,"Level 503","Divine Barrage augment II: +12% base damage instead of +8%; capacity +400"],
+               ["BR2a",25,"Level 528","Bottom-right reaches 250: Avatar of Light stage 1. This is TibiaPal's Holy 500 build"]],
+        after: "After the re-spec: HP +350 plus the bottom-right gem's +100, mana +225, capacity +200, mitigation 1.42%, Vessel Resonance in two domains. You give up 38 HP from the slices and get 100 back from the gem, plus ice +1% and the start of a second +1 distance.",
+        codes: [["Your Holy now","P0Y2AAgzgQkeJtxIAN_EcCAA"],["Re-spec now (319)","P0Y2AAA0kQkeJtBOEZCTMgg_9IAAA"],["Level 403 (375)","P0Y2AAA0kQkeJtBOEZeTMgg_9IAAA"],["TibiaPal Holy 500, level 528","P0Y2AAA0kQkeJtBOEZeYPFUiA8hv9IAAA"]] },
+      physical: { label: "Physical", color: "var(--bl)", where: "Bottom-left domain · Divine Empowerment", pts: 319,
+        fills: [["BL1",50,"Bottom-left, inner ring","Mana +150 · Ethereal Barrage augment I (+10% life leech on it)"],["BL2b",75,"Bottom-left, 2nd ring, slice by the bottom edge","HP +150 · Vessel Resonance bottom-left"],["BL2a",75,"Bottom-left, 2nd ring, slice by the left edge","HP +150 · mana leech +0.25%"],["BL3c",100,"Bottom-left, 3rd ring, slice by the bottom edge","Mitigation 7.5% · +1 distance"],["BL3a",19,"Bottom-left, 3rd ring, slice by the left edge","Mitigation +1.42%. Your screen fits 19 points here or in the middle slice; both give the same totals"]],
+        totals: [["+300","Hit points"],["+150","Mana"],["0","Capacity"],["8.92%","Mitigation"]],
+        plan: [["BL3a",100,"Level 428","Vessel Resonance bottom-left II (a regular gem's second mod turns on), mitigation 15%"],
+               ["BL3b",100,"Level 528","Divine Dazzle augment I, mitigation 22.5%. Bottom-left reaches 500: Divine Empowerment stage 2 (+10% damage, 28 s cooldown), damage and healing +9"],
+               ["BL4b",150,"After 528","Capacity +600 and Vessel Resonance III, which needs a greater gem. TibiaPal's own Physical 500 goes this way instead of keeping the mana leech and +1 distance slices"]],
+        after: "This preset already matches TibiaPal's Physical 250 plus 69 points; nothing to change now. Just keep adding.",
+        codes: [["Your Physical now","P0Y2BAB8LeRmDaG0ymAPF_JAAA"],["Level 428 (400)","P0Y2BAByneRmDaG8ID4v9IAAA"],["Level 528 (500)","P0Y2BAByneRhAKwgPi_0gAAA"],["TibiaPal Physical 500 (greater gem)","P0Y2BABykMRmDKG0hITgMx_yMBAA"]] },
+      boss: { label: "Boss", color: "var(--br)", where: "Bottom-right domain · Avatar of Light", pts: 319,
+        fills: [["BR1",50,"Bottom-right, inner ring","HP +100 · Vessel Resonance bottom-right"],["BR2b",75,"Bottom-right, 2nd ring, slice by the right edge","Mitigation 5.62% · +1 distance"],["BR3b",100,"Bottom-right, 3rd ring, middle slice","Capacity +400 · Divine Barrage augment I"],["BR3c",94,"Bottom-right, 3rd ring, slice by the right edge","Capacity +376. If your 94 sit in the slice by the bottom edge instead, move them here"]],
+        totals: [["+100","Hit points"],["0","Mana"],["+776","Capacity"],["5.62%","Mitigation"]],
+        plan: [["BR3c",100,"Level 353","Strong Ethereal Spear augment I: −2 s cooldown on exori gran con"],
+               ["TL1",50,"Level 478: switch build","At 450 points TibiaPal's bossing build fills both Strong Ethereal Spear slices instead of Divine Barrage and Avatar of Light"],
+               ["TL2b",75,"Level 478",""],
+               ["TL3b",100,"Level 478","Strong Ethereal Spear augment II: +380% base damage, +2 distance. Empty the Divine Barrage slice (BR3b) for it"]],
+        after: "Avatar of Light stage 1 needs 250 in the bottom-right domain; you have 319 there, so it stays until you switch to the 450 build.",
+        codes: [["Your Boss now","P0Y2DAAoy840BUCpT7HwkAAA"],["Level 353 (325)","P0Y2DAAoy8U0BUCpT7HwkAAA"],["TibiaPal bossing 450, level 478","P0Y2AAgxQw6W0E4Rl5Q_hQ8B8JAAA"]] }
     };
     var NS = "http://www.w3.org/2000/svg", svg = document.getElementById("wheelSvg");
     function pt(r, a) { var t = a * Math.PI / 180; return [r * Math.cos(t), -r * Math.sin(t)]; }
@@ -2444,7 +2469,7 @@ jobs:
       ["mouseenter", "focus", "click"].forEach(function (ev) { path.addEventListener(ev, function () { detail(s[0]); }); });
     });
     mk("circle", { cx: 0, cy: 0, r: 20, "class": "hub" });
-    mk("text", { x: 0, y: 0, "class": "hubtxt" }).textContent = "285";
+    mk("text", { x: 0, y: 0, "class": "hubtxt" }).textContent = "319";
     [["TR", 222, -266, "top-right"], ["TL", -222, -266, "top-left"], ["BL", -222, 262, "bottom-left"], ["BR", 222, 262, "bottom-right"]].forEach(function (c) {
       mk("text", { x: c[1], y: c[2], "class": "corner", fill: DOM[c[0]].color }).textContent = DOM[c[0]].name;
       mk("text", { x: c[1], y: c[2] + 16, "class": "corner-sub" }).textContent = c[3];
@@ -2454,18 +2479,30 @@ jobs:
     function detail(id) {
       var s = slices[id].d, pr = P[cur], got = 0, order = 0;
       pr.fills.forEach(function (f, i) { if (f[0] === id) { got = f[1]; order = i + 1; } });
+      var nxt = pr.plan.filter(function (q) { return q[0] === id; }).map(function (q) { return q[2] + ": " + q[1] + " points"; }).join("; ");
       Object.keys(slices).forEach(function (k) { slices[k].path.classList.toggle("active", k === id); });
       box.innerHTML = '<div class="k">' + esc(DOM[s[1]].name + " domain · " + ringNames[s[2]] + " · " + s[5] + " points") + '</div><div><b>Dedication:</b> ' + esc(s[6]) + '<br><b>Perk when full:</b> ' + esc(PERK[s[7]]) + '</div><div class="small muted">' +
-        esc(order ? "Step " + order + " in " + pr.label + ": put " + got + " of " + s[5] + " points here." : "Not used in the " + pr.label + " preset.") + "</div>";
+        esc((order ? "You have " + got + " of " + s[5] + " here in " + pr.label + "." : "Empty in your " + pr.label + " preset.") + (nxt ? " Plan: " + nxt + "." : "")) + "</div>";
+    }
+    var CORNER = { TL: ["Top-left", "top", "left"], BL: ["Bottom-left", "left", "bottom"], BR: ["Bottom-right", "bottom", "right"], TR: ["Top-right", "right", "top"] };
+    function posName(id) {
+      var sl = slices[id].d, c = CORNER[sl[1]], k = id.slice(-1), ring = sl[2], where = "";
+      if (ring === 2 || ring === 4) where = ", slice by the " + (k === "a" ? c[1] : c[2]) + " edge";
+      if (ring === 3) where = k === "a" ? ", slice by the " + c[1] + " edge" : k === "b" ? ", middle slice" : ", slice by the " + c[2] + " edge";
+      return c[0] + ", " + ringNames[ring] + where;
     }
     function render(name) {
       cur = name; var pr = P[name];
-      Object.keys(slices).forEach(function (k) { var sl = slices[k]; sl.path.setAttribute("fill-opacity", "0.14"); sl.path.classList.remove("active"); sl.text.setAttribute("class", "lbl"); sl.text.textContent = sl.d[7]; });
+      Object.keys(slices).forEach(function (k) { var sl = slices[k]; sl.path.setAttribute("fill-opacity", "0.14"); sl.path.classList.remove("active", "next"); sl.text.setAttribute("class", "lbl"); sl.text.textContent = sl.d[7]; });
       pr.fills.forEach(function (f, i) { var sl = slices[f[0]], full = f[1] >= sl.d[5]; sl.path.setAttribute("fill-opacity", full ? "0.95" : "0.55"); sl.text.setAttribute("class", "lbl pick"); sl.text.textContent = full ? String(i + 1) : (i + 1) + "·" + f[1]; });
+      pr.plan.forEach(function (q) { var sl = slices[q[0]]; if (!pr.fills.some(function (f) { return f[0] === q[0]; })) { sl.text.setAttribute("class", "lbl nextlbl"); sl.text.textContent = "→"; } if (!(q[0] === "TL3b" && name === "holy")) sl.path.classList.add("next"); });
       document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", t.getAttribute("data-p") === name ? "true" : "false"); });
-      var h = '<h3>' + esc(pr.label) + '</h3><p class="small muted">' + esc(pr.where) + '. Fill in this order:</p><ol style="margin-top:10px">';
+      var h = '<h3>' + esc(pr.label) + ' <span class="tag">' + pr.pts + ' points</span></h3><p class="small muted">' + esc(pr.where) + '. What you have now:</p><ol style="margin-top:10px">';
       pr.fills.forEach(function (f, i) { h += '<li><span class="dnum" style="background:' + pr.color + '">' + (i + 1) + '</span><div><b>' + esc(f[2]) + '</b> <span class="pts">' + f[1] + " / " + slices[f[0]].d[5] + '</span><br><span class="small">' + esc(f[3]) + "</span></div></li>"; });
       h += '</ol><div class="totals">' + pr.totals.map(function (t) { return "<div><b>" + t[0] + "</b><span>" + t[1] + "</span></div>"; }).join("") + "</div>";
+      h += '<h3 style="margin-top:14px">Next points</h3><ol class="plan-steps">';
+      pr.plan.forEach(function (q) { var sl = slices[q[0]].d; h += '<li><span class="dnum nextnum">→</span><div><b>' + esc(posName(q[0])) + '</b> <span class="small muted">' + esc(sl[6] + " · " + sl[7]) + '</span> <span class="pts">' + q[1] + " / " + sl[5] + '</span> <span class="pill gold">' + esc(q[2]) + '</span>' + (q[3] ? '<br><span class="small">' + esc(q[3]) + "</span>" : "") + "</div></li>"; });
+      h += '</ol><p class="small">' + esc(pr.after) + "</p>";
       document.getElementById("wSteps").innerHTML = h;
       idle(); save("veritass-hub-wheel", name);
     }
@@ -2473,8 +2510,7 @@ jobs:
     var codes = document.getElementById("wCodes");
     ["holy", "physical", "boss"].forEach(function (k) {
       var pr = P[k], card = document.createElement("div"); card.className = "card";
-      card.innerHTML = '<h3 style="color:' + pr.color + '">' + pr.label + ' code</h3><div class="code-row"><code class="c" id="code-' + k + '">' + pr.code + '</code><button class="btn" type="button" data-copy="code-' + k + '">Copy</button></div>' +
-        '<div class="small"><a href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">TibiaPal planner</a> · <a href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">tibia.com planner</a></div>';
+      card.innerHTML = '<h3 style="color:' + pr.color + '">' + pr.label + ' codes</h3>' + pr.codes.map(function (c, i) { var id = "code-" + k + "-" + i; return '<div class="small" style="margin-top:6px"><b>' + esc(c[0]) + '</b></div><div class="code-row"><code class="c" id="' + id + '">' + c[1] + '</code><button class="btn" type="button" data-copy="' + id + '">Copy</button> <a class="small" href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=' + c[1] + '">TibiaPal</a> · <a class="small" href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=' + c[1] + '">tibia.com</a></div>'; }).join("");
       codes.appendChild(card);
     });
     var start = load("veritass-hub-wheel", "holy"); render(P[start] ? start : "holy");
