@@ -120,7 +120,18 @@ td.slot { white-space: nowrap; color: var(--muted); font-size: 0.86rem; text-tra
 .el { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0 7px; border-radius: 4px; border: 1px solid currentColor; line-height: 1.5; white-space: nowrap; margin: 1px 2px 1px 0; }
 .el.fire { color: var(--fire); } .el.ice { color: var(--ice); } .el.energy { color: var(--energy); }
 .el.earth { color: var(--earth); } .el.death { color: var(--death); } .el.holy { color: var(--gold); } .el.phys { color: var(--steel); } .el.ld { color: var(--bad); }
-.eqm td, .eqs td { vertical-align: top; } .eqm tr.tot td { border-top: 2px solid var(--line); } .eqs td { font-size: 0.9rem; } .eqs { min-width: 1100px; }
+.setpick { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; } .setpick > span { min-width: 76px; }
+.stab { font: 700 0.9rem var(--font-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.stab[aria-pressed="true"] { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); background: var(--gold-soft); }
+.setbuy { display: inline-flex; gap: 8px; align-items: center; }
+.set-res { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; } .el.zero { opacity: 0.45; }
+.set-tot { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; } .set-tot div { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; display: grid; } .set-tot b { font-size: 1.15rem; } .set-tot span { font-size: 0.78rem; color: var(--muted); }
+.set-rows { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.set-row { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px 14px; padding: 10px 14px; border-top: 1px solid var(--line); }
+.set-row:first-child { border-top: 0; }
+.set-row .slot { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; padding-top: 2px; }
+.set-row .name { font-weight: 700; margin-bottom: 4px; }
+@media (max-width: 560px) { .set-row { grid-template-columns: minmax(0, 1fr); } }
 .pill { display: inline-block; font-size: 0.76rem; font-weight: 700; padding: 1px 9px; border-radius: 999px; background: var(--sunk); color: var(--muted); white-space: nowrap; }
 .pill.good { background: var(--good-soft); color: var(--good); }
 .pill.warn { background: var(--warn-soft); color: var(--warn); }
@@ -704,44 +715,32 @@ table.crt td.neu { color: var(--muted); }
   </div>
   <p class="lede">One core, six swaps. The Bow of Cataclysm, Falcon Greaves and the Unerring with Vampirism stay on. The armor's second imbuement, the helmet, boots, amulet, ring and extra slot change with what hits hardest. Swapping costs nothing: imbuement timers stop while an item is off (backpacks excepted).</p>
   <div class="note warn"><b>Renew now:</b> the Unerring's Quara Scale and Vampirism had 0:35 h left at 18:41 on Oct 30. Pick its second imbuement for the spot you'll farm most in the next 20 hours of hunting. Your Powerful Lich Shroud Scroll is ready for a death spot.</div>
-  <h3 class="tbl-h">Best protection per slot</h3>
-  <p class="small muted">Bold = you own it. "Consumable" = cheap, buy before the hunt. Values are each item's protection; the totals add them up, and the Skills window shows the real figure, which isn't always a plain sum (it showed physical +24.49% on Oct 30).</p>
-  <div class="scroll">
-    <table class="t-wide eqm">
-      <thead><tr><th>Slot</th><th>Physical</th><th>Life drain</th><th>Fire</th><th>Ice</th><th>Earth</th><th>Energy</th><th>Death</th></tr></thead>
-      <tbody>
-        <tr><td class="slot">Weapon</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><b>Falcon Bow</b> +5</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><b>Bow of Cataclysm</b> +4</td></tr>
-        <tr><td class="slot">Helmet</td><td><b>Falcon Coif</b> or <b>Casque</b> +3</td><td><span class="muted">—</span></td><td><b>Falcon Coif</b> +10</td><td><span class="muted">—</span></td><td><span class="pill gold">Buy</span> Lion Spangenhelm +5</td><td><b>Stoic Iks Casque</b> +6</td><td><span class="pill gold">Buy</span> Hellstalker Visor +6</td></tr>
-        <tr><td class="slot">Armor, 2nd imbuement</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td>Dragon Hide +15</td><td>Quara Scale +15</td><td>Snake Skin +15 <span class="muted small">(net +10 on the Unerring)</span></td><td><b>Unerring</b> +10, Cloud Fabric +15</td><td>Lich Shroud +10 <span class="muted small">(you own a scroll)</span></td></tr>
-        <tr><td class="slot">Legs</td><td><b>Falcon Greaves</b> +7</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><b>Falcon Greaves</b> +7</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr>
-        <tr><td class="slot">Boots</td><td><b>Guardian Boots</b> +2 <span class="muted small">(no speed or distance)</span></td><td><span class="muted">—</span></td><td><span class="pill gold">Buy</span> Stoic Iks Boots +5</td><td><span class="pill gold">Buy</span> Feverbloom Boots +7</td><td><b>Winged Boots</b> +7</td><td>Void Boots +10 <span class="muted small">consumable</span></td><td><b>Prismatic Boots</b> +3</td></tr>
-        <tr><td class="slot">Amulet</td><td><b>Foxtail Amulet</b> +5</td><td>Greater Garlic Necklace +50 <span class="muted small">consumable</span></td><td><span class="muted">—</span></td><td><span class="pill gold">Buy</span> Lion Amulet +7 (+3 physical)</td><td>Enchanted Sleep Shawl +24 (+7 physical) <span class="muted small">consumable</span></td><td><span class="muted">—</span></td><td><span class="muted small">The Cobra Amulet +9 (63kk, skip)</span></td></tr>
-        <tr><td class="slot">Ring</td><td>Prismatic Ring +10 <span class="muted small">consumable</span></td><td><span class="pill gold">Buy</span> Ring of Souls +10 (+2 physical)</td><td><span class="pill gold">Buy</span> Enchanted Blister Ring +6</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td>Prismatic Ring +8 <span class="muted small">consumable</span></td><td><b>Butterfly Ring</b> +3</td></tr>
-        <tr><td class="slot">Extra slot</td><td><span class="muted">—</span></td><td><b>Bone Fiddle</b> +5</td><td><b>Sun Catcher</b> +5</td><td><span class="muted small">Conch Shell Horn +2</span></td><td><span class="muted small">Scarab Ocarina +2</span></td><td><span class="muted">—</span></td><td><b>Moon Mirror</b> +5</td></tr>
-        <tr class="tot"><td class="slot">Best you can wear now</td><td class="n"><b>25% <span class="muted small">(27 with Guardian Boots)</span></b></td><td class="n"><b>55% <span class="muted small">(65 with Ring of Souls)</span></b></td><td class="n"><b>35% <span class="muted small">(46 with both buys)</span></b></td><td class="n"><b>22% <span class="muted small">(36 with both buys)</span></b></td><td class="n"><b>41% <span class="muted small">with the Shawl</span></b></td><td class="n"><b>39% <span class="muted small">(49 with Void Boots)</span></b></td><td class="n"><b>25%</b></td></tr>
-      </tbody>
-    </table>
+  <h3 class="tbl-h">Full sets</h3>
+  <p class="small muted">Pick a set by element or by spot. Every slot is filled; resistances are in colour, everything else in plain text. "With suggested buys" swaps in the items worth buying. Totals add up the item values (proficiency and imbuements included); the Skills window shows the real figure, which isn't always a plain sum.</p>
+  <div class="setpick" role="group" aria-label="Set by element">
+    <span class="small muted">By element</span>
+    <button class="stab" type="button" data-set="physical">Physical</button>
+    <button class="stab" type="button" data-set="ld">Life drain</button>
+    <button class="stab" type="button" data-set="fire">Fire</button>
+    <button class="stab" type="button" data-set="ice">Ice</button>
+    <button class="stab" type="button" data-set="earth">Earth</button>
+    <button class="stab" type="button" data-set="energy">Energy</button>
+    <button class="stab" type="button" data-set="death">Death</button>
   </div>
-
-  <h3 class="tbl-h">What to wear where</h3>
-  <p class="small muted">Only your own items, except the last column. Hits from TibiaWiki creature pages (see <a href="#loadout">Loadout by spot</a> for what each spot is weak to).</p>
-  <div class="scroll">
-    <table class="t-wide eqs">
-      <thead><tr><th>Spot</th><th>What hits you</th><th>Helmet</th><th>Armor 2nd slot</th><th>Boots</th><th>Amulet</th><th>Ring</th><th>Extra</th><th>Bow and attack</th><th>Buy to improve</th></tr></thead>
-      <tbody>
-        <tr><td class="name">Lower Roshamuul · Roshamuul West <span class="small"><a href="#roshamuul">guide</a></span></td><td class="small"><span class="el phys">physical</span> melee and berserk 450–500, <span class="el ld">life drain</span> beam 600, Guzzlemaw wave 650–800, bleeding, paralysis. Silencers: poison and Electric Ball (magic level −60%).</td><td>Falcon Coif</td><td>Snake Skin</td><td>Winged Boots</td><td>Greater Garlic Necklace</td><td>Prismatic Ring</td><td>Bone Fiddle</td><td class="small">Cataclysm · Diamond Arrows · Ethereal Barrage (it scales with distance, so the Silencers' magic-level cut doesn't touch it)</td><td class="small">Ring of Souls · Powerful Vibrancy on the boots against paralysis</td></tr>
-        <tr><td class="name">Book World</td><td class="small"><span class="el fire">fire</span> 250–280 (Lion Hydras, Headwalkers), <span class="el phys">physical</span> 330, <span class="el death">death</span> strikes 220–260, <span class="el holy">holy</span> explosion 290, <span class="el ice">ice</span> 260 (Bluebeaks).</td><td>Falcon Coif</td><td>Dragon Hide</td><td>Winged Boots</td><td>Foxtail Amulet</td><td>Prismatic or Ring of Blue Plasma</td><td>Sun Catcher</td><td class="small">Cataclysm or Falcon Bow (fire +5%) · Physical preset, Diamond + Ethereal</td><td class="small">Enchanted Blister Ring (optional)</td></tr>
-        <tr><td class="name">Asura Palace · Mirror <span class="small"><a href="#asura">guide</a></span></td><td class="small"><span class="el phys">physical</span> up to 350, <span class="el death">death</span> 200–300, <span class="el ld">life drain</span> 210, <span class="el fire">fire</span> (Dawnfire), <span class="el ice">ice</span> (Frost Flower), mana drain. Dawnfire's red stars cut magic level by 20%.</td><td>Falcon Coif</td><td>Quara Scale (or Lich Shroud)</td><td>Winged Boots</td><td>Foxtail Amulet</td><td>Prismatic Ring</td><td>Moon Mirror</td><td class="small">Cataclysm · Diamond + Ethereal (holy only 70% on Midnight and Frost Flower)</td><td class="small">Lion Amulet</td></tr>
-        <tr><td class="name">Burster Spectres <span class="small"><a href="#burster">guide</a></span></td><td class="small"><span class="el phys">physical</span> melee 400, <span class="el ice">ice</span> ball and wave 380, <span class="el ld">life drain</span> ball 400.</td><td>Falcon Coif</td><td>Quara Scale</td><td>Winged Boots</td><td>Greater Garlic Necklace</td><td>Prismatic Ring</td><td>Bone Fiddle</td><td class="small">Firestorm Arrows + Divine Barrage (immune to physical)</td><td class="small">Lion Amulet · Feverbloom Boots</td></tr>
-        <tr><td class="name">Ripper Spectres</td><td class="small"><span class="el phys">physical</span> melee 370 and wave 340, <span class="el earth">earth</span> bomb 390, <span class="el ld">life drain</span> 460.</td><td>Falcon Coif</td><td>Snake Skin</td><td>Winged Boots</td><td>Greater Garlic Necklace</td><td>Prismatic Ring</td><td>Bone Fiddle</td><td class="small">Firestorm Arrows (fire 120%) + Divine Barrage; physical only 30%</td><td class="small">Ring of Souls</td></tr>
-        <tr><td class="name">Werehyaenas</td><td class="small"><span class="el death">death</span> strikes up to 450, beams 300; <span class="el earth">earth</span> ball 350; <span class="el phys">physical</span> melee 300.</td><td>Falcon Coif</td><td>Lich Shroud (your scroll)</td><td>Prismatic Boots (death) or Winged (earth)</td><td>Enchanted Sleep Shawl or Foxtail</td><td>Butterfly Ring</td><td>Moon Mirror</td><td class="small">Cataclysm (death +4%) · holy 125% on Werehyaenas</td><td class="small">Depth Lorica (optional)</td></tr>
-        <tr><td class="name">Wote 8 · Draken Walls</td><td class="small"><span class="el fire">fire</span> waves 480–550, <span class="el earth">earth</span> bombs and poison, <span class="el death">death</span> beam 370, <span class="el energy">energy</span> 300, melee 350.</td><td>Falcon Coif</td><td>Dragon Hide</td><td>Winged Boots</td><td>Foxtail Amulet</td><td>Prismatic Ring</td><td>Sun Catcher</td><td class="small">Falcon Bow (fire +5%) · Diamond + Ethereal; all four drakens are fire- and earth-immune</td><td class="small">Enchanted Blister Ring</td></tr>
-        <tr><td class="name">Lower Spike</td><td class="small"><span class="el phys">physical</span> 300–430 (Behemoth, Lost Basher, Lost Thrower); <span class="el death">death</span> 350, <span class="el ld">life drain</span> 290, <span class="el earth">earth</span> 320, <span class="el fire">fire</span> 360, <span class="el energy">energy</span> 220.</td><td>Coif or Casque</td><td>Snake Skin, or whatever is on</td><td>Winged Boots</td><td>Foxtail Amulet</td><td>Prismatic Ring</td><td>Moon Mirror</td><td class="small">Cataclysm · Diamond + Ethereal (most Lost creatures are earth-immune)</td><td class="small">—</td></tr>
-        <tr><td class="name">Venore Flimsies −1 (after Feaster of Souls) <span class="small"><a href="#flimsy">guide</a></span></td><td class="small"><span class="el phys">physical</span> 400–450, <span class="el death">death</span> berserk 360–500, <span class="el energy">energy</span> beam 420, <span class="el ld">life drain</span> 400, mana drain 210.</td><td>Stoic Iks Casque (energy +6%)</td><td>Lich Shroud</td><td>Prismatic Boots or Void Boots</td><td>Foxtail Amulet</td><td>Prismatic Ring</td><td>Moon Mirror</td><td class="small">Cataclysm · Firestorm + Divine (holy 120–130%)</td><td class="small">Void Boots (test) · Depth Lorica</td></tr>
-      </tbody>
-    </table>
+  <div class="setpick" role="group" aria-label="Set by spot">
+    <span class="small muted">By spot</span>
+    <button class="stab" type="button" data-set="rosh">Roshamuul</button>
+    <button class="stab" type="button" data-set="book">Book World</button>
+    <button class="stab" type="button" data-set="asura">Asura</button>
+    <button class="stab" type="button" data-set="burster">Burster Spectres</button>
+    <button class="stab" type="button" data-set="ripper">Ripper Spectres</button>
+    <button class="stab" type="button" data-set="wereh">Werehyaenas</button>
+    <button class="stab" type="button" data-set="draken">Draken Walls</button>
+    <button class="stab" type="button" data-set="spike">Lower Spike</button>
+    <button class="stab" type="button" data-set="flimsy">Flimsies</button>
   </div>
-
+  <label class="small setbuy"><input type="checkbox" id="setBuys"> With suggested buys</label>
+  <div class="card" id="setView" aria-live="polite"></div>
   <details class="fold-tbl">
   <summary>Imbuements on each item you own</summary>
   <div class="scroll">
@@ -783,9 +782,9 @@ table.crt td.neu { color: var(--muted); }
         <tr><td class="name">Lion Spangenhelm</td><td>Helmet</td><td class="small">Arm 7, distance +2, <span class="el phys">physical +3%</span> <span class="el earth">earth +5%</span>, 2 slots, level 230. Needs its own Void and Epiphany</td><td class="small">Earth spots</td><td class="n small">10.9kk ask · 8.8kk avg</td><td><span class="pill bad">Skip</span></td></tr>
         <tr><td class="name">Hellstalker Visor</td><td>Helmet</td><td class="small">Arm 10, distance +2, <span class="el phys">physical +3%</span> <span class="el death">death +6%</span>, 2 slots, level 300</td><td class="small">Death spots</td><td class="n small">15.8kk ask, no sales</td><td><span class="pill bad">Skip</span></td></tr>
         <tr><td class="name">Mutated Skin Armor</td><td>Armor</td><td class="small">Arm 17, distance +3, <span class="el phys">physical +3%</span> <span class="el earth">earth +8%</span>, 2 slots, level 270. No holy ML</td><td class="small">Heavy earth only</td><td class="n small">35kk ask</td><td><span class="pill bad">Skip</span></td></tr>
-        <tr><td class="name">Eldritch Bow</td><td>Bow</td><td class="small">Atk +6, Hit +6%, distance +2, holy ML +1, 3 slots, level 250. Your Cataclysm at proficiency 5 already has distance +2 and holy ML +1, plus holy crits</td><td class="small">—</td><td class="n small">17.7–22.6kk</td><td><span class="pill bad">Skip</span></td></tr>
+        <tr><td class="name">Eldritch Bow</td><td>Bow</td><td class="small">Atk +6, Hit +6%, distance +2, holy ML +1, 3 slots, level 250. Your Cataclysm at proficiency 5 already has distance +2 and holy ML +1, plus holy crits</td><td class="small">Not needed</td><td class="n small">17.7–22.6kk</td><td><span class="pill bad">Skip</span></td></tr>
         <tr><td class="name">The Cobra Amulet</td><td>Amulet</td><td class="small"><span class="el death">death +9%</span>, level 250, no charges listed</td><td class="small">Death spots</td><td class="n small">63kk ask, no sales</td><td><span class="pill bad">Skip</span></td></tr>
-        <tr><td class="name">Enchanted Flamingo Amulet of Precision</td><td>Amulet</td><td class="small">Distance +4, holy ML +1, <span class="el phys">physical +5%</span> <span class="el fire">fire +14%</span>, level 270, 180 min</td><td class="small">—</td><td class="n small">60–77kk for 3 hours</td><td><span class="pill bad">Skip</span></td></tr>
+        <tr><td class="name">Enchanted Flamingo Amulet of Precision</td><td>Amulet</td><td class="small">Distance +4, holy ML +1, <span class="el phys">physical +5%</span> <span class="el fire">fire +14%</span>, level 270, 180 min</td><td class="small">Not worth it</td><td class="n small">60–77kk for 3 hours</td><td><span class="pill bad">Skip</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -2630,6 +2629,95 @@ jobs:
       codes.appendChild(card);
     });
     var start = load("veritass-hub-wheel", "holy"); render(P[start] ? start : "holy");
+  })();
+
+  // ---------- full equipment sets ----------
+  (function () {
+    var view = document.getElementById("setView"); if (!view) return;
+    var EL = { phys: ["phys", "physical"], fire: ["fire", "fire"], ice: ["ice", "ice"], earth: ["earth", "earth"], energy: ["energy", "energy"], death: ["death", "death"], holy: ["holy", "holy"], ld: ["ld", "life drain"] };
+    // st: plain stats [label, value] counted in totals when key given; r: resistances
+    var I = {
+      "Bow of Cataclysm": { own: 1, t: ["Atk +6, Hit +4%, range 6", "Proficiency 5: +1 distance, +1 holy magic level, holy crits"], k: { dist: 2, hml: 1 }, r: { death: 4 }, im: "Powerful Strike, Void (mana leech 8%), Vampirism (life leech 25%)" },
+      "Falcon Bow": { own: 1, t: ["Atk +6, Hit +5%, range 6", "Proficiency starts at 0"], k: { dist: 2 }, r: { fire: 5 }, im: "Powerful Strike, Void, Vampirism" },
+      "Falcon Coif": { own: 1, t: ["Arm 10", "Shielding +2"], k: { dist: 2, ml: 2 }, r: { phys: 3, fire: 10 }, im: "Powerful Void (mana leech 8%), Intricate Epiphany (magic level +2)" },
+      "Stoic Iks Casque": { own: 1, t: ["Arm 8", "Divine Missile +13% base damage"], k: { dist: 2 }, r: { phys: 3, energy: 6 }, im: "Powerful Void; second slot empty (Epiphany: magic level +2 / +4)" },
+      "Unerring Dragon Scale Armor": { own: 1, t: ["Arm 17", "Strong Ethereal Spear +4% life leech"], k: { dist: 3, hml: 1 }, r: { energy: 10, earth: -5 }, im: "Powerful Vampirism (life leech 25%)" },
+      "Depth Lorica": { buy: "616k", t: ["Arm 16", "2 slots, level 150"], k: { dist: 3 }, r: { death: 5 }, im: "Needs its own Vampirism" },
+      "Falcon Greaves": { own: 1, t: ["Arm 10", "Sword, club, axe +3"], k: { dist: 3 }, r: { phys: 7, ice: 7 }, im: "no slots" },
+      "Winged Boots": { own: 1, t: ["Arm 2"], k: { dist: 1, spd: 15 }, r: { earth: 7 }, im: "Basic Vibrancy (15% chance to remove paralysis)" },
+      "Prismatic Boots": { own: 1, t: ["Arm 3"], k: { spd: 15 }, r: { death: 3 }, im: "1 slot, empty" },
+      "Feverbloom Boots": { buy: "15.5kk", t: ["Arm 2", "1 slot, level 270"], k: { dist: 1, spd: 15 }, r: { ice: 7 } },
+      "Stoic Iks Boots": { buy: "18kk", t: ["Arm 2", "Divine Missile +5% critical damage", "1 slot, level 250"], k: { dist: 1, spd: 15 }, r: { fire: 5 } },
+      "Void Boots": { buy: "~2k, 60 min", t: ["Arm 2", "Faster regeneration", "Lasts 60 minutes"], k: { spd: 30 }, r: { energy: 10 } },
+      "Foxtail Amulet": { own: 1, t: ["Arm 2", "No timer"], k: {}, r: { phys: 5 } },
+      "Greater Garlic Necklace": { cons: "~15–23k, 500 charges", t: ["500 charges"], k: {}, r: { ld: 50 } },
+      "Enchanted Sleep Shawl": { cons: "~650–720k, 60 min", t: ["Arm 3", "Lasts 60 minutes"], k: { dist: 3 }, r: { phys: 7, earth: 24 } },
+      "Lion Amulet": { buy: "2.5–2.8kk", t: ["Arm 3", "No charges listed, level 230"], k: {}, r: { phys: 3, ice: 7 } },
+      "Prismatic Ring": { cons: "~120k, 60 min", t: ["Lasts 60 minutes"], k: {}, r: { phys: 10, energy: 8 } },
+      "Ring of Blue Plasma": { cons: "~8k, 30 min", t: ["Lasts 30 minutes"], k: { dist: 3, ml: 1 }, r: {} },
+      "Butterfly Ring": { own: 1, t: ["Arm 2", "No timer"], k: {}, r: { death: 3 } },
+      "Ring of Souls": { buy: "~0.6kk", t: ["Lasts 2 h, recharge: 2 Silver Tokens at Cledwyn", "Level 200"], k: {}, r: { ld: 10, phys: 2 } },
+      "Enchanted Blister Ring": { buy: "63–79k, 60 min", t: ["Lasts 60 minutes", "Level 220"], k: {}, r: { fire: 6 } },
+      "Bone Fiddle": { own: 1, t: ["Extra slot"], k: {}, r: { ld: 5 } },
+      "Sun Catcher": { own: 1, t: ["Extra slot"], k: {}, r: { fire: 5 } },
+      "Moon Mirror": { own: 1, t: ["Extra slot"], k: {}, r: { death: 5 } },
+      "Conch Shell Horn": { buy: "~149k", t: ["Extra slot"], k: {}, r: { ice: 2 } }
+    };
+    var AIM = { snake: ["Powerful Snake Skin", { earth: 15 }], dragon: ["Powerful Dragon Hide", { fire: 15 }], quara: ["Powerful Quara Scale", { ice: 15 }], lich: ["Powerful Lich Shroud (your scroll)", { death: 10 }], cloud: ["Powerful Cloud Fabric", { energy: 15 }] };
+    var SLOTS = [["bow", "Weapon"], ["helmet", "Helmet"], ["armor", "Armor"], ["legs", "Legs"], ["boots", "Boots"], ["amulet", "Amulet"], ["ring", "Ring"], ["extra", "Extra slot"]];
+    function base(o) { var b = { bow: "Bow of Cataclysm", helmet: "Falcon Coif", armor: "Unerring Dragon Scale Armor", aim: "snake", legs: "Falcon Greaves", boots: "Winged Boots", amulet: "Foxtail Amulet", ring: "Prismatic Ring", extra: "Moon Mirror" }; for (var k in o) b[k] = o[k]; return b; }
+    var SETS = {
+      physical: { t: "Physical set", why: "Most melee spots. Physical can't be imbued, so it comes from the helmet, legs, amulet and ring.", s: base({}), b: {} },
+      ld: { t: "Life drain set", why: "Roshamuul maws, Rippers, Bursters: beams and waves of 400–800.", s: base({ amulet: "Greater Garlic Necklace", extra: "Bone Fiddle" }), b: { ring: "Ring of Souls" } },
+      fire: { t: "Fire set", why: "Book World, Draken Walls.", s: base({ bow: "Falcon Bow", aim: "dragon", extra: "Sun Catcher" }), b: { boots: "Stoic Iks Boots", ring: "Enchanted Blister Ring" } },
+      ice: { t: "Ice set", why: "Burster Spectres, Frost Flower asuras, Bluebeaks.", s: base({ aim: "quara" }), b: { boots: "Feverbloom Boots", amulet: "Lion Amulet", extra: "Conch Shell Horn" } },
+      earth: { t: "Earth set", why: "Silencer poison, Ripper bombs, Werehyaenas, drakens.", s: base({ amulet: "Enchanted Sleep Shawl" }), b: {} },
+      energy: { t: "Energy set", why: "Flimsies' energy beam, Draken Spellweavers.", s: base({ helmet: "Stoic Iks Casque", aim: "cloud" }), b: { boots: "Void Boots" } },
+      death: { t: "Death set", why: "Werehyaenas, Flimsies, Asura death strikes.", s: base({ aim: "lich", boots: "Prismatic Boots", ring: "Butterfly Ring" }), b: { armor: "Depth Lorica" } },
+      rosh: { t: "Lower Roshamuul · Roshamuul West", hit: "Physical melee and berserk 450–500, life drain beam 600, Guzzlemaw wave 650–800, bleeding, paralysis. Silencers: poison and Electric Ball (magic level −60%).", atk: "Diamond Arrows + Ethereal Barrage: it scales with distance, so the Silencers' magic-level cut doesn't touch it.", s: base({ amulet: "Greater Garlic Necklace", extra: "Bone Fiddle" }), b: { ring: "Ring of Souls" } },
+      book: { t: "Book World", hit: "Fire 250–280 (Lion Hydras, Headwalkers), physical 330, death strikes 220–260, holy explosion 290, ice 260 (Bluebeaks).", atk: "Physical preset, Diamond + Ethereal.", s: base({ aim: "dragon", extra: "Sun Catcher" }), b: { ring: "Enchanted Blister Ring" } },
+      asura: { t: "Asura Palace · Mirror", hit: "Physical up to 350, death 200–300, life drain 210, fire (Dawnfire), ice (Frost Flower), mana drain. Dawnfire's red stars cut magic level by 20%.", atk: "Diamond + Ethereal; holy is only 70% on Midnight and Frost Flower.", s: base({ aim: "quara" }), b: { amulet: "Lion Amulet" } },
+      burster: { t: "Burster Spectres", hit: "Physical melee 400, ice ball and wave 380, life drain ball 400.", atk: "Firestorm Arrows + Divine Barrage: they're immune to physical.", s: base({ aim: "quara", amulet: "Greater Garlic Necklace", extra: "Bone Fiddle" }), b: { boots: "Feverbloom Boots" } },
+      ripper: { t: "Ripper Spectres", hit: "Physical melee 370 and wave 340, earth bomb 390, life drain 460.", atk: "Firestorm Arrows (fire 120%) + Divine Barrage; physical only 30%.", s: base({ amulet: "Greater Garlic Necklace", extra: "Bone Fiddle" }), b: { ring: "Ring of Souls" } },
+      wereh: { t: "Werehyaenas", hit: "Death strikes up to 450 and beams 300; earth ball 350; physical melee 300.", atk: "Holy is 125% on Werehyaenas; Cataclysm adds death +4%.", s: base({ aim: "lich", boots: "Prismatic Boots", amulet: "Enchanted Sleep Shawl", ring: "Butterfly Ring" }), b: { armor: "Depth Lorica" } },
+      draken: { t: "Wote 8 · Draken Walls", hit: "Fire waves 480–550, earth bombs and poison, death beam 370, energy 300, melee 350.", atk: "Diamond + Ethereal; all four drakens are fire- and earth-immune.", s: base({ bow: "Falcon Bow", aim: "dragon", extra: "Sun Catcher" }), b: { ring: "Enchanted Blister Ring" } },
+      spike: { t: "Lower Spike", hit: "Physical 300–430 (Behemoth, Lost Basher, Lost Thrower); death 350, life drain 290, earth 320, fire 360, energy 220.", atk: "Diamond + Ethereal; most Lost creatures are earth-immune.", s: base({}), b: {} },
+      flimsy: { t: "Venore Flimsies −1 (after Feaster of Souls)", hit: "Physical 400–450, death berserk 360–500, energy beam 420, life drain 400, mana drain 210.", atk: "Firestorm + Divine (holy 120–130%).", s: base({ helmet: "Stoic Iks Casque", aim: "lich", boots: "Prismatic Boots" }), b: { boots: "Void Boots", armor: "Depth Lorica" } }
+    };
+    function chip(k, v) { return '<span class="el ' + EL[k][0] + '">' + EL[k][1] + " " + (v > 0 ? "+" : "−") + Math.abs(v) + "%</span>"; }
+    function plain(k) { var o = []; if (k.dist) o.push("distance +" + k.dist); if (k.ml) o.push("magic level +" + k.ml); if (k.hml) o.push("holy magic level +" + k.hml); if (k.spd) o.push("speed +" + k.spd); return o; }
+    function render(id) {
+      var set = SETS[id], buys = document.getElementById("setBuys").checked, sum = { dist: 0, ml: 0, hml: 0, spd: 0 }, res = {}, buyList = [];
+      Object.keys(EL).forEach(function (k) { res[k] = 0; });
+      var rows = SLOTS.map(function (sl) {
+        var key = sl[0], name = set.s[key], swapped = buys && set.b[key];
+        if (swapped) { buyList.push(set.b[key]); name = set.b[key]; }
+        var it = I[name], tag = it.own ? '<span class="pill good">yours</span>' : it.cons ? '<span class="pill">buy per hunt · ' + it.cons + "</span>" : '<span class="pill gold">buy · ' + it.buy + "</span>";
+        var r = {}; for (var k in it.r) r[k] = it.r[k];
+        var imb = it.im || "";
+        if (key === "armor") { var a = AIM[set.s.aim]; if (name === "Unerring Dragon Scale Armor") { imb = "Powerful Vampirism (life leech 25%) + " + a[0]; } else { imb = "Vampirism + " + a[0] + " (needs imbuing)"; } for (var e in a[1]) r[e] = (r[e] || 0) + a[1][e]; }
+        for (var s in it.k) sum[s] += it.k[s];
+        for (var e2 in r) res[e2] += r[e2];
+        var plainStats = plain(it.k).concat(it.t), chips = Object.keys(r).map(function (e) { return chip(e, r[e]); }).join(" ");
+        var alt = (!buys && set.b[key]) ? '<div class="small muted">Better with: ' + set.b[key] + " (" + Object.keys(I[set.b[key]].r).map(function (e) { return EL[e][1] + " +" + I[set.b[key]].r[e] + "%"; }).join(", ") + ")</div>" : "";
+        return '<div class="set-row"><div class="slot">' + sl[1] + '</div><div><div class="name">' + name + " " + tag + "</div>" + alt + '<div class="set-res">' + (chips || '<span class="muted small">no resistance</span>') + '</div><div class="small">' + plainStats.join(" · ") + (imb ? '<br><span class="muted">Imbued: ' + imb + "</span>" : "") + "</div></div></div>";
+      }).join("");
+      var tot = '<div class="set-tot"><div><b>+' + sum.dist + '</b><span>Distance</span></div><div><b>+' + sum.ml + '</b><span>Magic level</span></div><div><b>+' + sum.hml + '</b><span>Holy magic level</span></div><div><b>+' + sum.spd + '</b><span>Speed</span></div></div>' +
+        '<div class="set-res set-sum">' + Object.keys(EL).map(function (k) { return '<span class="el ' + EL[k][0] + (res[k] ? "" : " zero") + '">' + EL[k][1] + " " + (res[k] < 0 ? "−" : "+") + Math.abs(res[k]) + "%</span>"; }).join(" ") + "</div>";
+      var head = "<h3>" + set.t + (buys && buyList.length ? ' <span class="tag">with ' + buyList.join(", ") + "</span>" : "") + "</h3>" +
+        (set.why ? '<p class="small">' + set.why + "</p>" : '<p class="small"><b>What hits you:</b> ' + set.hit + "<br><b>Attack:</b> " + set.atk + "</p>");
+      var none = buys && !buyList.length ? '<p class="small muted">Nothing worth buying for this one: your own items already cover it.</p>' : "";
+      view.innerHTML = head + '<p class="small muted" style="margin:0">Sum of all resistances and bonuses in this set</p>' + tot + none +
+        '<div class="set-rows">' + rows + "</div>";
+      document.querySelectorAll(".stab").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-set") === id ? "true" : "false"); });
+      try { localStorage.setItem("veritass-hub-set", id); } catch (e) {}
+      cur = id;
+    }
+    var cur = "rosh"; try { cur = localStorage.getItem("veritass-hub-set") || "rosh"; } catch (e) {}
+    if (!SETS[cur]) cur = "rosh";
+    document.querySelectorAll(".stab").forEach(function (b) { b.addEventListener("click", function () { render(b.getAttribute("data-set")); }); });
+    document.getElementById("setBuys").addEventListener("change", function () { render(cur); });
+    render(cur);
   })();
 
   // ---------- quests + hunts ----------
